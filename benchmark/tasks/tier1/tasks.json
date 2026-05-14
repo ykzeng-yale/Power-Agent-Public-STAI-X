@@ -1,0 +1,608 @@
+{
+  "tier": 1,
+  "name": "Basic Comparisons",
+  "description": "Fundamental power analysis for basic statistical tests",
+  "tasks": [
+    {
+      "id": "t1-ttest-001",
+      "template": "two_sample_ttest",
+      "difficulty": "basic",
+      "question": "I want to compare mean blood pressure between treatment and control groups. I expect a medium effect size (Cohen's d = 0.5), want 80% power at alpha = 0.05 using a two-sided test. How many participants do I need per group?",
+      "expected_template": "two_sample_ttest",
+      "ground_truth": {
+        "sample_size_per_group": 64,
+        "total_sample_size": 128,
+        "effect_size_d": 0.5,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette (Example 12: Two-Sample t-Test)",
+      "reference_code": "library(pwr)\npwr.t.test(d = 0.5, sig.level = 0.05, power = 0.80, type = 'two.sample', alternative = 'two.sided')\n# n = 63.77 per group, round up to 64\n# Source: https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html"
+    },
+    {
+      "id": "t1-ttest-002",
+      "template": "two_sample_ttest",
+      "difficulty": "basic",
+      "question": "Testing if a new drug reduces cholesterol. Expected reduction is 15 mg/dL with SD of 30 mg/dL in both groups. I need 90% power with two-sided alpha = 0.05. What sample size per group?",
+      "expected_template": "two_sample_ttest",
+      "ground_truth": {
+        "sample_size_per_group": 86,
+        "total_sample_size": 172,
+        "effect_size_d": 0.5,
+        "power": 0.9,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\nd <- 15/30  # effect size = difference/SD = 0.5\npwr.t.test(d = 0.5, sig.level = 0.05, power = 0.90, type = 'two.sample')\n# n = 85.03 per group, round up to 86"
+    },
+    {
+      "id": "t1-ttest-003",
+      "template": "two_sample_ttest",
+      "difficulty": "intermediate",
+      "question": "I'm comparing pain scores between a new treatment and standard care. Based on prior studies, we expect only a small improvement (d = 0.3), but we believe the new treatment will be better, so we're using a one-sided test. How many patients per arm do we need for 80% power at alpha = 0.05?",
+      "expected_template": "two_sample_ttest",
+      "ground_truth": {
+        "sample_size_per_group": 139,
+        "total_sample_size": 278,
+        "effect_size_d": 0.3,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.t.test(d = 0.3, sig.level = 0.05, power = 0.80, type = 'two.sample', alternative = 'greater')\n# n = 138.08 per group, round up to 139"
+    },
+    {
+      "id": "t1-ttest-004",
+      "template": "two_sample_ttest",
+      "difficulty": "intermediate",
+      "question": "We're running a trial comparing CBT therapy to a waitlist control for anxiety. Based on pilot data, we expect an 8-point difference on the anxiety scale, with a pooled SD of about 12 points. We want to be more rigorous with alpha = 0.01. How many participants per group for 90% power?",
+      "expected_template": "two_sample_ttest",
+      "ground_truth": {
+        "sample_size_per_group": 69,
+        "total_sample_size": 138,
+        "effect_size_d": 0.667,
+        "power": 0.9,
+        "alpha": 0.01
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\nd <- 8/12  # effect size = 0.667\npwr.t.test(d = 0.667, sig.level = 0.01, power = 0.90, type = 'two.sample')\n# n = 68.11 per group, round up to 69"
+    },
+    {
+      "id": "t1-ttest-005",
+      "template": "two_sample_ttest",
+      "difficulty": "advanced",
+      "question": "We're planning an RCT to see if continuous glucose monitors improve HbA1c compared to standard monitoring. We expect a 0.4% difference with SD of 1.0%. Since we're testing superiority (one-sided), we'll use alpha = 0.025. How many patients per group for 95% power?",
+      "expected_template": "two_sample_ttest",
+      "ground_truth": {
+        "sample_size_per_group": 164,
+        "total_sample_size": 328,
+        "effect_size_d": 0.4,
+        "power": 0.95,
+        "alpha": 0.025
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\nd <- 0.4/1.0\npwr.t.test(d = 0.4, sig.level = 0.025, power = 0.95, type = 'two.sample', alternative = 'greater')\n# n = 163.12 per group, round up to 164"
+    },
+    {
+      "id": "t1-ttest-006",
+      "template": "two_sample_ttest",
+      "difficulty": "advanced",
+      "question": "A pharmaceutical company needs to detect a large effect (d = 0.8) in a confirmatory phase III trial. They require 99% power with alpha = 0.001 (two-sided) for regulatory purposes. What's the sample size per treatment arm?",
+      "expected_template": "two_sample_ttest",
+      "ground_truth": {
+        "sample_size_per_group": 102,
+        "total_sample_size": 204,
+        "effect_size_d": 0.8,
+        "power": 0.99,
+        "alpha": 0.001
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.t.test(d = 0.8, sig.level = 0.001, power = 0.99, type = 'two.sample')\n# n = 101.11 per group, round up to 102"
+    },
+    {
+      "id": "t1-paired-001",
+      "template": "paired_ttest",
+      "difficulty": "basic",
+      "question": "I'm measuring patients' depression scores before and after 8 weeks of treatment. Expected improvement is 5 points with SD of changes = 10 (d = 0.5). With 80% power and alpha = 0.05, how many patients do I need?",
+      "expected_template": "paired_ttest",
+      "ground_truth": {
+        "sample_size": 34,
+        "effect_size_d": 0.5,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.t.test(d = 0.5, sig.level = 0.05, power = 0.80, type = 'paired')\n# n = 33.37, round up to 34"
+    },
+    {
+      "id": "t1-paired-002",
+      "template": "paired_ttest",
+      "difficulty": "basic",
+      "question": "I'm running a weight loss intervention and will measure participants before and after. We expect about 3 kg average loss with individual variation (SD of the changes) around 5 kg. How many participants do I need for 90% power at alpha = 0.05?",
+      "expected_template": "paired_ttest",
+      "ground_truth": {
+        "sample_size": 32,
+        "effect_size_d": 0.6,
+        "power": 0.9,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\nd <- 3/5  # effect size = 0.6\npwr.t.test(d = 0.6, sig.level = 0.05, power = 0.90, type = 'paired')\n# n = 31.15, round up to 32"
+    },
+    {
+      "id": "t1-paired-003",
+      "template": "paired_ttest",
+      "difficulty": "intermediate",
+      "question": "We're doing a crossover bioequivalence study comparing two drug formulations. The expected difference in AUC between formulations is 50 units, with within-subject SD of 100. How many subjects do we need for 85% power at alpha = 0.05?",
+      "expected_template": "paired_ttest",
+      "ground_truth": {
+        "sample_size": 38,
+        "effect_size_d": 0.5,
+        "power": 0.85,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\nd <- 50/100  # effect size = 0.5\npwr.t.test(d = 0.5, sig.level = 0.05, power = 0.85, type = 'paired')\n# n = 37.99, round up to 38"
+    },
+    {
+      "id": "t1-paired-004",
+      "template": "paired_ttest",
+      "difficulty": "advanced",
+      "question": "In our bioequivalence crossover study, we need to be able to detect even small differences (d = 0.25) with high confidence - 95% power at the stricter alpha = 0.01. How many subjects?",
+      "expected_template": "paired_ttest",
+      "ground_truth": {
+        "sample_size": 289,
+        "effect_size_d": 0.25,
+        "power": 0.95,
+        "alpha": 0.01
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.t.test(d = 0.25, sig.level = 0.01, power = 0.95, type = 'paired')\n# n = 288.31, round up to 289"
+    },
+    {
+      "id": "t1-anova-001",
+      "template": "one_way_anova",
+      "difficulty": "basic",
+      "question": "We're comparing 3 treatment groups for pain relief and expect a medium effect size (Cohen's f = 0.25). How many subjects per group for 80% power at alpha = 0.05?",
+      "expected_template": "one_way_anova",
+      "ground_truth": {
+        "sample_size_per_group": 53,
+        "total_sample_size": 159,
+        "effect_size_f": 0.25,
+        "power": 0.8,
+        "alpha": 0.05,
+        "groups": 3
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.anova.test(k = 3, f = 0.25, sig.level = 0.05, power = 0.80)\n# n = 52.40 per group, round up to 53"
+    },
+    {
+      "id": "t1-anova-002",
+      "template": "one_way_anova",
+      "difficulty": "basic",
+      "question": "We're testing 4 different dosage levels of a medication and expect to see an effect size of f = 0.30 between groups. How many patients per dosage group for 80% power at alpha = 0.05?",
+      "expected_template": "one_way_anova",
+      "ground_truth": {
+        "sample_size_per_group": 32,
+        "total_sample_size": 128,
+        "effect_size_f": 0.3,
+        "power": 0.8,
+        "alpha": 0.05,
+        "groups": 4
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.anova.test(k = 4, f = 0.30, sig.level = 0.05, power = 0.80)\n# n = 31.28 per group, round up to 32"
+    },
+    {
+      "id": "t1-anova-003",
+      "template": "one_way_anova",
+      "difficulty": "intermediate",
+      "question": "We're comparing 5 different exercise interventions for VO2max improvement. We expect a small-medium effect (f = 0.20). How many subjects per group for 90% power at alpha = 0.05?",
+      "expected_template": "one_way_anova",
+      "ground_truth": {
+        "sample_size_per_group": 78,
+        "total_sample_size": 390,
+        "effect_size_f": 0.2,
+        "power": 0.9,
+        "alpha": 0.05,
+        "groups": 5
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.anova.test(k = 5, f = 0.20, sig.level = 0.05, power = 0.90)\n# n = 77.77 per group, round up to 78"
+    },
+    {
+      "id": "t1-anova-004",
+      "template": "one_way_anova",
+      "difficulty": "intermediate",
+      "question": "We're comparing three different diets for LDL cholesterol reduction. Based on the literature, we expect reductions of about 10, 20, and 25 mg/dL for the three diets, with a common SD of 20 mg/dL. How many participants per diet group for 80% power at alpha = 0.05?",
+      "expected_template": "one_way_anova",
+      "ground_truth": {
+        "sample_size_per_group": 35,
+        "total_sample_size": 105,
+        "effect_size_f": 0.312,
+        "power": 0.8,
+        "alpha": 0.05,
+        "groups": 3
+      },
+      "tolerance": {
+        "sample_size": 2,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\n# Calculate f from group means\nmeans <- c(-10, -20, -25)\ngrand_mean <- mean(means)\nbetween_var <- sum((means - grand_mean)^2) / 3\nf <- sqrt(between_var) / 20  # f = 0.312\npwr.anova.test(k = 3, f = 0.312, sig.level = 0.05, power = 0.80)\n# n = 34.15 per group, round up to 35"
+    },
+    {
+      "id": "t1-anova-005",
+      "template": "one_way_anova",
+      "difficulty": "advanced",
+      "question": "We're conducting a large multi-center trial across 6 treatment centers and expect a large effect (f = 0.40). Due to regulatory requirements, we need 95% power at a stringent alpha = 0.01. How many subjects per center?",
+      "expected_template": "one_way_anova",
+      "ground_truth": {
+        "sample_size_per_group": 29,
+        "total_sample_size": 174,
+        "effect_size_f": 0.4,
+        "power": 0.95,
+        "alpha": 0.01,
+        "groups": 6
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.anova.test(k = 6, f = 0.40, sig.level = 0.01, power = 0.95)\n# n = 28.23 per group, round up to 29"
+    },
+    {
+      "id": "t1-prop-001",
+      "template": "two_proportions",
+      "difficulty": "basic",
+      "question": "We're testing a new treatment where we expect the response rate to improve from 40% (control) to 60% (treatment). How many patients per group for 80% power at alpha = 0.05 (two-sided)?",
+      "expected_template": "two_proportions",
+      "ground_truth": {
+        "sample_size_per_group": 97,
+        "total_sample_size": 194,
+        "p1": 0.4,
+        "p2": 0.6,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\nh <- ES.h(0.60, 0.40)  # h = 0.4028\npwr.2p.test(h = h, sig.level = 0.05, power = 0.80)\n# n = 96.70 per group, round up to 97"
+    },
+    {
+      "id": "t1-prop-002",
+      "template": "two_proportions",
+      "difficulty": "basic",
+      "question": "Our current drug has a 30% adverse event rate. We're hoping a new formulation will reduce this to 20%. How many patients per arm do we need to detect this difference with 80% power at alpha = 0.05?",
+      "expected_template": "two_proportions",
+      "ground_truth": {
+        "sample_size_per_group": 292,
+        "total_sample_size": 584,
+        "p1": 0.3,
+        "p2": 0.2,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\nh <- ES.h(0.30, 0.20)  # h = 0.2319\npwr.2p.test(h = h, sig.level = 0.05, power = 0.80)\n# n = 291.20 per group, round up to 292"
+    },
+    {
+      "id": "t1-prop-003",
+      "template": "two_proportions",
+      "difficulty": "intermediate",
+      "question": "We're planning a vaccine efficacy trial. The placebo group is expected to have a 10% infection rate, and we hope the vaccine reduces this to 5%. Since we're testing efficacy (one-sided), we'll use alpha = 0.025. How many per group for 90% power?",
+      "expected_template": "two_proportions",
+      "ground_truth": {
+        "sample_size_per_group": 582,
+        "total_sample_size": 1164,
+        "p1": 0.1,
+        "p2": 0.05,
+        "power": 0.9,
+        "alpha": 0.025
+      },
+      "tolerance": {
+        "sample_size": 10,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "power.prop.test(p1 = 0.10, p2 = 0.05, power = 0.90, sig.level = 0.025, alternative = 'one.sided')\n# n = 581.02 per group, round up to 582"
+    },
+    {
+      "id": "t1-prop-004",
+      "template": "two_proportions",
+      "difficulty": "intermediate",
+      "question": "We're comparing a new surgical technique to the standard approach. The standard technique has about 85% success rate, and we expect the new technique to achieve 95%. How many patients per group for 80% power at alpha = 0.05?",
+      "expected_template": "two_proportions",
+      "ground_truth": {
+        "sample_size_per_group": 133,
+        "total_sample_size": 266,
+        "p1": 0.85,
+        "p2": 0.95,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\nh <- ES.h(0.95, 0.85)  # h = 0.3440\npwr.2p.test(h = h, sig.level = 0.05, power = 0.80)\n# n = 132.20 per group, round up to 133"
+    },
+    {
+      "id": "t1-prop-005",
+      "template": "two_proportions",
+      "difficulty": "advanced",
+      "question": "We're planning a non-inferiority trial for a new treatment. The standard treatment has about 70% response rate, and we expect the new treatment to be similar. We need to rule out that the new treatment is more than 10% worse - so if the true rate is 60% or lower, we should detect it. How many patients per group for 90% power with one-sided alpha = 0.025?",
+      "expected_template": "two_proportions",
+      "ground_truth": {
+        "sample_size_per_group": 477,
+        "total_sample_size": 954,
+        "p1": 0.7,
+        "p2": 0.6,
+        "power": 0.9,
+        "alpha": 0.025
+      },
+      "tolerance": {
+        "sample_size": 10,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "power.prop.test(p1 = 0.70, p2 = 0.60, power = 0.90, sig.level = 0.025, alternative = 'one.sided')\n# n = 476.68 per group, round up to 477"
+    },
+    {
+      "id": "t1-chi-001",
+      "template": "chi_square",
+      "difficulty": "basic",
+      "question": "I'm testing independence in a 2×2 table and want 80% power to detect a medium effect (w = 0.3) at alpha = 0.05. What total sample size do I need?",
+      "expected_template": "chi_square_test",
+      "ground_truth": {
+        "total_sample_size": 88,
+        "effect_size_w": 0.3,
+        "power": 0.8,
+        "alpha": 0.05,
+        "df": 1
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.chisq.test(w = 0.3, df = 1, sig.level = 0.05, power = 0.80)\n# N = 87.21, round up to 88"
+    },
+    {
+      "id": "t1-chi-002",
+      "template": "chi_square",
+      "difficulty": "basic",
+      "question": "I'm analyzing a 3×2 contingency table (3 treatment groups, 2 outcome categories) and want to detect an effect size of w = 0.25 with 80% power at alpha = 0.05. What total N is needed?",
+      "expected_template": "chi_square_test",
+      "ground_truth": {
+        "total_sample_size": 155,
+        "effect_size_w": 0.25,
+        "power": 0.8,
+        "alpha": 0.05,
+        "df": 2
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.chisq.test(w = 0.25, df = 2, sig.level = 0.05, power = 0.80)\n# N = 154.30, round up to 155"
+    },
+    {
+      "id": "t1-chi-003",
+      "template": "chi_square",
+      "difficulty": "intermediate",
+      "question": "I'm testing association in a 3×4 contingency table. I want to detect an effect size of w = 0.3 with 80% power at alpha = 0.05. What total sample size do I need?",
+      "expected_template": "chi_square_test",
+      "ground_truth": {
+        "total_sample_size": 152,
+        "effect_size_w": 0.3,
+        "power": 0.8,
+        "alpha": 0.05,
+        "df": 6
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\n# df = (3-1)*(4-1) = 6\npwr.chisq.test(w = 0.3, df = 6, sig.level = 0.05, power = 0.80)\n# N = 151.40, round up to 152"
+    },
+    {
+      "id": "t1-chi-004",
+      "template": "chi_square",
+      "difficulty": "intermediate",
+      "question": "We're analyzing genotype-phenotype association in a 4×4 table and need to detect a small effect (w = 0.2) with 90% power at a stringent alpha = 0.01. What total sample size?",
+      "expected_template": "chi_square_test",
+      "ground_truth": {
+        "total_sample_size": 654,
+        "effect_size_w": 0.2,
+        "power": 0.9,
+        "alpha": 0.01,
+        "df": 9
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\n# df = (4-1)*(4-1) = 9\npwr.chisq.test(w = 0.2, df = 9, sig.level = 0.01, power = 0.90)\n# N = 653.06, round up to 654"
+    },
+    {
+      "id": "t1-chi-005",
+      "template": "chi_square",
+      "difficulty": "advanced",
+      "question": "I'm running a goodness-of-fit test with 5 categories, comparing observed vs expected distributions. I want to detect an effect size w = 0.35 with 85% power at alpha = 0.05. What sample size?",
+      "expected_template": "chi_square_test",
+      "ground_truth": {
+        "total_sample_size": 110,
+        "effect_size_w": 0.35,
+        "power": 0.85,
+        "alpha": 0.05,
+        "df": 4
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\n# df = 5 - 1 = 4 for goodness-of-fit\npwr.chisq.test(w = 0.35, df = 4, sig.level = 0.05, power = 0.85)\n# N = 109.36, round up to 110"
+    },
+    {
+      "id": "t1-corr-001",
+      "template": "correlation",
+      "difficulty": "basic",
+      "question": "I want to investigate whether BMI is correlated with blood pressure in our patient population. Based on the literature, I expect a moderate correlation of about r = 0.3. How many patients do I need for 80% power at alpha = 0.05?",
+      "expected_template": "correlation",
+      "ground_truth": {
+        "sample_size": 85,
+        "correlation_r": 0.3,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.r.test(r = 0.3, sig.level = 0.05, power = 0.80)\n# n = 84.07, round up to 85"
+    },
+    {
+      "id": "t1-corr-002",
+      "template": "correlation",
+      "difficulty": "basic",
+      "question": "We're studying whether age is correlated with cognitive decline scores. We expect a modest correlation of r = 0.25. How many participants for 90% power at alpha = 0.05?",
+      "expected_template": "correlation",
+      "ground_truth": {
+        "sample_size": 164,
+        "correlation_r": 0.25,
+        "power": 0.9,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.r.test(r = 0.25, sig.level = 0.05, power = 0.90)\n# n = 163.05, round up to 164"
+    },
+    {
+      "id": "t1-corr-003",
+      "template": "correlation",
+      "difficulty": "intermediate",
+      "question": "I'm investigating whether a novel biomarker correlates with patient outcomes. The expected correlation is small (r = 0.15), but clinically meaningful. How many patients do I need for 80% power at alpha = 0.05?",
+      "expected_template": "correlation",
+      "ground_truth": {
+        "sample_size": 346,
+        "correlation_r": 0.15,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.r.test(r = 0.15, sig.level = 0.05, power = 0.80)\n# n = 345.68, round up to 346"
+    },
+    {
+      "id": "t1-corr-004",
+      "template": "correlation",
+      "difficulty": "intermediate",
+      "question": "We expect a strong correlation (r = 0.5) between exercise frequency and VO2max. We want high confidence - 95% power with alpha = 0.01. What sample size do we need?",
+      "expected_template": "correlation",
+      "ground_truth": {
+        "sample_size": 62,
+        "correlation_r": 0.5,
+        "power": 0.95,
+        "alpha": 0.01
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.r.test(r = 0.5, sig.level = 0.01, power = 0.95)\n# n = 61.35, round up to 62"
+    },
+    {
+      "id": "t1-corr-005",
+      "template": "correlation",
+      "difficulty": "advanced",
+      "question": "I hypothesize that medication adherence is positively correlated with health outcomes (r = 0.2). Since I'm predicting a positive direction, I'll use a one-sided test at alpha = 0.025. How many patients for 85% power?",
+      "expected_template": "correlation",
+      "ground_truth": {
+        "sample_size": 221,
+        "correlation_r": 0.2,
+        "power": 0.85,
+        "alpha": 0.025
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\npwr.r.test(r = 0.2, sig.level = 0.025, power = 0.85, alternative = 'greater')\n# n = 220.28, round up to 221"
+    }
+  ]
+}

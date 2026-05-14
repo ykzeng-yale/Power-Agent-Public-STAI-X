@@ -28,9 +28,9 @@ the calculation is both *automated* and *auditable*.
   analysis — point it at any R-based statistical task and it works without retuning.
 - **Sandboxed R execution as a service.** On-demand R execution on Google Cloud Run
   with automatic CRAN/Bioconductor package install — other agents can call it as a worker.
-- **Benchmark-verified.** Evaluated on a 989-task internal benchmark plus **117 tasks
-  from 4 independent published benchmarks** (see [`cross-benchmark/`](cross-benchmark/)),
-  reaching **72.6% exact-match** with R / G*Power ground truth.
+- **Benchmark-verified.** Evaluated on a **106-task four-tier internal benchmark**
+  (see [`benchmark/`](benchmark/)), each task paired with R-package-verified ground
+  truth and a numeric tolerance.
 - **Reproducibility built in.** Every answer ships the exact R script and a report.
 
 ## Architecture
@@ -58,8 +58,8 @@ Full design notes: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 ├── public/             # Deployed static frontend
 ├── docs/ARCHITECTURE.md# Multi-agent design (orchestrator-worker pattern)
 ├── examples/           # Minimal usage scripts
-├── cross-benchmark/    # Independent 4-benchmark / 117-task evaluation + results
-├── assets/             # Architecture diagram, leaderboard, UI screenshots, slides
+├── benchmark/          # Internal 106-task four-tier benchmark + evaluator + runner
+├── assets/             # Architecture diagram, UI screenshots, slides
 ├── .claude/            # Claude Code config + skills
 ├── CLAUDE.md           # Persistent guidance for the agent
 └── AWARD_C_SUBMISSION.md  # The STAI-X Award C post
@@ -120,10 +120,11 @@ Minimal programmatic examples are in [`examples/`](examples/).
 
 ## Evaluation
 
-See [`cross-benchmark/README.md`](cross-benchmark/README.md) for the independent
-evaluation against N-Power AI, Sebo & Wang (2025), PowerGPT, and the Verma
-textbook — 117 tasks, 72.6% exact-match with published R / G*Power ground truth,
-including 100% on CI estimation, basic hypothesis tests, and standard ANOVA.
+[`benchmark/`](benchmark/) holds a **106-task internal suite** across four tiers
+(basic comparisons → regression → advanced designs → prediction-model sample size),
+each task paired with R-package-verified ground truth and a numeric tolerance, plus
+the evaluator and runner. See [`benchmark/README.md`](benchmark/README.md) for the
+tier breakdown and task schema.
 
 ## License
 

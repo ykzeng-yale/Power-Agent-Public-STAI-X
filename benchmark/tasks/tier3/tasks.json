@@ -1,0 +1,454 @@
+{
+  "tier": 3,
+  "name": "Advanced Designs",
+  "description": "Power analysis for complex trial designs including cluster RCTs, crossover, factorial, and simulation-based approaches",
+  "tasks": [
+    {
+      "id": "t3-cluster-001",
+      "template": "cluster_rct",
+      "difficulty": "basic",
+      "question": "We're planning a cluster randomized trial with 20 clinics per arm. Based on pilot data, the ICC is about 0.05 and we expect a treatment effect of d = 0.4. How many patients do we need per clinic to achieve 80% power at alpha = 0.05?",
+      "expected_template": "cluster_rct",
+      "ground_truth": {
+        "clusters_per_arm": 20,
+        "subjects_per_cluster": 7,
+        "total_subjects": 280,
+        "effect_size_d": 0.4,
+        "icc": 0.05,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "R simulation verification (2026-01-26)",
+      "reference_code": "library(pwr)\n# REVERSE CRT: given k=20 clusters/arm, find m (subjects/cluster)\n# n_ind = ceil(pwr.t.test(d=0.4, power=0.80)$n) = 100\n# m = ceil(n_ind * (1-ICC) / (k - n_ind*ICC))\n#   = ceil(100 * 0.95 / (20 - 5)) = ceil(6.33) = 7\n# Verify: DE = 1 + 6*0.05 = 1.30; eff_n = 20*7/1.30 = 107.7 >= 100\n# Simulation (5000 sims): m=7 gives 81% power\n# Deterministic analytical formula; tight tolerance ±3"
+    },
+    {
+      "id": "t3-cluster-002",
+      "template": "cluster_rct",
+      "difficulty": "basic",
+      "question": "We're designing a school-based intervention with 15 schools per arm, averaging 30 students per school. The ICC is estimated at 0.08. What is the minimum detectable effect size (Cohen's d) with 80% power?",
+      "expected_template": "cluster_rct",
+      "ground_truth": {
+        "given_clusters_per_arm": 15,
+        "given_subjects_per_cluster": 30,
+        "given_total_subjects": 900,
+        "icc": 0.08,
+        "detectable_effect_d": 0.35,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "effect_size": 0.03,
+        "power": 0.03
+      },
+      "source": "clusterPower package CRAN documentation",
+      "reference_code": "library(clusterPower)\n# Design effect = 1 + 29*0.08 = 3.32\n# Effective n per arm = 15*30/3.32 = 136\n# Total effective n = 272\n# Detectable d ≈ 0.35"
+    },
+    {
+      "id": "t3-cluster-003",
+      "template": "cluster_rct",
+      "difficulty": "intermediate",
+      "question": "Our cluster RCT will have variable cluster sizes (CV = 0.4 in cluster sizes). We have 25 clusters per arm with a mean of 20 subjects per cluster. With ICC = 0.03 and effect size d = 0.3, what power do we achieve at alpha = 0.05?",
+      "expected_template": "cluster_rct",
+      "ground_truth": {
+        "given_clusters_per_arm": 25,
+        "given_mean_cluster_size": 20,
+        "cv_cluster_size": 0.4,
+        "given_total_subjects": 1000,
+        "effect_size_d": 0.3,
+        "icc": 0.03,
+        "power": 0.94,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "power": 0.05
+      },
+      "source": "R analytical + simulation verification",
+      "reference_code": "# DE = 1+(20-1)*0.03 = 1.57, CV adjustment = 1+0.16 = 1.16\n# Adjusted DE = 1.57*1.16 = 1.82, eff_N/arm = 25*20/1.82 = 275\n# t-test n for d=0.3 at 80% = 176/arm; 275 >> 176, power very high\n# Simulation (1000 sims): power = 93.7%\n# GT=0.94; simulation variance justifies ±0.04"
+    },
+    {
+      "id": "t3-cluster-004",
+      "template": "cluster_rct",
+      "difficulty": "intermediate",
+      "question": "We're running a cluster trial with a binary outcome: 30% response in control, 20% expected in treatment. We have 12 clinics per arm and the ICC is 0.02. How many patients per clinic for 80% power at alpha = 0.05?",
+      "expected_template": "cluster_rct",
+      "ground_truth": {
+        "clusters_per_arm": 12,
+        "subjects_per_cluster": 48,
+        "total_subjects": 1152,
+        "control_rate": 0.3,
+        "treatment_rate": 0.2,
+        "icc": 0.02,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 3,
+        "power": 0.03
+      },
+      "source": "Analytical formula (R-validated 2026-01-29)",
+      "reference_code": "# Individual n per group (power.prop.test) ≈ 294\n# Solve: 12*m / (1 + (m-1)*0.02) >= 294\n# m = ceil(288.12/6.12) = ceil(47.08) = 48\n# Verify: DE=1+47*0.02=1.94, eff_n=12*48/1.94=296.9 >= 294 ✓\n# Deterministic analytical formula; tolerance ±10 for method variation"
+    },
+    {
+      "id": "t3-cluster-005",
+      "template": "cluster_rct",
+      "difficulty": "advanced",
+      "question": "We're designing a stepped-wedge trial with 6 clusters over 4 time periods. Two clusters switch to treatment each period. Within-period ICC is 0.05, between-period correlation is 0.025. We want to detect d = 0.5 with at least 80% power. What is the minimum number of subjects per cluster-period?",
+      "expected_template": "cluster_rct",
+      "ground_truth": {
+        "clusters": 6,
+        "periods": 4,
+        "switches_per_period": 2,
+        "subjects_per_cluster_period": 7,
+        "total_subjects": 168,
+        "effect_size_d": 0.5,
+        "icc": 0.05,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "swdpwr::swdpower (analytical, verified 2026-01-27)",
+      "reference_code": "library(swdpwr)\ndesign <- matrix(0, 6, 4)\ndesign[1:2,2:4] <- 1; design[3:4,3:4] <- 1; design[5:6,4] <- 1\n# K=6: Power=0.792 (<80%), K=7: Power=0.840 (>=80%)\n# Minimum K for >=80% power = 7\n# Deterministic stepped-wedge formula; tight tolerance ±3"
+    },
+    {
+      "id": "t3-cross-001",
+      "template": "crossover_trial",
+      "difficulty": "basic",
+      "question": "I'm planning a 2x2 crossover trial where the between-subject effect size is d = 0.5 and the within-subject correlation is 0.7. How many subjects total do I need for 80% power at alpha = 0.05?",
+      "expected_template": "crossover_2x2",
+      "ground_truth": {
+        "subjects": 21,
+        "periods": 2,
+        "effect_size_d": 0.5,
+        "within_subject_correlation": 0.7,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr.t.test paired with adjusted d (R-validated 2026-02-01)",
+      "reference_code": "library(pwr)\n# d_paired = d / sqrt(2*(1-rho)) = 0.5 / sqrt(0.6) = 0.6455\n# pwr.t.test(d=0.6455, power=0.80, sig.level=0.05, type=\"paired\")\n# n = ceiling(20.88) = 21 subjects"
+    },
+    {
+      "id": "t3-cross-002",
+      "template": "crossover_trial",
+      "difficulty": "basic",
+      "question": "I'm planning a simple 2-period crossover trial (AB/BA design) to compare two treatments. I expect a standardized within-subject effect of d = 0.3 (the treatment difference divided by within-subject SD). How many subjects total do I need for 90% power at alpha = 0.05?",
+      "expected_template": "crossover_2x2",
+      "ground_truth": {
+        "subjects": 119,
+        "periods": 2,
+        "effect_size_d": 0.3,
+        "power": 0.9,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr.t.test paired (R-validated 2026-01-29)",
+      "reference_code": "library(pwr)\n# Crossover = paired design\npwr.t.test(d = 0.3, power = 0.90, sig.level = 0.05, type = 'paired')\n# n = 119 subjects"
+    },
+    {
+      "id": "t3-cross-003",
+      "template": "crossover_trial",
+      "difficulty": "intermediate",
+      "question": "I'm designing a 3-treatment Latin square crossover study. The primary comparison is treatment A vs control, with expected effect d = 0.4 and period-to-period correlation of 0.6. How many subjects for 80% power at alpha = 0.05?",
+      "expected_template": "crossover_2x2",
+      "ground_truth": {
+        "subjects": 42,
+        "treatments": 3,
+        "periods": 3,
+        "effect_size_d": 0.4,
+        "period_correlation": 0.6,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr.t.test paired adjusted (R-validated 2026-01-29)",
+      "reference_code": "# 3-treatment crossover, each subject gets all treatments\n# Planned single pairwise comparison: treatment vs control\n# Within-subject variance = 2*(1-rho) = 2*(1-0.6) = 0.8\n# d_adjusted = 0.4/sqrt(0.8) = 0.4472\n# pwr.t.test(d=0.4472, power=0.80, sig.level=0.05, type='paired')$n = 41.12 -> 42\n# Verified by R: ceiling(pwr.t.test(d=0.4/sqrt(2*(1-0.6)), power=0.80, sig.level=0.05, type='paired')$n) = 42"
+    },
+    {
+      "id": "t3-cross-004",
+      "template": "crossover_trial",
+      "difficulty": "advanced",
+      "question": "We're designing a 4-period replicate crossover study (ABAB/BABA) for a bioequivalence trial. The treatment effect is d = 0.35 (where d = mean difference divided by within-subject SD). How many subjects total for 85% power at alpha = 0.05?",
+      "expected_template": "crossover_2x2",
+      "ground_truth": {
+        "subjects": 76,
+        "periods": 4,
+        "effect_size_d": 0.35,
+        "within_subject_sd": 1,
+        "power": 0.85,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr.t.test paired (R-validated 2026-02-01)",
+      "reference_code": "library(pwr)\n# d=0.35 as paired effect size directly\n# pwr.t.test(d=0.35, power=0.85, sig.level=0.05, type=\"paired\")\n# n = ceiling(75.24) = 76 subjects"
+    },
+    {
+      "id": "t3-fact-001",
+      "template": "factorial_design",
+      "difficulty": "basic",
+      "question": "We're running a 2×2 factorial trial where we want to detect a main effect of one factor with d = 0.4. We need 80% power at per-comparison alpha = 0.05 (no multiplicity adjustment). How many subjects per cell?",
+      "expected_template": "factorial_2x2",
+      "ground_truth": {
+        "total_sample_size": 200,
+        "per_cell": 50,
+        "factors": 2,
+        "levels_per_factor": 2,
+        "effect_size_d": 0.4,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 2,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\n# Main effect powered as 2-group comparison\n# For d=0.4: n per group = 100\n# 2x2 design: each main effect compares n/2 vs n/2\n# Total n = 200 (50 per cell)\n# Tight tolerance ±8 for minor method variation"
+    },
+    {
+      "id": "t3-fact-002",
+      "template": "factorial_design",
+      "difficulty": "intermediate",
+      "question": "In our 2×2 factorial, the main effects are d = 0.5 but we're primarily interested in detecting the interaction (d = 0.3). How many per cell for 80% power on the interaction at alpha = 0.05?",
+      "expected_template": "factorial_2x2",
+      "ground_truth": {
+        "total_sample_size": 1400,
+        "per_cell": 350,
+        "main_effect_d": 0.5,
+        "interaction_d": 0.3,
+        "power_interaction": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "power": 0.03
+      },
+      "source": "R simulation verification (2026-01-26)",
+      "reference_code": "library(pwr)\n# 2x2 factorial interaction: f² = d²/16 (NOT d²/4!)\n# f² = 0.3²/16 = 0.005625\n# pwr.f2.test(u=1, f2=0.005625, sig.level=0.05, power=0.80)\n# → v=1396, N=1400, per_cell=350\n# Simulation (5000 sims): n=350/cell gives ~80% power\n# n=89/cell gives only 29% power (f²=d²/4 is WRONG)"
+    },
+    {
+      "id": "t3-fact-003",
+      "template": "factorial_design",
+      "difficulty": "intermediate",
+      "question": "We have a 3×2 factorial design (3 doses × 2 formulations) and want to test the linear dose-response trend (effect size f = 0.25). How many total subjects for 80% power at alpha = 0.05?",
+      "expected_template": "factorial_2x2",
+      "ground_truth": {
+        "total_sample_size": 132,
+        "per_cell": 22,
+        "dose_levels": 3,
+        "formulations": 2,
+        "effect_size_f": 0.25,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 1,
+        "power": 0.03
+      },
+      "source": "pwr package CRAN vignette",
+      "reference_code": "library(pwr)\n# Linear dose-response contrast (1 df)\n# f = 0.25 -> f² = 0.0625\n# pwr.f2.test(u=1, f2=0.0625) gives v=126, N=v+6=132\n# This is for testing LINEAR TREND specifically (1 df contrast)\n# NOT the overall dose effect (2 df)\n# Tight tolerance ±5 for deterministic formula"
+    },
+    {
+      "id": "t3-fact-004",
+      "template": "factorial_design",
+      "difficulty": "advanced",
+      "question": "We're running a 2^4 fractional factorial (resolution IV, 8 runs) with 3 replicates per run. The standardized main effect is delta = 1.5 (in sigma units). What power do we have for detecting main effects at alpha = 0.05?",
+      "expected_template": "factorial_2x2",
+      "ground_truth": {
+        "runs": 8,
+        "replicates_per_run": 3,
+        "total_observations": 24,
+        "factors": 4,
+        "standardized_effect": 1.5,
+        "power": 0.93,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "power": 0.03
+      },
+      "source": "MC simulation 5000 sims + noncentral F (R-validated 2026-01-29)",
+      "reference_code": "# Monte Carlo sim (5000 sims): 94.3%\n# Noncentral F (lambda=13.5, df1=1, df2=16): 93.1%\n# pwr.f2.test (f2=ncp/v=13.5/16=0.844, u=1, v=16): 93.1%\n# NOTE: f2=delta^2/4=0.5625 is WRONG (gives 84.8%)\n# Correct ncp = n_per_level * delta^2 / 2 = 12*2.25/2 = 13.5\n# GT=0.93; tolerance +/-0.05 accepts 0.88-0.98"
+    },
+    {
+      "id": "t3-simr-001",
+      "template": "simulation_simr",
+      "difficulty": "basic",
+      "question": "I'm planning a mixed-effects study with 5 measurements per subject. The treatment effect is 0.5 units, random intercept SD is 0.8, and residual SD is 1.0. How many subjects per group do I need for 80% power?",
+      "expected_template": "simulation_based_simr",
+      "ground_truth": {
+        "subjects_per_group": 50,
+        "total_subjects": 100,
+        "measurements_per_subject": 5,
+        "fixed_effect": 0.5,
+        "random_intercept_sd": 0.8,
+        "residual_sd": 1,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 15,
+        "power": 0.08
+      },
+      "source": "simr powerSim (R-validated 2026-02-01)",
+      "reference_code": "library(lme4); library(simr)\n# IMPORTANT: create model at SMALL initial n, then extend UP\n# Creating at large n and extending down causes simr bugs\n# makeLmer at 10/group, extend along subject to test 20-80/group\n# powerSim at n=50/group (nsim=200): ~81% power\n# GT=50/group; tolerance +/-15 accepts 35-65 (simr stochastic)"
+    },
+    {
+      "id": "t3-simr-002",
+      "template": "simulation_simr",
+      "difficulty": "intermediate",
+      "question": "I'm powering a study with a binary outcome analyzed using a mixed-effects logistic model. Each subject provides 3 observations, the treatment OR is 2.0, baseline probability is 30%, and the random intercept SD is 0.5. How many subjects per group for 80% power?",
+      "expected_template": "simulation_based_simr",
+      "ground_truth": {
+        "subjects_per_group": 58,
+        "total_subjects": 116,
+        "observations_per_subject": 3,
+        "treatment_or": 2,
+        "baseline_prob": 0.3,
+        "random_intercept_sd": 0.5,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 20,
+        "power": 0.08
+      },
+      "source": "simr powerSim nsim=500 multiple seeds (R-validated 2026-02-03)",
+      "reference_code": "library(simr)\n# GLMM: binomial family, logit link\n# y ~ group + (1|subject), OR=2.0, p0=0.3, random intercept SD=0.5\n# VarCorr = 0.5^2 = 0.25 (simr VarCorr takes VARIANCE not SD)\n# nsim=500 verification: n=55: 76%, n=58: 81%, n=60: 85%\n# 80% power crossing at ~58/group\n# GT=58; tolerance=20 accepts 38-78 (GLMM binary has high MC variance)"
+    },
+    {
+      "id": "t3-simr-003",
+      "template": "simulation_simr",
+      "difficulty": "intermediate",
+      "question": "I have a random slopes model with 6 time points (0-5). I want to detect a slope difference of 0.1 per time unit between groups. Random intercept SD = 1.0, random slope SD = 0.2, residual SD = 1.0. With 40 subjects per group, what power do I achieve at alpha = 0.05?",
+      "expected_template": "simulation_based_simr",
+      "ground_truth": {
+        "given_subjects_per_group": 40,
+        "time_points": 6,
+        "slope_difference": 0.1,
+        "random_intercept_sd": 1,
+        "random_slope_sd": 0.2,
+        "residual_sd": 1,
+        "power": 0.32,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "power": 0.12
+      },
+      "source": "simr powerSim nsim=200 (R-validated 2026-02-01, multiple tests)",
+      "reference_code": "library(lme4); library(simr)\n# makeLmer can give NaN thetas - use lmer + override instead\n# Simulate data, fit lmer, then set fixef/VarCorr/sigma\n# z-test: 36.5%, LRT: 30.0%, KR: 26.0%\n# GT=0.32 (midpoint); tolerance +/-0.12 accepts 0.20-0.44"
+    },
+    {
+      "id": "t3-simr-004",
+      "template": "simulation_simr",
+      "difficulty": "advanced",
+      "question": "We have a three-level educational study: students in classrooms in schools. Per arm: 10 schools, 4 classrooms per school, 25 students per classroom. Effect size d = 0.3, school variance = 0.05, classroom variance = 0.10, residual = 0.85. What power does this design achieve at alpha = 0.05?",
+      "expected_template": "simulation_based_simr",
+      "ground_truth": {
+        "given_schools_per_arm": 10,
+        "given_classrooms_per_school": 4,
+        "given_students_per_classroom": 25,
+        "given_total_students": 2000,
+        "effect_size_d": 0.3,
+        "school_icc": 0.05,
+        "classroom_icc": 0.1,
+        "power": 0.6,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "power": 0.08
+      },
+      "source": "simr + MC lmer (R-validated 2026-02-01, corrected variance assignment)",
+      "reference_code": "library(lme4); library(simr)\n# CRITICAL: makeLmer swaps variance components with / nesting syntax\n# Must verify VarCorr output matches intended: school=0.05, class=0.10\n# simr (correct variances, nsim=200): 63% (CI: 58%-69%)\n# MC lmerTest (500 sims): 57%\n# School-level t-test (500 sims): 54%\n# GT=0.60; tolerance +/-0.08 accepts 0.52-0.68"
+    },
+    {
+      "id": "t3-simr-005",
+      "template": "simulation_simr",
+      "difficulty": "advanced",
+      "question": "I'm analyzing clustered survival data with gamma frailty. We have 20 clusters per arm, 15 subjects per cluster, frailty variance = 0.5. We want to detect HR = 0.7 over 2-year follow-up (baseline 2-year survival = 60%). Using a standard Cox model without frailty, what is the marginal power at alpha = 0.05?",
+      "expected_template": "simulation_based_simr",
+      "ground_truth": {
+        "given_clusters_per_arm": 20,
+        "given_subjects_per_cluster": 15,
+        "given_total_subjects": 600,
+        "hazard_ratio": 0.7,
+        "frailty_variance": 0.5,
+        "event_rate": 0.4,
+        "followup_years": 2,
+        "power": 0.58,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "power": 0.08
+      },
+      "source": "Monte Carlo simulation 2500 sims, marginal Cox (R-validated 2026-02-01)",
+      "reference_code": "# Marginal Cox model (ignoring clustering):\n# coxph(Surv(time, event) ~ group) - no frailty term\n# lambda0 = -log(0.6)/2, HR=0.7, gamma frailty(var=0.5)\n# 2500 sims (5 seeds x 500): marginal power = 0.58 (SD=0.03)\n# NOTE: frailty-adjusted power is ~0.30, but GT uses marginal test\n# GT=0.58; tolerance +/-0.08 accepts 0.50-0.66"
+    },
+    {
+      "id": "t3-simr-006",
+      "template": "simulation_simr",
+      "difficulty": "advanced",
+      "question": "I'm analyzing a multivariate mixed model with 2 correlated outcomes (r = 0.6). Treatment effect is 0.4 on the primary outcome and 0.3 on secondary. Each subject has 4 timepoints, random intercept SD = 0.5, residual SD = 1.0. How many subjects per group for 80% power on the primary outcome?",
+      "expected_template": "simulation_based_simr",
+      "ground_truth": {
+        "subjects_per_group": 55,
+        "total_subjects": 110,
+        "outcomes": 2,
+        "outcome_correlation": 0.6,
+        "primary_effect": 0.4,
+        "secondary_effect": 0.3,
+        "random_intercept_sd": 0.5,
+        "residual_sd": 1,
+        "timepoints": 4,
+        "power": 0.8,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "sample_size": 15,
+        "power": 0.08
+      },
+      "source": "R simulation verification (R-validated 2026-02-01)",
+      "reference_code": "# Power for primary outcome treatment effect is the SAME\n# whether modeled alone (univariate) or jointly (multivariate).\n# Agent should recognize this and simplify to primary only.\n# Model: y_primary ~ group + (1|subject), 4 timepoints\n# Random intercept SD=0.5, residual SD=1.0, effect=0.4\n# MC sim (500): n=50: 78%, n=55: 82%, n=60: 86%\n# GT=55/group; tolerance=15 accepts 40-70"
+    },
+    {
+      "id": "t3-simr-007",
+      "template": "simulation_simr",
+      "difficulty": "advanced",
+      "question": "In our cluster trial, we have 15 clusters per arm with 20 subjects each, measured at 4 time points (0,1,2,3). The treatment effect on the slope is 0.15 per time unit. Random intercept SD = 0.5, random slope SD = 0.1, residual SD = 1.0. What power for the time × treatment interaction at alpha = 0.05?",
+      "expected_template": "simulation_based_simr",
+      "ground_truth": {
+        "given_clusters_per_arm": 15,
+        "given_subjects_per_cluster": 20,
+        "given_total_subjects": 600,
+        "time_points": 4,
+        "slope_effect": 0.15,
+        "random_intercept_sd": 0.5,
+        "random_slope_sd": 0.1,
+        "residual_sd": 1,
+        "power": 0.82,
+        "alpha": 0.05
+      },
+      "tolerance": {
+        "power": 0.1
+      },
+      "source": "simr powerSim nsim=200 (R-validated 2026-02-01)",
+      "reference_code": "# y ~ time * treatment + (1 + time|cluster)\n# 15 clusters/arm, 20 subjects/cluster, 4 timepoints\n# simr powerSim (nsim=200): center ~82% (CI: 76%-87%)\n# nsim=100 can give anywhere from 70%-90% due to variance\n# GT=0.82; tolerance +/-0.10 accepts 0.72-0.92"
+    }
+  ]
+}

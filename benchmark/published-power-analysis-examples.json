@@ -1,0 +1,1448 @@
+{
+  "metadata": {
+    "description": "Published power analysis examples from verified online calculators, software documentation, university resources, and peer-reviewed papers",
+    "date_collected": "2026-02-10",
+    "total_examples": 75,
+    "sources": [
+      "G*Power software documentation and PMC paper (PMC8441096)",
+      "Sealed Envelope power calculator validation (sealedenvelope.com)",
+      "UCLA OARC G*Power data analysis examples (stats.oarc.ucla.edu)",
+      "Minitab power and sample size documentation (support.minitab.com)",
+      "Boston University Biostatistics modules (sphweb.bumc.bu.edu)",
+      "R {pwr} package textbook examples (bookdown.org/pdr_higgins/rmrwr)",
+      "Select Statistics calculators (select-statistics.co.uk)",
+      "PMC papers on sample size and effect size (PMC7745163, PMC6955025)",
+      "Penn State STAT 509 course materials (online.stat.psu.edu)",
+      "UVA Library logistic regression power (library.virginia.edu)",
+      "nQuery/SAS documentation examples",
+      "NCSS PASS software documentation (ncss.com)"
+    ]
+  },
+  "examples": [
+    {
+      "id": "gpower-001",
+      "source": "PMC8441096 - G*Power software tutorial (J Educ Eval Health Prof, 2021)",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8441096/",
+      "test_type": "two_sample_t_test",
+      "scenario": "Comparing analgesic efficacy of Drug A (traditional) vs Drug B (newly developed) using Visual Analog Scale pain scores at 6 hours post-operation",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "effect_size_d": 0.5,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2,
+        "allocation_ratio": 1
+      },
+      "result": {
+        "n_group1": 64,
+        "n_group2": 64,
+        "total_n": 128
+      },
+      "notes": "Cohen's medium effect size. Most commonly cited G*Power example."
+    },
+    {
+      "id": "gpower-002",
+      "source": "PMC8441096 - G*Power software tutorial",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8441096/",
+      "test_type": "two_sample_t_test",
+      "scenario": "Pilot study with 10 patients per group comparing Drug A vs Drug B pain relief. Drug A: mean=7, SD=3; Drug B: mean=5, SD=2",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "mean_group1": 7,
+        "sd_group1": 3,
+        "mean_group2": 5,
+        "sd_group2": 2,
+        "effect_size_d": 0.7844645,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2,
+        "allocation_ratio": 1
+      },
+      "result": {
+        "n_group1": 27,
+        "n_group2": 27,
+        "total_n": 54
+      },
+      "notes": "Effect size computed from pilot study means and SDs"
+    },
+    {
+      "id": "gpower-003",
+      "source": "PMC8441096 - G*Power software tutorial",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8441096/",
+      "test_type": "two_sample_t_test",
+      "scenario": "Post-hoc power analysis: Completed trial with 30 patients per group comparing analgesics. Drug A: mean=7, SD=3; Drug B: mean=5, SD=2",
+      "analysis_type": "post_hoc_power",
+      "parameters": {
+        "mean_group1": 7,
+        "sd_group1": 3,
+        "mean_group2": 5,
+        "sd_group2": 2,
+        "effect_size_d": 0.7844645,
+        "alpha": 0.05,
+        "n_group1": 30,
+        "n_group2": 30,
+        "tails": 2
+      },
+      "result": {
+        "power": 0.8479274
+      }
+    },
+    {
+      "id": "gpower-004",
+      "source": "PMC8441096 - G*Power software tutorial",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8441096/",
+      "test_type": "paired_t_test",
+      "scenario": "Weight loss study: determining sample size to detect a small effect in weight before vs after a diet program",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "effect_size_dz": 0.2,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2
+      },
+      "result": {
+        "total_n": 199
+      },
+      "notes": "Cohen's small effect size for paired design"
+    },
+    {
+      "id": "gpower-005",
+      "source": "PMC8441096 - G*Power software tutorial",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8441096/",
+      "test_type": "paired_t_test",
+      "scenario": "Pilot study examining diet program effectiveness on weight loss. Pre-diet: mean=66kg, SD=12kg; Post-diet: mean=62kg, SD=11kg; correlation=0.7",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "mean_pre": 66,
+        "sd_pre": 12,
+        "mean_post": 62,
+        "sd_post": 11,
+        "correlation": 0.7,
+        "effect_size_dz": 0.4466556,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2
+      },
+      "result": {
+        "total_n": 42
+      }
+    },
+    {
+      "id": "gpower-006",
+      "source": "PMC8441096 - G*Power software tutorial",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8441096/",
+      "test_type": "paired_t_test",
+      "scenario": "Post-hoc power: Completed weight loss trial with 100 participants. Pre-diet: mean=66kg, SD=12kg; Post-diet: mean=62kg, SD=11kg; correlation=0.7",
+      "analysis_type": "post_hoc_power",
+      "parameters": {
+        "effect_size_dz": 0.4466556,
+        "alpha": 0.05,
+        "total_n": 100,
+        "tails": 2
+      },
+      "result": {
+        "power": 0.9931086
+      }
+    },
+    {
+      "id": "gpower-007",
+      "source": "PMC8441096 - G*Power software tutorial",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8441096/",
+      "test_type": "one_way_anova",
+      "scenario": "Comparing analgesic efficacy across four drugs (A, B, C, D) measuring VAS pain scores at 6 hours post-operation",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "effect_size_f": 0.25,
+        "alpha": 0.05,
+        "power": 0.80,
+        "num_groups": 4
+      },
+      "result": {
+        "total_n": 180
+      },
+      "notes": "Cohen's medium effect size for ANOVA (f=0.25). 45 per group."
+    },
+    {
+      "id": "gpower-008",
+      "source": "PMC8441096 - G*Power software tutorial",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8441096/",
+      "test_type": "one_way_anova",
+      "scenario": "Pilot study (n=5/group) comparing four analgesics. Drug A: mean=2, SD=2; Drug B: mean=4, SD=1; Drug C: mean=5, SD=1; Drug D: mean=5, SD=2. Pooled SD=1.58",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "group_means": [2, 4, 5, 5],
+        "group_sds": [2, 1, 1, 2],
+        "pooled_sd": 1.58,
+        "effect_size_f": 0.7751550,
+        "alpha": 0.05,
+        "power": 0.80,
+        "num_groups": 4
+      },
+      "result": {
+        "total_n": 24
+      },
+      "notes": "Large effect size from pilot data. 6 per group."
+    },
+    {
+      "id": "gpower-009",
+      "source": "PMC8441096 - G*Power software tutorial",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8441096/",
+      "test_type": "one_way_anova",
+      "scenario": "Post-hoc: Completed four-drug comparison trial with 20 patients per group. Drug A: mean=2, SD=2; Drug B: mean=4, SD=1; Drug C: mean=5, SD=1; Drug D: mean=5, SD=2",
+      "analysis_type": "post_hoc_power",
+      "parameters": {
+        "effect_size_f": 0.7751550,
+        "alpha": 0.05,
+        "num_groups": 4,
+        "n_per_group": 20
+      },
+      "result": {
+        "power": 0.9999856
+      }
+    },
+    {
+      "id": "gpower-010",
+      "source": "PMC8441096 - G*Power software tutorial",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8441096/",
+      "test_type": "correlation",
+      "scenario": "Investigating correlation between height and weight in pediatric patients",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "rho_h1": 0.5,
+        "rho_h0": 0,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2
+      },
+      "result": {
+        "total_n": 29
+      }
+    },
+    {
+      "id": "gpower-011",
+      "source": "PMC8441096 - G*Power software tutorial",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8441096/",
+      "test_type": "correlation",
+      "scenario": "Post-hoc: Completed study of height-weight correlation in 50 pediatric patients with r=0.5",
+      "analysis_type": "post_hoc_power",
+      "parameters": {
+        "rho": 0.5,
+        "total_n": 50,
+        "alpha": 0.05,
+        "tails": 2
+      },
+      "result": {
+        "power": 0.9671566
+      }
+    },
+    {
+      "id": "gpower-012",
+      "source": "PMC8441096 - G*Power software tutorial",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8441096/",
+      "test_type": "two_proportions_z_test",
+      "scenario": "Comparing effectiveness of Treatment A (traditional, 30% neuralgia) vs Treatment B (new, 10% neuralgia) for preventing post-herpetic neuralgia",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p1": 0.1,
+        "p2": 0.3,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2,
+        "allocation_ratio": 1
+      },
+      "result": {
+        "n_group1": 62,
+        "n_group2": 62,
+        "total_n": 124
+      }
+    },
+    {
+      "id": "gpower-013",
+      "source": "PMC8441096 - G*Power software tutorial",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8441096/",
+      "test_type": "two_proportions_z_test",
+      "scenario": "Post-hoc: Completed trial comparing post-herpetic neuralgia. Treatment A: 31/101 (30.7%), Treatment B: 9/98 (9.2%)",
+      "analysis_type": "post_hoc_power",
+      "parameters": {
+        "p1": 0.092,
+        "p2": 0.307,
+        "alpha": 0.05,
+        "tails": 2,
+        "n_group1": 98,
+        "n_group2": 101
+      },
+      "result": {
+        "power": 0.9715798
+      }
+    },
+    {
+      "id": "sealed-001",
+      "source": "Sealed Envelope validation - Julious (2004) Example 2.1.1",
+      "source_url": "https://www.sealedenvelope.com/power/validation/",
+      "test_type": "two_sample_continuous_superiority",
+      "scenario": "Superiority trial for continuous outcome, validated against Julious (2004)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "mean_difference": 8,
+        "sd": 40,
+        "alpha": 0.05,
+        "power": 0.90
+      },
+      "result": {
+        "n_per_group": 526
+      },
+      "notes": "Validated against Julious SA (2004) Sample Sizes for Clinical Trials"
+    },
+    {
+      "id": "sealed-002",
+      "source": "Sealed Envelope validation - Pocock (1983)",
+      "source_url": "https://www.sealedenvelope.com/power/validation/",
+      "test_type": "two_sample_continuous_superiority",
+      "scenario": "Superiority trial for continuous outcome, validated against Pocock (1983)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "mean_difference": 0.5,
+        "sd": 1.8,
+        "alpha": 0.05,
+        "power": 0.95
+      },
+      "result": {
+        "n_per_group": 337
+      }
+    },
+    {
+      "id": "sealed-003",
+      "source": "Sealed Envelope validation - Julious (2004) Example 3.4.3",
+      "source_url": "https://www.sealedenvelope.com/power/validation/",
+      "test_type": "two_sample_continuous_equivalence",
+      "scenario": "Equivalence trial for continuous outcome, validated against Julious (2004)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "equivalence_margin": 10,
+        "sd": 50,
+        "alpha": 0.025,
+        "power": 0.90
+      },
+      "result": {
+        "n_per_group": 650
+      }
+    },
+    {
+      "id": "sealed-004",
+      "source": "Sealed Envelope validation - Julious (2004) Example 4.1.1",
+      "source_url": "https://www.sealedenvelope.com/power/validation/",
+      "test_type": "two_sample_continuous_noninferiority",
+      "scenario": "Non-inferiority trial for continuous outcome, validated against Julious (2004)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "noninferiority_margin": 10,
+        "sd": 40,
+        "alpha": 0.025,
+        "power": 0.90
+      },
+      "result": {
+        "n_per_group": 337
+      }
+    },
+    {
+      "id": "sealed-005",
+      "source": "Sealed Envelope validation - Pocock (1983)",
+      "source_url": "https://www.sealedenvelope.com/power/validation/",
+      "test_type": "two_sample_binary_superiority",
+      "scenario": "Superiority trial for binary outcome (90% vs 95%), validated against Pocock (1983)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p_control": 0.90,
+        "p_experimental": 0.95,
+        "alpha": 0.05,
+        "power": 0.90
+      },
+      "result": {
+        "n_per_group": 579
+      }
+    },
+    {
+      "id": "sealed-006",
+      "source": "Sealed Envelope validation - Julious (2009) Example 12.1",
+      "source_url": "https://www.sealedenvelope.com/power/validation/",
+      "test_type": "two_sample_binary_equivalence",
+      "scenario": "Equivalence trial for binary outcome (p=70%, margin=10%), validated against Julious (2009)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p": 0.70,
+        "equivalence_margin": 0.10,
+        "alpha": 0.025,
+        "power": 0.90
+      },
+      "result": {
+        "n_per_group": 546
+      }
+    },
+    {
+      "id": "sealed-007",
+      "source": "Sealed Envelope validation - Julious (2009) Example 12.1",
+      "source_url": "https://www.sealedenvelope.com/power/validation/",
+      "test_type": "two_sample_binary_equivalence",
+      "scenario": "Equivalence trial for binary outcome (p=70%, margin=20%), validated against Julious (2009)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p": 0.70,
+        "equivalence_margin": 0.20,
+        "alpha": 0.025,
+        "power": 0.90
+      },
+      "result": {
+        "n_per_group": 137
+      }
+    },
+    {
+      "id": "sealed-008",
+      "source": "Sealed Envelope validation - Julious (2009) Example 12.1",
+      "source_url": "https://www.sealedenvelope.com/power/validation/",
+      "test_type": "two_sample_binary_equivalence",
+      "scenario": "Equivalence trial for binary outcome (p=90%, margin=5%), validated against Julious (2009)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p": 0.90,
+        "equivalence_margin": 0.05,
+        "alpha": 0.025,
+        "power": 0.90
+      },
+      "result": {
+        "n_per_group": 936
+      }
+    },
+    {
+      "id": "sealed-009",
+      "source": "Sealed Envelope validation - Donner (1984) Example 3",
+      "source_url": "https://www.sealedenvelope.com/power/validation/",
+      "test_type": "two_sample_binary_noninferiority",
+      "scenario": "Non-inferiority trial, binary outcome (p=80%, margin=10%), validated against Donner (1984)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p": 0.80,
+        "noninferiority_margin": 0.10,
+        "alpha": 0.10,
+        "power": 0.80
+      },
+      "result": {
+        "n_per_group": 145
+      }
+    },
+    {
+      "id": "sealed-010",
+      "source": "Sealed Envelope validation - Blackwelder (1982) Table 3",
+      "source_url": "https://www.sealedenvelope.com/power/validation/",
+      "test_type": "two_sample_binary_noninferiority",
+      "scenario": "Non-inferiority trial, binary outcome (p=90%, margin=20%), validated against Blackwelder (1982)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p": 0.90,
+        "noninferiority_margin": 0.20,
+        "alpha": 0.05,
+        "power": 0.90
+      },
+      "result": {
+        "n_per_group": 39
+      }
+    },
+    {
+      "id": "sealed-011",
+      "source": "Sealed Envelope validation - Blackwelder (1982) Table 3",
+      "source_url": "https://www.sealedenvelope.com/power/validation/",
+      "test_type": "two_sample_binary_noninferiority",
+      "scenario": "Non-inferiority trial, binary (p_standard=60%, p_experimental=50%, margin=20%), Blackwelder (1982)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p_standard": 0.60,
+        "p_experimental": 0.50,
+        "noninferiority_margin": 0.20,
+        "alpha": 0.05,
+        "power": 0.90
+      },
+      "result": {
+        "n_per_group": 420
+      }
+    },
+    {
+      "id": "sealed-012",
+      "source": "Sealed Envelope validation - Pocock (1983)",
+      "source_url": "https://www.sealedenvelope.com/power/validation/",
+      "test_type": "two_sample_binary_noninferiority",
+      "scenario": "Non-inferiority trial, binary outcome (p=70%, margin=10%), validated against Pocock (1983)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p": 0.70,
+        "noninferiority_margin": 0.10,
+        "alpha": 0.05,
+        "power": 0.80
+      },
+      "result": {
+        "n_per_group": 330
+      }
+    },
+    {
+      "id": "sealed-013",
+      "source": "Sealed Envelope validation - Pocock (2003)",
+      "source_url": "https://www.sealedenvelope.com/power/validation/",
+      "test_type": "two_sample_binary_noninferiority",
+      "scenario": "Non-inferiority trial, binary outcome (p=85%, margin=15%), validated against Pocock (2003)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p": 0.85,
+        "noninferiority_margin": 0.15,
+        "alpha": 0.05,
+        "power": 0.90
+      },
+      "result": {
+        "n_per_group": 120
+      }
+    },
+    {
+      "id": "ucla-anova-001",
+      "source": "UCLA OARC - One-way ANOVA Power Analysis",
+      "source_url": "https://stats.oarc.ucla.edu/other/gpower/one-way-anova-power-analysis/",
+      "test_type": "one_way_anova",
+      "scenario": "Comparing teaching methods for 4 statistics classes. Group means: 550, 598, 598, 646; common SD=80; large effect size",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "group_means": [550, 598, 598, 646],
+        "common_sd": 80,
+        "effect_size_f": 1.2,
+        "alpha": 0.05,
+        "power": 0.80,
+        "num_groups": 4
+      },
+      "result": {
+        "total_n": 68,
+        "n_per_group": 17
+      }
+    },
+    {
+      "id": "ucla-anova-002",
+      "source": "UCLA OARC - One-way ANOVA Power Analysis",
+      "source_url": "https://stats.oarc.ucla.edu/other/gpower/one-way-anova-power-analysis/",
+      "test_type": "one_way_anova",
+      "scenario": "Comparing teaching methods, medium effect size. Group means: 550, 580, 580, 610; common SD=80",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "group_means": [550, 580, 580, 610],
+        "common_sd": 80,
+        "effect_size_f": 0.75,
+        "alpha": 0.05,
+        "power": 0.80,
+        "num_groups": 4
+      },
+      "result": {
+        "total_n": 160,
+        "n_per_group": 40
+      },
+      "notes": "Note: UCLA labels this 'medium' but f=0.75 is actually large by Cohen's convention (medium=0.25)"
+    },
+    {
+      "id": "ucla-ttest-001",
+      "source": "UCLA OARC - Two-group independent sample t-test power analysis",
+      "source_url": "https://stats.oarc.ucla.edu/other/gpower/power-analysis-for-two-group-independent-sample-t-test/",
+      "test_type": "two_sample_t_test",
+      "scenario": "Dietician comparing two diets for diabetic patients, testing blood glucose after 6 weeks. Diet A: SD=15; Diet B: SD=17; expected difference=10 mg/dl",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "mean_difference": 10,
+        "sd_group1": 15,
+        "sd_group2": 17,
+        "alpha": 0.05,
+        "power": 0.80
+      },
+      "result": {
+        "n_per_group": 42,
+        "total_n": 84
+      }
+    },
+    {
+      "id": "ucla-ttest-002",
+      "source": "UCLA OARC - Two-group independent sample t-test power analysis",
+      "source_url": "https://stats.oarc.ucla.edu/other/gpower/power-analysis-for-two-group-independent-sample-t-test/",
+      "test_type": "two_sample_t_test",
+      "scenario": "Post-hoc power analysis for diet study with 30 per group, difference=10, SDs=15 and 17",
+      "analysis_type": "post_hoc_power",
+      "parameters": {
+        "mean_difference": 10,
+        "sd_group1": 15,
+        "sd_group2": 17,
+        "alpha": 0.05,
+        "n_per_group": 30
+      },
+      "result": {
+        "power": 0.661223
+      }
+    },
+    {
+      "id": "ucla-ttest-003",
+      "source": "UCLA OARC - Two-group independent sample t-test power analysis",
+      "source_url": "https://stats.oarc.ucla.edu/other/gpower/power-analysis-for-two-group-independent-sample-t-test/",
+      "test_type": "two_sample_t_test",
+      "scenario": "Post-hoc: Diet study with unequal groups (40 vs 20), difference=10, SDs=15 and 17",
+      "analysis_type": "post_hoc_power",
+      "parameters": {
+        "mean_difference": 10,
+        "sd_group1": 15,
+        "sd_group2": 17,
+        "alpha": 0.05,
+        "n_group1": 40,
+        "n_group2": 20
+      },
+      "result": {
+        "power": 0.610252
+      }
+    },
+    {
+      "id": "ucla-prop-001",
+      "source": "UCLA OARC SAS - Two Independent Proportions Power Analysis",
+      "source_url": "https://stats.oarc.ucla.edu/sas/dae/two-independent-proportions-power-analysis/",
+      "test_type": "two_proportions_chi_square",
+      "scenario": "Testing proportion difference of 0.15 (p1=0.30 vs p2=0.15) using Pearson chi-square, two-sided",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p1": 0.30,
+        "p2": 0.15,
+        "alpha": 0.05,
+        "power": 0.80,
+        "test": "pearson_chi_square",
+        "tails": 2
+      },
+      "result": {
+        "n_per_group": 121,
+        "actual_power": 0.802
+      }
+    },
+    {
+      "id": "ucla-prop-002",
+      "source": "UCLA OARC SAS - Two Independent Proportions Power Analysis",
+      "source_url": "https://stats.oarc.ucla.edu/sas/dae/two-independent-proportions-power-analysis/",
+      "test_type": "two_proportions_fisher_exact",
+      "scenario": "Same scenario (p1=0.30 vs p2=0.15) using Fisher's exact test, two-sided",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p1": 0.30,
+        "p2": 0.15,
+        "alpha": 0.05,
+        "power": 0.80,
+        "test": "fisher_exact",
+        "tails": 2
+      },
+      "result": {
+        "n_per_group": 132,
+        "actual_power": 0.800
+      }
+    },
+    {
+      "id": "ucla-prop-003",
+      "source": "UCLA OARC SAS - Two Independent Proportions Power Analysis",
+      "source_url": "https://stats.oarc.ucla.edu/sas/dae/two-independent-proportions-power-analysis/",
+      "test_type": "two_proportions_fisher_exact",
+      "scenario": "Proportion comparison (p1=0.30 vs p2=0.15) using Fisher's exact, one-sided",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p1": 0.30,
+        "p2": 0.15,
+        "alpha": 0.05,
+        "power": 0.80,
+        "test": "fisher_exact",
+        "tails": 1
+      },
+      "result": {
+        "n_per_group": 107,
+        "actual_power": 0.801
+      }
+    },
+    {
+      "id": "ucla-prop-004",
+      "source": "UCLA OARC SAS - Two Independent Proportions Power Analysis",
+      "source_url": "https://stats.oarc.ucla.edu/sas/dae/two-independent-proportions-power-analysis/",
+      "test_type": "two_proportions_fisher_exact",
+      "scenario": "Unequal groups (1:2 ratio), proportion comparison (p1=0.30 vs p2=0.15), one-sided",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p1": 0.30,
+        "p2": 0.15,
+        "alpha": 0.05,
+        "power": 0.80,
+        "test": "fisher_exact",
+        "tails": 1,
+        "allocation_ratio": 2
+      },
+      "result": {
+        "n_group1": 80,
+        "n_group2": 160,
+        "total_n": 240
+      }
+    },
+    {
+      "id": "ucla-paired-001",
+      "source": "UCLA OARC SAS - Power Analysis for Paired Sample t-test",
+      "source_url": "https://stats.oarc.ucla.edu/sas/dae/power-analysis-for-paired-sample-t-test/",
+      "test_type": "paired_t_test",
+      "scenario": "Weight loss program: mean difference=5 lbs, SD=5, correlation=0.5",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "mean_difference": 5,
+        "sd": 5,
+        "correlation": 0.5,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2
+      },
+      "result": {
+        "n_pairs": 10
+      }
+    },
+    {
+      "id": "ucla-paired-002",
+      "source": "UCLA OARC SAS - Power Analysis for Paired Sample t-test",
+      "source_url": "https://stats.oarc.ucla.edu/sas/dae/power-analysis-for-paired-sample-t-test/",
+      "test_type": "paired_t_test",
+      "scenario": "Weight loss program: mean difference=5 lbs, SD=5, correlation=0.5, high power",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "mean_difference": 5,
+        "sd": 5,
+        "correlation": 0.5,
+        "alpha": 0.05,
+        "power": 0.90,
+        "tails": 2
+      },
+      "result": {
+        "n_pairs": 13
+      }
+    },
+    {
+      "id": "ucla-paired-003",
+      "source": "UCLA OARC SAS - Power Analysis for Paired Sample t-test",
+      "source_url": "https://stats.oarc.ucla.edu/sas/dae/power-analysis-for-paired-sample-t-test/",
+      "test_type": "paired_t_test",
+      "scenario": "Manual dexterity study: mean difference=5 sec, SD=10, correlation=0.5, n=35",
+      "analysis_type": "post_hoc_power",
+      "parameters": {
+        "mean_difference": 5,
+        "sd": 10,
+        "correlation": 0.5,
+        "alpha": 0.05,
+        "n_pairs": 35,
+        "tails": 2
+      },
+      "result": {
+        "power": 0.820
+      }
+    },
+    {
+      "id": "ucla-paired-004",
+      "source": "UCLA OARC SAS - Power Analysis for Paired Sample t-test",
+      "source_url": "https://stats.oarc.ucla.edu/sas/dae/power-analysis-for-paired-sample-t-test/",
+      "test_type": "paired_t_test",
+      "scenario": "Paired test with unequal SDs: diff=5, SD1=7, SD2=12, correlation=0.5",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "mean_difference": 5,
+        "sd_group1": 7,
+        "sd_group2": 12,
+        "correlation": 0.5,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2
+      },
+      "result": {
+        "n_pairs": 37
+      }
+    },
+    {
+      "id": "ucla-corr-001",
+      "source": "UCLA OARC - G*Power Correlation Power Analysis",
+      "source_url": "https://stats.oarc.ucla.edu/other/gpower/gpower-data-analysis-examples-power-analysis-for-correlations/",
+      "test_type": "correlation_comparison",
+      "scenario": "Comparing two soil test correlations (old test r=0.89, new test r=0.76) with criterion",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "rho_h0": 0.86,
+        "rho_h1": 0.76,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2
+      },
+      "result": {
+        "total_n": 46
+      }
+    },
+    {
+      "id": "ucla-corr-002",
+      "source": "UCLA OARC - G*Power Correlation Power Analysis",
+      "source_url": "https://stats.oarc.ucla.edu/other/gpower/gpower-data-analysis-examples-power-analysis-for-correlations/",
+      "test_type": "correlation_comparison",
+      "scenario": "Same soil test comparison, higher power target",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "rho_h0": 0.86,
+        "rho_h1": 0.76,
+        "alpha": 0.05,
+        "power": 0.90,
+        "tails": 2
+      },
+      "result": {
+        "total_n": 61
+      }
+    },
+    {
+      "id": "ucla-regression-001",
+      "source": "UCLA OARC - Multiple Regression Power Analysis",
+      "source_url": "https://stats.oarc.ucla.edu/other/gpower/multiple-regression-power-analysis/",
+      "test_type": "multiple_regression",
+      "scenario": "School district: effect of mother's education on English proficiency, controlling for 4 other variables. Full model R²=0.48, incremental R²=0.03",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "full_model_r_squared": 0.48,
+        "incremental_r_squared": 0.03,
+        "residual_variance": 0.52,
+        "total_predictors": 5,
+        "tested_predictors": 1,
+        "alpha": 0.05,
+        "power": 0.80
+      },
+      "result": {
+        "total_n": 147
+      }
+    },
+    {
+      "id": "ucla-regression-002",
+      "source": "UCLA OARC - Multiple Regression Power Analysis",
+      "source_url": "https://stats.oarc.ucla.edu/other/gpower/multiple-regression-power-analysis/",
+      "test_type": "multiple_regression",
+      "scenario": "Same study: testing language spoken at home (2 df categorical variable), incremental R²=0.025",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "full_model_r_squared": 0.48,
+        "incremental_r_squared": 0.025,
+        "residual_variance": 0.52,
+        "total_predictors": 5,
+        "tested_predictors": 2,
+        "alpha": 0.05,
+        "power": 0.80
+      },
+      "result": {
+        "total_n": 225
+      },
+      "notes": "Final recommended sample for the whole study to cover both hypotheses"
+    },
+    {
+      "id": "minitab-001",
+      "source": "Minitab - Power and Sample Size for 2-Sample t",
+      "source_url": "https://support.minitab.com/en-us/minitab/help-and-how-to/statistics/power-and-sample-size/how-to/hypothesis-tests/power-and-sample-size-for-2-sample-t/before-you-start/example/",
+      "test_type": "two_sample_t_test",
+      "scenario": "Healthcare consultant comparing patient satisfaction ratings between two hospitals",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "difference": 5,
+        "sd": 10,
+        "alpha": 0.05,
+        "power": 0.90,
+        "tails": 2
+      },
+      "result": {
+        "n_per_group": 86,
+        "actual_power": 0.903230
+      }
+    },
+    {
+      "id": "minitab-002",
+      "source": "Minitab - Power and Sample Size for 1-Sample t",
+      "source_url": "https://support.minitab.com/en-us/minitab/help-and-how-to/statistics/power-and-sample-size/how-to/hypothesis-tests/power-and-sample-size-for-1-sample-t/before-you-start/example/",
+      "test_type": "one_sample_t_test",
+      "scenario": "Economist testing whether monthly family energy costs changed from previous mean of $200. Difference to detect: $100, SD: $150",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "difference": 100,
+        "sd": 150,
+        "alpha": 0.05,
+        "power": 0.90,
+        "tails": 2
+      },
+      "result": {
+        "total_n": 26,
+        "actual_power": 0.904254
+      }
+    },
+    {
+      "id": "minitab-003",
+      "source": "Minitab - Power and Sample Size for 2 Proportions",
+      "source_url": "https://support.minitab.com/en-us/minitab/help-and-how-to/statistics/power-and-sample-size/how-to/hypothesis-tests/power-and-sample-size-for-2-proportions/before-you-start/example/",
+      "test_type": "two_proportions",
+      "scenario": "Testing detectability of difference in summer job rates between male and female students, baseline proportion 60%",
+      "analysis_type": "sensitivity_analysis",
+      "parameters": {
+        "baseline_proportion": 0.60,
+        "n_per_group": 1000,
+        "alpha": 0.05,
+        "power": 0.90,
+        "tails": 2
+      },
+      "result": {
+        "detectable_proportion_upper": 0.669724,
+        "detectable_proportion_lower": 0.528190,
+        "detectable_difference": 0.07
+      },
+      "notes": "Can detect approximately 7% difference in either direction with n=1000 per group"
+    },
+    {
+      "id": "minitab-004",
+      "source": "Minitab - Power and Sample Size for Paired t",
+      "source_url": "https://support.minitab.com/en-us/minitab/help-and-how-to/statistics/power-and-sample-size/how-to/hypothesis-tests/power-and-sample-size-for-paired-t/before-you-start/example/",
+      "test_type": "paired_t_test",
+      "scenario": "Weight-loss program manager: detect difference of 3 lbs with SD of paired differences = 5 lbs",
+      "analysis_type": "post_hoc_power",
+      "parameters": {
+        "difference": 3,
+        "sd_differences": 5,
+        "alpha": 0.05,
+        "tails": 2
+      },
+      "result": {
+        "power_at_n10": 0.396,
+        "power_at_n20": 0.721,
+        "power_at_n50": 0.986
+      }
+    },
+    {
+      "id": "pwr-r-001",
+      "source": "Reproducible Medical Research with R - Ch 23 (bookdown.org/pdr_higgins)",
+      "source_url": "https://bookdown.org/pdr_higgins/rmrwr/sample-size-calculations-with-pwr.html",
+      "test_type": "two_sample_t_test",
+      "scenario": "New drug to reduce hemoglobin A1c in type 2 diabetes over 1 year. Placebo mean=9.0, Treatment mean=7.0, SD=3.0",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "mean_control": 9.0,
+        "mean_treatment": 7.0,
+        "mean_difference": 2.0,
+        "sd": 3.0,
+        "cohens_d": 0.67,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2
+      },
+      "result": {
+        "n_per_arm": 37,
+        "total_n": 74,
+        "total_with_20pct_dropout": 90
+      }
+    },
+    {
+      "id": "pwr-r-002",
+      "source": "Reproducible Medical Research with R - Ch 23",
+      "source_url": "https://bookdown.org/pdr_higgins/rmrwr/sample-size-calculations-with-pwr.html",
+      "test_type": "two_sample_t_test",
+      "scenario": "Same A1c study with budget constraint of n=25 per arm",
+      "analysis_type": "post_hoc_power",
+      "parameters": {
+        "cohens_d": 0.66,
+        "alpha": 0.05,
+        "n_per_arm": 25,
+        "tails": 2
+      },
+      "result": {
+        "power": 0.628
+      }
+    },
+    {
+      "id": "pwr-r-003",
+      "source": "Reproducible Medical Research with R - Ch 23",
+      "source_url": "https://bookdown.org/pdr_higgins/rmrwr/sample-size-calculations-with-pwr.html",
+      "test_type": "one_sample_t_test",
+      "scenario": "Unblinded pilot of enema treatment for transplant-waiting patients to reduce serum creatinine. Expected reduction=1.0 g/dL, SD=2.0",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "delta": 1.0,
+        "sd": 2.0,
+        "cohens_d": 0.5,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 1
+      },
+      "result": {
+        "total_n": 27
+      }
+    },
+    {
+      "id": "pwr-r-004",
+      "source": "Reproducible Medical Research with R - Ch 23",
+      "source_url": "https://bookdown.org/pdr_higgins/rmrwr/sample-size-calculations-with-pwr.html",
+      "test_type": "two_sample_t_test",
+      "scenario": "Bilateral skin treatment application, large effect (d=0.8), two-sample design",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "cohens_d": 0.8,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2
+      },
+      "result": {
+        "n_per_arm": 26,
+        "total_n": 52
+      }
+    },
+    {
+      "id": "pwr-r-005",
+      "source": "Reproducible Medical Research with R - Ch 23",
+      "source_url": "https://bookdown.org/pdr_higgins/rmrwr/sample-size-calculations-with-pwr.html",
+      "test_type": "paired_t_test",
+      "scenario": "Same bilateral skin treatment as paired design (d=0.8)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "cohens_d": 0.8,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2
+      },
+      "result": {
+        "n_pairs": 15
+      },
+      "notes": "Paired design much more efficient than two-sample (15 vs 52)"
+    },
+    {
+      "id": "pwr-r-006",
+      "source": "Reproducible Medical Research with R - Ch 23",
+      "source_url": "https://bookdown.org/pdr_higgins/rmrwr/sample-size-calculations-with-pwr.html",
+      "test_type": "two_sample_t_test_unequal",
+      "scenario": "Blood pressure reduction study: expected 10mmHg reduction, SD=20mmHg, control group fixed at n=40",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "systolic_bp_reduction": 10,
+        "sd": 20,
+        "cohens_d": 0.5,
+        "alpha": 0.05,
+        "power": 0.80,
+        "n1_control": 40,
+        "tails": 2
+      },
+      "result": {
+        "n2_treatment": 153
+      },
+      "notes": "Approximately 4:1 ratio needed when control group is constrained"
+    },
+    {
+      "id": "pwr-r-007",
+      "source": "Reproducible Medical Research with R - Ch 23",
+      "source_url": "https://bookdown.org/pdr_higgins/rmrwr/sample-size-calculations-with-pwr.html",
+      "test_type": "two_sample_t_test_unequal",
+      "scenario": "Post-hoc: Blood pressure study with n1=40, n2=160, d=0.5",
+      "analysis_type": "post_hoc_power",
+      "parameters": {
+        "cohens_d": 0.5,
+        "alpha": 0.05,
+        "n1": 40,
+        "n2": 160,
+        "tails": 2
+      },
+      "result": {
+        "power": 0.803
+      }
+    },
+    {
+      "id": "select-stats-001",
+      "source": "Select Statistical Consultants - Two Proportions Calculator",
+      "source_url": "https://select-statistics.co.uk/calculators/sample-size-calculator-two-proportions/",
+      "test_type": "two_proportions",
+      "scenario": "Supermarket testing new marketing promotion: current purchase rate 15%, desired rate 25%",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p1": 0.15,
+        "p2": 0.25,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2
+      },
+      "result": {
+        "n_per_group": 248,
+        "total_n": 496
+      }
+    },
+    {
+      "id": "pmc-effectsize-001",
+      "source": "PMC7745163 - Sample size, power, effect size revisited (Biochem Med, 2020)",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7745163/",
+      "test_type": "two_sample_t_test",
+      "scenario": "Comparing total cholesterol: Group 1 mean=6.5 mmol/L (SD=0.5), Group 2 mean=5.2 mmol/L (SD=0.8), n=30 each",
+      "analysis_type": "effect_size_calculation",
+      "parameters": {
+        "mean_group1": 6.5,
+        "sd_group1": 0.5,
+        "mean_group2": 5.2,
+        "sd_group2": 0.8,
+        "n_per_group": 30,
+        "pooled_sd": 0.67
+      },
+      "result": {
+        "cohens_d": 1.94,
+        "t_value": -7.54,
+        "p_value_less_than": 0.001
+      },
+      "notes": "Very large effect size (d=1.94)"
+    },
+    {
+      "id": "pmc-effectsize-002",
+      "source": "PMC7745163 - Sample size, power, effect size revisited",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7745163/",
+      "test_type": "two_proportions",
+      "scenario": "SNP case-control genetic association study: minor allele frequency 15% in cases vs 7% in controls",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p_cases": 0.15,
+        "p_controls": 0.07,
+        "alpha": 0.05,
+        "power": 0.80
+      },
+      "result": {
+        "n_cases": 239,
+        "n_controls": 239,
+        "total_n": 478
+      }
+    },
+    {
+      "id": "pmc-effectsize-003",
+      "source": "PMC7745163 - Sample size, power, effect size revisited",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7745163/",
+      "test_type": "survey_sample_size",
+      "scenario": "Population survey with population size 10,000, 95% CI and 5% margin of error",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "population_size": 10000,
+        "confidence_level": 0.95,
+        "margin_of_error": 0.05
+      },
+      "result": {
+        "required_n": 370
+      }
+    },
+    {
+      "id": "pmc-effectsize-004",
+      "source": "PMC7745163 - Sample size, power, effect size revisited",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7745163/",
+      "test_type": "diagnostic_accuracy",
+      "scenario": "Diagnostic accuracy study: desired sensitivity=0.85, specificity=0.90, 95% CI with max error=0.05",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "target_sensitivity": 0.85,
+        "target_specificity": 0.90,
+        "max_error": 0.05,
+        "confidence_level": 0.95
+      },
+      "result": {
+        "positive_samples_needed": 196,
+        "negative_samples_needed": 139,
+        "total_n": 335
+      }
+    },
+    {
+      "id": "pmc-effectsize-005",
+      "source": "PMC7745163 - Sample size, power, effect size revisited",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7745163/",
+      "test_type": "two_sample_t_test",
+      "scenario": "Relationship between effect size and required sample size at power=0.80 (small effect)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "cohens_d": 0.2,
+        "power": 0.80
+      },
+      "result": {
+        "total_n": 788
+      },
+      "notes": "Cohen's small effect size"
+    },
+    {
+      "id": "pmc-effectsize-006",
+      "source": "PMC7745163 - Sample size, power, effect size revisited",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7745163/",
+      "test_type": "two_sample_t_test",
+      "scenario": "Relationship between effect size and required sample size at power=0.80 (large effect)",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "cohens_d": 1.0,
+        "power": 0.80
+      },
+      "result": {
+        "total_n": 34
+      }
+    },
+    {
+      "id": "psu-equiv-001",
+      "source": "Penn State STAT 509 - Sample Size for Equivalence (continuous)",
+      "source_url": "https://online.stat.psu.edu/stat509/book/export/html/672",
+      "test_type": "two_sample_continuous_equivalence",
+      "scenario": "Asthma equivalence trial measuring FEV1: equivalence zone=+-0.1L, assumed true difference=0.05L, SD=0.75L",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "equivalence_margin": 0.1,
+        "assumed_true_difference": 0.05,
+        "sd": 0.75,
+        "alpha": 0.05,
+        "power": 0.90,
+        "allocation_ratio": 1
+      },
+      "result": {
+        "n_per_group": 3851,
+        "total_n": 7702
+      },
+      "notes": "Equivalence trials require much larger samples than superiority trials"
+    },
+    {
+      "id": "psu-ni-001",
+      "source": "Penn State STAT 509 / PMC6955025 - Non-inferiority trial (binary)",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6955025/",
+      "test_type": "two_sample_binary_noninferiority",
+      "scenario": "Treatment success non-inferiority: control=70%, experimental=65%, margin=5%",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p_control": 0.70,
+        "p_experimental": 0.65,
+        "noninferiority_margin": 0.05,
+        "alpha": 0.025,
+        "power": 0.90,
+        "allocation_ratio": 1
+      },
+      "result": {
+        "n_per_group": 1764,
+        "total_n": 3528
+      }
+    },
+    {
+      "id": "psu-ni-002",
+      "source": "PMC6955025 - Non-inferiority trial (binary, rheumatoid arthritis)",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6955025/",
+      "test_type": "two_sample_binary_noninferiority",
+      "scenario": "Disease activity-guided dose reduction vs usual care for rheumatoid arthritis: DR=17% flare, UC=14% flare, margin=20%",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p_experimental": 0.17,
+        "p_control": 0.14,
+        "noninferiority_margin": 0.20,
+        "alpha": 0.05,
+        "power": 0.90,
+        "allocation_ratio": 1,
+        "tails": 2
+      },
+      "result": {
+        "n_per_group": 78,
+        "total_n": 156
+      }
+    },
+    {
+      "id": "psu-ni-003",
+      "source": "Penn State STAT 509 - Non-inferiority trial (time-to-event)",
+      "source_url": "https://online.stat.psu.edu/stat509/book/export/html/672",
+      "test_type": "survival_noninferiority",
+      "scenario": "Time to infection: control failure rate=20%, non-inferiority threshold=25%, 1 year follow-up",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p_control_failure": 0.20,
+        "p_experimental_failure": 0.20,
+        "noninferiority_threshold": 0.25,
+        "hazard_ratio_boundary": 1.29,
+        "alpha": 0.025,
+        "power": 0.90,
+        "allocation_ratio": 1
+      },
+      "result": {
+        "events_required": 648,
+        "n_per_group": 1620
+      }
+    },
+    {
+      "id": "nquery-001",
+      "source": "nQuery / SAS Paper 4675-2020",
+      "source_url": "https://support.sas.com/resources/papers/proceedings20/4675-2020.pdf",
+      "test_type": "two_sample_t_test",
+      "scenario": "Comparing two drugs for pain score changes. Drug A mean change=5, Drug B mean change=4.5, SD=1.195",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "mean_drugA": 5,
+        "mean_drugB": 4.5,
+        "clinically_important_difference": 0.5,
+        "sd": 1.195,
+        "alpha": 0.05,
+        "power": 0.80
+      },
+      "result": {
+        "n_per_group": 90,
+        "total_n": 180
+      }
+    },
+    {
+      "id": "ncss-pass-001",
+      "source": "NCSS PASS documentation - Chow, Shao, Wang, Lokhnygina (2018)",
+      "source_url": "https://www.ncss.com/wp-content/themes/ncss/pdf/Procedures/PASS/Two-Sample_T-Tests_Assuming_Equal_Variance.pdf",
+      "test_type": "two_sample_t_test",
+      "scenario": "Two-sided two-sample t-test with delta=0.05, sigma=0.1",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "mean_difference": 0.05,
+        "sd": 0.1,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2
+      },
+      "result": {
+        "n_per_group": 64
+      },
+      "notes": "From Chow, Shao, Wang, and Lokhnygina (2018) textbook example"
+    },
+    {
+      "id": "ncss-pass-002",
+      "source": "NCSS PASS documentation - Machin et al. (1997) p.35",
+      "source_url": "https://www.ncss.com/wp-content/themes/ncss/pdf/Procedures/PASS/Two-Sample_T-Tests_Assuming_Equal_Variance.pdf",
+      "test_type": "two_sample_t_test",
+      "scenario": "Two-sided test: mean difference=5, common SD=10, 90% power",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "mean_difference": 5,
+        "sd": 10,
+        "alpha": 0.05,
+        "power": 0.90,
+        "tails": 2
+      },
+      "result": {
+        "n_per_group": 86
+      },
+      "notes": "From Machin, Campbell, Fayers, Pinol (1997) textbook, same as Minitab-001"
+    },
+    {
+      "id": "ncss-pass-003",
+      "source": "NCSS PASS documentation - Two proportions",
+      "source_url": "https://www.ncss.com/wp-content/themes/ncss/pdf/Procedures/PASS/Tests_for_Two_Proportions.pdf",
+      "test_type": "two_proportions",
+      "scenario": "Two-sided test comparing P1=0.7 vs P2=0.6 at alpha=0.01, 95% power",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p1": 0.7,
+        "p2": 0.6,
+        "alpha": 0.01,
+        "power": 0.95,
+        "tails": 2
+      },
+      "result": {
+        "n_per_group": 827
+      }
+    },
+    {
+      "id": "ncss-pass-004",
+      "source": "NCSS PASS documentation - Effect size approach",
+      "source_url": "https://www.ncss.com/wp-content/themes/ncss/pdf/Procedures/PASS/Two-Sample_T-Tests_using_Effect_Size.pdf",
+      "test_type": "two_sample_t_test",
+      "scenario": "Small effect size d=0.2, detecting with 80% power",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "cohens_d": 0.2,
+        "alpha": 0.05,
+        "power": 0.80,
+        "tails": 2
+      },
+      "result": {
+        "n_per_group": 393,
+        "total_n": 786
+      },
+      "notes": "Cohen's small effect size requires very large sample"
+    },
+    {
+      "id": "uva-logistic-001",
+      "source": "UVA Library - Power and Sample Size for Logistic Regression",
+      "source_url": "https://library.virginia.edu/data/articles/power-and-sample-size-estimation-logistic-regression",
+      "test_type": "logistic_regression",
+      "scenario": "Binary predictor logistic regression with interaction. P(y=1): x=1,z=0 -> 0.85; x=1,z=1 -> 0.50; x=0,z=0 -> 0.40; x=0,z=1 -> 0.30",
+      "analysis_type": "post_hoc_power",
+      "parameters": {
+        "probability_x1_z0": 0.85,
+        "probability_x1_z1": 0.50,
+        "probability_x0_z0": 0.40,
+        "probability_x0_z1": 0.30,
+        "total_n": 200,
+        "alpha": 0.05,
+        "simulations": 1000
+      },
+      "result": {
+        "power": 0.523
+      }
+    },
+    {
+      "id": "uva-logistic-002",
+      "source": "UVA Library - Power and Sample Size for Logistic Regression",
+      "source_url": "https://library.virginia.edu/data/articles/power-and-sample-size-estimation-logistic-regression",
+      "test_type": "logistic_regression",
+      "scenario": "Same logistic model: finding n for 90% power at alpha=0.05",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "probability_x1_z0": 0.85,
+        "probability_x1_z1": 0.50,
+        "probability_x0_z0": 0.40,
+        "probability_x0_z1": 0.30,
+        "alpha": 0.05,
+        "target_power": 0.90
+      },
+      "result": {
+        "power_at_n350": 0.760,
+        "power_at_n400": 0.800,
+        "power_at_n450": 0.869,
+        "power_at_n500": 0.887,
+        "approximate_n_for_90pct_power": 500
+      }
+    },
+    {
+      "id": "equiv-means-001",
+      "source": "PowerAndSampleSize.com - Two-sample equivalence for means",
+      "source_url": "https://powerandsamplesize.com/Calculators/Compare-2-Means/2-Sample-Equivalence",
+      "test_type": "two_sample_continuous_equivalence",
+      "scenario": "Means equivalence: mu_A=5, mu_B=4, equivalence margin=5, SD=10",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "mean_A": 5,
+        "mean_B": 4,
+        "equivalence_margin": 5,
+        "sd": 10,
+        "alpha": 0.05,
+        "power": 0.80
+      },
+      "result": {
+        "n_per_group": 108
+      }
+    },
+    {
+      "id": "equiv-prop-001",
+      "source": "PowerAndSampleSize.com - Two-sample equivalence for proportions",
+      "source_url": "https://powerandsamplesize.com/Calculators/Compare-2-Proportions/2-Sample-Equivalence",
+      "test_type": "two_sample_binary_equivalence",
+      "scenario": "Proportion equivalence: p_A=0.65, p_B=0.85, margin=0.05",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "p_A": 0.65,
+        "p_B": 0.85,
+        "equivalence_margin": 0.05,
+        "alpha": 0.05,
+        "power": 0.80
+      },
+      "result": {
+        "n_per_group": 136
+      }
+    },
+    {
+      "id": "chi-sq-001",
+      "source": "ScaleStatistics.com - Chi-square sample size",
+      "source_url": "https://www.scalestatistics.com/sample-size-for-chi-square.html",
+      "test_type": "chi_square_independence",
+      "scenario": "Marketing agency testing two packaging versions (A vs B). Effect size w=0.3, power=0.8, df=1",
+      "analysis_type": "a_priori_sample_size",
+      "parameters": {
+        "effect_size_w": 0.3,
+        "alpha": 0.05,
+        "power": 0.80,
+        "df": 1
+      },
+      "result": {
+        "total_n": 88
+      }
+    }
+  ]
+}

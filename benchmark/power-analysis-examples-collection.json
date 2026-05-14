@@ -1,0 +1,1933 @@
+[
+  {
+    "id": 1,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "one-sample proportion test",
+    "question_text": "How many coin flips are needed to determine if a coin lands heads 75% of the time versus the expected 50%, with 80% power at alpha=0.05 (one-sided)?",
+    "parameters": {
+      "h": "ES.h(p1=0.75, p2=0.50) = 0.5236",
+      "sig_level": 0.05,
+      "power": 0.80,
+      "alternative": "greater"
+    },
+    "result": {
+      "n": 23,
+      "description": "23 coin flips needed"
+    },
+    "r_code": "pwr.p.test(h = ES.h(p1 = 0.75, p2 = 0.50), sig.level = 0.05, power = 0.80, alternative = \"greater\")"
+  },
+  {
+    "id": 2,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "one-sample proportion test",
+    "question_text": "What is the power to detect a 75% heads rate versus 50% with 40 coin flips at alpha=0.01 (one-sided)?",
+    "parameters": {
+      "h": 0.5236,
+      "n": 40,
+      "sig_level": 0.01,
+      "alternative": "greater"
+    },
+    "result": {
+      "power": 0.8377
+    },
+    "r_code": "pwr.p.test(h = ES.h(p1 = 0.75, p2 = 0.50), sig.level = 0.01, n = 40, alternative = \"greater\")"
+  },
+  {
+    "id": 3,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "one-sample proportion test",
+    "question_text": "What is the power to detect 75% heads versus 50% with 40 flips at alpha=0.01 (two-sided)?",
+    "parameters": {
+      "h": 0.5236,
+      "n": 40,
+      "sig_level": 0.01,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "power": 0.7690
+    },
+    "r_code": "pwr.p.test(h = ES.h(p1 = 0.75, p2 = 0.50), sig.level = 0.01, n = 40)"
+  },
+  {
+    "id": 4,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "one-sample proportion test",
+    "question_text": "How many coin flips are needed to detect a 65% heads rate versus 50% with 80% power at alpha=0.05 (two-sided)?",
+    "parameters": {
+      "h": "ES.h(p1=0.65, p2=0.50) = 0.3047",
+      "sig_level": 0.05,
+      "power": 0.80,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n": 85
+    },
+    "r_code": "pwr.p.test(h = ES.h(p1 = 0.65, p2 = 0.50), sig.level = 0.05, power = 0.80)"
+  },
+  {
+    "id": 5,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "one-sample proportion test",
+    "question_text": "What is the power with n=20, alpha=0.05 for small (h=0.2), medium (h=0.5), and large (h=0.8) effect sizes?",
+    "parameters": {
+      "h": [0.2, 0.5, 0.8],
+      "n": 20,
+      "sig_level": 0.05,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "power": [0.1455, 0.6088, 0.9471]
+    },
+    "r_code": "pwr.p.test(h = c(0.2, 0.5, 0.8), n = 20, sig.level = 0.05)"
+  },
+  {
+    "id": 6,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "two-sample proportion test (equal n)",
+    "question_text": "How many subjects per group are needed to detect a difference between 55% and 50% alcohol preference between genders at 80% power and alpha=0.05?",
+    "parameters": {
+      "h": "ES.h(p1=0.55, p2=0.50) = 0.1002",
+      "sig_level": 0.05,
+      "power": 0.80,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n_per_group": 1565
+    },
+    "r_code": "pwr.2p.test(h = ES.h(p1 = 0.55, p2 = 0.50), sig.level = 0.05, power = 0.80)"
+  },
+  {
+    "id": 7,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "two-sample proportion test (equal n)",
+    "question_text": "How many subjects per group to detect a difference between proportions of 10% and 5% with 80% power and alpha=0.05?",
+    "parameters": {
+      "h": "ES.h(p1=0.10, p2=0.05) = 0.1925",
+      "sig_level": 0.05,
+      "power": 0.80,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n_per_group": 424
+    },
+    "r_code": "pwr.2p.test(h = ES.h(p1 = 0.10, p2 = 0.05), sig.level = 0.05, power = 0.80)"
+  },
+  {
+    "id": 8,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "two-sample proportion test (unequal n)",
+    "question_text": "What is the power with 543 males and 675 females surveyed, small effect size h=0.2, alpha=0.05?",
+    "parameters": {
+      "h": 0.2,
+      "n1": 543,
+      "n2": 675,
+      "sig_level": 0.05
+    },
+    "result": {
+      "power": 0.9344
+    },
+    "r_code": "pwr.2p2n.test(h = 0.2, n1 = 543, n2 = 675, sig.level = 0.05)"
+  },
+  {
+    "id": 9,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "two-sample proportion test (unequal n)",
+    "question_text": "With 763 females surveyed, how many males are needed to detect h=0.2 with 80% power at alpha=0.05?",
+    "parameters": {
+      "h": 0.2,
+      "n1": 763,
+      "power": 0.8,
+      "sig_level": 0.05
+    },
+    "result": {
+      "n2": 265
+    },
+    "r_code": "pwr.2p2n.test(h = 0.2, n1 = 763, power = 0.8, sig.level = 0.05)"
+  },
+  {
+    "id": 10,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "two-sample t-test",
+    "question_text": "What is the power of a two-sample t-test with n=30 per group, medium effect d=0.5, alpha=0.05 (two-sided)?",
+    "parameters": {
+      "n": 30,
+      "d": 0.5,
+      "sig_level": 0.05,
+      "type": "two.sample",
+      "alternative": "two.sided"
+    },
+    "result": {
+      "power": 0.4779
+    },
+    "r_code": "pwr.t.test(n = 30, d = 0.5, sig.level = 0.05)"
+  },
+  {
+    "id": 11,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "two-sample t-test",
+    "question_text": "How many subjects per group to detect medium effect d=0.5 with 80% power at alpha=0.05 (two-sided)?",
+    "parameters": {
+      "d": 0.5,
+      "power": 0.80,
+      "sig_level": 0.05,
+      "type": "two.sample",
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n_per_group": 64
+    },
+    "r_code": "pwr.t.test(d = 0.5, power = 0.80, sig.level = 0.05)"
+  },
+  {
+    "id": 12,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "two-sample t-test",
+    "question_text": "How many subjects per group to detect a 75-cent difference in coffee prices (SD=$2.25, so d=0.333) with 80% power at alpha=0.05?",
+    "parameters": {
+      "d": 0.333,
+      "power": 0.80,
+      "sig_level": 0.05,
+      "type": "two.sample",
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n_per_group": 143
+    },
+    "r_code": "pwr.t.test(d = 0.75/2.25, power = 0.80, sig.level = 0.05)"
+  },
+  {
+    "id": 13,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "one-sample t-test",
+    "question_text": "How many transactions needed to detect a $0.50 difference from $3.00 average coffee purchase (SD=$2.25, d=0.222) with 90% power at alpha=0.05 (one-sided, greater)?",
+    "parameters": {
+      "d": 0.222,
+      "power": 0.90,
+      "sig_level": 0.05,
+      "type": "one.sample",
+      "alternative": "greater"
+    },
+    "result": {
+      "n": 175
+    },
+    "r_code": "pwr.t.test(d = 0.50/2.25, sig.level = 0.05, power = 0.90, alternative = \"greater\", type = \"one.sample\")"
+  },
+  {
+    "id": 14,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "paired t-test",
+    "question_text": "What is the power to detect a 0.08-second improvement in 40-yard dash (SD of differences=0.25, d=0.32) with 24 pairs at alpha=0.05 (one-sided)?",
+    "parameters": {
+      "n": 24,
+      "d": 0.32,
+      "sig_level": 0.05,
+      "type": "paired",
+      "alternative": "greater"
+    },
+    "result": {
+      "power": 0.4509
+    },
+    "r_code": "pwr.t.test(n = 24, d = 0.08/0.25, type = \"paired\", alternative = \"greater\")"
+  },
+  {
+    "id": 15,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "paired t-test",
+    "question_text": "How many pairs needed to detect a 0.08-second improvement (SD differences=0.25, d=0.32) with 80% power at alpha=0.05 (one-sided)?",
+    "parameters": {
+      "d": 0.32,
+      "power": 0.8,
+      "sig_level": 0.05,
+      "type": "paired",
+      "alternative": "greater"
+    },
+    "result": {
+      "n_pairs": 62
+    },
+    "r_code": "pwr.t.test(d = 0.08/0.25, power = 0.8, type = \"paired\", alternative = \"greater\")"
+  },
+  {
+    "id": 16,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "paired t-test",
+    "question_text": "How many pairs needed if within-pair SD is 0.1 (not SD of differences=0.25), giving d=0.08/(0.1*sqrt(2))=0.566, with 80% power?",
+    "parameters": {
+      "d": 0.566,
+      "power": 0.8,
+      "sig_level": 0.05,
+      "type": "paired",
+      "alternative": "greater"
+    },
+    "result": {
+      "n_pairs": 21
+    },
+    "r_code": "pwr.t.test(d = 0.08/(0.1*sqrt(2)), power = 0.8, type = \"paired\", alternative = \"greater\")"
+  },
+  {
+    "id": 17,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "two-sample t-test (unequal n)",
+    "question_text": "What is the power with n1=28, n2=35, d=0.5, alpha=0.05?",
+    "parameters": {
+      "n1": 28,
+      "n2": 35,
+      "d": 0.5,
+      "sig_level": 0.05
+    },
+    "result": {
+      "power": 0.4925
+    },
+    "r_code": "pwr.t2n.test(n1 = 28, n2 = 35, d = 0.5)"
+  },
+  {
+    "id": 18,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "chi-square goodness of fit",
+    "question_text": "What is the power to detect unequal preference among 4 package designs (3/8 vs 5/24 each) with N=100, df=3, alpha=0.05?",
+    "parameters": {
+      "w": 0.2887,
+      "N": 100,
+      "df": 3,
+      "sig_level": 0.05
+    },
+    "result": {
+      "power": 0.6740
+    },
+    "r_code": "null <- rep(0.25, 4); alt <- c(3/8, rep((5/8)/3, 3)); pwr.chisq.test(w = ES.w1(null, alt), N = 100, df = 3, sig.level = 0.05)"
+  },
+  {
+    "id": 19,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "chi-square goodness of fit",
+    "question_text": "How many subjects needed to detect the same design preference pattern with 80% power at alpha=0.05?",
+    "parameters": {
+      "w": 0.2887,
+      "df": 3,
+      "power": 0.8,
+      "sig_level": 0.05
+    },
+    "result": {
+      "N": 131
+    },
+    "r_code": "pwr.chisq.test(w = ES.w1(null, alt), df = 3, power = 0.8, sig.level = 0.05)"
+  },
+  {
+    "id": 20,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "chi-square test of association",
+    "question_text": "What is the power to detect a gender-flossing association with N=100, df=1, alpha=0.01?",
+    "parameters": {
+      "w": 0.2182,
+      "N": 100,
+      "df": 1,
+      "sig_level": 0.01
+    },
+    "result": {
+      "power": 0.3469
+    },
+    "r_code": "prob <- matrix(c(0.1, 0.2, 0.4, 0.3), ncol = 2); pwr.chisq.test(w = ES.w2(prob), N = 100, df = 1, sig.level = 0.01)"
+  },
+  {
+    "id": 21,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "chi-square test of association",
+    "question_text": "How many subjects needed to detect the gender-flossing association with 90% power at alpha=0.01?",
+    "parameters": {
+      "w": 0.2182,
+      "power": 0.9,
+      "df": 1,
+      "sig_level": 0.01
+    },
+    "result": {
+      "N": 313
+    },
+    "r_code": "pwr.chisq.test(w = ES.w2(prob), power = 0.9, df = 1, sig.level = 0.01)"
+  },
+  {
+    "id": 22,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "chi-square (conventional effect)",
+    "question_text": "How many subjects needed to detect a small effect (w=0.1) with 90% power at alpha=0.01 and df=1?",
+    "parameters": {
+      "w": 0.1,
+      "power": 0.9,
+      "df": 1,
+      "sig_level": 0.01
+    },
+    "result": {
+      "N": 1488
+    },
+    "r_code": "pwr.chisq.test(w = 0.1, power = 0.9, df = 1, sig.level = 0.01)"
+  },
+  {
+    "id": 23,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "correlation test",
+    "question_text": "How many subjects needed to detect r=0.1 (small) with 80% power at alpha=0.01 (one-sided, greater)?",
+    "parameters": {
+      "r": 0.1,
+      "sig_level": 0.01,
+      "power": 0.8,
+      "alternative": "greater"
+    },
+    "result": {
+      "n": 1000
+    },
+    "r_code": "pwr.r.test(r = 0.1, sig.level = 0.01, power = 0.8, alternative = \"greater\")"
+  },
+  {
+    "id": 24,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "correlation test",
+    "question_text": "How many subjects needed to detect r=0.1 with 80% power at alpha=0.01 (two-sided)?",
+    "parameters": {
+      "r": 0.1,
+      "sig_level": 0.01,
+      "power": 0.8,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n": 1163
+    },
+    "r_code": "pwr.r.test(r = 0.1, sig.level = 0.01, power = 0.8)"
+  },
+  {
+    "id": 25,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "one-way ANOVA",
+    "question_text": "How many subjects per group needed to compare 3 fuel types on diesel car MPG with medium effect f=0.25, 90% power at alpha=0.01?",
+    "parameters": {
+      "k": 3,
+      "f": 0.25,
+      "sig_level": 0.01,
+      "power": 0.9
+    },
+    "result": {
+      "n_per_group": 95
+    },
+    "r_code": "pwr.anova.test(k = 3, f = 0.25, sig.level = 0.01, power = 0.9)"
+  },
+  {
+    "id": 26,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "one-way ANOVA",
+    "question_text": "How many subjects per group with k=3, between-group SD=5, within-group SD=3 (f=5/3=1.67), 90% power at alpha=0.01?",
+    "parameters": {
+      "k": 3,
+      "f": 1.667,
+      "sig_level": 0.01,
+      "power": 0.9
+    },
+    "result": {
+      "n_per_group": 4
+    },
+    "r_code": "pwr.anova.test(k = 3, f = 5/3, sig.level = 0.01, power = 0.9)"
+  },
+  {
+    "id": 27,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "multiple regression (general linear model)",
+    "question_text": "How many student records needed to predict first-year GPA from SAT and class rank (u=2 predictors, R-squared=0.30, f2=0.4286) with 80% power at alpha=0.001?",
+    "parameters": {
+      "u": 2,
+      "f2": 0.4286,
+      "sig_level": 0.001,
+      "power": 0.8
+    },
+    "result": {
+      "v": 50,
+      "total_n": 53
+    },
+    "r_code": "pwr.f2.test(u = 2, f2 = 0.3/(1-0.3), sig.level = 0.001, power = 0.8)"
+  },
+  {
+    "id": 28,
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "source_type": "CRAN pwr package vignette",
+    "test_type": "multiple regression (general linear model)",
+    "question_text": "What is the power of the GPA regression model with 40 subjects, 2 predictors, R-squared=0.30, at alpha=0.01?",
+    "parameters": {
+      "u": 2,
+      "v": 37,
+      "f2": 0.4286,
+      "sig_level": 0.01
+    },
+    "result": {
+      "power": 0.8406
+    },
+    "r_code": "pwr.f2.test(u = 2, v = 40-2-1, f2 = 0.3/(1-0.3), sig.level = 0.01)"
+  },
+  {
+    "id": 29,
+    "source_url": "https://www.r-bloggers.com/2021/05/power-analysis-in-statistics-with-r/",
+    "source_type": "R-bloggers tutorial",
+    "test_type": "one-way ANOVA",
+    "question_text": "How many subjects per group for a balanced one-way ANOVA with 4 groups, medium effect f=0.25, 80% power at alpha=0.05?",
+    "parameters": {
+      "k": 4,
+      "f": 0.25,
+      "sig_level": 0.05,
+      "power": 0.8
+    },
+    "result": {
+      "n_per_group": 44.60
+    },
+    "r_code": "pwr.anova.test(k=4, f=.25, sig.level=.05, power=.8)"
+  },
+  {
+    "id": 30,
+    "source_url": "https://www.r-bloggers.com/2021/05/power-analysis-in-statistics-with-r/",
+    "source_type": "R-bloggers tutorial",
+    "test_type": "two-sample t-test (one-tailed)",
+    "question_text": "What is the power of a one-tailed two-sample t-test with n=12 per group and d=0.75 at alpha=0.05?",
+    "parameters": {
+      "n": 12,
+      "d": 0.75,
+      "sig_level": 0.05,
+      "alternative": "greater"
+    },
+    "result": {
+      "power": 0.5538
+    },
+    "r_code": "pwr.t.test(n=12, d=0.75, sig.level=.05, alternative=\"greater\")"
+  },
+  {
+    "id": 31,
+    "source_url": "https://www.r-bloggers.com/2021/05/power-analysis-in-statistics-with-r/",
+    "source_type": "R-bloggers tutorial",
+    "test_type": "two-sample proportion test",
+    "question_text": "What effect size h can be detected with n=20 per group, alpha=0.05, and 75% power?",
+    "parameters": {
+      "n": 20,
+      "sig_level": 0.05,
+      "power": 0.75
+    },
+    "result": {
+      "h": 0.8331
+    },
+    "r_code": "pwr.2p.test(n=20, sig.level=0.05, power=0.75)"
+  },
+  {
+    "id": 32,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/power-analysis-for-two-group-independent-sample-t-test/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "two-sample t-test",
+    "question_text": "A clinical dietician compares two diets (A and B) for diabetic patients. Diet A is expected to yield 10 mg/dl lower blood glucose than Diet B. SD for Diet A is 15, Diet B is 17. How many subjects per group for 80% power at alpha=0.05?",
+    "parameters": {
+      "mean_difference": 10,
+      "sd_group1": 15,
+      "sd_group2": 17,
+      "sig_level": 0.05,
+      "power": 0.80,
+      "allocation": "equal"
+    },
+    "result": {
+      "n_per_group": 42,
+      "total_n": 84
+    },
+    "r_code": null
+  },
+  {
+    "id": 33,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/power-analysis-for-two-group-independent-sample-t-test/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "two-sample t-test",
+    "question_text": "Same diet comparison: what is the power with 30 subjects per group (equal allocation)?",
+    "parameters": {
+      "mean_difference": 10,
+      "sd_group1": 15,
+      "sd_group2": 17,
+      "sig_level": 0.05,
+      "n_per_group": 30
+    },
+    "result": {
+      "power": 0.661
+    },
+    "r_code": null
+  },
+  {
+    "id": 34,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/power-analysis-for-two-group-independent-sample-t-test/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "two-sample t-test (unequal groups)",
+    "question_text": "Same diet comparison with 60 total subjects split unequally (40 and 20). What is the power?",
+    "parameters": {
+      "mean_difference": 10,
+      "sd_group1": 15,
+      "sd_group2": 17,
+      "sig_level": 0.05,
+      "n1": 40,
+      "n2": 20
+    },
+    "result": {
+      "power": 0.610,
+      "note": "Balanced design is more efficient"
+    },
+    "r_code": null
+  },
+  {
+    "id": 35,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/one-way-anova-power-analysis/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "one-way ANOVA",
+    "question_text": "Compare 4 teaching methods for math standardized test scores (means: 550, 598, 598, 646; SD=80). How many students per group for 80% power at alpha=0.05?",
+    "parameters": {
+      "k": 4,
+      "group_means": [550, 598, 598, 646],
+      "within_group_sd": 80,
+      "between_group_var": 1536,
+      "sig_level": 0.05,
+      "power": 0.823
+    },
+    "result": {
+      "n_per_group": 17,
+      "total_n": 68
+    },
+    "r_code": "groupmeans <- c(550, 598, 598, 646); power.anova.test(groups = length(groupmeans), between.var = var(groupmeans), within.var = 6400, power = 0.823, sig.level = 0.05)"
+  },
+  {
+    "id": 36,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/one-way-anova-power-analysis/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "one-way ANOVA",
+    "question_text": "Same teaching study: what is the power with 25 subjects per group?",
+    "parameters": {
+      "k": 4,
+      "group_means": [550, 598, 598, 646],
+      "within_group_sd": 80,
+      "n_per_group": 25,
+      "sig_level": 0.05
+    },
+    "result": {
+      "power": 0.951
+    },
+    "r_code": "power.anova.test(groups = 4, between.var = var(c(550,598,598,646)), within.var = 6400, n = 25, sig.level = 0.05)"
+  },
+  {
+    "id": 37,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/one-way-anova-power-analysis/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "one-way ANOVA",
+    "question_text": "Compare 4 teaching methods with medium effect (means: 550, 580, 580, 610; SD=80). How many students per group for 80% power?",
+    "parameters": {
+      "k": 4,
+      "group_means": [550, 580, 580, 610],
+      "within_group_sd": 80,
+      "between_group_var": 600,
+      "sig_level": 0.05,
+      "power": 0.80
+    },
+    "result": {
+      "n_per_group": 40,
+      "total_n": 160
+    },
+    "r_code": "groupmeans <- c(550,580,580,610); power.anova.test(groups = 4, between.var = var(groupmeans), within.var = 6400, power = 0.8, sig.level = 0.05)"
+  },
+  {
+    "id": 38,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/one-way-anova-power-analysis/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "one-way ANOVA",
+    "question_text": "Compare 4 teaching methods with small effect (means: 550, 560, 560, 570; SD=80). How many students per group for 80% power?",
+    "parameters": {
+      "k": 4,
+      "group_means": [550, 560, 560, 570],
+      "within_group_sd": 80,
+      "between_group_var": 66.67,
+      "sig_level": 0.05,
+      "power": 0.80
+    },
+    "result": {
+      "n_per_group": 350
+    },
+    "r_code": "groupmeans <- c(550,560,560,570); power.anova.test(groups = 4, between.var = var(groupmeans), within.var = 6400, power = 0.8, sig.level = 0.05)"
+  },
+  {
+    "id": 39,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/multiple-regression-power-analysis/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "multiple regression",
+    "question_text": "Test the effect of mother's education on English language proficiency (R-squared increase=0.03, residual variance=0.52, 5 total predictors, testing 1 predictor). How many subjects for 80% power at alpha=0.05?",
+    "parameters": {
+      "R2_increase": 0.03,
+      "residual_variance": 0.52,
+      "total_predictors": 5,
+      "df_tested": 1,
+      "sig_level": 0.05,
+      "power": 0.80
+    },
+    "result": {
+      "n_range": "109-184 depending on power level (0.70-0.90)"
+    },
+    "r_code": null
+  },
+  {
+    "id": 40,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/multiple-regression-power-analysis/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "multiple regression",
+    "question_text": "Test language spoken at home (2 dummy variables) on English proficiency (R-squared increase=0.025, 5 total predictors, testing 2 df). How many for 80% power at alpha=0.05?",
+    "parameters": {
+      "R2_increase": 0.025,
+      "residual_variance": 0.52,
+      "total_predictors": 5,
+      "df_tested": 2,
+      "sig_level": 0.05,
+      "power": 0.80
+    },
+    "result": {
+      "n": 225,
+      "n_range": "163-266 depending on power level"
+    },
+    "r_code": null
+  },
+  {
+    "id": 41,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/power-analysis-for-one-sample-t-test/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "one-sample t-test",
+    "question_text": "A manufacturer claims light bulbs last 850 hours (SD=50). Consumer advocates suspect actual lifespan is 40 hours less (810 hours). How many bulbs to test for 90% power at alpha=0.05 (two-tailed)?",
+    "parameters": {
+      "mu_0": 850,
+      "mu_1": 810,
+      "sd": 50,
+      "d": 0.8,
+      "sig_level": 0.05,
+      "power": 0.90,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n": 19
+    },
+    "r_code": null
+  },
+  {
+    "id": 42,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/power-analysis-for-one-sample-t-test/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "one-sample t-test",
+    "question_text": "Same light bulb scenario, but only 10 bulbs available. What is the power?",
+    "parameters": {
+      "mu_0": 850,
+      "mu_1": 810,
+      "sd": 50,
+      "d": 0.8,
+      "n": 10,
+      "sig_level": 0.05,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "power": 0.6162
+    },
+    "r_code": null
+  },
+  {
+    "id": 43,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/power-analysis-for-paired-sample-t-test/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "paired t-test",
+    "question_text": "Test whether a weight loss program achieves the claimed 5-pound loss (SD of differences=5, two-tailed). How many participants for 80% power at alpha=0.05?",
+    "parameters": {
+      "mean_difference": 5,
+      "sd_differences": 5,
+      "d": 1.0,
+      "sig_level": 0.05,
+      "power": 0.80,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n": 10
+    },
+    "r_code": null
+  },
+  {
+    "id": 44,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/power-analysis-for-paired-sample-t-test/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "paired t-test",
+    "question_text": "Compare dominant vs non-dominant hand dexterity (mean difference=5 sec, SD=10). What is the power with 35 subjects at alpha=0.05 (two-tailed)?",
+    "parameters": {
+      "mean_difference": 5,
+      "sd_differences": 10,
+      "d": 0.5,
+      "n": 35,
+      "sig_level": 0.05,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "power": 0.82
+    },
+    "r_code": null
+  },
+  {
+    "id": 45,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/power-analysis-for-paired-sample-t-test/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "paired t-test",
+    "question_text": "Same dexterity study with one-tailed test. What is the power?",
+    "parameters": {
+      "mean_difference": 5,
+      "sd_differences": 10,
+      "d": 0.5,
+      "n": 35,
+      "sig_level": 0.05,
+      "alternative": "greater"
+    },
+    "result": {
+      "power": 0.89
+    },
+    "r_code": null
+  },
+  {
+    "id": 46,
+    "source_url": "https://stats.oarc.ucla.edu/other/gpower/power-analysis-for-paired-sample-t-test/",
+    "source_type": "UCLA OARC (G*Power examples)",
+    "test_type": "paired t-test",
+    "question_text": "Weight loss with pre-SD=7, post-SD=12, correlation=0.5, mean difference=5 lbs. How many for 80% power at alpha=0.05?",
+    "parameters": {
+      "mean_difference": 5,
+      "sd_pre": 7,
+      "sd_post": 12,
+      "correlation": 0.5,
+      "sig_level": 0.05,
+      "power": 0.80
+    },
+    "result": {
+      "n": 37
+    },
+    "r_code": null
+  },
+  {
+    "id": 47,
+    "source_url": "https://stats.oarc.ucla.edu/other/mult-pkg/seminars/intro-power/",
+    "source_type": "UCLA OARC seminar",
+    "test_type": "two-sample t-test",
+    "question_text": "Drug A vs placebo study (Drug A mean=5, SD=2.5; placebo mean=3, SD=2.5). How many subjects for 91% power at alpha=0.05?",
+    "parameters": {
+      "mean1": 5,
+      "mean2": 3,
+      "sd": 2.5,
+      "d": 0.8,
+      "sig_level": 0.05,
+      "power": 0.91
+    },
+    "result": {
+      "total_n": 70,
+      "n_per_group": 35
+    },
+    "r_code": null
+  },
+  {
+    "id": 48,
+    "source_url": "https://stats.oarc.ucla.edu/other/mult-pkg/seminars/intro-power/",
+    "source_type": "UCLA OARC seminar",
+    "test_type": "two-sample t-test",
+    "question_text": "Drug A vs placebo (conservative: Drug A mean=4.5, SD=3; placebo mean=3.5, SD=3). How many for 90% power at alpha=0.05?",
+    "parameters": {
+      "mean1": 4.5,
+      "mean2": 3.5,
+      "sd": 3,
+      "d": 0.333,
+      "sig_level": 0.05,
+      "power": 0.90
+    },
+    "result": {
+      "total_n": 380,
+      "n_per_group": 190
+    },
+    "r_code": null
+  },
+  {
+    "id": 49,
+    "source_url": "https://stats.oarc.ucla.edu/other/mult-pkg/seminars/intro-power/",
+    "source_type": "UCLA OARC seminar",
+    "test_type": "Pearson correlation",
+    "question_text": "How many subjects needed to detect a correlation of r=0.6 with 80% power at alpha=0.05?",
+    "parameters": {
+      "r": 0.6,
+      "sig_level": 0.05,
+      "power": 0.80
+    },
+    "result": {
+      "n": 16
+    },
+    "r_code": null
+  },
+  {
+    "id": 50,
+    "source_url": "https://stats.oarc.ucla.edu/other/mult-pkg/seminars/intro-power/",
+    "source_type": "UCLA OARC seminar",
+    "test_type": "chi-square test (2x2)",
+    "question_text": "Drug A improves health in 60% of patients vs 30% in placebo group. How many for 80% power at alpha=0.05?",
+    "parameters": {
+      "p1": 0.60,
+      "p2": 0.30,
+      "sig_level": 0.05,
+      "power": 0.80
+    },
+    "result": {
+      "total_n": 110,
+      "n_per_group": 55
+    },
+    "r_code": null
+  },
+  {
+    "id": 51,
+    "source_url": "https://bookdown.org/pdr_higgins/rmrwr/sample-size-calculations-with-pwr.html",
+    "source_type": "Bookdown (Reproducible Medical Research with R)",
+    "test_type": "two-sample t-test",
+    "question_text": "A drug reduces HbA1c in type 2 diabetes (Cohen's d=0.66). How many per arm for 80% power at alpha=0.05 (two-sided)?",
+    "parameters": {
+      "d": 0.66,
+      "sig_level": 0.05,
+      "power": 0.80,
+      "type": "two.sample",
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n_per_arm": 37,
+      "total_with_20pct_dropout": 90
+    },
+    "r_code": "pwr::pwr.t.test(n = NULL, sig.level = 0.05, type = \"two.sample\", alternative = \"two.sided\", power = 0.80, d = 0.66)"
+  },
+  {
+    "id": 52,
+    "source_url": "https://bookdown.org/pdr_higgins/rmrwr/sample-size-calculations-with-pwr.html",
+    "source_type": "Bookdown (Reproducible Medical Research with R)",
+    "test_type": "one-sample t-test",
+    "question_text": "Pilot study of enema treatment to lower serum creatinine by >=1.0 g/dL (SD=2, d=0.5). How many participants for 80% power at alpha=0.05 (one-sided)?",
+    "parameters": {
+      "d": 0.5,
+      "sig_level": 0.05,
+      "power": 0.80,
+      "type": "one.sample",
+      "alternative": "greater"
+    },
+    "result": {
+      "n": 27
+    },
+    "r_code": "pwr::pwr.t.test(n = NULL, sig.level = 0.05, type = \"one.sample\", alternative = \"greater\", power = 0.8, d = 0.5)"
+  },
+  {
+    "id": 53,
+    "source_url": "https://bookdown.org/pdr_higgins/rmrwr/sample-size-calculations-with-pwr.html",
+    "source_type": "Bookdown (Reproducible Medical Research with R)",
+    "test_type": "paired t-test",
+    "question_text": "Paired design with large effect d=0.8. How many paired subjects for 80% power at alpha=0.05 (two-sided)?",
+    "parameters": {
+      "d": 0.8,
+      "sig_level": 0.05,
+      "power": 0.80,
+      "type": "paired",
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n_pairs": 15,
+      "note": "vs 26 per arm for two-sample design"
+    },
+    "r_code": "pwr::pwr.t.test(n = NULL, sig.level = 0.05, type = \"paired\", alternative = \"two.sided\", power = 0.8, d = 0.8)"
+  },
+  {
+    "id": 54,
+    "source_url": "https://bookdown.org/pdr_higgins/rmrwr/sample-size-calculations-with-pwr.html",
+    "source_type": "Bookdown (Reproducible Medical Research with R)",
+    "test_type": "two-sample t-test (unequal n)",
+    "question_text": "Systolic BP reduction study (d=0.5) with n1=40 fixed. How many subjects in the second arm for 80% power at alpha=0.05?",
+    "parameters": {
+      "n1": 40,
+      "d": 0.5,
+      "sig_level": 0.05,
+      "power": 0.80,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n2": 153,
+      "ratio": "approximately 4:1"
+    },
+    "r_code": "pwr::pwr.t2n.test(n1 = 40, n2 = NULL, sig.level = 0.05, alternative = \"two.sided\", power = 0.8, d = 0.5)"
+  },
+  {
+    "id": 55,
+    "source_url": "https://bookdown.org/daniel_dauber_io/r4np_book/power-analysis.html",
+    "source_type": "Bookdown (R for Non-Programmers)",
+    "test_type": "Pearson correlation",
+    "question_text": "How many participants to detect r=0.4 with 80% power at alpha=0.05 (two-sided)?",
+    "parameters": {
+      "r": 0.4,
+      "sig_level": 0.05,
+      "power": 0.80,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n": 46
+    },
+    "r_code": "pwr::pwr.r.test(r = 0.4, sig.level = 0.05, power = 0.8)"
+  },
+  {
+    "id": 56,
+    "source_url": "https://bookdown.org/daniel_dauber_io/r4np_book/power-analysis.html",
+    "source_type": "Bookdown (R for Non-Programmers)",
+    "test_type": "Pearson correlation",
+    "question_text": "How many participants to detect r=0.3 with 80% power at alpha=0.01 (two-sided)?",
+    "parameters": {
+      "r": 0.3,
+      "sig_level": 0.01,
+      "power": 0.80,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n": 125
+    },
+    "r_code": "pwr::pwr.r.test(r = 0.3, sig.level = 0.01, power = 0.8)"
+  },
+  {
+    "id": 57,
+    "source_url": "https://bookdown.org/daniel_dauber_io/r4np_book/power-analysis.html",
+    "source_type": "Bookdown (R for Non-Programmers)",
+    "test_type": "Pearson correlation (post-hoc)",
+    "question_text": "What is the power with n=215, observed r=0.48, alpha=0.01?",
+    "parameters": {
+      "n": 215,
+      "r": 0.48,
+      "sig_level": 0.01
+    },
+    "result": {
+      "power": 0.9999998
+    },
+    "r_code": "pwr::pwr.r.test(n = 215, r = 0.48, sig.level = 0.01)"
+  },
+  {
+    "id": 58,
+    "source_url": "https://bookdown.org/aschmi11/causal_inf/statistical-power-and-sample-size-week-3.html",
+    "source_type": "Bookdown (Causal Inference in Education)",
+    "test_type": "two-sample t-test (unequal n)",
+    "question_text": "New York Scholarship Program: treatment (n=291) vs control (n=230), d=0.257, alpha=0.05. What is the power?",
+    "parameters": {
+      "n1": 230,
+      "n2": 291,
+      "d": 0.257,
+      "sig_level": 0.05
+    },
+    "result": {
+      "power": 0.828
+    },
+    "r_code": "pwr.t2n.test(n1 = 230, n2 = 291, d = .257, sig.level = 0.05)"
+  },
+  {
+    "id": 59,
+    "source_url": "https://bookdown.org/aschmi11/causal_inf/statistical-power-and-sample-size-week-3.html",
+    "source_type": "Bookdown (Causal Inference in Education)",
+    "test_type": "simple linear regression (F-test)",
+    "question_text": "Post-achievement regressed on voucher status (R-squared=0.016, 1 predictor, v=519 residual df). What is the power at alpha=0.05?",
+    "parameters": {
+      "u": 1,
+      "v": 519,
+      "f2": 0.0163,
+      "sig_level": 0.05
+    },
+    "result": {
+      "power": 0.828
+    },
+    "r_code": "pwr.f2.test(u = 1, v = 519, f2 = .016/(1-.016), sig.level = .05)"
+  },
+  {
+    "id": 60,
+    "source_url": "https://bookdown.org/aschmi11/causal_inf/statistical-power-and-sample-size-week-3.html",
+    "source_type": "Bookdown (Causal Inference in Education)",
+    "test_type": "multiple regression (F-test)",
+    "question_text": "Post-achievement with voucher and pre-achievement (R-squared=0.442, 2 predictors, v=518). What is the power at alpha=0.05?",
+    "parameters": {
+      "u": 2,
+      "v": 518,
+      "f2": 0.792,
+      "sig_level": 0.05
+    },
+    "result": {
+      "power": 1.0
+    },
+    "r_code": "pwr.f2.test(u = 2, v = 518, f2 = .442/(1-.442), sig.level = .05)"
+  },
+  {
+    "id": 61,
+    "source_url": "https://www.r-bloggers.com/2017/07/power-analysis-and-sample-size-calculation-for-agriculture/",
+    "source_type": "R-bloggers (agriculture tutorial)",
+    "test_type": "one-way ANOVA",
+    "question_text": "Determine sample size for a nitrogen level experiment with 6 groups, medium effect f=0.25, 80% power at alpha=0.05.",
+    "parameters": {
+      "k": 6,
+      "f": 0.25,
+      "sig_level": 0.05,
+      "power": 0.8
+    },
+    "result": {
+      "n_per_group": 36
+    },
+    "r_code": "pwr.anova.test(k=6, f=0.25, sig.level=0.05, power=0.8)"
+  },
+  {
+    "id": 62,
+    "source_url": "https://www.r-bloggers.com/2017/07/power-analysis-and-sample-size-calculation-for-agriculture/",
+    "source_type": "R-bloggers (agriculture tutorial)",
+    "test_type": "one-way ANOVA (post-hoc)",
+    "question_text": "Compute power for a fitted nitrogen-yield model with k=6 groups, n=571 per group, f=0.1343 at alpha=0.05.",
+    "parameters": {
+      "k": 6,
+      "n": 571,
+      "f": 0.1343,
+      "sig_level": 0.05,
+      "eta_squared": 0.01771
+    },
+    "result": {
+      "power": 1.0
+    },
+    "r_code": "EtaSQ <- 23987/(23987+1330110); f <- sqrt(EtaSQ/(1-EtaSQ)); pwr.anova.test(k=6, n=571, f=f, sig.level=0.05)"
+  },
+  {
+    "id": 63,
+    "source_url": "https://www.r-bloggers.com/2017/07/power-analysis-and-sample-size-calculation-for-agriculture/",
+    "source_type": "R-bloggers (agriculture tutorial)",
+    "test_type": "general linear model (F-test)",
+    "question_text": "Sample size for a factorial ANOVA interaction with 2 numerator df, medium f2=0.25, 80% power at alpha=0.05.",
+    "parameters": {
+      "u": 2,
+      "f2": 0.25,
+      "sig_level": 0.05,
+      "power": 0.8
+    },
+    "result": {
+      "v": 38.69,
+      "total_n": 42
+    },
+    "r_code": "pwr.f2.test(u = 2, f2 = 0.25, sig.level = 0.05, power = 0.8)"
+  },
+  {
+    "id": 64,
+    "source_url": "https://www.r-bloggers.com/2017/07/power-analysis-and-sample-size-calculation-for-agriculture/",
+    "source_type": "R-bloggers (agriculture tutorial)",
+    "test_type": "linear mixed model (simr)",
+    "question_text": "Within-subject design with 5 subjects and 3 treatments (means: 20, 20.5, 21; SD=1). What is the power at alpha=0.05?",
+    "parameters": {
+      "n_subjects": 5,
+      "n_treatments": 3,
+      "group_means": [20, 20.5, 21],
+      "sd": 1,
+      "sig_level": 0.05,
+      "nsim": 1000
+    },
+    "result": {
+      "power": 0.259,
+      "power_ci": [0.2321, 0.2873]
+    },
+    "r_code": "mod1 <- lmer(Y ~ treatment + (1|subject), data=data); powerSim(mod1, alpha=0.05)"
+  },
+  {
+    "id": 65,
+    "source_url": "https://online.stat.psu.edu/stat502/lesson/3/3.7",
+    "source_type": "Penn State STAT 502",
+    "test_type": "one-way ANOVA (retrospective)",
+    "question_text": "Greenhouse study with 4 treatments, n=6 per group, max difference=8.2 between means, SD=1.747. What is the power?",
+    "parameters": {
+      "k": 4,
+      "n_per_group": 6,
+      "max_difference": 8.2,
+      "sd": 1.747
+    },
+    "result": {
+      "power": ">0.999"
+    },
+    "r_code": null
+  },
+  {
+    "id": 66,
+    "source_url": "https://online.stat.psu.edu/stat502/lesson/3/3.7",
+    "source_type": "Penn State STAT 502",
+    "test_type": "one-way ANOVA (retrospective)",
+    "question_text": "Greenhouse with 3 treatments only (means: 28.6, 25.87, 29.2; SD=1.933), n=6 per group. What is the power?",
+    "parameters": {
+      "k": 3,
+      "n_per_group": 6,
+      "group_means": [28.6, 25.87, 29.2],
+      "sd": 1.933
+    },
+    "result": {
+      "power": 0.731
+    },
+    "r_code": null
+  },
+  {
+    "id": 67,
+    "source_url": "https://online.stat.psu.edu/stat502/lesson/3/3.7",
+    "source_type": "Penn State STAT 502",
+    "test_type": "one-way ANOVA (prospective)",
+    "question_text": "Greenhouse with 4 treatments (means: 21, 28.6, 25.87, 29.2; SD=1.747). How many replicates per group for 80% power?",
+    "parameters": {
+      "k": 4,
+      "group_means": [21, 28.6, 25.87, 29.2],
+      "sd": 1.747,
+      "power": 0.80
+    },
+    "result": {
+      "n_per_group": 3,
+      "actual_power": 0.991
+    },
+    "r_code": null
+  },
+  {
+    "id": 68,
+    "source_url": "https://www.r-bloggers.com/2020/05/power-analysis-by-data-simulation-in-r-part-ii/",
+    "source_type": "R-bloggers (simulation series Part II)",
+    "test_type": "independent samples t-test (simulation)",
+    "question_text": "Intervention study: treatment vs control on depressive symptoms (d=0.5, alpha=0.10). What is the power with n=30 per group?",
+    "parameters": {
+      "d": 0.5,
+      "n_per_group": 30,
+      "sig_level": 0.10,
+      "desired_power": 0.95,
+      "mean_treatment": 1,
+      "mean_control": 0,
+      "sd": 2
+    },
+    "result": {
+      "power_at_n30": 0.592,
+      "required_n_for_95pct_power": 84
+    },
+    "r_code": "set.seed(1); group1 <- rnorm(30, 1, 2); group2 <- rnorm(30, 0, 2); t.test(group1, group2, paired = FALSE, var.equal = TRUE, conf.level = 0.90)"
+  },
+  {
+    "id": 69,
+    "source_url": "https://www.r-bloggers.com/2020/05/power-analysis-by-data-simulation-in-r-part-ii/",
+    "source_type": "R-bloggers (simulation series Part II)",
+    "test_type": "one-sample t-test on differences (simulation)",
+    "question_text": "Pre-post intervention (d=0.5, mean difference=1, SD=2, alpha=0.10). How many participants for 95% power?",
+    "parameters": {
+      "d": 0.5,
+      "mean_difference": 1,
+      "sd_differences": 2,
+      "sig_level": 0.10,
+      "desired_power": 0.95
+    },
+    "result": {
+      "n": 42
+    },
+    "r_code": "set.seed(1); difference <- rnorm(n, 1, 2); t.test(difference, mu = 0, conf.level = 0.90)$p.value"
+  },
+  {
+    "id": 70,
+    "source_url": "https://doing-meta.guide/power.html",
+    "source_type": "Bookdown (Doing Meta-Analysis in R)",
+    "test_type": "fixed-effect meta-analysis",
+    "question_text": "What is the power to detect SMD=0.2 in a meta-analysis of 10 studies, each with n1=n2=25, at alpha=0.05?",
+    "parameters": {
+      "effect_size_smd": 0.2,
+      "K": 10,
+      "n1": 25,
+      "n2": 25,
+      "sig_level": 0.05
+    },
+    "result": {
+      "power": 0.6066
+    },
+    "r_code": "power.analysis(d = 0.2, k = 10, n1 = 25, n2 = 25, p = 0.05)"
+  },
+  {
+    "id": 71,
+    "source_url": "https://doing-meta.guide/power.html",
+    "source_type": "Bookdown (Doing Meta-Analysis in R)",
+    "test_type": "random-effects meta-analysis",
+    "question_text": "Same meta-analysis (SMD=0.2, K=10, n1=n2=25) but with moderate heterogeneity. What is the power?",
+    "parameters": {
+      "effect_size_smd": 0.2,
+      "K": 10,
+      "n1": 25,
+      "n2": 25,
+      "sig_level": 0.05,
+      "heterogeneity": "moderate"
+    },
+    "result": {
+      "power": 0.4076
+    },
+    "r_code": "power.analysis(d = 0.2, k = 10, n1 = 25, n2 = 25, p = 0.05, heterogeneity = \"moderate\")"
+  },
+  {
+    "id": 72,
+    "source_url": "https://doing-meta.guide/power.html",
+    "source_type": "Bookdown (Doing Meta-Analysis in R)",
+    "test_type": "meta-analysis subgroup comparison",
+    "question_text": "Two subgroups with SMD=0.30 (SE=0.13) and SMD=0.66 (SE=0.14). What is the power to detect the difference?",
+    "parameters": {
+      "TE1": 0.30,
+      "TE2": 0.66,
+      "seTE1": 0.13,
+      "seTE2": 0.14
+    },
+    "result": {
+      "power": 0.4699,
+      "min_detectable_difference_for_80pct": 0.536
+    },
+    "r_code": "power.analysis.subgroup(TE1 = 0.30, TE2 = 0.66, seTE1 = 0.13, seTE2 = 0.14)"
+  },
+  {
+    "id": 73,
+    "source_url": "https://slcladal.github.io/pwr.html",
+    "source_type": "SLCLADAL Power Analysis in R tutorial",
+    "test_type": "one-way ANOVA",
+    "question_text": "5 groups, medium effect f=0.25, 80% power at alpha=0.05. How many per group?",
+    "parameters": {
+      "k": 5,
+      "f": 0.25,
+      "sig_level": 0.05,
+      "power": 0.80
+    },
+    "result": {
+      "n_per_group": 39.15
+    },
+    "r_code": "pwr.anova.test(k=5, f=.25, sig.level=.05, power=.8)"
+  },
+  {
+    "id": 74,
+    "source_url": "https://slcladal.github.io/pwr.html",
+    "source_type": "SLCLADAL Power Analysis in R tutorial",
+    "test_type": "one-way ANOVA (post-hoc)",
+    "question_text": "5 groups, medium effect f=0.25, n=30 per group, alpha=0.05. What is the power?",
+    "parameters": {
+      "k": 5,
+      "f": 0.25,
+      "sig_level": 0.05,
+      "n": 30
+    },
+    "result": {
+      "power": 0.6676
+    },
+    "r_code": "pwr.anova.test(k=5, f=.25, sig.level=.05, n=30)"
+  },
+  {
+    "id": 75,
+    "source_url": "https://slcladal.github.io/pwr.html",
+    "source_type": "SLCLADAL Power Analysis in R tutorial",
+    "test_type": "general linear model",
+    "question_text": "2 groups, 30 per group (v=58 df), weak effect f2=0.02, alpha=0.05. What is the power?",
+    "parameters": {
+      "u": 1,
+      "v": 58,
+      "f2": 0.02,
+      "sig_level": 0.05
+    },
+    "result": {
+      "power": 0.1899
+    },
+    "r_code": "pwr.f2.test(u=1, v=58, f2=.02, sig.level=0.05)"
+  },
+  {
+    "id": 76,
+    "source_url": "https://slcladal.github.io/pwr.html",
+    "source_type": "SLCLADAL Power Analysis in R tutorial",
+    "test_type": "paired t-test",
+    "question_text": "30 participants, small effect d=0.2, alpha=0.05, two-sided. What is the power?",
+    "parameters": {
+      "n": 30,
+      "d": 0.2,
+      "sig_level": 0.05,
+      "type": "paired",
+      "alternative": "two.sided"
+    },
+    "result": {
+      "power": 0.1852
+    },
+    "r_code": "pwr.t.test(d=0.2, n=30, sig.level=0.05, type=\"paired\", alternative=\"two.sided\")"
+  },
+  {
+    "id": 77,
+    "source_url": "https://slcladal.github.io/pwr.html",
+    "source_type": "SLCLADAL Power Analysis in R tutorial",
+    "test_type": "paired t-test",
+    "question_text": "How many pairs for d=0.2, 80% power at alpha=0.05 (two-sided)?",
+    "parameters": {
+      "d": 0.2,
+      "power": 0.80,
+      "sig_level": 0.05,
+      "type": "paired",
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n_pairs": 199
+    },
+    "r_code": "pwr.t.test(d=0.2, power=.8, sig.level=0.05, type=\"paired\", alternative=\"two.sided\")"
+  },
+  {
+    "id": 78,
+    "source_url": "https://slcladal.github.io/pwr.html",
+    "source_type": "SLCLADAL Power Analysis in R tutorial",
+    "test_type": "chi-square test",
+    "question_text": "N=25, small effect w=0.2, df=1, alpha=0.05. What is the power?",
+    "parameters": {
+      "w": 0.2,
+      "N": 25,
+      "df": 1,
+      "sig_level": 0.05
+    },
+    "result": {
+      "power": 0.1701
+    },
+    "r_code": "pwr.chisq.test(w=0.2, N=25, df=1, sig.level=0.05)"
+  },
+  {
+    "id": 79,
+    "source_url": "https://slcladal.github.io/pwr.html",
+    "source_type": "SLCLADAL Power Analysis in R tutorial",
+    "test_type": "chi-square test",
+    "question_text": "How many observations for w=0.2, df=1, 80% power at alpha=0.05?",
+    "parameters": {
+      "w": 0.2,
+      "df": 1,
+      "power": 0.80,
+      "sig_level": 0.05
+    },
+    "result": {
+      "N": 197
+    },
+    "r_code": "pwr.chisq.test(w=0.2, power=.8, df=1, sig.level=0.05)"
+  },
+  {
+    "id": 80,
+    "source_url": "https://slcladal.github.io/pwr.html",
+    "source_type": "SLCLADAL Power Analysis in R tutorial (simr)",
+    "test_type": "linear mixed model (simr)",
+    "question_text": "Group x SentenceType interaction in LMER with 20 participants and 24 sentences. What is the power?",
+    "parameters": {
+      "n_participants": 20,
+      "n_sentences": 24,
+      "effect_size": 0.52,
+      "nsim": 20
+    },
+    "result": {
+      "power": 0.25,
+      "power_ci": [0.0866, 0.4910]
+    },
+    "r_code": "sim_gst <- simr::powerSim(m1, nsim=20, test=fcompare(y ~ WordOrder + Group + SentenceType))"
+  },
+  {
+    "id": 81,
+    "source_url": "https://slcladal.github.io/pwr.html",
+    "source_type": "SLCLADAL Power Analysis in R tutorial (simr)",
+    "test_type": "linear mixed model (simr, extended)",
+    "question_text": "Same LMER but extended to 120 sentences. What is the power for the interaction?",
+    "parameters": {
+      "n_participants": 20,
+      "n_sentences": 120,
+      "nsim": 20
+    },
+    "result": {
+      "power": 0.90,
+      "power_ci": [0.6830, 0.9877],
+      "total_observations": 2400
+    },
+    "r_code": "m1_as <- simr::extend(m1, along=\"Sentence\", n=120); powerSim(m1_as, nsim=20, test=fcompare(y ~ WordOrder + Group + SentenceType))"
+  },
+  {
+    "id": 82,
+    "source_url": "https://slcladal.github.io/pwr.html",
+    "source_type": "SLCLADAL Power Analysis in R tutorial (simr)",
+    "test_type": "linear mixed model (simr, extended)",
+    "question_text": "Same LMER extended to 120 participants. What is the power for the interaction?",
+    "parameters": {
+      "n_participants": 120,
+      "n_sentences": 24,
+      "nsim": 20
+    },
+    "result": {
+      "power": 0.80,
+      "power_ci": [0.5634, 0.9427],
+      "total_observations": 2880
+    },
+    "r_code": "m1_ap <- simr::extend(m1, along=\"ID\", n=120); powerSim(m1_ap, nsim=20, test=fcompare(y ~ WordOrder + Group + SentenceType))"
+  },
+  {
+    "id": 83,
+    "source_url": "https://slcladal.github.io/pwr.html",
+    "source_type": "SLCLADAL Power Analysis in R tutorial (simr)",
+    "test_type": "generalized linear mixed model (simr)",
+    "question_text": "Binary outcome GLMM with 10 subjects, 10 items. Power for condition effect?",
+    "parameters": {
+      "n_subjects": 10,
+      "n_items": 10,
+      "outcome": "binary",
+      "nsim": 20
+    },
+    "result": {
+      "power": 0.35,
+      "power_ci": [0.1539, 0.5922]
+    },
+    "r_code": "rsim_m2_c <- powerSim(m2, fixed(\"ConditionTest\", \"z\"), nsim=20)"
+  },
+  {
+    "id": 84,
+    "source_url": "https://psyteachr.github.io/quant-fun-v2/power-and-effect-sizes.html",
+    "source_type": "PsyTeachR (Fundamentals of Quantitative Analysis)",
+    "test_type": "two-sample t-test",
+    "question_text": "How many participants per group to detect d=0.4, 80% power at alpha=0.05 (two-sided)?",
+    "parameters": {
+      "d": 0.4,
+      "power": 0.80,
+      "sig_level": 0.05,
+      "type": "two.sample",
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n_per_group": 100
+    },
+    "r_code": "pwr.t.test(d = .4, power = .8, sig.level = .05, alternative = \"two.sided\", type = \"two.sample\")"
+  },
+  {
+    "id": 85,
+    "source_url": "https://psyteachr.github.io/quant-fun-v2/power-and-effect-sizes.html",
+    "source_type": "PsyTeachR (Fundamentals of Quantitative Analysis)",
+    "test_type": "one-sample t-test",
+    "question_text": "How many participants for d=0.23, 80% power at alpha=0.05 (two-sided)?",
+    "parameters": {
+      "d": 0.23,
+      "power": 0.80,
+      "sig_level": 0.05,
+      "type": "one.sample",
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n": 151
+    },
+    "r_code": "pwr.t.test(d = .23, power = .8, sig.level = .05, alternative = \"two.sided\", type = \"one.sample\")"
+  },
+  {
+    "id": 86,
+    "source_url": "https://psyteachr.github.io/quant-fun-v2/power-and-effect-sizes.html",
+    "source_type": "PsyTeachR (Fundamentals of Quantitative Analysis)",
+    "test_type": "two-sample t-test (minimum detectable effect)",
+    "question_text": "What is the minimum detectable Cohen's d with n=50 per group, 90% power at alpha=0.05 (two-sided)?",
+    "parameters": {
+      "n": 50,
+      "power": 0.90,
+      "sig_level": 0.05,
+      "type": "two.sample",
+      "alternative": "two.sided"
+    },
+    "result": {
+      "d": 0.65
+    },
+    "r_code": "pwr.t.test(n = 50, power = .9, sig.level = .05, alternative = \"two.sided\", type = \"two.sample\")"
+  },
+  {
+    "id": 87,
+    "source_url": "https://psyteachr.github.io/quant-fun-v2/power-and-effect-sizes.html",
+    "source_type": "PsyTeachR (Fundamentals of Quantitative Analysis)",
+    "test_type": "two-sample t-test (unequal n, minimum detectable effect)",
+    "question_text": "What is the minimum detectable d with n1=25, n2=30, 80% power at alpha=0.05?",
+    "parameters": {
+      "n1": 25,
+      "n2": 30,
+      "power": 0.80,
+      "sig_level": 0.05,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "d": 0.773
+    },
+    "r_code": "pwr.t2n.test(n1 = 25, n2 = 30, power = .8, sig.level = .05, alternative = \"two.sided\")"
+  },
+  {
+    "id": 88,
+    "source_url": "https://psyteachr.github.io/quant-fun-v2/power-and-effect-sizes.html",
+    "source_type": "PsyTeachR (Fundamentals of Quantitative Analysis)",
+    "test_type": "Pearson correlation",
+    "question_text": "How many participants to detect r=0.4 with 80% power at alpha=0.05 (two-sided)?",
+    "parameters": {
+      "r": 0.4,
+      "power": 0.80,
+      "sig_level": 0.05,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "n": 48
+    },
+    "r_code": "pwr.r.test(r = .4, sig.level = .05, power = .8, alternative = \"two.sided\")"
+  },
+  {
+    "id": 89,
+    "source_url": "https://psyteachr.github.io/quant-fun-v2/power-and-effect-sizes.html",
+    "source_type": "PsyTeachR (Fundamentals of Quantitative Analysis)",
+    "test_type": "Pearson correlation (minimum detectable effect)",
+    "question_text": "What is the minimum detectable r with n=50, 80% power at alpha=0.05 (one-sided, greater)?",
+    "parameters": {
+      "n": 50,
+      "power": 0.80,
+      "sig_level": 0.05,
+      "alternative": "greater"
+    },
+    "result": {
+      "r": 0.344
+    },
+    "r_code": "pwr.r.test(n = 50, sig.level = .05, power = .8, alternative = \"greater\")"
+  },
+  {
+    "id": 90,
+    "source_url": "https://psyteachr.github.io/quant-fun-v2/power-and-effect-sizes.html",
+    "source_type": "PsyTeachR (Fundamentals of Quantitative Analysis)",
+    "test_type": "two-sample t-test (secondary data, minimum detectable effect)",
+    "question_text": "Existing dataset with n=100 per group. Minimum detectable d for 80% power at alpha=0.05?",
+    "parameters": {
+      "n": 100,
+      "power": 0.80,
+      "sig_level": 0.05,
+      "type": "two.sample",
+      "alternative": "two.sided"
+    },
+    "result": {
+      "d": 0.398
+    },
+    "r_code": "pwr.t.test(n = 100, sig.level = .05, power = .8, type = \"two.sample\", alternative = \"two.sided\")"
+  },
+  {
+    "id": 91,
+    "source_url": "https://psyteachr.github.io/quant-fun-v2/power-and-effect-sizes.html",
+    "source_type": "PsyTeachR (Fundamentals of Quantitative Analysis)",
+    "test_type": "two-sample t-test (unequal n, secondary data)",
+    "question_text": "Existing data with n1=60, n2=40. Minimum detectable d for 80% power at alpha=0.05?",
+    "parameters": {
+      "n1": 60,
+      "n2": 40,
+      "power": 0.80,
+      "sig_level": 0.05,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "d": 0.578
+    },
+    "r_code": "pwr.t2n.test(n1 = 60, n2 = 40, sig.level = .05, power = .8, alternative = \"two.sided\")"
+  },
+  {
+    "id": 92,
+    "source_url": "https://psyteachr.github.io/quant-fun-v2/power-and-effect-sizes.html",
+    "source_type": "PsyTeachR (Fundamentals of Quantitative Analysis)",
+    "test_type": "Pearson correlation (secondary data, minimum detectable effect)",
+    "question_text": "Existing data with n=50. Minimum detectable r for 80% power at alpha=0.05 (two-sided)?",
+    "parameters": {
+      "n": 50,
+      "power": 0.80,
+      "sig_level": 0.05,
+      "alternative": "two.sided"
+    },
+    "result": {
+      "r": 0.384
+    },
+    "r_code": "pwr.r.test(n = 50, sig.level = .05, power = .8, alternative = \"two.sided\")"
+  },
+  {
+    "id": 93,
+    "source_url": "https://data-wise.github.io/doe/appendix/r-packages/pwr.html",
+    "source_type": "STAT 454/545 (DOE course)",
+    "test_type": "one-sample t-test",
+    "question_text": "How many observations for a one-sample t-test with d=0.5, 80% power at alpha=0.05?",
+    "parameters": {
+      "d": 0.5,
+      "power": 0.80,
+      "sig_level": 0.05,
+      "type": "one.sample"
+    },
+    "result": {
+      "n": 33.37
+    },
+    "r_code": "pwr.t.test(d = 0.5, power = 0.8, sig.level = 0.05, type = \"one.sample\")"
+  },
+  {
+    "id": 94,
+    "source_url": "https://data-wise.github.io/doe/appendix/r-packages/pwr.html",
+    "source_type": "STAT 454/545 (DOE course)",
+    "test_type": "two-sample t-test (post-hoc)",
+    "question_text": "What is the power with n=30, d=0.5, alpha=0.05 for a two-sample t-test?",
+    "parameters": {
+      "n": 30,
+      "d": 0.5,
+      "sig_level": 0.05,
+      "type": "two.sample"
+    },
+    "result": {
+      "power": 0.478
+    },
+    "r_code": "pwr.t.test(n = 30, d = 0.5, sig.level = 0.05, type = \"two.sample\")"
+  },
+  {
+    "id": 95,
+    "source_url": "https://data-wise.github.io/doe/appendix/r-packages/pwr.html",
+    "source_type": "STAT 454/545 (DOE course)",
+    "test_type": "one-way ANOVA",
+    "question_text": "4 groups, medium effect f=0.25, 80% power at alpha=0.05. How many per group?",
+    "parameters": {
+      "k": 4,
+      "f": 0.25,
+      "sig_level": 0.05,
+      "power": 0.80
+    },
+    "result": {
+      "n_per_group": 44.60
+    },
+    "r_code": "pwr.anova.test(k = 4, f = 0.25, sig.level = 0.05, power = 0.8)"
+  },
+  {
+    "id": 96,
+    "source_url": "https://data-wise.github.io/doe/appendix/r-packages/pwr.html",
+    "source_type": "STAT 454/545 (DOE course)",
+    "test_type": "Pearson correlation",
+    "question_text": "How many observations to detect r=0.3 with 80% power at alpha=0.05?",
+    "parameters": {
+      "r": 0.3,
+      "power": 0.80,
+      "sig_level": 0.05
+    },
+    "result": {
+      "n": 84.07
+    },
+    "r_code": "pwr.r.test(r = 0.3, power = 0.8, sig.level = 0.05)"
+  },
+  {
+    "id": 97,
+    "source_url": "https://data-wise.github.io/doe/appendix/r-packages/pwr.html",
+    "source_type": "STAT 454/545 (DOE course)",
+    "test_type": "Pearson correlation",
+    "question_text": "How many observations to detect r=0.4 with 80% power at alpha=0.05?",
+    "parameters": {
+      "r": 0.4,
+      "power": 0.80,
+      "sig_level": 0.05
+    },
+    "result": {
+      "n": 45.92
+    },
+    "r_code": "pwr.r.test(r = 0.4, power = 0.8, sig.level = 0.05)"
+  },
+  {
+    "id": 98,
+    "source_url": "https://library.virginia.edu/data/articles/power-and-sample-size-estimation-logistic-regression",
+    "source_type": "UVA Library (logistic regression tutorial)",
+    "test_type": "logistic regression (simulation)",
+    "question_text": "Two binary predictors with interaction. P(y=1) varies from 0.30 to 0.85 across cells. What is the power with n=200 at alpha=0.05?",
+    "parameters": {
+      "n": 200,
+      "sig_level": 0.05,
+      "probabilities": {
+        "x0_z0": 0.40,
+        "x1_z0": 0.85,
+        "x0_z1": 0.30,
+        "x1_z1": 0.50
+      },
+      "coefficients": {
+        "b0": -0.4055,
+        "b1": 2.1401,
+        "b2": -0.4418,
+        "b3_interaction": -1.2928
+      },
+      "nsim": 1000
+    },
+    "result": {
+      "power": 0.523
+    },
+    "r_code": "n <- 200; p_out <- replicate(n = 1000, expr = { x <- sample(0:1, size = n, replace = TRUE); z <- sample(0:1, size = n, replace = TRUE); p <- plogis(b0 + b1*(x==1) + b2*(z==1) + b3*(x==1)*(z==1)); y <- rbinom(n=n, size=1, prob=p); d <- data.frame(y, x, z); m <- glm(y ~ x + z + x:z, data=d, family=binomial); summary(m)$coefficients[4,4] < 0.05 }); mean(p_out)"
+  },
+  {
+    "id": 99,
+    "source_url": "https://library.virginia.edu/data/articles/power-and-sample-size-estimation-logistic-regression",
+    "source_type": "UVA Library (logistic regression tutorial)",
+    "test_type": "logistic regression (simulation, grid search)",
+    "question_text": "Same logistic regression interaction: what sample size needed for 80% power at alpha=0.05?",
+    "parameters": {
+      "sig_level": 0.05,
+      "desired_power": 0.80,
+      "sample_sizes_tested": [350, 400, 450, 500],
+      "nsim": 1000
+    },
+    "result": {
+      "power_at_350": 0.760,
+      "power_at_400": 0.800,
+      "power_at_450": 0.869,
+      "power_at_500": 0.887,
+      "recommended_n": 400
+    },
+    "r_code": "sapply(c(350, 400, 450, 500), power_fn)"
+  },
+  {
+    "id": 100,
+    "source_url": "https://library.virginia.edu/data/articles/power-and-sample-size-estimation-logistic-regression",
+    "source_type": "UVA Library (logistic regression tutorial)",
+    "test_type": "logistic regression (simulation, stricter alpha)",
+    "question_text": "Same interaction with alpha=0.01. What are the powers at n=350-500?",
+    "parameters": {
+      "sig_level": 0.01,
+      "sample_sizes_tested": [350, 400, 450, 500],
+      "nsim": 1000
+    },
+    "result": {
+      "power_at_350": 0.545,
+      "power_at_400": 0.596,
+      "power_at_450": 0.683,
+      "power_at_500": 0.715
+    },
+    "r_code": "sapply(c(350, 400, 450, 500), power_fn, sig.level = 0.01)"
+  },
+  {
+    "id": 101,
+    "source_url": "https://humburg.github.io/Power-Analysis/simr_power_analysis.html",
+    "source_type": "Humburg simr tutorial",
+    "test_type": "linear mixed model (simr)",
+    "question_text": "Treatment x time interaction in nested design (5 classes, 10 students, 3 timepoints). Fixed effects: treat:time1=1, treat:time2=0.9. Power?",
+    "parameters": {
+      "fixed_effects": {
+        "intercept": 5,
+        "treat": 0,
+        "time1": 0.1,
+        "time2": 0.2,
+        "treat_time1": 1,
+        "treat_time2": 0.9
+      },
+      "random_effects": {
+        "class_var": 0.1,
+        "id_class_var": 0.5
+      },
+      "residual_sd": 2,
+      "n_classes": 5,
+      "n_students": 10,
+      "n_timepoints": 3,
+      "nsim": 100
+    },
+    "result": {
+      "power": 0.41,
+      "power_ci": [0.3126, 0.5129]
+    },
+    "r_code": "powerSim(model, nsim=100, test = fcompare(y~time))"
+  },
+  {
+    "id": 102,
+    "source_url": "https://humburg.github.io/Power-Analysis/simr_power_analysis.html",
+    "source_type": "Humburg simr tutorial",
+    "test_type": "linear mixed model (simr, larger effect)",
+    "question_text": "Same design but treat:time1 interaction increased from 1 to 2. Power?",
+    "parameters": {
+      "treat_time1": 2,
+      "other_params": "same as above",
+      "nsim": 100
+    },
+    "result": {
+      "power": 0.87,
+      "power_ci": [0.7880, 0.9289]
+    },
+    "r_code": "powerSim(model_large, nsim=100, test = fcompare(y~time))"
+  },
+  {
+    "id": 103,
+    "source_url": "https://humburg.github.io/Power-Analysis/simr_power_analysis.html",
+    "source_type": "Humburg simr tutorial",
+    "test_type": "linear mixed model (simr, extended design)",
+    "question_text": "Extended to 20 classes (from 5), 10 students, 3 timepoints. Power?",
+    "parameters": {
+      "n_classes": 20,
+      "n_students": 10,
+      "n_timepoints": 3,
+      "total_observations": 600,
+      "nsim": 100
+    },
+    "result": {
+      "power": 0.98,
+      "power_ci": [0.9296, 0.9976]
+    },
+    "r_code": "powerSim(model_ext_class, nsim=100, test = fcompare(y~time))"
+  },
+  {
+    "id": 104,
+    "source_url": "https://humburg.github.io/Power-Analysis/simr_power_analysis.html",
+    "source_type": "Humburg simr tutorial",
+    "test_type": "linear mixed model (simr, extended subjects)",
+    "question_text": "5 classes, 20 students per class (doubled from 10), 3 timepoints. Power?",
+    "parameters": {
+      "n_classes": 5,
+      "n_students": 20,
+      "n_timepoints": 3,
+      "total_observations": 600,
+      "nsim": 100
+    },
+    "result": {
+      "power": 0.88,
+      "power_ci": [0.7998, 0.9364]
+    },
+    "r_code": "powerSim(model_ext_subj, nsim=100, test = fcompare(y~time))"
+  },
+  {
+    "id": 105,
+    "source_url": "https://cran.r-project.org/web/packages/simr/vignettes/fromscratch.html",
+    "source_type": "CRAN simr vignette (from scratch)",
+    "test_type": "linear mixed model (makeLmer)",
+    "question_text": "LMM with fixed intercept=2, slope=-0.1, random intercept variance=0.5, residual SD=1. Power for slope with 30 obs and 3 groups?",
+    "parameters": {
+      "fixed_effects": {
+        "intercept": 2,
+        "x": -0.1
+      },
+      "random_intercept_var": 0.5,
+      "residual_sd": 1,
+      "n_obs": 30,
+      "n_groups": 3,
+      "nsim": 20
+    },
+    "result": {
+      "power": 0.30,
+      "power_ci": [0.1189, 0.5428]
+    },
+    "r_code": "model1 <- makeLmer(y ~ x + (1|g), fixef=c(2, -0.1), VarCorr=0.5, sigma=1, data=X); powerSim(model1, nsim=20)"
+  },
+  {
+    "id": 106,
+    "source_url": "https://cran.r-project.org/web/packages/simr/vignettes/fromscratch.html",
+    "source_type": "CRAN simr vignette (from scratch)",
+    "test_type": "generalized linear mixed model (makeGlmer)",
+    "question_text": "Poisson GLMM with random slope and intercept. Fixed intercept=2, slope=-0.1. Power for slope with 30 obs and 3 groups?",
+    "parameters": {
+      "family": "poisson",
+      "fixed_effects": {
+        "intercept": 2,
+        "x": -0.1
+      },
+      "random_intercept_sd": 0.707,
+      "random_slope_sd": 0.316,
+      "random_correlation": 0.22,
+      "n_obs": 30,
+      "n_groups": 3,
+      "nsim": 20
+    },
+    "result": {
+      "power": 0.35,
+      "power_ci": [0.1539, 0.5922]
+    },
+    "r_code": "model2 <- makeGlmer(z ~ x + (x|g), family=\"poisson\", fixef=c(2, -0.1), VarCorr=matrix(c(0.5, 0.05, 0.05, 0.1), 2), data=X); powerSim(model2, nsim=20)"
+  }
+]

@@ -1,0 +1,730 @@
+[
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "Testing whether a coin is loaded (75% heads vs 50% fair coin). What sample size is needed for 80% power at alpha=0.05 one-sided?",
+    "r_code": "pwr.p.test(h = ES.h(p1 = 0.75, p2 = 0.50), sig.level = 0.05, power = 0.80, alternative = \"greater\")",
+    "result": "n = 22.55 (round to 23 flips)",
+    "source_description": "pwr vignette: Getting started with the pwr package - one-sample proportion test"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "Comparing alcohol consumption rates between male and female undergraduates (55% vs 50%). What sample size per group is needed for 80% power?",
+    "r_code": "pwr.2p.test(h = ES.h(p1 = 0.55, p2 = 0.50), sig.level = 0.05, power = .80)",
+    "result": "n = 1564.53 per group",
+    "source_description": "pwr vignette: Two-sample proportion test with small effect"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "Comparing alcohol consumption rates between male and female undergraduates (10% vs 5%). What sample size per group is needed for 80% power?",
+    "r_code": "pwr.2p.test(h = ES.h(p1 = 0.10, p2 = 0.05), sig.level = 0.05, power = .80)",
+    "result": "n = 423.73 per group",
+    "source_description": "pwr vignette: Two-sample proportion test with larger effect"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "Survey with 543 male and 675 female participants. What is the power to detect a small effect (h=0.2) in proportions?",
+    "r_code": "pwr.2p2n.test(h = 0.2, n1 = 543, n2 = 675, sig.level = 0.05)",
+    "result": "Power = 93.44%",
+    "source_description": "pwr vignette: Two-sample proportion test with unequal sample sizes"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "Comparing mean coffee shop purchase prices by gender with n=30 per group. What is the power to detect a medium effect (d=0.5)?",
+    "r_code": "pwr.t.test(n = 30, d = 0.5, sig.level = 0.05)",
+    "result": "Power = 47.79%",
+    "source_description": "pwr vignette: Two-sample t-test power calculation"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "What sample size per group is needed for 80% power to detect a medium effect (d=0.5) in a two-sample t-test?",
+    "r_code": "pwr.t.test(d = 0.5, power = 0.80, sig.level = 0.05)",
+    "result": "n = 63.77 per group",
+    "source_description": "pwr vignette: Two-sample t-test sample size"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "Detecting a 75-cent difference in coffee purchases (SD=$2.25). What sample size is needed per group for 80% power?",
+    "r_code": "d <- 0.75/2.25\npwr.t.test(d = d, power = 0.80, sig.level = 0.05)",
+    "result": "n = 142.25 per group (d = 0.333)",
+    "source_description": "pwr vignette: Two-sample t-test with specific effect size"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "Testing if mean coffee purchase exceeds $3 (one-sided). How many transactions needed for 90% power with d=0.222?",
+    "r_code": "d <- 0.50/2.25\npwr.t.test(d = d, sig.level = 0.05, power = 0.90, alternative = \"greater\", type = \"one.sample\")",
+    "result": "n = 174.78 transactions",
+    "source_description": "pwr vignette: One-sample t-test"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "24 boys tested for 40-yard dash improvement after rope-jumping program (SD=0.25s, expected improvement=0.08s). What is the power of a paired t-test?",
+    "r_code": "pwr.t.test(n = 24, d = 0.08 / 0.25, type = \"paired\", alternative = \"greater\")",
+    "result": "Power = 45.09%",
+    "source_description": "pwr vignette: Paired t-test power"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "How many pairs needed for 80% power in the rope-jumping study (paired t-test, d=0.32, one-sided)?",
+    "r_code": "pwr.t.test(d = 0.08 / 0.25, power = 0.8, type = \"paired\", alternative = \"greater\")",
+    "result": "n = 61.75 pairs",
+    "source_description": "pwr vignette: Paired t-test sample size"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "Package design preference study: 4 designs tested on 100 consumers, expecting 3/8 preference for one design. What power does a chi-square GOF test have?",
+    "r_code": "null <- rep(0.25, 4)\nalt <- c(3/8, rep((5/8)/3, 3))\nES.w1(null, alt)  # w = 0.2887\npwr.chisq.test(w = 0.2887, N = 100, df = 3, sig.level = 0.05)",
+    "result": "Power = 67.40%",
+    "source_description": "pwr vignette: Chi-square goodness of fit"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "How many consumers needed for 80% power in package design preference study (chi-square GOF, w=0.2887, df=3)?",
+    "r_code": "pwr.chisq.test(w = 0.2887, df = 3, power = 0.8, sig.level = 0.05)",
+    "result": "N = 130.83 subjects",
+    "source_description": "pwr vignette: Chi-square GOF sample size"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "Gender vs daily flossing behavior (2x2 contingency table, w=0.2182). How many students for 90% power at alpha=0.01?",
+    "r_code": "pwr.chisq.test(w = 0.2182, power = 0.9, df = 1, sig.level = 0.01)",
+    "result": "N = 312.47 students",
+    "source_description": "pwr vignette: Chi-square test of association"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "Detecting a small positive correlation (r=0.1) between weight change and initial weight. Sample size for 80% power at alpha=0.01 one-sided?",
+    "r_code": "pwr.r.test(r = 0.1, sig.level = 0.01, power = 0.8, alternative = \"greater\")",
+    "result": "n = 999.21 students",
+    "source_description": "pwr vignette: Correlation test sample size"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "Three fuel types tested for MPG differences using one-way ANOVA. How many trials per fuel type for 90% power at alpha=0.01 with medium effect (f=0.25)?",
+    "r_code": "pwr.anova.test(k = 3, f = 0.25, sig.level = 0.01, power = 0.9)",
+    "result": "n = 94.49 per fuel type",
+    "source_description": "pwr vignette: Balanced one-way ANOVA"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html",
+    "package": "pwr",
+    "question_context": "Predicting first-year GPA from SAT scores and class rank (R-squared=0.30, 2 predictors). Sample size for 80% power at alpha=0.001?",
+    "r_code": "pwr.f2.test(u = 2, f2 = 0.3/(1 - 0.3), sig.level = 0.001, power = 0.8)",
+    "result": "v = 49.89, total n = 53 student records",
+    "source_description": "pwr vignette: Multiple regression (general linear model)"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/GentleIntroductionToGSD.html",
+    "package": "gsDesign",
+    "question_context": "Major depression treatment trial (Binneman et al. 2008): HAM-D score change, delta=3, SD=7.5, alpha=0.10 one-sided, power=83%. Design a 2-analysis group sequential study with O'Brien-Fleming spending.",
+    "r_code": "n <- nNormal(delta1 = 3, delta0 = 0, ratio = 1, sd = 7.5, alpha = 0.1, beta = 0.17)\nx <- gsDesign(k = 2, test.type = 4, alpha = 0.1, beta = 0.17, timing = 0.5, sfu = sfLDOF, sfl = sfLDOF, delta1 = 3, delta0 = 0, endpoint = \"normal\", n.fix = n)\nx <- toInteger(x)",
+    "result": "Interim at N=59: efficacy Z=2.2209 (p=0.0132), futility Z=-0.2304 (p=0.5911). Final at N=134: Z=1.3047. Power if delta=3: 83.5%",
+    "source_description": "gsDesign vignette: A gentle introduction to group sequential design - Depression trial"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/VaccineEfficacy.html",
+    "package": "gsDesign",
+    "question_context": "COVID-19 vaccine efficacy trial: VE1=70%, VE0=30%, 3:1 randomization, alpha=0.025 one-sided, 90% power, 3 analyses with HSD spending. Design group sequential trial with exact binomial bounds.",
+    "r_code": "x <- gsSurv(k = 3, test.type = 4, alpha = 0.025, beta = 0.1, timing = c(.45, .7), sfu = sfHSD, sfupar = -3, sfl = sfHSD, sflpar = -3, lambdaC = .002, eta = .0001, hr = 1 - 0.7, hr0 = 1 - 0.3, R = 8, T = 24, minfup = 16, ratio = 3)\nxx <- toInteger(x)\nxb <- toBinomialExact(x)",
+    "result": "Total N=3606, 68 events required. Analysis 1 (30 events): efficacy bound a=12, futility b=21. Analysis 2 (47 events): a=23, b=30. Final (68 events): a=37, b=38.",
+    "source_description": "gsDesign vignette: Vaccine efficacy trial design with exact binomial bounds"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/VaccineEfficacy.html",
+    "package": "gsDesign",
+    "question_context": "SPUTNIK COVID-19 vaccine trial: updating binomial bounds based on actual interim data (20 events at first database lock, 78 events at second with 16 in experimental group).",
+    "r_code": "ebUpdate <- toBinomialExact(xx, observedEvents = c(20, 78))",
+    "result": "Analysis 1 (20 cases): efficacy bound=6 (VE>=0.86), futility=16 (VE<=-0.33). Analysis 2 (78 cases): efficacy=44 (VE>=0.57), futility=45. With 16 experimental events, efficacy crossed (16 << 44).",
+    "source_description": "gsDesign vignette: SPUTNIK vaccine trial real-data update"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/SurvivalOverview.html",
+    "package": "gsDesign",
+    "question_context": "How many events are needed for 90% power with HR=0.7 at alpha=0.025 one-sided?",
+    "r_code": "nEvents(hr = 0.7, alpha = 0.025, beta = 0.1, r = 1, tbl = TRUE)",
+    "result": "Approximately 331 events required for 90% power",
+    "source_description": "gsDesign vignette: Survival endpoint design - Schoenfeld formula"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/SurvivalOverview.html",
+    "package": "gsDesign",
+    "question_context": "Lachin-Foulkes fixed design: control median=8 months, HR=0.7, 12-month enrollment, 16-month minimum follow-up, dropout rate 0.001/month. What total sample size and events are needed for 90% power?",
+    "r_code": "Nlf <- nSurv(lambdaC = log(2) / 8, hr = 0.7, eta = 0.001, T = 28, minfup = 16, ratio = 1, alpha = 0.025, beta = 0.1)",
+    "result": "Sample size = 422 subjects; Events = 330",
+    "source_description": "gsDesign vignette: Lachin-Foulkes method for survival endpoint"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/SurvivalOverview.html",
+    "package": "gsDesign",
+    "question_context": "Group sequential survival design: 2 analyses, control median=8 months, HR=0.7, enrollment 12 months, minimum follow-up 16 months.",
+    "r_code": "lfgs <- gsSurv(k = 2, lambdaC = log(2) / 8, hr = 0.7, eta = 0.001, T = 28, minfup = 16, ratio = 1, alpha = 0.025, beta = 0.1) %>% toInteger()",
+    "result": "Interim (172 events, month 13): efficacy HR ~0.658. Final (344 events, month 28): efficacy HR ~0.808. Power if HR=0.7: 90.06%",
+    "source_description": "gsDesign vignette: Group sequential survival design with Lachin-Foulkes"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/SurvivalOverview.html",
+    "package": "gsDesign",
+    "question_context": "Sample size for 2:1 randomization with HR=0.8 based on Z-value approach. How many events are needed?",
+    "r_code": "hrz2n(hr = 0.8, z = qnorm(0.025), ratio = 2)",
+    "result": "Approximately 347 events required",
+    "source_description": "gsDesign vignette: Survival events from HR and Z-value"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/binomialTwoSample.html",
+    "package": "gsDesign",
+    "question_context": "Superiority trial comparing success rates 0.2 vs 0.1 with 2:1 randomization, alpha=0.025, 85% power. What total sample size is needed?",
+    "r_code": "nBinomial(p1 = 0.2, p2 = 0.1, ratio = 2, alpha = 0.025, beta = 0.15) %>% ceiling()",
+    "result": "Total N = 496",
+    "source_description": "gsDesign vignette: Binomial two-arm superiority trial"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/binomialTwoSample.html",
+    "package": "gsDesign",
+    "question_context": "Compare sample size requirements using risk-difference, risk-ratio, and odds-ratio scales for p1=0.2 vs p2=0.1.",
+    "r_code": "nBinomial(p1 = 0.2, p2 = 0.1, ratio = 0.5, alpha = 0.025, beta = 0.15, scale = \"Difference\")\nnBinomial(p1 = 0.2, p2 = 0.1, ratio = 0.5, alpha = 0.025, beta = 0.15, scale = \"RR\")\nnBinomial(p1 = 0.2, p2 = 0.1, ratio = 0.5, alpha = 0.025, beta = 0.15, scale = \"OR\")",
+    "result": "Risk Difference: N=525, Risk-Ratio: N=525, Odds-Ratio: N=489",
+    "source_description": "gsDesign vignette: Binomial sample size across effect scales"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/binomialTwoSample.html",
+    "package": "gsDesign",
+    "question_context": "Non-inferiority vs superiority vs super-superiority sample sizes: p1=0.2, p2=0.1, with different delta0 margins.",
+    "r_code": "nBinomial(p1 = 0.2, p2 = 0.1, alpha = 0.025, beta = 0.15, ratio = 0.5, delta0 = 0)\nnBinomial(p1 = 0.2, p2 = 0.1, alpha = 0.025, beta = 0.15, ratio = 0.5, delta0 = -0.02)\nnBinomial(p1 = 0.2, p2 = 0.1, alpha = 0.025, beta = 0.15, ratio = 0.5, delta0 = 0.02)",
+    "result": "Superiority (delta0=0): N=525. Non-inferiority (delta0=-0.02): N=375. Super-superiority (delta0=0.02): N=796.",
+    "source_description": "gsDesign vignette: Binomial design comparison across margins"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/nNormal.html",
+    "package": "gsDesign",
+    "question_context": "Two-sample normal endpoint with unequal SDs (sigma1=1.6, sigma2=1.25), delta=0.8, 2:1 randomization, alpha=0.025 one-sided, 90% power. What sample size is needed?",
+    "r_code": "nNormal(delta1 = 0.8, sd = 1.6, sd2 = 1.25, alpha = 0.025, beta = 0.1, ratio = 2)",
+    "result": "N = 164.57 (approximately 165 total: 55 control + 110 experimental)",
+    "source_description": "gsDesign vignette: Two-sample normal sample size with unequal variances"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/nNormal.html",
+    "package": "gsDesign",
+    "question_context": "Power at N=200 for two-sample normal test with unequal SDs (1.6, 1.25), delta=0.8, 2:1 randomization?",
+    "r_code": "nNormal(delta1 = 0.8, sd = 1.6, sd2 = 1.25, alpha = 0.025, n = 200, ratio = 2)",
+    "result": "Power = 0.9467 (94.67%)",
+    "source_description": "gsDesign vignette: Normal endpoint power at fixed N"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/nNormal.html",
+    "package": "gsDesign",
+    "question_context": "Group sequential design with 2 analyses for normal endpoint (unequal SDs, delta=0.8, 2:1 randomization, 90% power).",
+    "r_code": "d <- gsDesign(k = 2, n.fix = nNormal(delta1 = 0.8, sd = 1.6, sd2 = 1.25, alpha = 0.025, beta = .1, ratio = 2), delta1 = 0.8)",
+    "result": "Total N=172. Interim (N=86): efficacy Z=2.7500. Final (N=172): efficacy Z=1.9811. Power=90%.",
+    "source_description": "gsDesign vignette: Group sequential design for normal endpoint"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/gsSurvBasicExamples.html",
+    "package": "gsDesign",
+    "question_context": "Superiority survival trial: control median=12 months, HR=0.75, 36-month study, 12-month minimum follow-up, varied enrollment rates. Fixed design (no interims).",
+    "r_code": "x <- nSurv(R = c(1, 2, 3, 4), gamma = c(1, 1.5, 2.5, 4), eta = 0.001, minfup = 12, T = 36, lambdaC = log(2) / 12, hr = 0.75, hr0 = 1, beta = 0.1, alpha = 0.025)",
+    "result": "Expected total events: 507.15. Expected sample size: 775.03. Power: 90%.",
+    "source_description": "gsDesign vignette: Fixed survival design with stepped enrollment"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/gsSurvBasicExamples.html",
+    "package": "gsDesign",
+    "question_context": "3-analysis group sequential survival trial: HR=0.75, interims at 25% and 75% of events, O'Brien-Fleming efficacy, HSD(-7) futility, 85% power.",
+    "r_code": "x <- gsSurv(k = 3, timing = c(0.25, 0.75), R = c(1, 2, 3, 4), gamma = c(1, 1.5, 2.5, 4), eta = 0.001, minfup = 12, T = 36, lambdaC = log(2) / 12, hr = 0.75, hr0 = 1, beta = 0.15, alpha = 0.025, sfu = sfLDOF, sfl = sfHSD, sflpar = -7)",
+    "result": "N=676, 443 events. IA1 (111 events): Z=4.33 efficacy, Z=-1.70 futility. IA2 (332 events): Z=2.34. Final (443 events): Z=2.01. Power=85%.",
+    "source_description": "gsDesign vignette: Group sequential survival trial with futility monitoring"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/gsSurvBasicExamples.html",
+    "package": "gsDesign",
+    "question_context": "Conditional and predictive power at interim 2 with observed Z=2.0 in group sequential survival trial.",
+    "r_code": "Z <- c(0.25, 2)\ngsCP(x = xu, i = 2, zi = Z[2])$upper$prob\nprior <- normalGrid(mu = log(0.75) / 2, sigma = sqrt(20 / 443))\ngsPP(x = xu, i = 2, zi = Z[2], theta = prior$z, wgts = prior$wgts)",
+    "result": "Conditional power: 0.66 under observed trend, 0.30 under null, 0.78 under alternative. Predictive power (Bayesian) = 0.641.",
+    "source_description": "gsDesign vignette: Conditional and predictive power at interim"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/ConditionalPowerPlot.html",
+    "package": "gsDesign",
+    "question_context": "Time-to-event trial (HR=0.7, median control=12mo, 24mo follow-up): design 3-analysis group sequential study and compute conditional power when interim p=0.04.",
+    "r_code": "design <- gsSurv(hr = 0.7, lambdaC = log(2) / 12, minfup = 24, T = 36) %>% toInteger()\ncp <- gsCP(x = update, i = 1, zi = -qnorm(0.04))",
+    "result": "Design: 464 participants, 353 events, 90% power. At interim with p=0.04: observed HR=0.7235. Conditional power=0.899 under observed, 0.937 under alternative HR.",
+    "source_description": "gsDesign vignette: Conditional power and conditional error"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/PoissonMixtureModel.html",
+    "package": "gsDesign",
+    "question_context": "Cure model calendar-based design for time-to-event with cure rate: cure_rate=0.50, 24-month survival=0.65, HR=0.70, 48-month study, 12-month enrollment.",
+    "r_code": "# Uses Poisson mixture survival model\npPM <- function(x, cure_rate = .5, t1 = 10, s1 = .6) {\n  theta <- -log(cure_rate)\n  lambda <- -log(1 + log(s1) / theta) / t1\n  return(exp(-theta * (1 - exp(-lambda * x))))\n}\n# Calendar-based GSD at months 14, 24, 36, 48",
+    "result": "Scenario 1: IA1 (month 14, 123 events): Z=2.91 efficacy, Z=-1.40 futility, HR at bound=0.591. IA2 (month 24, 228 events): Z=2.72, HR=0.697. Final (month 48, 337 events): Z=2.00, HR=0.804. Power=90%.",
+    "source_description": "gsDesign vignette: Cure model calendar-based trial design"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/binomialSPRTExample.html",
+    "package": "gsDesign",
+    "question_context": "Single-arm response rate monitoring: historical baseline 10%, target 35% response, alpha=0.08, beta=0.20, sample 10-25 patients. Design SPRT boundaries.",
+    "r_code": "b <- binomialSPRT(p0 = .1, p1 = .35, alpha = .08, beta = .2, minn = 10, maxn = 25)",
+    "result": "At n=10: reject null if >=4 responses, accept if <=1. At n=25: reject if >=7, accept if <=4. At true rate 10%: futility prob=0.94, efficacy=0.04, avg N=12.1. At true rate 35%: futility=0.12, efficacy=0.84, avg N=12.5.",
+    "source_description": "gsDesign vignette: Binomial SPRT for response rate monitoring"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/binomialSPRTExample.html",
+    "package": "gsDesign",
+    "question_context": "Safety adverse event monitoring: baseline AE rate 4%, unacceptable rate 10%, alpha=0.04, beta=0.20, monitoring 4-75 patients.",
+    "r_code": "safety_design <- binomialSPRT(p0 = .04, p1 = .1, alpha = .04, beta = .2, minn = 4, maxn = 75)",
+    "result": "At 4% AE rate: low-rate prob=0.769, high-rate prob=0.019, avg N=46.4. At 10%: low=0.155, high=0.516, avg N=52.8. At 16%: low=0.020, high=0.930, avg N=34.2.",
+    "source_description": "gsDesign vignette: Binomial SPRT for safety monitoring"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/gsDesignPackageOverview.html",
+    "package": "gsDesign",
+    "question_context": "Basic group sequential design: fixed design requires N=200 for 90% power at alpha=0.025 one-sided. Design a 3-analysis GSD with default spending functions.",
+    "r_code": "x <- gsDesign(n.fix = 200)\ngsBoundSummary(x)",
+    "result": "IA1 (N=72, 33%): Z=3.01, p=0.0013. IA2 (N=143, 67%): Z=2.55, p=0.0054. Final (N=214): Z=2.00, p=0.0228.",
+    "source_description": "gsDesign vignette: Package overview - basic GSD"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/toInteger.html",
+    "package": "gsDesign",
+    "question_context": "Converting continuous event counts to integers in a time-to-event GSD: HR=0.74, 1:1 randomization.",
+    "r_code": "x <- gsSurv(ratio = 1, hr = .74)\ny <- x |> toInteger()",
+    "result": "Continuous events: 165.0, 330.1, 495.1. Rounded: 165, 330, 496. Continuous N: 510.9, 730.7, 730.7. Rounded N: 511.3, 732.0, 732.0.",
+    "source_description": "gsDesign vignette: Integer sample size rounding for time-to-event"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/gsDesign/vignettes/toInteger.html",
+    "package": "gsDesign",
+    "question_context": "Binary endpoint GSD with 2:1 randomization: p1=0.2, p2=0.1, alpha=0.025, 80% power, O'Brien-Fleming spending, interims at 50% and 75%.",
+    "r_code": "n.fix <- nBinomial(p1 = .2, p2 = .1, alpha = .025, beta = .2, ratio = 2)\nxb <- gsDesign(alpha = .025, beta = .2, n.fix = n.fix, test.type = 1, sfu = sfLDOF, timing = c(.5, .75))\nx_integer <- toInteger(xb, ratio = 2)",
+    "result": "Fixed N=429.88. GSD integer N: 219, 329, 441. Information fractions: 0.497, 0.746, 1.00. Cumulative power: 0.165, 0.537, 0.803.",
+    "source_description": "gsDesign vignette: Integer rounding for binary endpoint GSD"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/ABE.html",
+    "package": "PowerTOST",
+    "question_context": "Standard bioequivalence study: 2x2 crossover, intra-subject CV=0.30, true ratio=0.95, alpha=0.05, target power=0.80. What sample size is needed?",
+    "r_code": "sampleN.TOST(CV = 0.30)",
+    "result": "Sample size: 40 subjects, achieved power = 0.8158",
+    "source_description": "PowerTOST vignette: Average Bioequivalence - basic sample size"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/ABE.html",
+    "package": "PowerTOST",
+    "question_context": "Compare sample sizes for 2x2x2, 2x2x3, 2x3x3, and 2x2x4 replicate crossover designs at CV=0.30.",
+    "r_code": "sampleN.TOST(CV = 0.30, design = \"2x2x2\")\nsampleN.TOST(CV = 0.30, design = \"2x2x3\")\nsampleN.TOST(CV = 0.30, design = \"2x3x3\")\nsampleN.TOST(CV = 0.30, design = \"2x2x4\")",
+    "result": "2x2x2: n=40 (power=0.816). 2x2x3: n=30 (power=0.820). 2x3x3: n=30 (power=0.820). 2x2x4: n=20 (power=0.820).",
+    "source_description": "PowerTOST vignette: ABE replicate design comparison"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/ABE.html",
+    "package": "PowerTOST",
+    "question_context": "Pilot study with 16 subjects showed CV=0.20 and theta0=0.92. Accounting for uncertainty using upper 80% CL for CV, what sample size is needed?",
+    "r_code": "CL.upper <- CVCL(CV = 0.20, df = 14, side = \"upper\", alpha = 0.20)[[\"upper CL\"]]  # 0.244\nsampleN.TOST(CV = CL.upper, theta0 = 0.92)",
+    "result": "Conservative approach: n=40 (power=0.817). Point estimate approach: n=28 (power=0.823).",
+    "source_description": "PowerTOST vignette: ABE with pilot study uncertainty"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/ABE.html",
+    "package": "PowerTOST",
+    "question_context": "Expected power (statistical assurance) accounting for uncertainty in both CV and theta0 from a 16-subject pilot (CV=0.20, theta0=0.92).",
+    "r_code": "expsampleN.TOST(CV = 0.20, theta0 = 0.92, prior.type = \"both\", prior.parm = list(m = 16, design = \"2x2x2\"), details = FALSE)",
+    "result": "Sample size: 54 subjects (expected power = 0.802). Compare: CV uncertainty only: n=30 (0.806), theta0 uncertainty only: n=46 (0.805).",
+    "source_description": "PowerTOST vignette: ABE statistical assurance approach"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/ABE.html",
+    "package": "PowerTOST",
+    "question_context": "Blood pressure comparison of two antihypertensives: 2x2x2 crossover, additive model (untransformed), residual SD=20 mmHg, expected difference=-5, equivalence margins +/-15 mmHg.",
+    "r_code": "sampleN.TOST(CV = 20, theta0 = -5, theta1 = -15, theta2 = +15, logscale = FALSE, design = \"2x2x2\")",
+    "result": "Sample size: 52 subjects, power = 0.807",
+    "source_description": "PowerTOST vignette: ABE additive model for blood pressure"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/ABE.html",
+    "package": "PowerTOST",
+    "question_context": "Extract CV from published confidence interval (2x2x4 design, n=26, CI 0.8323-1.0392).",
+    "r_code": "CVfromCI(lower = 0.8323, upper = 1.0392, design = \"2x2x4\", n = 26)",
+    "result": "Estimated CV: 0.350",
+    "source_description": "PowerTOST vignette: ABE - extracting CV from literature CI"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/ABE.html",
+    "package": "PowerTOST",
+    "question_context": "Post-hoc power analysis of failed BE study: theta0=0.90, CV=0.25, imbalanced groups n=(13,12).",
+    "r_code": "power.TOST(CV = 0.25, theta0 = 0.90, n = c(13, 12))\nCI.BE(pe = 0.90, CV = 0.25, n = c(13, 12))",
+    "result": "Post-hoc power: 0.496 (<50%). 90% CI: 79.87%-101.42% (fails BE criteria).",
+    "source_description": "PowerTOST vignette: ABE post-hoc power of failed study"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/ABE.html",
+    "package": "PowerTOST",
+    "question_context": "Pool CV estimates from pilot (n=16, CV=0.20) and pivotal (n=25, CV=0.25) bioequivalence studies.",
+    "r_code": "data <- data.frame(CV = c(0.20, 0.25), n = c(16, 25), design = c(\"2x2x2\", \"2x2x2\"))\nCVpooled(data, alpha = 0.20)",
+    "result": "Pooled CV: 0.232 (37 df). Upper 80% CL: 0.260.",
+    "source_description": "PowerTOST vignette: ABE pooling CVs from multiple studies"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/RSABE.html",
+    "package": "PowerTOST",
+    "question_context": "EMA reference-scaled ABE (ABEL) for highly variable drug: CV=0.55, 2x3x3 partial replicate design, theta0=0.90, alpha=0.05, power=0.80.",
+    "r_code": "sampleN.scABEL(CV = 0.55)",
+    "result": "Sample size: 42 subjects, power = 0.8085",
+    "source_description": "PowerTOST vignette: RSABE - EMA ABEL for highly variable drugs"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/RSABE.html",
+    "package": "PowerTOST",
+    "question_context": "Health Canada ABEL: CV=0.55 (higher CVcap at 0.57382 vs EMA 0.50).",
+    "r_code": "sampleN.scABEL(CV = 0.55, regulator = \"HC\")",
+    "result": "Sample size: 39 subjects (lower than EMA's 42 due to higher cap)",
+    "source_description": "PowerTOST vignette: RSABE - Health Canada regulatory framework"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/RSABE.html",
+    "package": "PowerTOST",
+    "question_context": "GCC reference-scaled ABE with fixed widened limits for CV=0.55.",
+    "r_code": "sampleN.scABEL(CV = 0.55, regulator = \"GCC\")",
+    "result": "Sample size: 75 subjects (much larger due to fixed limits 0.75-1.333 for CV>0.30)",
+    "source_description": "PowerTOST vignette: RSABE - Gulf Cooperation Council"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/RSABE.html",
+    "package": "PowerTOST",
+    "question_context": "FDA reference-scaled ABE: CV=0.55 with unlimited scaling.",
+    "r_code": "sampleN.RSABE(CV = 0.55)",
+    "result": "Sample size: 30 subjects (substantially lower than EMA/HC/GCC due to unlimited scaling)",
+    "source_description": "PowerTOST vignette: RSABE - FDA unlimited scaling"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/RSABE.html",
+    "package": "PowerTOST",
+    "question_context": "Narrow Therapeutic Index Drug (NTID): CV_w=0.125, heteroscedastic (variance ratio=2.5), 2x2x4 design.",
+    "r_code": "CV <- signif(CVp2CV(CV = 0.125, ratio = 2.5), 4)\nn <- sampleN.NTID(CV = CV, details = FALSE)[[\"Sample size\"]]\nsuppressMessages(power.NTID(CV = CV, n = n, details = TRUE))",
+    "result": "Sample size: 38 subjects. Power components: BE=0.816, scaled=0.938, ABE=1.000, ratio=0.858.",
+    "source_description": "PowerTOST vignette: RSABE for narrow therapeutic index drugs"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/RSABE.html",
+    "package": "PowerTOST",
+    "question_context": "Type I error inflation detection in ABEL framework: CV=0.35, 2x2x4 design.",
+    "r_code": "CV <- 0.35\nres <- data.frame(n = NA, CV = CV, TIE = NA)\nres$n <- sampleN.scABEL(CV = CV, design = \"2x2x4\", print = FALSE, details = FALSE)[[\"Sample size\"]]\nU <- scABEL(CV = CV)[[\"upper\"]]\nres$TIE <- power.scABEL(CV = CV, n = res$n, theta0 = U, design = \"2x2x4\")",
+    "result": "n=34. TIE = 0.0656 (inflated from nominal 0.05). Adjusted alpha = 0.0363 controls TIE.",
+    "source_description": "PowerTOST vignette: RSABE Type I error inflation detection"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/RSABE.html",
+    "package": "PowerTOST",
+    "question_context": "Adjusted alpha sample size for ABEL with maintained power: CV=0.35, 2x2x4 design.",
+    "r_code": "sampleN.scABEL.ad(CV = 0.35, design = \"2x2x4\")",
+    "result": "n=38 with adjusted alpha=0.0361 achieves target 0.81 power while controlling TIE at 0.05.",
+    "source_description": "PowerTOST vignette: RSABE adjusted alpha sample size"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/PA.html",
+    "package": "PowerTOST",
+    "question_context": "Power analysis sensitivity for ABE study: CV=0.20, theta0=0.92. What are critical parameter values?",
+    "r_code": "pa.ABE(CV = 0.20, theta0 = 0.92)",
+    "result": "Planned: n=28, power=0.8227. Critical values where power drops to ~0.70: CV=0.2377, theta0=0.9001, n=21.",
+    "source_description": "PowerTOST vignette: Power analysis sensitivity for ABE"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/PA.html",
+    "package": "PowerTOST",
+    "question_context": "Power analysis sensitivity for EMA ABEL (highly variable drug): CV=0.55, theta0=0.90, 2x3x3 design.",
+    "r_code": "pa.scABE(CV = 0.55)",
+    "result": "n=42, power=0.8085. Critical: CV=0.6668, theta0=0.8689 -> n=33, power~0.71.",
+    "source_description": "PowerTOST vignette: Power analysis sensitivity for RSABE"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/PA.html",
+    "package": "PowerTOST",
+    "question_context": "Power analysis for ABEL with 2x2x4 design: CV=0.40.",
+    "r_code": "pa.scABE(CV = 0.40, design = \"2x2x4\")",
+    "result": "n=30, power=0.8066. Critical: CV=0.6938, theta0=0.8763 -> n=23, power~0.71.",
+    "source_description": "PowerTOST vignette: Power analysis for 4-period ABEL design"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/NI.html",
+    "package": "PowerTOST",
+    "question_context": "Non-inferiority study: 2x2 crossover, CV=0.25, margin=0.80, true ratio=0.95, alpha=0.025, 80% power.",
+    "r_code": "sampleN.noninf(CV = 0.25)",
+    "result": "Sample size: 36 subjects, power = 0.8203",
+    "source_description": "PowerTOST vignette: Non-inferiority basic sample size"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/NI.html",
+    "package": "PowerTOST",
+    "question_context": "Bracketing approach for modified release formulation: Compare Cmin (efficacy, margin=0.80, CV=0.35) and Cmax (safety, margin=1.25, CV=0.20) in 2x2x4 design.",
+    "r_code": "sampleN.noninf(design = \"2x2x4\", margin = 0.80, theta0 = 0.95, CV = 0.35)  # Cmin\nsampleN.noninf(design = \"2x2x4\", margin = 1.25, theta0 = 1.05, CV = 0.20)  # Cmax",
+    "result": "Cmin drives sample size: n=32 (power=0.808). Cmax: n=12 (power=0.841). Cmax overpowered at n=32 (power=0.998).",
+    "source_description": "PowerTOST vignette: Non-inferiority bracketing approach for modified release"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/DP.html",
+    "package": "PowerTOST",
+    "question_context": "Dose-proportionality study with modified Fibonacci escalation: 3 dose levels (10, 20, 33.3), CV=0.20, beta0=1.02.",
+    "r_code": "sampleN.dp(CV = 0.20, doses = c(10, 20, 33.3), beta0 = 1.02)",
+    "result": "Sample size: 15 subjects, power = 0.808 in 3x3 Latin square crossover.",
+    "source_description": "PowerTOST vignette: Dose-proportionality - 3 dose levels"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/DP.html",
+    "package": "PowerTOST",
+    "question_context": "Dose-proportionality with 4 dose levels (10, 20, 33.3, 50): CV=0.20, beta0=1.02.",
+    "r_code": "doses <- c(10, 20, 33.3, 50)\nsampleN.dp(CV = 0.20, doses = doses, beta0 = 1.02)",
+    "result": "Sample size: 16 subjects, power = 0.867. Acceptance range: 0.8614-1.1386.",
+    "source_description": "PowerTOST vignette: Dose-proportionality - 4 dose levels"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/DP.html",
+    "package": "PowerTOST",
+    "question_context": "Dose-proportionality with incomplete block design: 5 doses, 3 periods per subject, CV=0.20.",
+    "r_code": "doses <- c(10, 20, 33.3, 50, 66.7)\ndm <- crossdes::balmin.RMD(5, 10, 3)\nsampleN.dp(CV = 0.20, doses = doses, beta0 = 1.02, design = \"IBD\", dm = dm)",
+    "result": "Sample size: 30 subjects, power = 0.899 in IBD (5x10x3).",
+    "source_description": "PowerTOST vignette: Dose-proportionality - incomplete block design"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/DP.html",
+    "package": "PowerTOST",
+    "question_context": "Wide dose range (powers of 2: 1,4,16,64,256), CV=0.30. Sample size for dose-proportionality crossover?",
+    "r_code": "doses <- 2^(seq(0, 8, 2))\nsampleN.dp(CV = 0.30, doses = doses, beta0 = 1.02, design = \"crossover\")",
+    "result": "Sample size: 70 subjects, power = 0.810 in 5x5 Latin square. Very tight acceptance range: 0.960-1.040.",
+    "source_description": "PowerTOST vignette: Dose-proportionality - wide dose range"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/PowerTOST/vignettes/DP.html",
+    "package": "PowerTOST",
+    "question_context": "Dose-proportionality with liberal equivalence margins (theta1=0.75) for wide dose range exploratory setting.",
+    "r_code": "doses <- 2^(seq(0, 8, 2))\nsampleN.dp(CV = 0.30, doses = doses, beta0 = 1.02, design = \"crossover\", theta1 = 0.75)",
+    "result": "Sample size: 30 subjects, power = 0.828 (margins 0.75-1.333).",
+    "source_description": "PowerTOST vignette: Dose-proportionality - liberal margins"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/Superpower/vignettes/intro_to_superpower.html",
+    "package": "Superpower",
+    "question_context": "Pet ownership and life satisfaction: 2 between-subject groups (control=24, pet=26.2), SD=6.4, n=100 per group. Simulation-based power.",
+    "r_code": "design_result <- ANOVA_design(design = \"2b\", n = 100, mu = c(24, 26.2), sd = 6.4, label_list = list(\"condition\" = c(\"control\", \"pet\")))\npower_result <- ANOVA_power(design_result, nsims = 1000, seed = 1234)",
+    "result": "Power = 68.8% (95% CI: 62.8%-74.2%). Need n=180 per group for ~90% power.",
+    "source_description": "Superpower vignette: Introduction - two-group between-subjects"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/Superpower/vignettes/intro_to_superpower.html",
+    "package": "Superpower",
+    "question_context": "Voice assistant study: 2b*2w design (human/robot voice x cheerful/sad), n=40, means=[1.03,1.41,0.98,1.01], SD=1.03, r=0.8.",
+    "r_code": "design_result <- ANOVA_design(design = \"2b*2w\", n = 40, mu = c(1.03, 1.41, 0.98, 1.01), sd = 1.03, r = 0.8, label_list = list(\"voice\" = c(\"human\", \"robot\"), \"emotion\" = c(\"cheerful\", \"sad\")))\nANOVA_power(design_result, alpha = 0.05, nsims = 1000, seed = 1234)",
+    "result": "Voice main effect: 18.8% power. Emotion main effect: 79.6% power. Interaction: 68.0% power.",
+    "source_description": "Superpower vignette: Introduction - mixed 2x2 factorial design"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/Superpower/vignettes/intro_to_superpower.html",
+    "package": "Superpower",
+    "question_context": "Exact power calculation for pet ownership study with n=180 per group.",
+    "r_code": "design_result <- ANOVA_design(design = \"2b\", n = 180, mu = c(24, 26.2), sd = 6.4, label_list = list(\"condition\" = c(\"control\", \"pet\")))\nANOVA_exact(design_result, verbose = FALSE)$main_results$power",
+    "result": "Power = 90.19%",
+    "source_description": "Superpower vignette: Exact power calculation"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/Superpower/vignettes/ANCOVAs.html",
+    "package": "Superpower",
+    "question_context": "One-way ANCOVA: 3 groups (means 400,450,500), SD=100, 3 covariates explaining 25% variance. Sample size for 80% power using approximate method.",
+    "r_code": "power_oneway_ancova(mu = c(400,450,500), n_cov = 3, sd = 100, r2 = .25, alpha_level = .05, beta_level = .2, round_up = TRUE, type = \"approx\")",
+    "result": "N=48 (16 per group), power=81.23%, df=2,42",
+    "source_description": "Superpower vignette: One-way ANCOVA power (Cohen approximate)"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/Superpower/vignettes/ANCOVAs.html",
+    "package": "Superpower",
+    "question_context": "One-way ANCOVA with exact method (Shieh): same scenario as above.",
+    "r_code": "power_oneway_ancova(mu = c(400,450,500), n_cov = 3, sd = 100, r2 = .25, alpha_level = .05, beta_level = .2, round_up = TRUE, type = \"exact\")",
+    "result": "N=51 (17 per group), power=81.22%, df=2,45",
+    "source_description": "Superpower vignette: One-way ANCOVA power (Shieh exact)"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/Superpower/vignettes/ANCOVAs.html",
+    "package": "Superpower",
+    "question_context": "Factorial 2b*3b ANCOVA: 6 groups (means 400,450,500,400,500,600), 3 covariates, r2=0.25. Sample size for 80% power for each effect.",
+    "r_code": "ANCOVA_analytic(design = \"2b*3b\", mu = c(400, 450, 500, 400, 500, 600), n_cov = 3, sd = 100, r2 = .25, alpha_level = .05, beta_level = .2, round_up = TRUE)",
+    "result": "Factor A: N=102, power=81.03%. Factor B: N=30, power=86.11%. A*B interaction: N=180, power=80.05%.",
+    "source_description": "Superpower vignette: Factorial ANCOVA analytic power"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/Superpower/vignettes/ANCOVAs.html",
+    "package": "Superpower",
+    "question_context": "ANCOVA contrast: two-group comparison (means 0,1), 1 covariate (r2=0.20), n=15 per group.",
+    "r_code": "ANCOVA_contrast(cmat = c(-1,1), n = 15, mu = c(0,1), sd = 1, r2 = .2, n_cov = 1)",
+    "result": "N=30 (15 per group), power=82.56%, df=1,27",
+    "source_description": "Superpower vignette: ANCOVA contrast power"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/Superpower/vignettes/more_anova_designs.html",
+    "package": "Superpower",
+    "question_context": "Three between-subject conditions (control=24, cat=26.2, dog=26.6), SD=6.4, n=50 per group. Power for one-way ANOVA and pairwise comparisons.",
+    "r_code": "design_result <- ANOVA_design(design = \"3b\", n = 50, mu = c(24, 26.2, 26.6), sd = 6.4, label_list = list(\"condition\" = c(\"control\", \"cat\", \"dog\")))\nANOVA_exact2(design_result, emm = TRUE)",
+    "result": "ANOVA power ~47.5%. Pairwise: control-cat 39.8%, control-dog 52.1%, cat-dog 6.1%.",
+    "source_description": "Superpower vignette: Three-group between-subjects ANOVA"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/Superpower/vignettes/compromise_power.html",
+    "package": "Superpower",
+    "question_context": "Independent samples t-test, d=0.5, n=64 per group. Find the optimal alpha that minimizes total error rate.",
+    "r_code": "res <- optimal_alpha(power_function = \"power.t.test(delta = .5, sd = 1, n=64, sig.level = x, type='two.sample', alternative='two.sided')$power\")",
+    "result": "Optimal alpha = 0.0997 (vs conventional 0.05). Corresponding beta = 0.1217. Combined error = 11.07% (vs 12.5% conventional).",
+    "source_description": "Superpower vignette: Optimal alpha for independent t-test"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/Superpower/vignettes/compromise_power.html",
+    "package": "Superpower",
+    "question_context": "T-test with Type I errors 4x more costly: d=0.5, n=100 per group. Find weighted optimal alpha.",
+    "r_code": "res3 <- optimal_alpha(power_function = \"power.t.test(delta = .5, sd = 1, n=100, sig.level = x, type='two.sample', alternative='two.sided')$power\", error = \"minimal\", costT1T2 = 4)",
+    "result": "Optimal alpha = 0.0192 (much stricter). Beta = 0.1212. Weighted error = 3.96%.",
+    "source_description": "Superpower vignette: Optimal alpha with asymmetric error costs"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/Superpower/vignettes/compromise_power.html",
+    "package": "Superpower",
+    "question_context": "Comprehensive ANOVA compromise: 2b*2w design for voice assistant study. Find optimal alpha for each effect.",
+    "r_code": "design_result <- ANOVA_design(design = \"2b*2w\", n = 40, mu = c(1.03, 1.41, 0.98, 1.01), sd = 1.03, r = 0.8)\ncomp_res = ANOVA_compromise(design_result, emm = TRUE)",
+    "result": "Voice (f=0.116): optimal alpha=0.279, beta=0.507. Emotion (f=0.317): alpha=0.104, beta=0.125. Interaction (f=0.271): alpha=0.142, beta=0.183.",
+    "source_description": "Superpower vignette: ANOVA compromise power analysis"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/Superpower/vignettes/emmeans_power.html",
+    "package": "Superpower",
+    "question_context": "2w*3w repeated measures design: cheerful/sad x human/robot/cartoon voice, n=40, means=[0.3,0,0.5,0.3,0,0], SD=2, r=0.8. Power for pairwise contrasts via emmeans.",
+    "r_code": "design_result <- ANOVA_design(design = \"2w*3w\", n = 40, mu = c(0.3, 0, 0.5, 0.3, 0, 0), sd = 2, r = 0.8)\nexact_result <- ANOVA_exact(design_result, alpha_level = 0.05, verbose = FALSE, emm = TRUE, contrast_type = \"pairwise\")",
+    "result": "Pairwise power ranged from 16.4% to 68.4%. Largest effect (cheerful/cartoon vs sad/cartoon): 68.37%.",
+    "source_description": "Superpower vignette: emmeans pairwise comparisons power"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/Superpower/vignettes/emmeans_power.html",
+    "package": "Superpower",
+    "question_context": "Custom linear contrast: robot voice vs averaged sad human conditions in 2w*3w design.",
+    "r_code": "custom_contrast <- contrast(exact_result$emmeans$emmeans, list(robot_vs_sad_human = c(0, 0, 0, 1, -0.5, -0.5)))\nemmeans_power(custom_contrast)",
+    "result": "Power = 39.35%, Cohen's f = 0.277",
+    "source_description": "Superpower vignette: Custom contrast power via emmeans"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/Superpower/vignettes/emmeans_power.html",
+    "package": "Superpower",
+    "question_context": "Equivalence testing: are voice condition differences within +/-0.3 margin?",
+    "r_code": "emmeans_power(pairs(simple_condition_effects, side = \"equivalence\", delta = 0.3)[2])",
+    "result": "Power for equivalence test = 31.0% (human voice comparison)",
+    "source_description": "Superpower vignette: Equivalence testing power via emmeans"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/presize/vignettes/presize.html",
+    "package": "presize",
+    "question_context": "Mobile colposcope trial: estimating sensitivity=75%, prevalence=15%, N=250. What precision (CI width) is achieved?",
+    "r_code": "prec_sens(sens = .75, prev = .15, ntot = 250, method = \"wilson\")",
+    "result": "CI width: 0.266 (26.6%). 95% CI: 59.4%-86.0%. Positive cases: 38.",
+    "source_description": "presize vignette: Sensitivity precision with fixed N"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/presize/vignettes/presize.html",
+    "package": "presize",
+    "question_context": "How many total participants for +/-5% CI width for sensitivity estimate (sens=0.75, prev=0.15)?",
+    "r_code": "prec_sens(sens = .75, prev = .15, conf.width = .1, method = \"wilson\")",
+    "result": "Required total sample: 1,904 participants. Positive cases needed: 286. 95% CI: 69.7%-79.7%.",
+    "source_description": "presize vignette: Sample size for target sensitivity precision"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/presize/vignettes/presize.html",
+    "package": "presize",
+    "question_context": "Specificity precision: spec=0.75, prevalence=0.15, N=250 using exact method.",
+    "r_code": "prec_spec(spec = .75, prev = .15, ntot = 250, method = \"exact\")",
+    "result": "CI width: 0.120 (12.0%). 95% CI: 68.6%-80.7%. Negative cases: 213.",
+    "source_description": "presize vignette: Specificity precision with fixed N"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/presize/vignettes/presize.html",
+    "package": "presize",
+    "question_context": "Precision of a mean estimate: mean=60, SD=10, N=40.",
+    "r_code": "prec_mean(60, sd = 10, n = 40)",
+    "result": "CI width: 6.40. 95% CI: 56.8 to 63.2.",
+    "source_description": "presize vignette: Mean precision calculation"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/presize/vignettes/presize.html",
+    "package": "presize",
+    "question_context": "How many subjects needed for CI width of 5 around a mean (mean=60, SD=10)?",
+    "r_code": "prec_mean(60, sd = 10, conf.width = 5)",
+    "result": "Required N = 64 individuals. 95% CI: 57.5-62.5.",
+    "source_description": "presize vignette: Sample size for target mean precision"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/presize/vignettes/presize.html",
+    "package": "presize",
+    "question_context": "Sensitivity precision across a range of sensitivity values (0.50 to 0.95) with N=250 and prevalence=0.15.",
+    "r_code": "prec_sens(sens = seq(.5, .95, .05), prev = .15, ntot = 250, method = \"wilson\")",
+    "result": "At 50% sensitivity: CI width=0.303. At 75%: 0.266. At 95%: 0.156. Higher sensitivity gives narrower CI.",
+    "source_description": "presize vignette: Multi-scenario sensitivity analysis"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/longpower/vignettes/longpower.html",
+    "package": "longpower",
+    "question_context": "Reproducing Diggle, Liang, Zeger (1994) Table: longitudinal linear model power with exchangeable correlation, 3 visits at t=(0,2,5), d=0.5, one-sided alpha=0.05, 80% power.",
+    "r_code": "n = 3; t = c(0,2,5)\nrho = c(0.2, 0.5, 0.8)\nsigma2 = c(100, 200, 300)\ntab.diggle = outer(rho, sigma2, Vectorize(function(rho, sigma2){\n  ceiling(diggle.linear.power(d=0.5, t=t, sigma2=sigma2, R=rho, alternative=\"one.sided\", power=0.80)$n[1])}))",
+    "result": "Sample sizes per group: rho=0.2: 313/625/938. rho=0.5: 196/391/586. rho=0.8: 79/157/235 (for sigma2=100/200/300).",
+    "source_description": "longpower vignette: Diggle-Liang-Zeger longitudinal power table"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/longpower/vignettes/longpower.html",
+    "package": "longpower",
+    "question_context": "Alzheimer's Disease Phase II trial: ADAS-Cog 70-point scale, quarterly visits for 18 months (7 visits), effect=1.5 points, random intercept var=55, random slope var=24, residual var=10, slope-intercept corr=0.8. Liu-Liang method.",
+    "r_code": "sig2.i <- 55; sig2.s <- 24; sig2.e <- 10\ncov.s.i <- 0.8*sqrt(sig2.i)*sqrt(sig2.s)\ncov.t <- function(t1, t2, sig2.i, sig2.s, cov.s.i){ sig2.i + t1*t2*sig2.s + (t1+t2)*cov.s.i }\nt <- seq(0,1.5,0.25); n <- length(t)\nR <- outer(t, t, function(x,y){cov.t(x,y, sig2.i, sig2.s, cov.s.i)})\nR <- R + diag(sig2.e, n, n)\nu <- list(u1 = t, u2 = rep(0,n))\nv <- list(v1 = cbind(1,1,t), v2 = cbind(1,0,t))\nliu.liang.linear.power(d=1.5, u=u, v=v, R=R, sig.level=0.05, power=0.80)",
+    "result": "N per arm = 207.3 (total ~415 subjects) for 80% power, two-sided alpha=0.05.",
+    "source_description": "longpower vignette: Alzheimer's Disease trial with random slope model"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/simr/vignettes/fromscratch.html",
+    "package": "simr",
+    "question_context": "Linear mixed model power from scratch: y ~ x + (1|g), 10 observations per 3 groups, fixed effects b=(2,-0.1), random intercept SD=sqrt(0.5), residual SD=1.",
+    "r_code": "x <- 1:10; g <- letters[1:3]; X <- expand.grid(x=x, g=g)\nb <- c(2, -0.1); V1 <- 0.5; s <- 1\nmodel1 <- makeLmer(y ~ x + (1|g), fixef=b, VarCorr=V1, sigma=s, data=X)\npowerSim(model1, nsim=20)",
+    "result": "Power for predictor x: 30.00% (95% CI: 11.89, 54.28). Effect size: -0.10. N=30 observations.",
+    "source_description": "simr vignette: Power from scratch - linear mixed model"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/simr/vignettes/fromscratch.html",
+    "package": "simr",
+    "question_context": "Generalized LMM power from scratch: Poisson outcome, z ~ x + (x|g), fixed effects b=(2,-0.1), random effects variance matrix V=((0.5,0.05),(0.05,0.1)).",
+    "r_code": "V2 <- matrix(c(0.5,0.05,0.05,0.1), 2)\nmodel2 <- makeGlmer(z ~ x + (x|g), family=\"poisson\", fixef=b, VarCorr=V2, data=X)\npowerSim(model2, nsim=20)",
+    "result": "Power for predictor x: 35.00% (95% CI: 15.39, 59.22). Effect size: -0.10. N=30 observations.",
+    "source_description": "simr vignette: Power from scratch - Poisson GLMM"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/simr/vignettes/examples.html",
+    "package": "simr",
+    "question_context": "Contagious bovine pleuropneumonia data: binomial GLMM testing effect of herd size on disease incidence, with effect set to 0.05.",
+    "r_code": "gm2 <- glmer(cbind(incidence, size - incidence) ~ period + size + (1 | herd), data=cbpp, family=binomial)\nfixef(gm2)[\"size\"] <- 0.05\npowerSim(gm2, fixed(\"size\", \"z\"), nsim=50)",
+    "result": "Power = 72.00% (95% CI: 57.51-83.77). 50 simulations, 112 observations.",
+    "source_description": "simr vignette: Binomial GLMM power for continuous predictor"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/simr/vignettes/examples.html",
+    "package": "simr",
+    "question_context": "Sleep study: testing whether random slope for Days significantly improves model fit over random intercept only.",
+    "r_code": "fm1 <- lmer(Reaction ~ Days + (Days | Subject), data=sleepstudy)\ndoTest(fm1, compare(~ Days + (1 | Subject)))",
+    "result": "Likelihood ratio test p-value = 7.07e-10 (highly significant random slope).",
+    "source_description": "simr vignette: Testing random effects structure in sleepstudy"
+  },
+  {
+    "source_url": "https://cran.r-project.org/web/packages/rpact/vignettes/rpact_getting_started.html",
+    "package": "rpact",
+    "question_context": "Overview of rpact workflow for adaptive clinical trial design: getDesignGroupSequential() -> getSampleSizeMeans()/getPowerMeans() -> getSimulationMeans() -> getAnalysisResults().",
+    "r_code": "design <- getDesignGroupSequential()\ngetSampleSizeMeans(design)\ngetPowerMeans(design)\ngetSimulationMeans(design)",
+    "result": "Vignette is a workflow overview directing to rpact.org/vignettes for detailed examples. Supports fixed/adaptive, continuous/binary/survival/count endpoints, multi-arm/enrichment designs.",
+    "source_description": "rpact vignette: Getting started - workflow overview (detailed examples at rpact.org/vignettes)"
+  }
+]

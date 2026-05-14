@@ -1,50 +1,99 @@
 # [Award C] Power Agent — Autonomous Power & Sample-Size Analysis Agent
 
-> **Team info**
-> | Legal name | Affiliation | Institutional email | Kaggle username |
-> |---|---|---|---|
-> | Yukang Zeng | Yale University (Biostatistics) | yukang.zeng@yale.edu | yukangzengyale |
->
-> **Registered team name:** PowerBot
+**Team info**
+
+- **Legal name:** Yukang Zeng
+- **Affiliation:** Yale University (Biostatistics)
+- **Institutional email:** yukang.zeng@yale.edu
+- **Kaggle username:** yukangzengyale
+
+**Registered team name:** PowerBot
 
 **GitHub repository:** https://github.com/ykzeng-yale/Power-Agent-Public-STAI-X
+**Demo:** https://power-agent.io/
+**Submission commit tag:** `award-c-submission`
 
 ---
 
-## What it does
+## What it does (plain language)
 
-Power Agent is a reusable statistical agent that turns a plain-English study-design question into a verified power or sample-size calculation — it plans the analysis, writes and runs the R code in a sandbox, self-corrects on errors, and returns the result with the reproducible script, a report, and plots. It is built for biostatisticians, clinical researchers, and trial designers who need defensible power analyses without hand-coding `pwr`, `gsDesign`, `swdpwr`, and dozens of other packages. The same agent loop generalizes to any R-based statistical task that needs plan → execute → verify.
+Power Agent is an autonomous statistical agent for power and sample-size analysis. A user types a study-design question in plain English (*"What sample size do I need for a stepped-wedge cluster trial with 12 clusters, ICC 0.05, to detect a 10 percent reduction in overdose ED visits with 80 percent power?"*), and the agent plans the analysis, selects the appropriate statistical method, writes and executes R code in a sandbox, verifies the result, and returns a reproducible script, a formatted report, and diagnostic plots. When the R code errors or produces an implausible answer, the agent reads the trace and corrects itself.
 
-## Demo link
+It is designed for **biostatisticians, clinical trialists, and public-health researchers** who need defensible, auditable power calculations without hand-coding the right package for each design.
 
-**https://power-agent.io/** — the live, working product. Ask any power or sample-size question in plain English and watch the agent plan, write R, run it, self-correct, and return the result with the reproducible script and a report.
+---
+
+## Statistical methods covered (four tiers of complexity)
+
+Power Agent organizes its 30+ analysis templates into four tiers, escalating from basic hypothesis tests to modern prediction-model sample-size methodology.
+
+**Tier 1 — Basic hypothesis tests.** Two-sample and paired t-tests, one-sample t-test, two-proportion and one-proportion tests, chi-square tests, one-way and two-way ANOVA, repeated-measures ANOVA, McNemar's test, Mann-Whitney U, correlation analysis.
+
+**Tier 2 — Regression models.** Multiple linear regression, logistic regression, Poisson regression, ANCOVA, with covariate-adjusted effect sizes and correlation structures among predictors.
+
+**Tier 3 — Advanced and clustered designs.** Mixed-effects models, GEE for longitudinal/correlated data, survival analysis (log-rank, Cox proportional hazards) with competing risks, cluster-randomized trials, stepped-wedge cluster-randomized trials, crossover designs, factorial designs, non-inferiority and equivalence trials, group-sequential and adaptive designs with sample-size re-estimation, meta-analysis power, and simulation-based power for arbitrary designs (via `simr`).
+
+**Tier 4 — Prediction-model sample size (Riley et al. methodology).** Minimum sample size for developing clinical prediction models accounting for overfitting, optimism, and precise estimation of overall risk, for binary outcomes, survival outcomes, and continuous outcomes; external validation study sizing; high-dimensional and penalized models (LASSO, ridge, random forest, XGBoost).
+
+Tool selection (which R package and which formula) is part of the planning step, so the agent reasons about the design before it writes code.
+
+---
+
+## Why this is a statistical agent, not just a code agent
+
+The defining feature is **verification against analytical ground truth**. Every calculation is checked against closed-form formulas where available, against established R packages (`pwr`, `gsDesign`, `swdpwr`, `longpower`, `powerSurvEpi`, `pmsampsize`, etc.), and against published textbook values. Discrepancies trigger the self-correction loop. This is what makes the answers trustworthy enough to put in a grant or protocol.
+
+Importantly, Tier 4 (prediction-model sample size via Riley's methodology) is a methodological gap in existing automated tools and a known failure mode for general-purpose AI assistants. Closing this gap is one of Power Agent's main contributions.
+
+---
+
+## Demo
+
+**https://power-agent.io/** is the live product. Ask any power or sample-size question in natural language and watch the agent plan, write R, execute, verify, and return the script and report.
+
+A representative end-to-end run, sized for a two-arm survival trial (HR 0.70, 12-month control median, 24-month accrual, 12-month follow-up), produces results from Schoenfeld, Freedman, and Lachin-Foulkes formulas, cross-validates against `powerSurvEpi`, runs sensitivity analyses over hazard ratio and control median, generates power curves and expected survival curves, and writes a full Markdown/PDF report with all underlying CSVs.
+
+---
 
 ## Reproducibility
 
-- **Code:** the full agent is in the GitHub repository above, MIT-licensed.
-- **Run it yourself:** `README.md` has a step-by-step quick start (clone → `npm install` → set `.env` → `npm start`) plus a usage tutorial; minimal scripts are in [`examples/`](https://github.com/ykzeng-yale/Power-Agent-Public-STAI-X/tree/main/examples).
-- **Independent evaluation:** [`cross-benchmark/`](https://github.com/ykzeng-yale/Power-Agent-Public-STAI-X/tree/main/cross-benchmark) contains the 4-benchmark / 117-task evaluation with task files, ground truth, per-task results, and the runner (`node cross-benchmark/run-cross-benchmark.js`) — 72.6% exact-match against published R / G*Power values.
-- **Submission snapshot:** the repository commit tagged `award-c-submission` is the frozen state for review.
-
-## Why it's reusable
-
-- **Drop-in agent loop.** The plan → generate-R → execute-in-sandbox → observe → self-correct loop is task-agnostic. Point it at a different statistical question and it works without retuning.
-- **Sandboxed R execution as a service.** On-demand R execution on Cloud Run with automatic package installation — other agents can call it as a worker.
-- **Benchmark-verified.** Evaluated on a 989-task internal power-analysis benchmark plus **117 tasks from 4 independent published benchmarks** (N-Power AI, Sebo & Wang 2025, PowerGPT, Verma textbook), where it reaches **72.6% exact-match** with R/G*Power ground truth — so adopters get a known accuracy floor, not a black box.
-- **Reproducibility built in.** Every answer ships the exact R script and a report, so results are auditable and rerunnable.
-
-## Agent Design and Architecture
-
-| Component | What it does |
-|---|---|
-| Brain / LLM | Claude, multi-model routing — Haiku 4.5 for fast file/intent classification, Sonnet 4.6 for R code generation and the self-correction loop, Opus 4.6 for planning and result interpretation |
-| Memory | Conversation state, uploaded data/template context, a persistent R process pool for session continuity, and a cached benchmark ground-truth store for evaluation |
-| Planning | A Planning/Inference (PI) agent decides direct-answer vs. code-execution; an orchestrator-worker pattern decomposes the request and routes data tasks to the R coding agent |
-| Action | Generates and runs R code; web search (Tavily / Firecrawl) for statistical methods and references; file parsing (PDF / DOCX / CSV); report and plot generation |
-| Execution | Sandboxed R execution in isolated Google Cloud Run containers with on-demand CRAN/Bioconductor package installation |
-| Observation | Parses R stdout/stderr, detects errors, and iterates with a self-correction loop; validates outputs against expected result templates |
-| Response | Chat answer + the reproducible R script + a formatted report (PDF/Markdown) + generated plots and CSVs |
+- **Full source** in the GitHub repository above (MIT-licensed).
+- **Quick start** in `README`: clone, `npm install`, set `.env`, `npm start`.
+- **Minimal usage examples:** `/examples` folder.
+- **Internal benchmark:** `/benchmark` folder contains a **106-task four-tier suite** (Tier 1 basic comparisons: 30, Tier 2 regression & models: 35, Tier 3 advanced designs: 20, Tier 4 prediction models: 21). Each task pairs a plain-English question with R-package-verified ground truth and a numeric tolerance; the folder also includes the evaluator and runner (`node benchmark/run-benchmark.js`).
+- **Submission snapshot:** commit tagged `award-c-submission` is the frozen state for review.
 
 ---
 
-*Built with Claude Code. Open-source under MIT. Feedback and contributions welcome.*
+## Agent design and architecture
+
+**Backbone:** LLM with multi-model routing (Anthropic Claude family), routing lightweight tasks (intent classification, file parsing) to faster models and code generation and planning to stronger models.
+
+**Planning:** A Planning/Inference module classifies the query (direct answer vs. code execution), selects the statistical design and the tier, and chooses the appropriate R package and function. An orchestrator-worker pattern decomposes multi-part requests and routes data tasks to the R coding agent.
+
+**Action:** R code generation, web search for methods references, and parsing of uploaded protocols (PDF, DOCX, CSV) to extract design parameters.
+
+**Execution:** Sandboxed R execution in isolated Google Cloud Run containers, with on-demand CRAN and Bioconductor package installation and a persistent R process pool for session continuity.
+
+**Observation and self-correction:** Parses R `stdout` and `stderr`, detects errors and implausible outputs, and iterates. Outputs are validated against expected result templates and, where available, analytical ground truth.
+
+**Response:** Chat answer, the exact R script, a formatted report (PDF or Markdown), and generated plots and CSVs, all downloadable for audit.
+
+---
+
+## Why it's reusable
+
+- **Task-agnostic agent loop.** The plan, generate, execute, verify, self-correct loop is not specific to power analysis. Point it at another R-based statistical task and the loop still applies.
+- **Sandboxed R as a service.** Other agents can call the R execution layer as a worker.
+- **Benchmark-verified.** Adopters get a verified accuracy reference across all four tiers, not a black box.
+- **Auditable by construction.** Every answer ships the script that produced it.
+
+---
+
+## Relevance to STAI-X 2026
+
+Power Agent embodies the STAI-X goal of **trustworthy statistics-plus-AI**: an LLM that does not just write plausible-looking code, but verifies its output against the statistical literature and the underlying mathematics. The same agent can size studies for the kind of public-health questions this competition targets, e.g., powering a difference-in-differences evaluation of a policy intervention on state-level overdose ED visit rates, or sizing a prediction model for nonfatal-overdose ED-visit risk using Riley's criteria.
+
+---
+
+*Feedback and contributions welcome. Open-source under MIT.*

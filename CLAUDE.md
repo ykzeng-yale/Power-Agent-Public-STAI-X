@@ -42,7 +42,7 @@ See `docs/ARCHITECTURE.md` for the full design.
 
 ## Verification
 
-- Cross-benchmark suite in `cross-benchmark/` — run `node cross-benchmark/run-cross-benchmark.js`.
+- Internal benchmark in `benchmark/` — run `node benchmark/run-benchmark.js`.
 - Never report a calculation as complete without executing the R and checking the result.
 
 ## Don't

@@ -1,0 +1,491 @@
+{
+  "tier": 4,
+  "name": "Prediction Models - Riley Methods & Validation",
+  "description": "Sample size for developing and validating clinical prediction models using Riley criteria (pmsampsize) and external validation (pmvalsampsize)",
+  "tasks": [
+    {
+      "id": "t4-binary-001",
+      "template": "riley_binary",
+      "difficulty": "basic",
+      "question": "We're developing a prediction model for liver cirrhosis using logistic regression. We have 24 candidate predictors and expect about 17% of patients will have cirrhosis. Based on similar models, we anticipate a Cox-Snell R² of about 0.288. What's the minimum sample size needed for model development?",
+      "expected_template": "riley_binary",
+      "ground_truth": {
+        "sample_size": 662,
+        "events": 115,
+        "predictors": 24,
+        "prevalence": 0.174,
+        "cs_rsquared": 0.288,
+        "max_shrinkage": 0.9,
+        "criteria": "riley_binary"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmsampsize CRAN vignette - Example 1 (Cirrhosis prediction)",
+      "reference_code": "library(pmsampsize)\npmsampsize(type = 'b', csrsquared = 0.288, parameters = 24, prevalence = 0.174)\n# Results: minimum sample size = 662, 115 events required"
+    },
+    {
+      "id": "t4-binary-002",
+      "template": "riley_binary",
+      "difficulty": "basic",
+      "question": "We're building a prediction model for hospital readmission with 24 candidate predictors. Outcome prevalence is about 17.4%, and we anticipate the model will have a Nagelkerke R-squared of 0.36. What sample size is needed using Riley criteria?",
+      "expected_template": "riley_binary",
+      "ground_truth": {
+        "sample_size": 870,
+        "events": 152,
+        "predictors": 24,
+        "prevalence": 0.174,
+        "nagelkerke_rsquared": 0.36,
+        "max_shrinkage": 0.9,
+        "criteria": "riley_binary"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmsampsize (R-validated 2026-02-01)",
+      "reference_code": "library(pmsampsize)\npmsampsize(type='b', nagrsquared=0.36, parameters=24, prevalence=0.174)\n# N=870, events=152. Must use nagrsquared parameter for Nagelkerke R-squared."
+    },
+    {
+      "id": "t4-binary-003",
+      "template": "riley_binary",
+      "difficulty": "intermediate",
+      "question": "I'm developing a prediction model for postoperative complications, which occur in only 5% of patients. We plan to include 12 predictors and expect a C-statistic of 0.80. Using Riley criteria with default shrinkage (0.90), what sample size is needed?",
+      "expected_template": "riley_binary",
+      "ground_truth": {
+        "sample_size": 1679,
+        "events": 84,
+        "predictors": 12,
+        "prevalence": 0.05,
+        "c_statistic": 0.8,
+        "max_shrinkage": 0.9,
+        "criteria": "riley_binary"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmsampsize package (R-validated 2026-01-29)",
+      "reference_code": "library(pmsampsize)\npmsampsize(type='b', parameters=12, prevalence=0.05, cstatistic=0.80)\n# Sample size = 1679, Events = 84"
+    },
+    {
+      "id": "t4-binary-004",
+      "template": "riley_binary",
+      "difficulty": "advanced",
+      "question": "We're developing a high-dimensional prediction model with 25 predictors (after variable selection), outcome prevalence 12%, and expected C-statistic of 0.82. We want to be more conservative with a shrinkage target of 0.95. What sample size is required?",
+      "expected_template": "riley_binary",
+      "ground_truth": {
+        "sample_size": 2977,
+        "events": 357,
+        "predictors": 25,
+        "prevalence": 0.12,
+        "c_statistic": 0.82,
+        "max_shrinkage": 0.95,
+        "criteria": "riley_binary"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmsampsize::pmsampsize (R-validated 2026-01-28)",
+      "reference_code": "library(pmsampsize)\npmsampsize(type='b', parameters=25, prevalence=0.12, cstatistic=0.82, shrinkage=0.95)\n# Criteria 1 (shrinkage): 2977, EPP=14.29"
+    },
+    {
+      "id": "t4-binary-005",
+      "template": "riley_binary",
+      "difficulty": "intermediate",
+      "question": "We're developing a prediction model for a very rare outcome (3% prevalence) with 8 candidate predictors. We expect a C-statistic of 0.85. What minimum sample size is needed using Riley criteria?",
+      "expected_template": "riley_binary",
+      "ground_truth": {
+        "sample_size": 1214,
+        "events": 37,
+        "predictors": 8,
+        "prevalence": 0.03,
+        "c_statistic": 0.85,
+        "max_shrinkage": 0.9,
+        "criteria": "riley_binary"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmsampsize (R-validated 2026-02-01)",
+      "reference_code": "library(pmsampsize)\npmsampsize(type='b', parameters=8, prevalence=0.03, cstatistic=0.85)\n# N=1214, events=37, EPP=4.55. Shrinkage criterion dominates."
+    },
+    {
+      "id": "t4-surv-001",
+      "template": "riley_survival",
+      "difficulty": "basic",
+      "question": "We are developing a survival prediction model for time to recurrent venous thromboembolism (VTE). We have 30 candidate predictors. The overall event rate is 0.065, and we anticipate R²_CS of 0.051. The timepoint of interest is 2 years with mean follow-up of 2.07 years. What minimum sample size is needed?",
+      "expected_template": "riley_survival",
+      "ground_truth": {
+        "sample_size": 5143,
+        "events": 692,
+        "predictors": 30,
+        "event_rate": 0.065,
+        "r2_cs": 0.051,
+        "timepoint": 2,
+        "mean_followup": 2.07,
+        "max_shrinkage": 0.9,
+        "criteria": "riley_survival"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmsampsize CRAN vignette - Example 3 (VTE survival model)",
+      "reference_code": "library(pmsampsize)\npmsampsize(type='s', csrsquared=0.051, parameters=30, rate=0.065, timepoint=2, meanfup=2.07)\n# N=5143, events=692"
+    },
+    {
+      "id": "t4-surv-002",
+      "template": "riley_survival",
+      "difficulty": "basic",
+      "question": "I'm developing a cancer prognosis model with 6 predictors. The 5-year mortality is 40%, expected Cox-Snell R² is 0.25, and mean follow-up is 3 years. What minimum sample size is needed for model development?",
+      "expected_template": "riley_survival",
+      "ground_truth": {
+        "sample_size": 185,
+        "events": 222,
+        "predictors": 6,
+        "event_rate": 0.4,
+        "r2_cs": 0.25,
+        "timepoint": 5,
+        "mean_followup": 3,
+        "max_shrinkage": 0.9,
+        "criteria": "riley_survival"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmsampsize::pmsampsize (R-validated 2026-02-07)",
+      "reference_code": "library(pmsampsize)\npmsampsize(type='s', parameters=6, rate=0.40, csrsquared=0.25, timepoint=5, meanfup=3)\n# N=185, events=222 (=185*0.4*3)"
+    },
+    {
+      "id": "t4-surv-003",
+      "template": "riley_survival",
+      "difficulty": "intermediate",
+      "question": "I'm developing a cardiovascular risk prediction model with 12 predictors. The 10-year event rate is about 15%, and based on existing models I expect a Cox-Snell R² of 0.15. Mean follow-up will be about 6 years. What sample size do I need?",
+      "expected_template": "riley_survival",
+      "ground_truth": {
+        "sample_size": 659,
+        "events": 593,
+        "predictors": 12,
+        "event_rate": 0.15,
+        "r2_cs": 0.15,
+        "timepoint": 10,
+        "mean_followup": 6,
+        "max_shrinkage": 0.9,
+        "criteria": "riley_survival"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmsampsize package (R-validated 2026-01-29)",
+      "reference_code": "library(pmsampsize)\npmsampsize(type='s', parameters=12, rate=0.15, csrsquared=0.15, timepoint=10, meanfup=6)\n# N=659, events=593"
+    },
+    {
+      "id": "t4-surv-004",
+      "template": "riley_survival",
+      "difficulty": "advanced",
+      "question": "We're developing a survival prediction model where some patients experience a competing event. The primary event rate is 20%, we have 10 predictors, and expected R²_CS = 0.18. Timepoint of interest is 5 years with mean follow-up of 3 years. What's the Riley sample size for the primary event model?",
+      "expected_template": "riley_survival",
+      "ground_truth": {
+        "sample_size": 449,
+        "events": 269,
+        "predictors": 10,
+        "event_rate": 0.2,
+        "r2_cs": 0.18,
+        "timepoint": 5,
+        "mean_followup": 3,
+        "max_shrinkage": 0.9,
+        "criteria": "riley_survival"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmsampsize package (R-validated 2026-02-07)",
+      "reference_code": "library(pmsampsize)\npmsampsize(type='s', parameters=10, rate=0.20, csrsquared=0.18, timepoint=5, meanfup=3)\n# N=449, events=269 (=floor(449*0.20*3))"
+    },
+    {
+      "id": "t4-surv-005",
+      "template": "riley_survival",
+      "difficulty": "intermediate",
+      "question": "I'm developing a survival model for a condition with high event rate (40%) over 3 years. We have 15 predictors and expect R²_CS = 0.20. Mean follow-up is 2.5 years. What minimum sample size is needed?",
+      "expected_template": "riley_survival",
+      "ground_truth": {
+        "sample_size": 597,
+        "events": 597,
+        "predictors": 15,
+        "event_rate": 0.4,
+        "r2_cs": 0.2,
+        "timepoint": 3,
+        "mean_followup": 2.5,
+        "max_shrinkage": 0.9,
+        "criteria": "riley_survival"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmsampsize (R-validated 2026-02-01)",
+      "reference_code": "library(pmsampsize)\npmsampsize(type='s', parameters=15, rate=0.40, csrsquared=0.20, timepoint=3, meanfup=2.5)\n# N=597, events=597, person-time=1492.5"
+    },
+    {
+      "id": "t4-cont-001",
+      "template": "riley_continuous",
+      "difficulty": "basic",
+      "question": "We are developing a linear regression model to predict fat-free mass in children from 25 candidate predictors. We anticipate an R² of 0.2. The intercept is 1.9 and the standard deviation of the outcome is 0.6. What minimum sample size is needed?",
+      "expected_template": "riley_continuous",
+      "ground_truth": {
+        "sample_size": 918,
+        "predictors": 25,
+        "r2": 0.2,
+        "intercept": 1.9,
+        "sd": 0.6,
+        "max_shrinkage": 0.9,
+        "criteria": "riley_continuous"
+      },
+      "tolerance": {
+        "sample_size": 5
+      },
+      "source": "pmsampsize CRAN vignette - Example 4 (Fat-free mass in children)",
+      "reference_code": "library(pmsampsize)\npmsampsize(type='c', rsquared=0.2, parameters=25, intercept=1.9, sd=0.6)\n# N=918"
+    },
+    {
+      "id": "t4-cont-002",
+      "template": "riley_continuous",
+      "difficulty": "basic",
+      "question": "I'm building a prediction model for blood pressure with 5 predictors. I expect the model to explain about 30% of the variance. The population mean is around 120 mmHg with SD of 15 mmHg. What sample size do I need using Riley criteria?",
+      "expected_template": "riley_continuous",
+      "ground_truth": {
+        "sample_size": 239,
+        "predictors": 5,
+        "r2": 0.3,
+        "intercept": 120,
+        "sd": 15,
+        "max_shrinkage": 0.9,
+        "criteria": "riley_continuous"
+      },
+      "tolerance": {
+        "sample_size": 5
+      },
+      "source": "pmsampsize::pmsampsize (R-validated 2026-01-28)",
+      "reference_code": "library(pmsampsize)\npmsampsize(type='c', parameters=5, rsquared=0.30, intercept=120, sd=15)\n# N=239"
+    },
+    {
+      "id": "t4-cont-003",
+      "template": "riley_continuous",
+      "difficulty": "intermediate",
+      "question": "We're developing a continuous outcome prediction model with 15 predictors but expect only modest explanatory power (R² = 0.15). The outcome is standardized (mean 0, SD 1). We want to be more conservative with a shrinkage target of 0.95 (less than 5% shrinkage). What sample size is needed?",
+      "expected_template": "riley_continuous",
+      "ground_truth": {
+        "sample_size": 1508,
+        "predictors": 15,
+        "r2": 0.15,
+        "intercept": 0,
+        "sd": 1,
+        "max_shrinkage": 0.95,
+        "criteria": "riley_continuous"
+      },
+      "tolerance": {
+        "sample_size": 5
+      },
+      "source": "pmsampsize package (R-validated 2026-02-07)",
+      "reference_code": "library(pmsampsize)\npmsampsize(type='c', parameters=15, rsquared=0.15, shrinkage=0.95, intercept=0, sd=1)\n# N=1508"
+    },
+    {
+      "id": "t4-cont-004",
+      "template": "riley_continuous",
+      "difficulty": "advanced",
+      "question": "After LASSO variable selection, we have 30 predictors for a continuous outcome model with expected R² = 0.35. Using standardized outcome (mean 0, SD 1) and standard Riley criteria (shrinkage 0.90), what sample size is required?",
+      "expected_template": "riley_continuous",
+      "ground_truth": {
+        "sample_size": 580,
+        "predictors": 30,
+        "r2": 0.35,
+        "intercept": 0,
+        "sd": 1,
+        "max_shrinkage": 0.9,
+        "criteria": "riley_continuous"
+      },
+      "tolerance": {
+        "sample_size": 5
+      },
+      "source": "pmsampsize::pmsampsize (R-validated 2026-01-28)",
+      "reference_code": "library(pmsampsize)\npmsampsize(type='c', parameters=30, rsquared=0.35, intercept=0, sd=1)\n# N=580"
+    },
+    {
+      "id": "t4-valid-001",
+      "template": "external_validation",
+      "difficulty": "basic",
+      "question": "We're validating a DVT diagnostic model in a new population. The linear predictor follows a normal distribution with mean = -1.75 and SD = 2.16. Expected C-statistic is 0.82, outcome prevalence is 22%. We want precision: C-stat CI width ≤ 0.10, calibration slope CI width ≤ 0.20, O/E ratio CI width ≤ 0.20. What validation sample size is needed?",
+      "expected_template": "riley_validation",
+      "ground_truth": {
+        "sample_size": 1832,
+        "events": 403,
+        "prevalence": 0.22,
+        "cstatistic": 0.82,
+        "cstat_ciwidth": 0.1,
+        "calslope_ciwidth": 0.2,
+        "oe_ciwidth": 0.2,
+        "binding_criterion": "calibration_slope",
+        "criteria": "pmvalsampsize_binary"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmvalsampsize (R-validated 2026-02-06)",
+      "reference_code": "library(pmvalsampsize)\n# lpnormal takes (mean, SD) — here SD=2.16\npmvalsampsize(type='b', prevalence=0.22, cstatistic=0.82, lpnormal=c(-1.75, 2.16), cstatciwidth=0.1, csciwidth=0.2, oeciwidth=0.2)\n# Criteria 1 (O/E): 1364, Criteria 2 (C-slope): 1832, Criteria 3 (C-stat): 400\n# Final: 1832 (calibration slope binds)"
+    },
+    {
+      "id": "t4-valid-002",
+      "template": "external_validation",
+      "difficulty": "intermediate",
+      "question": "We're externally validating a stroke risk model. Expected C-statistic is 0.75 in the new population, prevalence is 15%. The linear predictor follows a normal distribution (mean = -2.0, SD = 1.44). We want: C-stat CI width ≤ 0.08, calibration slope CI width ≤ 0.30, O/E CI width ≤ 0.30. What sample size is needed?",
+      "expected_template": "riley_validation",
+      "ground_truth": {
+        "sample_size": 1183,
+        "events": 178,
+        "prevalence": 0.15,
+        "cstatistic": 0.75,
+        "cstat_ciwidth": 0.08,
+        "calslope_ciwidth": 0.3,
+        "oe_ciwidth": 0.3,
+        "binding_criterion": "calibration_slope",
+        "criteria": "pmvalsampsize_binary"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmvalsampsize (R-validated 2026-02-01)",
+      "reference_code": "library(pmvalsampsize)\n# lpnormal takes (mean, SD) — here SD=1.44\npmvalsampsize(type='b', prevalence=0.15, cstatistic=0.75, lpnormal=c(-2.0, 1.44), cstatciwidth=0.08, csciwidth=0.3, oeciwidth=0.3)\n# Criteria 1 (O/E): 974, Criteria 2 (C-slope): 1183, Criteria 3 (C-stat): 1111\n# Final: 1183 (calibration slope binds)"
+    },
+    {
+      "id": "t4-valid-003",
+      "template": "external_validation",
+      "difficulty": "advanced",
+      "question": "We're validating a high-discrimination model (expected C = 0.90) with prevalence 30%. The LP is normally distributed (mean = -0.5, SD = 4.0). We need very precise C-statistic (CI width ≤ 0.05), plus calibration slope and O/E CI widths ≤ 0.20. What validation sample size is required?",
+      "expected_template": "riley_validation",
+      "ground_truth": {
+        "sample_size": 1674,
+        "events": 503,
+        "prevalence": 0.3,
+        "cstatistic": 0.9,
+        "cstat_ciwidth": 0.05,
+        "calslope_ciwidth": 0.2,
+        "oe_ciwidth": 0.2,
+        "binding_criterion": "calibration_slope",
+        "criteria": "pmvalsampsize_binary"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmvalsampsize (R-validated 2026-02-01)",
+      "reference_code": "library(pmvalsampsize)\n# lpnormal takes (mean, SD) — here SD=4.0\npmvalsampsize(type='b', prevalence=0.30, cstatistic=0.90, lpnormal=c(-0.5, 4.0), cstatciwidth=0.05, csciwidth=0.2, oeciwidth=0.2)\n# Criteria 1 (O/E): 898, Criteria 2 (C-slope): 1674, Criteria 3 (C-stat): 746\n# Final: 1674 (calibration slope binds)"
+    },
+    {
+      "id": "t4-valid-004",
+      "template": "external_validation",
+      "difficulty": "intermediate",
+      "question": "Our validation study has predicted probabilities following a Beta(2, 5) distribution. Expected C = 0.75, prevalence = 15%. We want: C-stat CI width ≤ 0.10, calibration slope CI width ≤ 0.20, O/E CI width ≤ 0.20. What sample size is needed?",
+      "expected_template": "riley_validation",
+      "ground_truth": {
+        "sample_size": 3733,
+        "events": 560,
+        "prevalence": 0.15,
+        "cstatistic": 0.75,
+        "cstat_ciwidth": 0.1,
+        "calslope_ciwidth": 0.2,
+        "oe_ciwidth": 0.2,
+        "lp_distribution": "beta(2,5)",
+        "binding_criterion": "calibration_slope",
+        "criteria": "pmvalsampsize_binary"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmvalsampsize (R-validated 2026-02-01)",
+      "reference_code": "library(pmvalsampsize)\npmvalsampsize(type='b', prevalence=0.15, cstatistic=0.75, lpbeta=c(2, 5), cstatciwidth=0.1, csciwidth=0.2, oeciwidth=0.2)\n# Criteria 1 (O/E): 2179, Criteria 2 (C-slope): 3733, Criteria 3 (C-stat): 712\n# Final: 3733 (calibration slope binds)"
+    },
+    {
+      "id": "t4-valid-005",
+      "template": "external_validation",
+      "difficulty": "basic",
+      "question": "We're validating the same DVT model as before (LP normal with mean = -1.75, SD = 2.16, C = 0.82, prevalence = 22%) but with more relaxed precision targets: C-stat CI width ≤ 0.10, calibration slope CI width ≤ 0.30, O/E CI width ≤ 0.30. What's the reduced sample size needed?",
+      "expected_template": "riley_validation",
+      "ground_truth": {
+        "sample_size": 814,
+        "events": 180,
+        "prevalence": 0.22,
+        "cstatistic": 0.82,
+        "cstat_ciwidth": 0.1,
+        "calslope_ciwidth": 0.3,
+        "oe_ciwidth": 0.3,
+        "binding_criterion": "calibration_slope",
+        "criteria": "pmvalsampsize_binary"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmvalsampsize (R-validated 2026-02-01)",
+      "reference_code": "library(pmvalsampsize)\n# lpnormal takes (mean, SD) — here SD=2.16\npmvalsampsize(type='b', prevalence=0.22, cstatistic=0.82, lpnormal=c(-1.75, 2.16), cstatciwidth=0.1, csciwidth=0.3, oeciwidth=0.3)\n# Criteria 1 (O/E): 610, Criteria 2 (C-slope): 814, Criteria 3 (C-stat): 400\n# Final: 814 (calibration slope binds)"
+    },
+    {
+      "id": "t4-valid-006",
+      "template": "external_validation",
+      "difficulty": "advanced",
+      "question": "We're validating a cancer screening model and also want to assess clinical utility. Expected C = 0.80, prevalence = 10%, LP is normal (mean = -3.0, SD = 2.25). We need standard precision (C-stat CI ≤ 0.10, cal slope CI ≤ 0.20, O/E CI ≤ 0.20). Additionally, at a 10% treatment threshold, expected sensitivity is 0.80, specificity is 0.70, and we want standardized net benefit CI width ≤ 0.20. What sample size is needed?",
+      "expected_template": "riley_validation",
+      "ground_truth": {
+        "sample_size": 3461,
+        "events": 347,
+        "prevalence": 0.1,
+        "cstatistic": 0.8,
+        "cstat_ciwidth": 0.1,
+        "calslope_ciwidth": 0.2,
+        "oe_ciwidth": 0.2,
+        "threshold": 0.1,
+        "sensitivity": 0.8,
+        "specificity": 0.7,
+        "nb_ciwidth": 0.2,
+        "binding_criterion": "oe_ratio",
+        "criteria": "pmvalsampsize_binary_netbenefit"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "pmvalsampsize (R-validated 2026-02-01)",
+      "reference_code": "library(pmvalsampsize)\n# lpnormal takes (mean, SD) — here SD=2.25\npmvalsampsize(type='b', prevalence=0.10, cstatistic=0.80, lpnormal=c(-3.0, 2.25), cstatciwidth=0.1, csciwidth=0.2, oeciwidth=0.2, sensitivity=0.80, specificity=0.70, threshold=0.10, nbciwidth=0.2)\n# Criteria 1 (O/E): 3461, Criteria 2 (C-slope): 2435, Criteria 3 (C-stat): 836, Criteria 4 (St NB): 1090\n# Final: 3461 (O/E criterion binds)"
+    },
+    {
+      "id": "t4-valid-007",
+      "template": "external_validation",
+      "difficulty": "basic",
+      "question": "I'm validating an existing prediction model in a new population. The original C-statistic was 0.80, but I expect it to be 0.75 in this new population. Outcome prevalence is 12%. I want the 95% CI width for the C-statistic to be at most 0.10. What sample size do I need?",
+      "expected_template": "riley_validation",
+      "ground_truth": {
+        "sample_size": 1095,
+        "events": 132,
+        "expected_c_statistic": 0.75,
+        "prevalence": 0.12,
+        "ci_width": 0.1,
+        "criteria": "hanley_mcneil_validation"
+      },
+      "tolerance": {
+        "sample_size": 5,
+        "events": 2
+      },
+      "source": "Hanley-McNeil (1982) variance formula (R-validated 2026-02-07)",
+      "reference_code": "C <- 0.75; p <- 0.12; w <- 0.10; z <- qnorm(0.975)\nQ1 <- C/(2-C); Q2 <- 2*C^2/(1+C)\nse <- w/(2*z)\nvar_coeff <- (Q1-C^2)/(1-p) + (Q2-C^2)/p\nN <- ceiling(var_coeff/se^2)  # = 1095"
+    }
+  ]
+}
