@@ -3,8 +3,7 @@
 > **Team info**
 > | Legal name | Affiliation | Institutional email | Kaggle username |
 > |---|---|---|---|
-> | Yukang Zeng | Yale University (Biostatistics) | yukang.zeng@yale.edu | [kaggle_username] |
-> | [Name 2 — optional] | [Affiliation] | [email] | [kaggle_username] |
+> | Yukang Zeng | Yale University (Biostatistics) | yukang.zeng@yale.edu | yukangzengyale |
 >
 > **Registered team name:** PowerBot
 
