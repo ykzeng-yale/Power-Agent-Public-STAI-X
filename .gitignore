@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+backend/node_modules/
+
+# secrets / credentials
+.env
+.env.local
+.env.*.local
+*credentials*.json
+power-agent-*.json
+!package.json
+!package-lock.json
+
+# logs / runtime output
+*.log
+backend/output/
+backend/uploads/
+output/
+uploads/
+*.tmp
+
+# OS
+.DS_Store

@@ -1,0 +1,26 @@
+% Publication-quality LaTeX header for Power Agent reports
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textbf{Biostatistical Analysis Report}}
+\fancyhead[R]{\small\today}
+\fancyfoot[C]{\small Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Caption styling
+\captionsetup{font=small, labelfont=bf, skip=8pt}
+
+% Table styling
+\renewcommand{\arraystretch}{1.3}

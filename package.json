@@ -1,0 +1,37 @@
+{
+  "name": "biostat-agent",
+  "version": "1.0.0",
+  "description": "AI-powered biostatistics agent for sample size calculation and data analysis",
+  "main": "backend/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node --watch backend/server.js",
+    "install-backend": "cd backend && npm install",
+    "postinstall": "npm run install-backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ykzeng-yale/Biostat-Agent.git"
+  },
+  "keywords": [
+    "biostatistics",
+    "sample-size",
+    "power-analysis",
+    "clinical-trials",
+    "ai-agent",
+    "claude"
+  ],
+  "author": "Yukang Zeng",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.68.0",
+    "dotenv": "^17.2.3",
+    "form-data": "^4.0.4",
+    "node-fetch": "^2.7.0",
+    "uuid": "^13.0.0"
+  }
+}

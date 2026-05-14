@@ -1,0 +1,205 @@
+{
+  "benchmark": "n-power-ai",
+  "name": "N-Power AI (Ruan et al.)",
+  "paper": "bioRxiv 2025.02.06.636776",
+  "total": 12,
+  "passed": 7,
+  "failed": 5,
+  "passRate": "58.3%",
+  "mape": "8.2%",
+  "evaluations": [
+    {
+      "taskId": "npa-s1-ss",
+      "pass": true,
+      "extracted": 37,
+      "expected": 37,
+      "tolerance": 2,
+      "diff": 0,
+      "percentError": 0,
+      "reason": "Within tolerance (diff=0.00 <= 2)",
+      "extraction": {
+        "extracted_value": 37,
+        "unit": "total",
+        "confidence": "high",
+        "reasoning": "The agent clearly states in the summary that 'a sample size of n = 37 participants is required' and refers to '37 enrolled participants' indicating this is the total sample size needed."
+      }
+    },
+    {
+      "taskId": "npa-s1-power",
+      "pass": true,
+      "extracted": 0.9002,
+      "expected": 0.9,
+      "tolerance": 0.03,
+      "diff": 0,
+      "percentError": 0,
+      "reason": "Within tolerance (diff=0.00 <= 0.03)",
+      "extraction": {
+        "extracted_value": 0.9002,
+        "unit": "power",
+        "confidence": "high",
+        "reasoning": "The agent clearly states in the summary that the statistical power is 90.02%, which converts to 0.9002 as a decimal."
+      }
+    },
+    {
+      "taskId": "npa-s2-ss",
+      "pass": true,
+      "extracted": 42,
+      "expected": 42,
+      "tolerance": 3,
+      "diff": 0,
+      "percentError": 0,
+      "reason": "Within tolerance (diff=0.00 <= 3)",
+      "extraction": {
+        "extracted_value": 42,
+        "unit": "per group",
+        "confidence": "high",
+        "reasoning": "The agent clearly states in the summary that 42 patients per group are required to achieve 80% power, which directly answers the question asking for sample size per group."
+      }
+    },
+    {
+      "taskId": "npa-s2-power",
+      "pass": false,
+      "extracted": 0.6338,
+      "expected": 0.81,
+      "tolerance": 0.03,
+      "diff": 0.176,
+      "percentError": -21.8,
+      "reason": "OUTSIDE tolerance (diff=0.18 > 0.03)",
+      "extraction": {
+        "extracted_value": 0.6338,
+        "unit": "power",
+        "confidence": "high",
+        "reasoning": "The agent clearly states the statistical power is 63.38% which converts to 0.6338 as a decimal."
+      }
+    },
+    {
+      "taskId": "npa-s3-ss",
+      "pass": false,
+      "extracted": 51,
+      "expected": 42,
+      "tolerance": 3,
+      "diff": 9,
+      "percentError": 21.4,
+      "reason": "OUTSIDE tolerance (diff=9.00 > 3)",
+      "extraction": {
+        "extracted_value": 51,
+        "unit": "pairs",
+        "confidence": "high",
+        "reasoning": "The agent clearly states in the summary that 51 patients are necessary for the paired t-test design, which represents the total number of pairs since each patient serves as their own control with before/after measurements."
+      }
+    },
+    {
+      "taskId": "npa-s3-power",
+      "pass": false,
+      "extracted": 0.8832,
+      "expected": 0.81,
+      "tolerance": 0.03,
+      "diff": 0.073,
+      "percentError": 9,
+      "reason": "OUTSIDE tolerance (diff=0.07 > 0.03)",
+      "extraction": {
+        "extracted_value": 0.8832,
+        "unit": "power",
+        "confidence": "high",
+        "reasoning": "The agent clearly states in the summary that the study has 88.32% statistical power, which converts to 0.8832 as a decimal."
+      }
+    },
+    {
+      "taskId": "npa-s4-ss",
+      "pass": false,
+      "extracted": 17,
+      "expected": 13,
+      "tolerance": 2,
+      "diff": 4,
+      "percentError": 30.8,
+      "reason": "OUTSIDE tolerance (diff=4.00 > 2)",
+      "extraction": {
+        "extracted_value": 17,
+        "unit": "per group",
+        "confidence": "high",
+        "reasoning": "The agent clearly states in the analysis summary that 17 students per group are required to achieve the target power level."
+      }
+    },
+    {
+      "taskId": "npa-s4-power",
+      "pass": false,
+      "extracted": 0.6909,
+      "expected": 0.81,
+      "tolerance": 0.03,
+      "diff": 0.119,
+      "percentError": -14.7,
+      "reason": "OUTSIDE tolerance (diff=0.12 > 0.03)",
+      "extraction": {
+        "extracted_value": 0.6909,
+        "unit": "power",
+        "confidence": "high",
+        "reasoning": "The agent clearly states the power analysis result as '69.09% statistical power' which converts to 0.6909 as a decimal."
+      }
+    },
+    {
+      "taskId": "npa-s5-ss",
+      "pass": true,
+      "extracted": 13069,
+      "expected": 13069,
+      "tolerance": 654,
+      "diff": 0,
+      "percentError": 0,
+      "reason": "Within tolerance (diff=0.00 <= 654)",
+      "extraction": {
+        "extracted_value": 13069,
+        "unit": "total",
+        "confidence": "high",
+        "reasoning": "The agent clearly states in the professional summary that 'a minimum total sample size of 13,069 students' is required to achieve 80% power."
+      }
+    },
+    {
+      "taskId": "npa-s5-power",
+      "pass": true,
+      "extracted": 0.8,
+      "expected": 0.8,
+      "tolerance": 0.03,
+      "diff": 0,
+      "percentError": 0,
+      "reason": "Within tolerance (diff=0.00 <= 0.03)",
+      "extraction": {
+        "extracted_value": 0.8,
+        "unit": "power",
+        "confidence": "high",
+        "reasoning": "The agent clearly states in the professional summary that the study has '80% statistical power' which converts to 0.80 as a decimal."
+      }
+    },
+    {
+      "taskId": "npa-s6-ss",
+      "pass": true,
+      "extracted": 294,
+      "expected": 294,
+      "tolerance": 15,
+      "diff": 0,
+      "percentError": 0,
+      "reason": "Within tolerance (diff=0.00 <= 15)",
+      "extraction": {
+        "extracted_value": 294,
+        "unit": "per group",
+        "confidence": "high",
+        "reasoning": "The agent clearly states in the analysis summary that 294 participants per treatment arm are required to achieve 80% power."
+      }
+    },
+    {
+      "taskId": "npa-s6-power",
+      "pass": true,
+      "extracted": 0.8011,
+      "expected": 0.8,
+      "tolerance": 0.03,
+      "diff": 0.001,
+      "percentError": 0.1,
+      "reason": "Within tolerance (diff=0.00 <= 0.03)",
+      "extraction": {
+        "extracted_value": 0.8011,
+        "unit": "power",
+        "confidence": "high",
+        "reasoning": "The agent clearly states in the professional summary that the study achieves 80.11% statistical power, which converts to 0.8011 as a decimal."
+      }
+    }
+  ],
+  "timestamp": "2026-02-26T01:42:10.606Z"
+}

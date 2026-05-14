@@ -1,0 +1,1039 @@
+{
+  "benchmark": "verma-textbook",
+  "source": {
+    "title": "Determining Sample Size and Power in Research Studies: A Manual for Researchers",
+    "authors": "Verma, J. P. and Verma, Priyam",
+    "year": 2020,
+    "publisher": "Springer Nature Singapore",
+    "isbn": "978-981-15-5204-5",
+    "doi": "10.1007/978-981-15-5204-5"
+  },
+  "total_tasks": 73,
+  "description": "All 73 computation tasks from the Verma textbook: 35 worked illustrations (Chapters 3, 4, 6, 7), 33 exercises with answer keys, and 5 multi-part sub-questions. Ground truths are the exact values reported in the textbook (G*Power or hand-calculated).",
+  "tasks": [
+    {
+      "id": "verma-3.1",
+      "chapter": 3,
+      "illustration": "3.1",
+      "test_type": "Mean CI (known SD)",
+      "question": "What would be the sample size in estimating mean height of male students with 95% confidence level from a sample of students that is within 4 cm of the true mean? Given that population standard deviation of height, σ = 10 cm.",
+      "ground_truth": {
+        "sample_size": 24
+      },
+      "unit": "total",
+      "tolerance": 2,
+      "source_page": "p.33",
+      "note": "z-formula: n = (1.96 × 10/4)² ≈ 24.01"
+    },
+    {
+      "id": "verma-3.2",
+      "chapter": 3,
+      "illustration": "3.2",
+      "test_type": "Mean CI (unknown SD, t-iteration)",
+      "question": "In estimating mean height of male students with 95% confidence from a sample that is within 4 cm of the true mean, if the population standard deviation of height is not known and is estimated as S = 8 cm from similar studies, what would be the estimated sample size using the t-distribution iteration method?",
+      "ground_truth": {
+        "sample_size": 18
+      },
+      "unit": "total",
+      "tolerance": 3,
+      "source_page": "p.34",
+      "note": "t-distribution iteration converges to n=18."
+    },
+    {
+      "id": "verma-3.3",
+      "chapter": 3,
+      "illustration": "3.3",
+      "test_type": "Mean CI (unknown SD)",
+      "question": "Everley's syndrome is a congenital disease that causes a reduction in concentration of blood sodium. Assuming blood sodium concentration to be normally distributed, what should be the sample size in estimating the mean blood sodium concentration among the patients in the population with 95% confidence and error margin of 5 mmol/l? Studies in the review suggest that the standard deviation of the blood sodium concentration (S) is 12 mmol/l.",
+      "ground_truth": {
+        "sample_size": 25
+      },
+      "unit": "total",
+      "tolerance": 3,
+      "source_page": "p.34",
+      "note": "t-distribution iteration. z-formula gives ~22, t-iteration gives ~25."
+    },
+    {
+      "id": "verma-3.4",
+      "chapter": 3,
+      "illustration": "3.4",
+      "test_type": "Mean CI (99% confidence)",
+      "question": "A researcher is interested in estimating the mean serum indirect bilirubin level in 2-week-old infants. Similar studies suggest that standard deviation of the bilirubin level is 2.2 mg/dl. What should be the sample size in estimating mean bilirubin level which is within 1.2 mg/dl of the true mean with 99% confidence?",
+      "ground_truth": {
+        "sample_size": 26
+      },
+      "unit": "total",
+      "tolerance": 4,
+      "source_page": "p.34",
+      "note": "99% CI with t-iteration. z-formula gives ~23."
+    },
+    {
+      "id": "verma-3.5",
+      "chapter": 3,
+      "illustration": "3.5",
+      "test_type": "Proportion CI",
+      "question": "In order to estimate the proportion of non-vegetarians in a city, what should be the sample size for 95% confidence interval for population proportion with a margin of error at 4%? In similar studies in estimating non-vegetarians in the city, proportion was 0.3.",
+      "ground_truth": {
+        "sample_size": 504
+      },
+      "unit": "total",
+      "tolerance": 10,
+      "source_page": "p.36",
+      "note": "n = Z² × p×q / d² = 1.96² × 0.3×0.7 / 0.04² ≈ 504.21"
+    },
+    {
+      "id": "verma-3.6",
+      "chapter": 3,
+      "illustration": "3.6",
+      "test_type": "Proportion CI",
+      "question": "In order to develop smoking policy, university authority is interested to estimate the proportion of non-smokers in the university. The proportion of non-smokers in similar studies was 0.7. How much should be the sample size to have an estimate within 3% of the true proportion with 95% confidence coefficient?",
+      "ground_truth": {
+        "sample_size": 897
+      },
+      "unit": "total",
+      "tolerance": 18,
+      "source_page": "p.36",
+      "note": "n = 1.96² × 0.7×0.3 / 0.03² ≈ 896.37 → 897"
+    },
+    {
+      "id": "verma-3.7",
+      "chapter": 3,
+      "illustration": "3.7",
+      "test_type": "Proportion CI (90%)",
+      "question": "A physiotherapy centre provides its services to both male and female clients. Similar studies suggest that the proportion of female patients visiting such centres is 0.4. How large a sample of patients should be selected to estimate the proportion of female patients with 4% margin of error having 90% confidence level?",
+      "ground_truth": {
+        "sample_size": 406
+      },
+      "unit": "total",
+      "tolerance": 10,
+      "source_page": "p.37",
+      "note": "n = 1.645² × 0.4×0.6 / 0.04² ≈ 405.9 → 406"
+    },
+    {
+      "id": "verma-3.8",
+      "chapter": 3,
+      "illustration": "3.8",
+      "test_type": "Proportion CI",
+      "question": "A survey reports that 15% of all inhabitants aged 16-22 years in a metro city drove under the influence of drugs or alcohol. A similar survey is planned for Delhi. They want a 95% confidence interval to have a 4% margin of error. Find the estimated sample size if they expect the results similar to that of the metro city (p = 0.15).",
+      "ground_truth": {
+        "sample_size": 307
+      },
+      "unit": "total",
+      "tolerance": 8,
+      "source_page": "p.37",
+      "note": "n = 1.96² × 0.15×0.85 / 0.04² ≈ 306.1 → 307"
+    },
+    {
+      "id": "verma-4.1",
+      "chapter": 4,
+      "illustration": "4.1",
+      "test_type": "One-sample t-test (sample size, iteration)",
+      "question": "How large a sample is required to reject the null hypothesis H0: µ = 37 against the alternative hypothesis H1: µ > 37, where µ is the population mean of VO2max (a sign of cardiorespiratory endurance)? We wish to test the null hypothesis at 0.05 level of significance with 80% chances of detecting the difference between the means under H1 and H0 by at least 1.2 units (µ1 – µ0 > 1.2). Population variance has been estimated by the reported studies as S² = 4 ml kg⁻¹ min⁻¹.",
+      "ground_truth": {
+        "sample_size": 19
+      },
+      "unit": "total",
+      "tolerance": 2,
+      "source_page": "Ch.4 Illustration 4.1",
+      "note": "One-sample t by iteration: n = S²(tα,ν + tβ,ν)²/d² = 4(1.734+0.862)²/1.44 ≈ 19"
+    },
+    {
+      "id": "verma-4.2",
+      "chapter": 4,
+      "illustration": "4.2",
+      "test_type": "Minimum detectable difference (one-sample t)",
+      "question": "In an experiment testing H0: µ = 37 against H1: µ > 37 for VO2max, where the population variance is estimated as S² = 4 ml kg⁻¹ min⁻¹, what is the minimum detectable difference (between the means under H1 and H0) that can be detected 80% of the time using a sample of 24 data at the 5% significance level in a one-tailed test?",
+      "ground_truth": {
+        "mdd": 1.05
+      },
+      "unit": "difference",
+      "tolerance": 0.1,
+      "source_page": "Ch.4 Illustration 4.2",
+      "note": "MDD: d = S/√n × (tα,ν + tβ,ν) = 2/√24 × (1.714+0.857) = 1.05"
+    },
+    {
+      "id": "verma-4.3",
+      "chapter": 4,
+      "illustration": "4.3",
+      "test_type": "Power estimation (one-sample t)",
+      "question": "In an experiment testing H0: µ = 37 against H1: µ > 37 for VO2max, if the sample size is 24, what would be the power of the one-tailed test for a given α = 0.05, minimum detectable difference d = 1.2, and standard deviation S = 2?",
+      "ground_truth": {
+        "power": 0.9015
+      },
+      "unit": "power",
+      "tolerance": 0.03,
+      "source_page": "Ch.4 Illustration 4.3",
+      "note": "Power: Zβ = d√n/S - Zα = 1.2×√24/2 - 1.645 = 1.29, β=0.0985, power=90.15%"
+    },
+    {
+      "id": "verma-4.4",
+      "chapter": 4,
+      "illustration": "4.4",
+      "test_type": "Two-sample t-test (sample size, iteration)",
+      "question": "In a study, the researcher desires to test whether the difference between the mean WBC counts of persons using two different drugs is significant. He wishes to test the hypothesis at 0.05 significance level (two-tailed) with a 90% chance of detecting a true difference between the population means being as small as 40 counts. Estimate of the population variance as suggested by the earlier studies is S² = 1700 count. What should be his sample size in each group?",
+      "ground_truth": {
+        "sample_size": 24
+      },
+      "unit": "per_group",
+      "tolerance": 2,
+      "source_page": "Ch.4 Illustration 4.4",
+      "note": "Two-sample t by iteration: n = 2S²(tα/2,ν + tβ,ν)²/d² = 2×1700(2.01+1.30)²/1600 ≈ 24 per group"
+    },
+    {
+      "id": "verma-4.5",
+      "chapter": 4,
+      "illustration": "4.5",
+      "test_type": "Power estimation (two-sample t)",
+      "question": "In a two-tailed test comparing mean WBC counts of persons using two different drugs, where S² = 1700 and the minimum detectable difference is 40 counts, what would be the probability of detecting the difference (power) if n1 = n2 = 22 and α = 0.05?",
+      "ground_truth": {
+        "power": 0.883
+      },
+      "unit": "power",
+      "tolerance": 0.03,
+      "source_page": "Ch.4 Illustration 4.5",
+      "note": "Power: tβ = d/√(2S²/n) - tα/2 = 40/√(3400/22) - 2.019 = 1.19, β=0.117, power=88.3%"
+    },
+    {
+      "id": "verma-6.1",
+      "chapter": 6,
+      "illustration": "6.1",
+      "test_type": "One-sample t-test",
+      "question": "The mean calcium concentration in a random sample of housewives in the age category 40-50 years is 2.5 mmol/l. What should be the sample size required for detecting the difference between the means of sample and population with power 0.8 at significance level 0.05 using one-tailed test, given that the mean and standard deviation of calcium concentration are 2.3 mmol/l and 0.5 mmol/l, respectively, in the population?",
+      "ground_truth": {
+        "sample_size": 41
+      },
+      "unit": "total",
+      "tolerance": 3,
+      "source_page": "p.64",
+      "note": "G*Power: one-sample t-test, d = (2.5-2.3)/0.5 = 0.4, one-tail, n=41 (achieved power 80.86%)"
+    },
+    {
+      "id": "verma-6.2",
+      "chapter": 6,
+      "illustration": "6.2",
+      "test_type": "One-sample proportion (exact binomial)",
+      "question": "A product manager in a biomedical company needs to detect whether the process deteriorates by more than 10% of defective pieces. He continues the process as long as it gives less than 10% defectives. He is interested in a one-sided test with significance level of 5%. What would be the sample size to detect the 10% further deterioration in comparison to the accepted 10% defectives with power 0.9?",
+      "ground_truth": {
+        "sample_size": 109
+      },
+      "unit": "total",
+      "tolerance": 8,
+      "source_page": "p.66",
+      "note": "G*Power: exact binomial test, p1=0.10, p2=0.20, one-tail, n=109"
+    },
+    {
+      "id": "verma-6.3",
+      "chapter": 6,
+      "illustration": "6.3",
+      "test_type": "Two-sample t-test (independent)",
+      "question": "What sample size is needed in correctly rejecting the null hypothesis of no difference in the noise level in the Lobby and Library in a college with power 0.8? The expected mean noise level for the Lobby is 62.4 dBA and for the Library is 58.1 dBA. The expected standard deviation (SD) in each group is 7.8 dBA. One-tailed test is proposed to be applied at the significance level of 0.05.",
+      "ground_truth": {
+        "sample_size": 42
+      },
+      "unit": "per_group",
+      "tolerance": 3,
+      "source_page": "p.68",
+      "note": "G*Power: two-sample t-test, d = (62.4-58.1)/7.8 = 0.551, one-tail, n=42 per group"
+    },
+    {
+      "id": "verma-6.4",
+      "chapter": 6,
+      "illustration": "6.4",
+      "test_type": "Paired t-test",
+      "question": "An exercise scientist prepares a 12-week weight loss programme for housewives in 30-40 years age category. How many participants should constitute the sample to detect 80% times a reduction of 3 kg in weight with significance level 0.05? The expected average weight before the programme is 90 kg (SD = 5 kg) and after the programme is 87 kg (SD = 5.5 kg). Assume moderate correlation (0.5) between pre and post measurements. Use a one-tailed test.",
+      "ground_truth": {
+        "sample_size": 21
+      },
+      "unit": "total",
+      "tolerance": 2,
+      "source_page": "p.70",
+      "note": "G*Power: paired t-test, mean diff=3, SD_diff based on r=0.5, one-tail, n=21"
+    },
+    {
+      "id": "verma-6.5",
+      "chapter": 6,
+      "illustration": "6.5",
+      "test_type": "Mann-Whitney test",
+      "question": "In order to test whether study hours of women are higher than that of men in a college, a researcher finds that the t-test cannot be used as assumption of equal variance in two groups is violated. Hence, he decides to use the Mann-Whitney test for comparing these two groups. What sample size should be taken to detect the difference of 0.25 h between the group means with power 0.9 and α = 0.05? The expected mean and standard deviation for women are 6 h and 0.5 h, and for men are 5.75 h and 0.5 h. Use one-tailed test.",
+      "ground_truth": {
+        "sample_size": 47
+      },
+      "unit": "per_group",
+      "tolerance": 5,
+      "source_page": "p.72",
+      "note": "G*Power: Mann-Whitney (Laplace parent), d=0.5, one-tail, n=47 per group"
+    },
+    {
+      "id": "verma-6.6",
+      "chapter": 6,
+      "illustration": "6.6",
+      "test_type": "Wilcoxon signed-rank test",
+      "question": "In studying the effect of a drug on blood sugar, it was found that the paired t-test cannot be used as assumption of normality for the difference of scores is violated. Hence, it was decided to use the Wilcoxon signed-rank test for paired data. What sample size should be taken to detect a difference of 5 counts between group means with 80% power at significance level 0.01? Earlier studies suggest that the SD of the difference is 12 units. Use one-tailed test.",
+      "ground_truth": {
+        "sample_size": 25
+      },
+      "unit": "total",
+      "tolerance": 3,
+      "source_page": "p.74",
+      "note": "G*Power: Wilcoxon signed-rank (Laplace parent), dz=5/12=0.417, α=0.01, one-tail, n=25"
+    },
+    {
+      "id": "verma-6.7",
+      "chapter": 6,
+      "illustration": "6.7",
+      "test_type": "Two-proportion test (unequal allocation)",
+      "question": "Earlier studies show that the expected proportion of child vaccination in northern cities is 0.9 and in the southern cities it is 0.85. How many cases are needed to correctly reject the null hypothesis of no difference between the proportions of child vaccination in northern and southern cities 80% times at the significance level of 0.05? Due to difference in population size, it is decided to have the proportion of samples n2/n1 to be 1.25 where n1 is the sample size in northern cities and n2 in southern cities. Use a two-tailed test.",
+      "ground_truth": {
+        "n1": 636,
+        "n2": 795
+      },
+      "unit": "n1_n2",
+      "tolerance": 40,
+      "source_page": "p.76",
+      "note": "G*Power: exact proportions two independent groups, p1=0.9, p2=0.85, n2/n1=1.25, n1=636, n2=795"
+    },
+    {
+      "id": "verma-6.8",
+      "chapter": 6,
+      "illustration": "6.8",
+      "test_type": "Correlation (bivariate normal)",
+      "question": "In testing the significance of correlation coefficient between resting respiratory rate and fat%, what sample size should be taken to test whether the observed sample correlation differs from 0 and having at least 45% coefficient of determination with 0.9 power and significance level 0.05 in carrying out a two-tailed test?",
+      "ground_truth": {
+        "sample_size": 19
+      },
+      "unit": "total",
+      "tolerance": 2,
+      "source_page": "p.78",
+      "note": "G*Power: exact bivariate normal, ρ=√0.45≈0.671, ρ0=0, two-tail, n=19 (achieved power 91.63%)"
+    },
+    {
+      "id": "verma-6.9",
+      "chapter": 6,
+      "illustration": "6.9",
+      "test_type": "Correlation (non-zero H0)",
+      "question": "Correlation between height and weight is known to be 0.55 among children in the age category of 8-12 years. What should be the sample size required in correctly rejecting the null hypothesis that the sample correlation of 0.7 differs from 0.55, correctly 80% time at significance level 0.05 in a two-tailed test?",
+      "ground_truth": {
+        "sample_size": 129
+      },
+      "unit": "total",
+      "tolerance": 7,
+      "source_page": "p.79",
+      "note": "G*Power: bivariate normal model, ρ_H1=0.7, ρ_H0=0.55, two-tail, n=129"
+    },
+    {
+      "id": "verma-6.10",
+      "chapter": 6,
+      "illustration": "6.10",
+      "test_type": "Two independent correlations (Fisher z)",
+      "question": "In a correlational study between IQ and Math's score, how many sample data would be required in correctly rejecting the null hypothesis of equal correlations in men and women if the following information is given? Estimated correlation in men (ρ1) = 0.8, estimated correlation in women (ρ2) = 0.68. Type of test = two-tailed, significance level (α) = 0.05, power (1 − β) = 0.85. Sample sizes in both the groups are same (n1/n2 = 1).",
+      "ground_truth": {
+        "sample_size": 251
+      },
+      "unit": "per_group",
+      "tolerance": 15,
+      "source_page": "p.80",
+      "note": "G*Power: two independent Pearson r's, total=502, n=251 per group (achieved power 85.11%)"
+    },
+    {
+      "id": "verma-6.11",
+      "chapter": 6,
+      "illustration": "6.11",
+      "test_type": "Point biserial correlation",
+      "question": "A researcher is interested to test whether haemoglobin content is gender specific in 40-50 years age category. Because one of the variables (Gender) is dichotomous and the other variable (haemoglobin) is numeric, the use of bi-serial correlation is decided; correlation is expected to be at least 0.6 (coefficient of determination = 0.36). What sample size should be selected to test whether the observed correlation is significantly greater than 0 with power 0.9 while using one-tailed test at the significance level 0.05?",
+      "ground_truth": {
+        "sample_size": 17
+      },
+      "unit": "total",
+      "tolerance": 2,
+      "source_page": "p.82",
+      "note": "G*Power: point biserial model, ρ²=0.36, one-tail, n=17 (achieved power 90.38%)"
+    },
+    {
+      "id": "verma-6.12",
+      "chapter": 6,
+      "illustration": "6.12",
+      "test_type": "Chi-square goodness-of-fit",
+      "question": "An epidemiologist is interested to know whether incidence of four diseases (Malaria, Dengue, Chikungunya and Bird flu) in a state is equal to the national proportions (0.4, 0.2, 0.3 and 0.1, respectively). The proportions of incidences of the four diseases in the state are 0.50, 0.15, 0.15 and 0.20, respectively. What should be the sample size to test the goodness of fit with 0.9 power and 0.05 significance level? Note: The degrees of freedom is 1 (m-r-1 = 4-2-1 = 1, where 2 degrees of freedom are lost estimating mean and variance).",
+      "ground_truth": {
+        "sample_size": 50
+      },
+      "unit": "total",
+      "tolerance": 5,
+      "source_page": "p.84",
+      "note": "G*Power: chi-sq GoF contingency table, df=1 (4 categories, 2 df lost for mean/variance estimation), w from proportions, n=50 (achieved power 90.15%)"
+    },
+    {
+      "id": "verma-7.1",
+      "chapter": 7,
+      "illustration": "7.1",
+      "test_type": "Multiple regression (R² deviation from zero)",
+      "question": "A researcher is interested in developing a multiple regression model for estimating employees' happiness on the basis of three predictors (fitness index, nutritional status and hygiene). How much sample size should be required to evaluate whether these three predictors significantly predict employees' happiness and to detect a multiple correlation (R) of 0.30 with power 90% at significance level 0.05?",
+      "ground_truth": {
+        "sample_size": 148
+      },
+      "unit": "total",
+      "tolerance": 8,
+      "source_page": "p.91",
+      "note": "G*Power: F-test linear multiple regression, R²=0.09, f²=0.0989, 3 predictors, n=148 (achieved power 90.16%)"
+    },
+    {
+      "id": "verma-7.2",
+      "chapter": 7,
+      "illustration": "7.2",
+      "test_type": "Logistic regression (continuous predictor)",
+      "question": "An investigator is interested to test whether fat percentage influences mortality (yes=1, no=0) in patients. What should be the sample size in rejecting the null hypothesis that fat% is not associated with the probability of mortality if three covariates (age, weight and calorie intake) influence the outcome, with power 0.85? P(Y=1|X=1) under H1 = 0.30 (probability of death when fat% is 1σ above mean), P(Y=1|X=1) under H0 = 0.10 (probability when fat% is at mean). R² = 0.10 (fat% regressed on covariates). One-tailed test at α = 0.05. X distribution is standard normal (mean=0, SD=1).",
+      "ground_truth": {
+        "sample_size": 51
+      },
+      "unit": "total",
+      "tolerance": 5,
+      "source_page": "p.95",
+      "note": "G*Power: logistic regression, continuous predictor, n=51 (achieved power 85.07%)"
+    },
+    {
+      "id": "verma-7.3",
+      "chapter": 7,
+      "illustration": "7.3",
+      "test_type": "Logistic regression (dichotomous predictor)",
+      "question": "A researcher is interested to investigate whether consuming tobacco affects mortality (mortality=1, no mortality=0) in critical patients. What should be the sample size in correctly rejecting the null hypothesis that consuming tobacco is not associated with mortality with or without three more covariates (gender, smoking and diet) with power 0.80? P(Y=1|X=1) under H1 = 0.30 (tobacco user), P(Y=1|X=0) under H0 = 0.10 (non-tobacco user). R² = 0.25 (tobacco regressed on covariates). Two-tailed test at α = 0.05. X distribution is binomial with parameter 0.6 (proportion of tobacco users).",
+      "ground_truth": {
+        "sample_size": 188
+      },
+      "unit": "total",
+      "tolerance": 12,
+      "source_page": "p.97",
+      "note": "G*Power: logistic regression, dichotomous predictor, n=188 (achieved power 80.14%)"
+    },
+    {
+      "id": "verma-7.4",
+      "chapter": 7,
+      "illustration": "7.4",
+      "test_type": "One-way ANOVA",
+      "question": "An investigator wishes to investigate the relationship between age and pull-ups performance in college athletes. He divided the randomly selected athletes into three age groups: 18-20, 21-23 and 24-26. What should be the sample size in rejecting the null hypothesis correctly to detect the effect of size 0.06 (eta square) with power 0.8 at 0.05 significance level?",
+      "ground_truth": {
+        "sample_size": 156
+      },
+      "unit": "total",
+      "tolerance": 8,
+      "source_page": "p.101",
+      "note": "G*Power: one-way ANOVA fixed effects, η²=0.06, 3 groups, total=156 (52 per group, achieved power 80.56%)"
+    },
+    {
+      "id": "verma-7.5",
+      "chapter": 7,
+      "illustration": "7.5",
+      "test_type": "Two-way ANOVA (main effect)",
+      "question": "An investigator wishes to see the effect of gender (women vs. men) and age (9-10 years, 11-12 years and 13-14 years) on pull-ups performance. What should be the sample size for testing the significance of the main effect of Age for detecting the effect size 0.06 (partial eta square) with power 0.8 at significance level 0.05? Total number of groups = 6 (2 genders × 3 age categories), degrees of freedom for age = 2.",
+      "ground_truth": {
+        "sample_size": 158
+      },
+      "unit": "total",
+      "tolerance": 10,
+      "source_page": "p.103",
+      "note": "G*Power: ANOVA fixed effects special, main effect of age, df=2, 6 groups, total≈155 (26 per group → 156 total, achieved power 80.27%)"
+    },
+    {
+      "id": "verma-7.6",
+      "chapter": 7,
+      "illustration": "7.6",
+      "test_type": "Repeated measures ANOVA (between factors)",
+      "question": "An exercise scientist wishes to conduct an exercise efficacy test on VO2max in 2-week duration. Fifteen subjects in the treatment group receive the exercise, whereas 15 subjects in the control group get placebo. All subjects are tested at pre-test, post-test (2 weeks) and follow-up (4 weeks). What should be the estimated sample size for detecting a significant difference between the treatment and control groups with 0.8 power and α = 0.05? Expected SD = 2.5, means of experimental and control groups are 51 and 49. Number of groups = 2, measurements = 3, correlation among repeated measures = 0.5.",
+      "ground_truth": {
+        "sample_size": 36
+      },
+      "unit": "total",
+      "tolerance": 4,
+      "source_page": "p.106",
+      "note": "G*Power: RM ANOVA between factors, f from means, total=36 (18 per group, achieved power 81.47%)"
+    },
+    {
+      "id": "verma-7.7",
+      "chapter": 7,
+      "illustration": "7.7",
+      "test_type": "Repeated measures ANOVA (within factors)",
+      "question": "A medical researcher wishes to conduct an experiment for testing the effectiveness of a drug in enhancing the WBC blood count across time. The WBC counts of the subjects shall be tested after 1, 2 and 3 weeks. What should be the sample size to detect a significant difference in WBC counts across time with effect size 0.08 (partial eta square) and power 0.9 at significance level 0.05? Number of groups = 1, number of measurements = 3, correlation among repeated measures = 0.5, non-sphericity correction = 1.",
+      "ground_truth": {
+        "sample_size": 26
+      },
+      "unit": "total",
+      "tolerance": 3,
+      "source_page": "p.108",
+      "note": "G*Power: RM ANOVA within factors, η²_p=0.08, 1 group, 3 measurements, ρ=0.5, ε=1, n=26 (achieved power 90.26%)"
+    },
+    {
+      "id": "verma-7.8",
+      "chapter": 7,
+      "illustration": "7.8",
+      "test_type": "Repeated measures ANOVA (within-between interaction)",
+      "question": "An exercise scientist wishes to conduct an experiment with 30 subjects (15 men and 15 women) for testing effectiveness of an exercise programme on VO2max. Subjects' VO2max shall be measured at zero week, 2 weeks and 4 weeks. Duration is within-subject variable, and gender is between-subject variable. What should be the sample size in correctly rejecting the null hypothesis of no interaction between duration and gender for having effect size 0.06 (partial eta square) with 0.85 power at significance level 0.05? Number of groups = 2, measurements = 3, correlation among repeated measures = 0.5, non-sphericity correction = 1.",
+      "ground_truth": {
+        "sample_size": 32
+      },
+      "unit": "total",
+      "tolerance": 4,
+      "source_page": "p.110",
+      "note": "G*Power: RM ANOVA within-between interaction, η²_p=0.06, 2 groups, 3 measurements, ρ=0.5, ε=1, total=32 (16 per group, achieved power 87.32%)"
+    },
+    {
+      "id": "verma-7.9",
+      "chapter": 7,
+      "illustration": "7.9",
+      "test_type": "MANOVA (global effects)",
+      "question": "An exercise scientist is interested to compare three different intensities of aerobic exercise in a 4-week experiment on health-related fitness. The health-related fitness consists of five parameters (cardiorespiratory endurance, muscular endurance, muscular strength, flexibility and fat%). What sample size should be taken in testing the null hypothesis of no effect of aerobic exercise on health-related fitness with power 0.9 at significance level 0.05 for estimated value of Pillai's V as 0.5? Number of groups = 3, response variables = 5.",
+      "ground_truth": {
+        "sample_size": 36
+      },
+      "unit": "total",
+      "tolerance": 4,
+      "source_page": "p.112",
+      "note": "G*Power: MANOVA global effects, Pillai's V=0.5, 3 groups, 5 DVs, total=36 (12 per group, achieved power 90.32%)"
+    },
+    {
+      "id": "verma-7.10",
+      "chapter": 7,
+      "illustration": "7.10",
+      "test_type": "MANOVA (interaction effects)",
+      "question": "Consider a situation in which the effects of three different intensities of aerobic exercise are to be compared on improving fitness (cardiorespiratory endurance, muscular strength and flexibility) in men and women both. Subjects receive one of the three exercise intensities. What sample size should be taken in correctly rejecting the null hypothesis of no interaction effect of aerobic exercise and gender on fitness with power 0.9 at significance level 0.05 for detecting the effect size represented by Pillai's V as 0.25? Total number of groups = 6 (3 exercise × 2 gender), number of predictors = 2, response variables = 3.",
+      "ground_truth": {
+        "sample_size": 30
+      },
+      "unit": "total",
+      "tolerance": 4,
+      "source_page": "p.114",
+      "note": "G*Power: MANOVA special effects/interactions, Pillai's V=0.25, 6 groups, 2 predictors, 3 DVs, total=30 (5 per group, achieved power 90.12%)"
+    },
+    {
+      "id": "verma-Ex3.6",
+      "chapter": 3,
+      "exercise": "3.6",
+      "test_type": "Proportion CI (unknown p)",
+      "question": "In determining the environment of the organization, the company plans to investigate whether employees are happy or not. The company is willing to accept a margin of error of 4% but wants 95% confidence. How many randomly selected employees the study should include to estimate proportion of employees who are happy? (Hint: use p = 0.5 for maximum variance since proportion is unknown.)",
+      "ground_truth": {
+        "sample_size": 600
+      },
+      "unit": "total",
+      "tolerance": 12,
+      "source_page": "Ch.3 Exercise 6",
+      "note": "n = 1.96² × 0.5×0.5 / 0.04² = 600.25 → 600"
+    },
+    {
+      "id": "verma-Ex3.7",
+      "chapter": 3,
+      "exercise": "3.7",
+      "test_type": "Proportion CI (unknown p)",
+      "question": "A psephologist is interested to know what percentage of voters will vote in the coming assembly election in the city. What sample size should be taken to ensure that the margin of error is less than 3% assuming 99% level of confidence? (Use p = 0.5 for unknown proportion.)",
+      "ground_truth": {
+        "sample_size": 1849
+      },
+      "unit": "total",
+      "tolerance": 37,
+      "source_page": "Ch.3 Exercise 7",
+      "note": "n = 2.576² × 0.5×0.5 / 0.03² ≈ 1849"
+    },
+    {
+      "id": "verma-Ex3.8a",
+      "chapter": 3,
+      "exercise": "3.8a",
+      "test_type": "Proportion CI",
+      "question": "A researcher wishes to estimate the proportion of students who practice meditation. How many subjects should be randomly selected if he wishes the estimate to be within 0.02 with 95% confidence? He uses the information about the previous estimate of 0.35.",
+      "ground_truth": {
+        "sample_size": 2185
+      },
+      "unit": "total",
+      "tolerance": 44,
+      "source_page": "Ch.3 Exercise 8a",
+      "note": "n = 1.96² × 0.35×0.65 / 0.02² ≈ 2185"
+    },
+    {
+      "id": "verma-Ex3.8b",
+      "chapter": 3,
+      "exercise": "3.8b",
+      "test_type": "Proportion CI (conservative)",
+      "question": "A researcher wishes to estimate the proportion of students who practice meditation. How many subjects should be randomly selected if he wishes the estimate to be within 0.02 with 95% confidence? He does not have any prior knowledge about the estimate (use p = 0.5).",
+      "ground_truth": {
+        "sample_size": 2401
+      },
+      "unit": "total",
+      "tolerance": 48,
+      "source_page": "Ch.3 Exercise 8b",
+      "note": "n = 1.96² × 0.5×0.5 / 0.02² = 2401"
+    },
+    {
+      "id": "verma-Ex3.9",
+      "chapter": 3,
+      "exercise": "3.9",
+      "test_type": "Mean CI (known SD)",
+      "question": "The standard deviation of weight of the students in a university is known to be 3 kg. What should be the size of the sample if the investigator wishes to estimate population mean weight with 95% confidence with sampling error of 0.5 kg or less?",
+      "ground_truth": {
+        "sample_size": 138
+      },
+      "unit": "total",
+      "tolerance": 5,
+      "source_page": "Ch.3 Exercise 9",
+      "note": "n = (1.96 × 3 / 0.5)² ≈ 138.3 → 138"
+    },
+    {
+      "id": "verma-Ex3.10",
+      "chapter": 3,
+      "exercise": "3.10",
+      "test_type": "Mean CI (known SD)",
+      "question": "Let us suppose you wish to estimate the height of women with a margin of error 10 cm, and a preliminary study indicates that the women heights are normally distributed with a standard deviation of 55 cm. What sample size you should take in the study if the required confidence level is 99%?",
+      "ground_truth": {
+        "sample_size": 201
+      },
+      "unit": "total",
+      "tolerance": 8,
+      "source_page": "Ch.3 Exercise 10",
+      "note": "n = (2.576 × 55 / 10)² ≈ 201"
+    },
+    {
+      "id": "verma-Ex4.12",
+      "chapter": 4,
+      "exercise": "4.12",
+      "test_type": "One-sample t-test",
+      "question": "After introducing new policy, a company desires to investigate whether mean satisfaction score of the employees is more than 42. Satisfaction level is measured on a scale of 10-50, where larger score indicates higher satisfaction. It is known that the satisfaction score is normally distributed with a standard deviation of 6. What sample size should be taken to detect the difference in means by 2 score with 90% power at the significance level of 0.05?",
+      "ground_truth": {
+        "sample_size": 95
+      },
+      "unit": "total",
+      "tolerance": 5,
+      "source_page": "Ch.4 Exercise 12",
+      "note": "One-sample t, d=2, SD=6, one-tail, α=0.05, power=0.90, n=95"
+    },
+    {
+      "id": "verma-Ex4.13",
+      "chapter": 4,
+      "exercise": "4.13",
+      "test_type": "Two-sample t-test",
+      "question": "A researcher wishes to investigate whether performance of the students in private school is better in comparison to that of the students in government school in a particular age category. He wishes to detect the difference in their performance by three scores with 80% power at significance level 0.05. If variance of the performance score is known to be 81, what should be the sample size in each group?",
+      "ground_truth": {
+        "sample_size": 141
+      },
+      "unit": "per_group",
+      "tolerance": 8,
+      "source_page": "Ch.4 Exercise 13",
+      "note": "Two-sample t, d=3, σ²=81, one-tail, α=0.05, power=0.80, n=141 per group"
+    },
+    {
+      "id": "verma-Ex6.3",
+      "chapter": 6,
+      "exercise": "6.3",
+      "test_type": "Two-sample t (unequal n)",
+      "question": "To compare the effectiveness of a drug on men and women, the G*Power software suggests that 128 subjects are required (64 men and 64 women) in a two-tailed test for detecting the effect size of 0.5 with power 0.8 at the significance level 0.05. But while planning the experiment only 50 women subjects were available, what should be the number of men subjects you should have to ensure the same power in testing?",
+      "ground_truth": {
+        "sample_size": 89
+      },
+      "unit": "n_men",
+      "tolerance": 6,
+      "source_page": "Ch.6 Exercise 3",
+      "note": "Unequal n allocation: given n2=50 women, compute n1 for same power. Answer: 89 men."
+    },
+    {
+      "id": "verma-Ex6.4",
+      "chapter": 6,
+      "exercise": "6.4",
+      "test_type": "One-sample t-test",
+      "question": "A researcher wishes to verify whether mean IQ of the students joining a university has risen to 85 from 81 reported earlier, after advertising its programme at the national level. If standard deviation is 9, what sample size would be required to detect the increase in mean IQ by 4 score with power 0.8 at 5% level given that the IQ is normally distributed?",
+      "ground_truth": {
+        "sample_size": 33
+      },
+      "unit": "total",
+      "tolerance": 3,
+      "source_page": "Ch.6 Exercise 4",
+      "note": "One-sample t, d = 4/9 ≈ 0.444, one-tail, n=33"
+    },
+    {
+      "id": "verma-Ex6.4b",
+      "chapter": 6,
+      "exercise": "6.4b",
+      "test_type": "Power estimation (one-sample t)",
+      "question": "A researcher wishes to verify whether mean IQ of the students joining a university has risen to 85 from 81 reported earlier, after advertising its programme at the national level. The standard deviation is 9. If the researcher could take only 25 samples, what would be the power in correctly rejecting the null hypothesis at 5% level of significance, given that the minimum detectable difference is 4 IQ scores?",
+      "ground_truth": {
+        "power": 0.6963
+      },
+      "unit": "power",
+      "tolerance": 0.03,
+      "source_page": "Ch.6 Exercise 4 (part ii)",
+      "note": "One-sample t, n=25, d=4/9=0.444, one-tail, power=69.63%"
+    },
+    {
+      "id": "verma-Ex6.5",
+      "chapter": 6,
+      "exercise": "6.5",
+      "test_type": "One-sample proportion (exact binomial)",
+      "question": "An analyst in a bulb manufacturing company needs to detect whether the process deteriorates by more than 2% of defective pieces. He continues the process as long as it gives less than 2% defectives. In a one-tailed test with 5% level, what would be the sample size to detect the 2% further deterioration in comparison to the accepted 2% defectives with power 0.8?",
+      "ground_truth": {
+        "sample_size": 35
+      },
+      "unit": "total",
+      "tolerance": 5,
+      "source_page": "Ch.6 Exercise 5",
+      "note": "Exact binomial, p1=0.02, p2=0.04, one-tail, n=35"
+    },
+    {
+      "id": "verma-Ex6.5b",
+      "chapter": 6,
+      "exercise": "6.5b",
+      "test_type": "Power estimation (one-sample proportion)",
+      "question": "An analyst in a bulb manufacturing company needs to detect whether the process deteriorates by more than 2% of defective pieces. He continues the process as long as it gives less than 2% defectives. In a one-tailed test with 5% level, if the researcher has only 40 samples, what would be the power in correctly rejecting the null hypothesis of 2% further deterioration (from 2% to 4%) if all other parameters are the same?",
+      "ground_truth": {
+        "power": 0.8714
+      },
+      "unit": "power",
+      "tolerance": 0.03,
+      "source_page": "Ch.6 Exercise 5 (part ii)",
+      "note": "Exact binomial, p1=0.02, p2=0.04, n=40, one-tail, power=87.14%"
+    },
+    {
+      "id": "verma-Ex6.6",
+      "chapter": 6,
+      "exercise": "6.6",
+      "test_type": "Two-sample t-test",
+      "question": "It is desired to compare the performance on vocabulary test of the subjects in 20 year's and 50 year's age categories. The scores on vocabulary test are assumed to be normally distributed with equal standard deviation of 8 in both groups. What should be the sample size to detect the difference in the means of two groups by 5 scores with 90% power at 5% level in a one-tailed test?",
+      "ground_truth": {
+        "sample_size": 45
+      },
+      "unit": "per_group",
+      "tolerance": 3,
+      "source_page": "Ch.6 Exercise 6",
+      "note": "Two-sample t, d = 5/8 = 0.625, one-tail, power=0.9, n=45 per group"
+    },
+    {
+      "id": "verma-Ex6.6b",
+      "chapter": 6,
+      "exercise": "6.6b",
+      "test_type": "Two-sample t (unequal n)",
+      "question": "It is desired to compare the performance on vocabulary test of the subjects in 20 year's and 50 year's age categories. The scores on vocabulary test are assumed to be normally distributed with equal standard deviation of 8 in both groups. If number of subjects in the 20 year's group is only 35, what should be the number of subjects in the 50 year's group to detect the difference in the means of two groups by 5 scores with 90% power at 5% level in a one-tailed test?",
+      "ground_truth": {
+        "sample_size": 63
+      },
+      "unit": "n2",
+      "tolerance": 5,
+      "source_page": "Ch.6 Exercise 6 (part ii)",
+      "note": "Two-sample t, unequal n: given n1=35, compute n2 for same power. Answer: n2=63"
+    },
+    {
+      "id": "verma-Ex6.7",
+      "chapter": 6,
+      "exercise": "6.7",
+      "test_type": "Paired t-test",
+      "question": "In an experiment, participants threw darts at a target first by using their preferred hand and then by using other hand. All subjects performed in both conditions. The standard deviation of the difference between scores of the two groups is 9.5. What should be the sample size to detect the difference of 5 scores in the mean performance by both the hands with power 0.9 at significance level 0.05 in a one-tailed test?",
+      "ground_truth": {
+        "sample_size": 33
+      },
+      "unit": "total",
+      "tolerance": 3,
+      "source_page": "Ch.6 Exercise 7",
+      "note": "Paired t, dz = 5/9.5 = 0.526, one-tail, power=0.9, n=33"
+    },
+    {
+      "id": "verma-Ex6.8",
+      "chapter": 6,
+      "exercise": "6.8",
+      "test_type": "Mann-Whitney test",
+      "question": "A cricket analyst is interested to know whether mean batting average of Rattlers and Vikings differs significantly in league tournaments. The league batting performance is known to have a standard deviation of 28 and violates normality; hence, the analyst decides to apply Mann-Whitney test. What should be the sample size of Rattlers and Vikings to detect the difference in their batting performance by 18 scores with 80% power at 1% level in a two-tailed test?",
+      "ground_truth": {
+        "sample_size": 53
+      },
+      "unit": "per_group",
+      "tolerance": 5,
+      "source_page": "Ch.6 Exercise 8",
+      "note": "Mann-Whitney, d = 18/28 = 0.643, two-tail, α=0.01, power=0.8, n=53 per group"
+    },
+    {
+      "id": "verma-Ex6.9",
+      "chapter": 6,
+      "exercise": "6.9",
+      "test_type": "Wilcoxon signed-rank test",
+      "question": "A medical researcher is interested to test the effectiveness of a new medicine in improving sleep hour among elder population. The sleep hour will be recorded before and after administering the medicine. Since paired t-test cannot be used as normality violates, he decides to use the Wilcoxon signed-rank test. What sample size should he take to detect the difference between the pre- and post-sleep hours by 0.5 h with 90% power at significance level 0.05 if one-tailed test is to be used? Earlier studies suggest that the SD of the difference is 0.9 h.",
+      "ground_truth": {
+        "sample_size": 20
+      },
+      "unit": "total",
+      "tolerance": 3,
+      "source_page": "Ch.6 Exercise 9",
+      "note": "Wilcoxon signed-rank, dz = 0.5/0.9 = 0.556, one-tail, power=0.9, n=20"
+    },
+    {
+      "id": "verma-Ex6.10",
+      "chapter": 6,
+      "exercise": "6.10",
+      "test_type": "Two-proportion test (unequal allocation)",
+      "question": "It is believed that the proportion of men qualifying their drivers' test in the first attempt is 0.8 and that of women is 0.7. What should be the size of the sample to detect the difference between the two proportions with 80% power at significance level 0.05 in a two-tailed test? Due to difference in population size, it is decided to have the proportion of samples men to women to be 1.2.",
+      "ground_truth": {
+        "n1": 278,
+        "n2": 334
+      },
+      "unit": "n1_n2",
+      "tolerance": 20,
+      "source_page": "Ch.6 Exercise 10",
+      "note": "Two-proportion, p1=0.8, p2=0.7, ratio=1.2, n1(men)=278, n2(women)=334"
+    },
+    {
+      "id": "verma-Ex6.11",
+      "chapter": 6,
+      "exercise": "6.11",
+      "test_type": "Correlation (bivariate normal)",
+      "question": "In testing the correlation between body mass index (BMI) and weight, what should be the sample size in correctly rejecting the null hypothesis of no correlation with power 0.8 in detecting R² of 0.35 at significance level 0.01 in a two-tailed test?",
+      "ground_truth": {
+        "sample_size": 24
+      },
+      "unit": "total",
+      "tolerance": 2,
+      "source_page": "Ch.6 Exercise 11",
+      "note": "Exact bivariate normal, ρ=√0.35≈0.592, ρ0=0, α=0.01, two-tail, n=24"
+    },
+    {
+      "id": "verma-Ex6.12",
+      "chapter": 6,
+      "exercise": "6.12",
+      "test_type": "Correlation (non-zero H0)",
+      "question": "It is known that correlation between the number of hours studied and number of correct answers in a mathematics test is 0.75. What sample size should be taken in correctly rejecting the null hypothesis that the sample correlation of 0.82 differs from 0.75 with power 0.9 at significance level 0.05 in a two-tailed test?",
+      "ground_truth": {
+        "sample_size": 314
+      },
+      "unit": "total",
+      "tolerance": 16,
+      "source_page": "Ch.6 Exercise 12",
+      "note": "Bivariate normal, ρ_H1=0.82, ρ_H0=0.75, power=0.9, n=314"
+    },
+    {
+      "id": "verma-Ex6.13",
+      "chapter": 6,
+      "exercise": "6.13",
+      "test_type": "Two independent correlations (Fisher z)",
+      "question": "A researcher computes correlation between the scores of reasoning and memory retention in boys and girls in a school. He desires to test whether correlation values differ between boys and girls. What should be the size of the sample in correctly rejecting the null hypothesis of no difference between the correlations with 80% power in a two-tailed test? Estimated correlation in boys (ρ1) = 0.72, estimated correlation in girls (ρ2) = 0.60, significance level (α) = 0.05. Sample sizes in both the groups are same (n1/n2 = 1).",
+      "ground_truth": {
+        "sample_size": 272
+      },
+      "unit": "per_group",
+      "tolerance": 15,
+      "source_page": "Ch.6 Exercise 13",
+      "note": "Two independent Pearson r's, n1=n2=272"
+    },
+    {
+      "id": "verma-Ex6.14",
+      "chapter": 6,
+      "exercise": "6.14",
+      "test_type": "Point biserial correlation",
+      "question": "A researcher is interested to test whether minimum muscular fitness test depends upon the fat% in adult men. He plans to use bi-serial correlation because minimum muscular fitness test (pass vs. fail) is dichotomous and fat% is numeric. The estimated correlation is 0.4. How much sample size should be taken in correctly rejecting the null hypothesis that the observed correlation is significantly greater than 0, with power 0.85 at 5% level in a two-tailed test?",
+      "ground_truth": {
+        "sample_size": 50
+      },
+      "unit": "total",
+      "tolerance": 4,
+      "source_page": "Ch.6 Exercise 14",
+      "note": "Point biserial, ρ²=0.16, power=0.85, two-tail, n=50"
+    },
+    {
+      "id": "verma-Ex6.15",
+      "chapter": 6,
+      "exercise": "6.15",
+      "test_type": "Chi-square goodness-of-fit",
+      "question": "It is known that the proportions of people having blood types AB, B, A and O in a district are in the ratio 8:12:25:45. A sample of subjects selected from the district shows frequencies of the blood types AB, B, A, O in the ratio 5:15:45:85. What should be the sample size to test whether the sample proportions differ significantly from the population proportions with power 0.8 at significance level 0.01?",
+      "ground_truth": {
+        "sample_size": 201
+      },
+      "unit": "total",
+      "tolerance": 10,
+      "source_page": "Ch.6 Exercise 15",
+      "note": "Chi-sq GoF, normalized proportions from ratios, α=0.01, power=0.8, n=201"
+    },
+    {
+      "id": "verma-Ex7.6",
+      "chapter": 7,
+      "exercise": "7.6",
+      "test_type": "Multiple regression (R² deviation from zero)",
+      "question": "A medical scientist wishes to develop a multiple regression model for estimating systolic pressure on the basis of four predictors (age, BMI, hours of physical activity and hours of sleep). What should be the sample size in correctly rejecting the null hypothesis that the four predictors do not predict systolic pressure and detect R² of value 0.25 in the model with power 0.8 at significance level 0.05?",
+      "ground_truth": {
+        "sample_size": 41
+      },
+      "unit": "total",
+      "tolerance": 3,
+      "source_page": "Ch.7 Exercise 6",
+      "note": "F-test linear regression, R²=0.25, f²=0.333, 4 predictors, power=0.8, n=41"
+    },
+    {
+      "id": "verma-Ex7.6b",
+      "chapter": 7,
+      "exercise": "7.6b",
+      "test_type": "Power estimation (multiple regression)",
+      "question": "A medical scientist wishes to develop a multiple regression model for estimating systolic pressure on the basis of four predictors (age, BMI, hours of physical activity and hours of sleep). If a sample of size 60 is available, what should be the power in correctly rejecting the null hypothesis that the four predictors do not predict systolic pressure if the R² value to be detected is 0.25 at significance level 0.05?",
+      "ground_truth": {
+        "power": 0.9473
+      },
+      "unit": "power",
+      "tolerance": 0.03,
+      "source_page": "Ch.7 Exercise 6 (part b)",
+      "note": "F-test linear regression, R²=0.25, f²=0.333, 4 predictors, n=60, power=94.73%"
+    },
+    {
+      "id": "verma-Ex7.7",
+      "chapter": 7,
+      "exercise": "7.7",
+      "test_type": "Logistic regression (continuous predictor)",
+      "question": "A medical researcher is interested to identify whether a tumour is malignant (1) or benign (0). Determine the sample size in correctly rejecting the null hypothesis that the tumour size is not associated with the probability of malignancy with 0.8 power if two covariates (affected body area and tumour age) influence the outcome. P(Y=1|X=1) under H1 = 0.25 (tumour size 1σ above mean), P(Y=1|X=1) under H0 = 0.15 (tumour size at mean). R² = 0.35. One-tailed test at α = 0.05. X distribution is standard normal.",
+      "ground_truth": {
+        "sample_size": 190
+      },
+      "unit": "total",
+      "tolerance": 12,
+      "source_page": "Ch.7 Exercise 7",
+      "note": "Logistic regression, continuous predictor, n=190"
+    },
+    {
+      "id": "verma-Ex7.8",
+      "chapter": 7,
+      "exercise": "7.8",
+      "test_type": "Logistic regression (dichotomous predictor)",
+      "question": "A management consultant is interested in investigating whether gender affects buying behaviour of perfume (buying=1, not buying=0). What sample size should be taken in correctly rejecting the null hypothesis that gender is not associated with buying of perfume with or without two more covariates (Age category, SES category) with power 0.90? P(Y=1|X=1) under H1 = 0.40 (female), P(Y=1|X=0) under H0 = 0.20 (male). R² = 0.35. One-tailed test at α = 0.05. X distribution is binomial with parameter 0.65 (proportion female).",
+      "ground_truth": {
+        "sample_size": 383
+      },
+      "unit": "total",
+      "tolerance": 20,
+      "source_page": "Ch.7 Exercise 8",
+      "note": "Logistic regression, dichotomous predictor, n=383"
+    },
+    {
+      "id": "verma-Ex7.9",
+      "chapter": 7,
+      "exercise": "7.9",
+      "test_type": "One-way ANOVA",
+      "question": "An educational researcher is interested in investigating the effect of duration of class on learning efficiency. Out of three randomly selected groups of subjects, first will undergo for 1-h class, second for 1.5-h class, and the third group will be given 2-h class. What sample size is required to detect the effect size 0.08 (eta square) with power 0.9 at significance level 0.01?",
+      "ground_truth": {
+        "sample_size": 207
+      },
+      "unit": "total",
+      "tolerance": 10,
+      "source_page": "Ch.7 Exercise 9",
+      "note": "One-way ANOVA, η²=0.08, 3 groups, α=0.01, power=0.9, total=207 (69/grp)"
+    },
+    {
+      "id": "verma-Ex7.9b",
+      "chapter": 7,
+      "exercise": "7.9b",
+      "test_type": "Power estimation (one-way ANOVA)",
+      "question": "An educational researcher is investigating the effect of duration of class (1-h, 1.5-h, 2-h) on learning efficiency with three groups. If the number of subjects is 165 (55 per group) and the hypothesis needs to be tested for the effect size 0.06 (eta square) at significance level 0.01, what would be the power in the study?",
+      "ground_truth": {
+        "power": 0.6285
+      },
+      "unit": "power",
+      "tolerance": 0.03,
+      "source_page": "Ch.7 Exercise 9 (part b)",
+      "note": "One-way ANOVA, η²=0.06, 3 groups, n=165, α=0.01, power=62.85%"
+    },
+    {
+      "id": "verma-Ex7.10a",
+      "chapter": 7,
+      "exercise": "7.10a",
+      "test_type": "Two-way ANOVA (main effect of age)",
+      "question": "An exercise scientist wishes to see the effect of age (young vs. old) and background music (instrumental, classical and jazz) on mood of the participants. What sample size should be taken for testing the significance of the main effect of age for detecting the effect size 0.08 (partial eta square) with power 0.9 at significance level 0.05? Total groups = 6 (2 age × 3 music), df for age = 1.",
+      "ground_truth": {
+        "sample_size": 21
+      },
+      "unit": "per_group",
+      "tolerance": 3,
+      "source_page": "Ch.7 Exercise 10a",
+      "note": "ANOVA special, main effect age, df=1, 6 groups, η²_p=0.08, n=21/grp"
+    },
+    {
+      "id": "verma-Ex7.10b",
+      "chapter": 7,
+      "exercise": "7.10b",
+      "test_type": "Two-way ANOVA (main effect of music)",
+      "question": "An exercise scientist wishes to see the effect of age (young vs. old) and background music (instrumental, classical and jazz) on mood of the participants. What sample size should be taken for testing the significance of the main effect of background music for detecting the effect size 0.08 (partial eta square) with power 0.9 at significance level 0.05? Total groups = 6 (2 age × 3 music), df for music = 2.",
+      "ground_truth": {
+        "sample_size": 25
+      },
+      "unit": "per_group",
+      "tolerance": 3,
+      "source_page": "Ch.7 Exercise 10b",
+      "note": "ANOVA special, main effect music, df=2, 6 groups, η²_p=0.08, n=25/grp"
+    },
+    {
+      "id": "verma-Ex7.10c",
+      "chapter": 7,
+      "exercise": "7.10c",
+      "test_type": "Two-way ANOVA (interaction)",
+      "question": "An exercise scientist wishes to see the effect of age (young vs. old) and background music (instrumental, classical and jazz) on mood of the participants. What sample size should be taken for testing the significance of the interaction effect of age × music for detecting the effect size 0.08 (partial eta square) with power 0.9 at significance level 0.05? Total groups = 6 (2 age × 3 music), df for interaction = 2.",
+      "ground_truth": {
+        "sample_size": 25
+      },
+      "unit": "per_group",
+      "tolerance": 3,
+      "source_page": "Ch.7 Exercise 10c",
+      "note": "ANOVA special, interaction age×music, df=2, 6 groups, η²_p=0.08, n=25/grp"
+    },
+    {
+      "id": "verma-Ex7.11",
+      "chapter": 7,
+      "exercise": "7.11",
+      "test_type": "Repeated measures ANOVA (between factors)",
+      "question": "A psychologist desires to investigate the effect of pranayama on concentration. One group of subjects will be given pranayama, whereas the second group will act as a control and will be given placebo treatment. All subjects in experimental and control groups will be tested for concentration before start of the experiment, after 3 weeks and 6 weeks. What sample size should be taken to correctly reject the null hypothesis of no difference between the treatment and control groups 80% of time having effect size 0.06 (eta square) at significance level 0.05 in a one-tailed test?",
+      "ground_truth": {
+        "sample_size": 42
+      },
+      "unit": "per_group",
+      "tolerance": 4,
+      "source_page": "Ch.7 Exercise 11",
+      "note": "RM ANOVA between factors, 2 groups, 3 measurements, η²=0.06, one-tail, n=42/grp (84 total)"
+    },
+    {
+      "id": "verma-Ex7.12",
+      "chapter": 7,
+      "exercise": "7.12",
+      "test_type": "Repeated measures ANOVA (within factors)",
+      "question": "A pharmacologist is interested to test the effectiveness of an herbal drug on haemoglobin among patients. After administering the drug daily, he plans to test the subjects for haemoglobin after 2, 4 and 6 weeks. What sample size should be taken to detect a significant difference in haemoglobin level across time (2, 4 and 6 weeks) with effect size 0.06 (partial eta square) and power 0.8 at significance level 0.05? Assume no violation of sphericity (ε=1) and correlation among repeated measures is 0.5.",
+      "ground_truth": {
+        "sample_size": 27
+      },
+      "unit": "total",
+      "tolerance": 3,
+      "source_page": "Ch.7 Exercise 12",
+      "note": "RM ANOVA within factors, 1 group, 3 measurements, η²_p=0.06, ρ=0.5, ε=1, n=27"
+    },
+    {
+      "id": "verma-Ex7.13",
+      "chapter": 7,
+      "exercise": "7.13",
+      "test_type": "Repeated measures ANOVA (within-between interaction)",
+      "question": "A researcher plans to conduct an experiment for testing the effectiveness of a spiritual programme on happiness among men and women. The happiness of the subjects will be measured at zero, 2, 4 and 6 weeks. Time is within-subject variable, and gender is between-subject variable. What should be the sample size to detect a significant interaction between time and gender with effect size 0.07 (partial eta square) and power 0.80 at significance level 0.01? Assume no violation of sphericity (ε=1) and correlation among repeated measures is 0.5.",
+      "ground_truth": {
+        "sample_size": 14
+      },
+      "unit": "per_group",
+      "tolerance": 3,
+      "source_page": "Ch.7 Exercise 13",
+      "note": "RM ANOVA within-between interaction, 2 groups, 4 measurements, η²_p=0.07, α=0.01, ρ=0.5, ε=1, n=14/grp (28 total)"
+    },
+    {
+      "id": "verma-Ex7.14",
+      "chapter": 7,
+      "exercise": "7.14",
+      "test_type": "MANOVA (global effects)",
+      "question": "A psychological researcher wishes to investigate the effect of weather conditions (cold, hot and humid) on subject's frustration discomfort (measured with four dimensions: emotional tolerance, entitlement, discomfort tolerance and achievement) by using the MANOVA analysis. What sample size should be taken to detect the effect of weather condition on frustration discomfort with 0.8 power and significance level 0.05 if estimated Pillai's V is 0.3?",
+      "ground_truth": {
+        "sample_size": 16
+      },
+      "unit": "per_group",
+      "tolerance": 3,
+      "source_page": "Ch.7 Exercise 14",
+      "note": "MANOVA global effects, 3 groups, 4 DVs, Pillai's V=0.3, power=0.8, n=16/grp (48 total)"
+    },
+    {
+      "id": "verma-Ex7.15",
+      "chapter": 7,
+      "exercise": "7.15",
+      "test_type": "MANOVA (interaction effects)",
+      "question": "A researcher is interested to conduct a study to investigate the effect of job type (banking, insurance and telecommunication) on quality of life (consists of four variables: creativity, learning, well-being and memory) among men and women executives. What sample size should be taken to detect an interaction between job type and gender with 0.9 power if α = 0.05 and estimated Pillai's V is 0.2? Total groups = 6 (3 job types × 2 genders).",
+      "ground_truth": {
+        "sample_size": 43
+      },
+      "unit": "total",
+      "tolerance": 4,
+      "source_page": "Ch.7 Exercise 15",
+      "note": "MANOVA special/interaction, 6 groups, 4 DVs, 2 predictors, Pillai's V=0.2, power=0.9, total=43 (≈7/grp)"
+    }
+  ]
+}
