@@ -20,6 +20,13 @@ Power Agent is a reusable statistical agent that turns a plain-English study-des
 - **Live product:** https://power-agent.io/
 - **Walkthrough video:** [add video link]
 
+## Reproducibility
+
+- **Code:** the full agent is in the GitHub repository above, MIT-licensed.
+- **Run it yourself:** `README.md` has a step-by-step quick start (clone → `npm install` → set `.env` → `npm start`) plus a usage tutorial; minimal scripts are in [`examples/`](https://github.com/ykzeng-yale/Power-Agent-Public-STAI-X/tree/main/examples).
+- **Independent evaluation:** [`cross-benchmark/`](https://github.com/ykzeng-yale/Power-Agent-Public-STAI-X/tree/main/cross-benchmark) contains the 4-benchmark / 117-task evaluation with task files, ground truth, per-task results, and the runner (`node cross-benchmark/run-cross-benchmark.js`) — 72.6% exact-match against published R / G*Power values.
+- **Submission snapshot:** the repository commit tagged `award-c-submission` is the frozen state for review.
+
 ## Why it's reusable
 
 - **Drop-in agent loop.** The plan → generate-R → execute-in-sandbox → observe → self-correct loop is task-agnostic. Point it at a different statistical question and it works without retuning.
