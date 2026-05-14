@@ -17,8 +17,7 @@ Power Agent is a reusable statistical agent that turns a plain-English study-des
 
 ## Demo link
 
-- **Live product:** https://power-agent.io/
-- **Walkthrough video:** [add video link]
+**https://power-agent.io/** — the live, working product. Ask any power or sample-size question in plain English and watch the agent plan, write R, run it, self-correct, and return the result with the reproducible script and a report.
 
 ## Reproducibility
 
