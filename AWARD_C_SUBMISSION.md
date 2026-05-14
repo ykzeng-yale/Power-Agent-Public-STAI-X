@@ -5,7 +5,7 @@
 - **Legal name:** Yukang Zeng
 - **Affiliation:** Yale University (Biostatistics)
 - **Institutional email:** yukang.zeng@yale.edu
-- **Kaggle username:** yukangzengyale
+- **Kaggle username:** yukangzeng
 
 **Registered team name:** PowerBot
 
