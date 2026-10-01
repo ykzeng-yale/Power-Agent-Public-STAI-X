@@ -1,3 +1,5 @@
+> Historical prototype document. Its role, benchmark and performance claims are retained source history and are not current release evidence. See the root README.
+
 # [Award C] Power Agent — Autonomous Power & Sample-Size Analysis Agent
 
 **Team info**

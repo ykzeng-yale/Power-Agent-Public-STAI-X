@@ -1,37 +1,28 @@
 {
-  "name": "biostat-agent",
-  "version": "1.0.0",
-  "description": "AI-powered biostatistics agent for sample size calculation and data analysis",
-  "main": "backend/server.js",
+  "name": "power-agent-scientific",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Executed statistical power and sample-size workflow with selectable independent model review and portable scientific skill",
   "type": "module",
+  "main": "scientific/scientific-harness.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "dev": "node --watch backend/server.js",
-    "install-backend": "cd backend && npm install",
-    "postinstall": "npm run install-backend"
+    "start": "node scripts/run-scientific.mjs",
+    "analyze": "node scripts/run-scientific.mjs",
+    "test": "npm run test:scientific && npm run test:portable",
+    "test:scientific": "node --test scientific/test-scientific-harness.js scientific/test-scientific-api.js scientific/test-anonymous-reservation.js scientific/test-scientific-reference-guard.js",
+    "test:portable": "python3 tests/test-portable.py"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "express": "4.21.2",
+    "@supabase/supabase-js": "2.75.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ykzeng-yale/Biostat-Agent.git"
+    "url": "https://github.com/ykzeng-yale/Power-Agent-Public-STAI-X.git"
   },
-  "keywords": [
-    "biostatistics",
-    "sample-size",
-    "power-analysis",
-    "clinical-trials",
-    "ai-agent",
-    "claude"
-  ],
-  "author": "Yukang Zeng",
   "license": "MIT",
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "dependencies": {
-    "@anthropic-ai/sdk": "^0.68.0",
-    "dotenv": "^17.2.3",
-    "form-data": "^4.0.4",
-    "node-fetch": "^2.7.0",
-    "uuid": "^13.0.0"
-  }
+  "author": "Yukang Zeng"
 }

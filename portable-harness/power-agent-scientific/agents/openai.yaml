@@ -1,0 +1,4 @@
+interface:
+  display_name: "Power Agent Scientific"
+  short_description: "Evidence-grounded power and sample-size workflows"
+  default_prompt: "Use $power-agent-scientific to calculate and validate power or sample size under the specified study design."

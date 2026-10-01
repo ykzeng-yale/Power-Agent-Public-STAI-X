@@ -4329,7 +4329,7 @@ app.get('/api/supabase-config', (req, res) => {
   // Use environment variables or fallback to CORRECT values (Power Agent project)
   // FIXED: Changed from old project (kvjbqevf...) to correct project (njhlrrf...)
   const supabaseUrl = process.env.SUPABASE_URL || 'https://njhlrrfstppykimxpvwz.supabase.co';
-  const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5qaGxycmZzdHBweWtpbXhwdnd6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2NjEyOTksImV4cCI6MjA3NjIzNzI5OX0.N7uR2MiusGqy0tOT39IWqt6GRU02_MXFIaefSvYEAM4';
+  const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || '[REDACTED_LEGACY_KEY_CONFIGURE_ENV]';
 
   res.json({
     url: supabaseUrl,

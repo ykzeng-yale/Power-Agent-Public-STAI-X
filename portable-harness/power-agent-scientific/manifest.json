@@ -1,0 +1,99 @@
+{
+  "harness_version": "2.1.0",
+  "model": "claude-haiku-4-5-20251001",
+  "verified_date": "2026-10-01",
+  "model_catalogue": "https://platform.claude.com/docs/en/models/overview",
+  "runtime_sources_sha256": {
+    "scientific-harness.js": "f73af552841d6ad1556d6adef513c3c0b6c0432e09e31eb450f664c9f6b7777a",
+    "scientific-reference-guard.js": "9eefa1797efa01bab23f505ffae96d28a33ed6e144f89ffcb54bb15e9435ffcd",
+    "scientific-r-executor.js": "08a45cbb0b12e0f2661940f3ef39e3e0f9176d37c46d3c028cb239c03a13174d",
+    "scientific-harness-cli.js": "a7ce5af97e8c6d1ec8bc9d6deaff22f2287d78118d596d66d5348a8363de5aa4",
+    "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+    "model-config.js": "7dd50c96a5e1a884a6678cd224c1595cbe02def1bb3d70da6094808d5b681408"
+  },
+  "host_native_runs": "Record the host model and tools separately; equivalence to the pinned runner is not assumed.",
+  "skill_files_sha256": {
+    "SKILL.md": "c121aa307db5a305d00d673818300d683755ac59d0b084a754b2cfec4c0a3196",
+    "agents/openai.yaml": "404f598af7538a30ebccbe6b6b564f474d81d9eb11f3ca834907f918337f816d",
+    "references/mean-reference-checks.md": "e4709c425f35c73d0808fc703bc8455bc4f37a6b0ecd657349e15f1c5e53dc83",
+    "references/record-contract.md": "caf7a1cbf9b72b7d47a1f686a0da143bfd8e511248b190628a6ae722240946fb",
+    "references/scientific-principles.md": "b0f8be70476ac3a6388b5d829f9c813067109aa7161640a2271832ae5d2c5866",
+    "scripts/check-sample-size-units.py": "a98125acad74b0121155291c1012c4e6eebb3e265c9a61229af08e9b064d1259",
+    "scripts/reference-checks.R": "b26cd4795065b8aa9110de4198f6cb5aae0f4691342c7e5b140eccca40a6dca4",
+    "scripts/render-record.py": "2a69dc627732f60db5179b9e76167ee926afe7d1f822a6229b5ccf56ab7c9121",
+    "scripts/run-power-agent.mjs": "a44e12617ed3e5f9fd989775718d36e732c6b9e9dcb5ffe4afeeffc20a936a04",
+    "scripts/runtime/model-config.js": "7dd50c96a5e1a884a6678cd224c1595cbe02def1bb3d70da6094808d5b681408",
+    "scripts/runtime/package.json": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428",
+    "scripts/runtime/scientific-harness-cli.js": "a7ce5af97e8c6d1ec8bc9d6deaff22f2287d78118d596d66d5348a8363de5aa4",
+    "scripts/runtime/scientific-harness.js": "f73af552841d6ad1556d6adef513c3c0b6c0432e09e31eb450f664c9f6b7777a",
+    "scripts/runtime/scientific-r-executor.js": "08a45cbb0b12e0f2661940f3ef39e3e0f9176d37c46d3c028cb239c03a13174d",
+    "scripts/runtime/scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+    "scripts/runtime/scientific-reference-guard.js": "9eefa1797efa01bab23f505ffae96d28a33ed6e144f89ffcb54bb15e9435ffcd",
+    "scripts/specification-preflight.py": "ba701d7ac51b01d4a33c62208032eaeee1fd11e32c684645fd558efb1adbf859",
+    "scripts/verify-record.mjs": "906aee5af12b39631c1a13d786344adf1a2e67083abe3affb90398229a009178"
+  },
+  "native_skill_version": "2.2.3",
+  "native_checkers": {
+    "specification-preflight.py": "1.0.1",
+    "check-sample-size-units.py": "1.0.0",
+    "reference-checks.R": "1.0.1",
+    "render-record.py": "1.0.0"
+  },
+  "bundled_api_runtime_status": "Post-study2.1.0 adds a narrow declared-plan pooled-t reference gate. Frozen Mac2.0.0 and Linux2.0.1-cloud study artifacts remain unchanged; no new full-study performance claim.",
+  "native_validation_scope": "Input/unit/method checks are limited and host compliance must be audited. Preserved native failures remain evidence; separate API runtime equivalence is not assumed.",
+  "prior_runtime_release_relation": {
+    "historical_runtime_version": "2.0.0",
+    "historical_sources_sha256": {
+      "scientific-harness.js": "41cb210d1627725d0715a83a76c73c7b19314c87dfee248c26bc286600dfe0b5",
+      "scientific-r-executor.js": "08a45cbb0b12e0f2661940f3ef39e3e0f9176d37c46d3c028cb239c03a13174d",
+      "scientific-harness-cli.js": "a7ce5af97e8c6d1ec8bc9d6deaff22f2287d78118d596d66d5348a8363de5aa4",
+      "scientific-r-worker.py": "d0f2b234c69a9e34b011957f8f86370831dc89ffb175b12467c4474068a99299",
+      "model-config.js": "6d7169df020970129e0e3ba260d0347174feb5bf3876801bcb9a73028c620730"
+    },
+    "release_runtime_version": "2.0.1-cloud",
+    "release_sources_sha256": {
+      "scientific-harness.js": "41cb210d1627725d0715a83a76c73c7b19314c87dfee248c26bc286600dfe0b5",
+      "scientific-r-executor.js": "08a45cbb0b12e0f2661940f3ef39e3e0f9176d37c46d3c028cb239c03a13174d",
+      "scientific-harness-cli.js": "a7ce5af97e8c6d1ec8bc9d6deaff22f2287d78118d596d66d5348a8363de5aa4",
+      "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+      "model-config.js": "c1cc9d51feca670dcdb82c54d54523fceaaaaebf7dc758de80579d6ffe60231b"
+    },
+    "changes": [
+      "Linux-only RLIMIT_NOFILE128\u2192512 to satisfy R startup",
+      "HARNESS_VERSION metadata2.0.0\u21922.0.1-cloud"
+    ],
+    "unchanged_workflow_files": [
+      "scientific-harness.js",
+      "scientific-r-executor.js",
+      "scientific-harness-cli.js"
+    ],
+    "scientific_protocol_change": false,
+    "historical_study_missing_captures": "15/120 Mac attempts lost before raw persistence due scorer answer:null bug; retained as instrumentation failures, not assigned model statuses."
+  },
+  "runtime_release_relation": {
+    "historical_runtime_version": "2.0.1-cloud",
+    "historical_sources_sha256": {
+      "scientific-harness.js": "41cb210d1627725d0715a83a76c73c7b19314c87dfee248c26bc286600dfe0b5",
+      "scientific-r-executor.js": "08a45cbb0b12e0f2661940f3ef39e3e0f9176d37c46d3c028cb239c03a13174d",
+      "scientific-harness-cli.js": "a7ce5af97e8c6d1ec8bc9d6deaff22f2287d78118d596d66d5348a8363de5aa4",
+      "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+      "model-config.js": "c1cc9d51feca670dcdb82c54d54523fceaaaaebf7dc758de80579d6ffe60231b"
+    },
+    "release_runtime_version": "2.1.0",
+    "release_sources_sha256": {
+      "scientific-harness.js": "f73af552841d6ad1556d6adef513c3c0b6c0432e09e31eb450f664c9f6b7777a",
+      "scientific-reference-guard.js": "9eefa1797efa01bab23f505ffae96d28a33ed6e144f89ffcb54bb15e9435ffcd",
+      "scientific-r-executor.js": "08a45cbb0b12e0f2661940f3ef39e3e0f9176d37c46d3c028cb239c03a13174d",
+      "scientific-harness-cli.js": "a7ce5af97e8c6d1ec8bc9d6deaff22f2287d78118d596d66d5348a8363de5aa4",
+      "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+      "model-config.js": "7dd50c96a5e1a884a6678cd224c1595cbe02def1bb3d70da6094808d5b681408"
+    },
+    "changes": [
+      "New scientific-reference-guard.js with deterministic executed pooled-t reference",
+      "Run guard before completion and after repaired candidate; retain failure evidence",
+      "HARNESS_VERSION2.1.0"
+    ],
+    "scientific_protocol_change": true,
+    "validation_scope": "Post-study regression and live verification; original scientific cohorts not rerun."
+  }
+}

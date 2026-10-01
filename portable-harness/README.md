@@ -1,0 +1,27 @@
+# Portable Power Agent scientific harness
+
+Install the same scientific skill in Codex or Claude Code without changing the host model or its unrelated settings:
+
+The native skill bundle is version 2.2.3. Its input preflight, declared-unit audit, limited independent-means mathematical checker and deterministic final-record report address failures retained in the development history. The report-only update preserves the mathematical protocol tested in native2.2.1. The bundled API runtime is 2.1.0; the original Mac experiment used separately archived2.0.0 sources and the Linux study used2.0.1-cloud. Version2.1.0 adds a post-study reference gate for explicitly declared two-sided, equal-allocation pooled-t sample-size inversion with independent normal groups, common SD and no attrition. It executes stats::power.t.test(strict=TRUE) against noncentral-t tails, checks declared participant/probability units and rejects inconsistent candidates while retaining their evidence. Other designs report a skipped audit. This gate does not validate the source inputs or general scientific correctness; its regression tests do not replace the historical benchmark results. Native-host execution and the API runtime are versioned and evaluated separately.
+
+```bash
+python3 install.py --target codex
+python3 install.py --target claude
+```
+
+Default locations are `~/.codex/skills/power-agent-scientific` and `~/.claude/skills/power-agent-scientific`. For a project installation use `--project /path/to/project`. An existing installation is preserved unless `--replace` is requested; replacement creates a timestamped backup. Use `$power-agent-scientific` in Codex or `/power-agent-scientific` in Claude Code after skill discovery/reload.
+
+The skill can use the agent's own code and delegation tools. Its optional API runner reproduces the Power Agent harness with pinned Claude Haiku, structured design and execution evidence, and actual separate reviewer calls in multi mode. Install Node 20+ and R with jsonlite and any study-specific packages in the authorized environment. Set `ANTHROPIC_API_KEY` through the environment or pass a private `--env-file`; no credentials are included.
+
+```bash
+node power-agent-scientific/scripts/run-power-agent.mjs --mode multi --input request.json --output record.json
+node power-agent-scientific/scripts/verify-record.mjs record.json
+```
+
+A request file contains a scientific question, for example `{"query":"For a two-sided independent two-sample t test with d=0.5, equal allocation, alpha=.05 and target power=.8, compute the smallest integer n per group using stats::power.t.test and verify power at n and n-1.","workflowMode":"multi"}`.
+
+Model/version pins and source SHA256 values are in `manifest.json`. Scientific correctness is evaluated with independent source-based oracles; execution and language-model review alone do not establish correctness. On Linux, the default worker requires a root container launcher plus Python 3 and libseccomp; it drops to a unique unprivileged identity, denies network and metadata access, and applies resource limits. On a non-root local Linux machine an explicit `POWER_AGENT_LOCAL_R_UNRESTRICTED=1` opt-out is available outside production; this provides only process isolation. macOS likewise provides process isolation. `NODE_ENV=production` always enforces the Linux restrictions. The portable launcher creates the shared run parent with mode 0711 and each private run directory with mode 0700. If calling the backend CLI directly inside a Linux container, first provision `/tmp/power-agent-scientific` with mode 0711 (`install -d -m 0711 /tmp/power-agent-scientific`); the frozen runtime itself does not provision the parent separately. None of these mechanisms is claimed as a comprehensive adversarial sandbox.
+
+The archived2.0.0 Linux worker's file-descriptor limit of128 proved too low for R startup in Cloud Run. The2.0.1-cloud release uses512. A production worker smoke test passed unprivileged execution, no_new_privs/seccomp, credential filtering, denied parent-process environment/cross-workspace/application-file/metadata-network access, numerical t-test calculation, nonzero-exit rejection and timeout handling. These bounded controls are not a comprehensive adversarial sandbox certification. Source hashes and the relationship to the archived study runtime are recorded in the manifest.
+
+Native calculations must preserve actual host-tool logs and final-record digests. The unit checker verifies arithmetic only. For the explicitly supported common-variance independent/equal-cluster mean profiles, `reference-checks.R` also verifies the variance and minimum design against an independent implementation; it rejects the factor-of-two variance error observed in a native Claude trial. It cannot establish that the profile is suitable for an unfamiliar design. Other designs require their own independent source-based checks or unresolved review status. Prompt instructions alone cannot enforce native-agent compliance, and prior failures are retained rather than hidden.
