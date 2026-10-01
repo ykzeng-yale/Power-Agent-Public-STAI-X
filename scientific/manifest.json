@@ -1,14 +1,14 @@
 {
-  "harness_version": "2.1.0",
+  "harness_version": "2.1.2",
   "model": "claude-haiku-4-5-20251001",
   "core_sources_sha256": {
-    "scientific-harness.js": "f73af552841d6ad1556d6adef513c3c0b6c0432e09e31eb450f664c9f6b7777a",
-    "scientific-reference-guard.js": "9eefa1797efa01bab23f505ffae96d28a33ed6e144f89ffcb54bb15e9435ffcd",
+    "scientific-harness.js": "8b985c50daab16a3603e6c743647f9d8861339213c356c8ce8e4f6f5e594b17b",
+    "scientific-reference-guard.js": "ece5b93e6e36d07f7cc6bb4c0457e53ae14090e6abe98d3878b5b836f88d18fe",
     "scientific-r-executor.js": "08a45cbb0b12e0f2661940f3ef39e3e0f9176d37c46d3c028cb239c03a13174d",
     "scientific-harness-cli.js": "a7ce5af97e8c6d1ec8bc9d6deaff22f2287d78118d596d66d5348a8363de5aa4",
     "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
-    "model-config.js": "7dd50c96a5e1a884a6678cd224c1595cbe02def1bb3d70da6094808d5b681408"
+    "model-config.js": "766cd990a939bca3aedd9d857b8901cc9df361ee7c097c5fb484a00918c1f7c7"
   },
-  "scientific_validation": "Frozen study versions2.0.0/2.0.1-cloud retained;2.1.0 guard is post-study correction, not repeated benchmark.",
+  "scientific_validation": "Historical/final cohorts retain prospectively frozen release identifiers. Runtime2.1.2 guard-only mapping correction has focused actual-R saved-candidate replay; no new native-host behavioral trial.",
   "api_adapter_sha256": "bc70b77ff504dab44209ca2efece85ce7ec563d220f9149731dcbd455b14a3ab"
 }

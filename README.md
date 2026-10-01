@@ -2,7 +2,7 @@
 
 Power Agent assists with statistical power and sample-size planning through a structured design specification and executed R code. This release provides a standalone API-backed CLI and an installable scientific skill for Codex and Claude Code. The hosted application is [power-agent.io](https://power-agent.io/).
 
-The runtime defaults to `claude-haiku-4-5-20251001`, verified against Anthropic's model catalogue on 1 October 2026. Runtime version is `2.1.0`; native skill version is `2.2.3`. Actual model, execution, code hashes, units, assumptions, role calls, resource usage and terminal status are recorded. A model critique or a successful program execution does not establish scientific correctness.
+The runtime defaults to `claude-haiku-4-5-20251001`, verified against Anthropic's model catalogue on 1 October 2026. Runtime version is `2.1.2`; native skill version is `2.2.5`. Actual model, execution, code hashes, units, assumptions, role calls, resource usage and terminal status are recorded. A model critique or a successful program execution does not establish scientific correctness.
 
 ## Implemented workflow
 
@@ -46,7 +46,7 @@ Add `--project /path/to/project` for a project installation. Existing skills are
 
 The native skill has a conservative input-preflight gate, an arithmetic unit checker, a limited independent-means mathematical reference checker, and a deterministic final-record report renderer. The supported mathematical profiles are common-variance equal-allocation independent normal means, the explicitly requested equal-size cluster normal/design-effect approximation, and equal-allocation two-sample Student-t power. Unfamiliar designs require their own source-based checks and review. The renderer copies verified recorded values and distinguishes a deterministic reference check from a separate agent reviewer.
 
-Native development checks retained failures: an initial Claude missing-input run invented defaults; another run used a factor-of-two variance error while its unit arithmetic was consistent. After the correction, a fresh missing-input variant stopped and a supplied cluster variant passed actual R execution, reference/unit checks and an independent Python calculation. Prompt instructions alone cannot enforce arbitrary native-agent compliance. The mathematical protocol was tested with native2.2.1;2.2.2 added final-record reporting/digest binding and2.2.3 updates only the optional API-runtime bundle to2.1.0. Model-authored prose is not automatically certified.
+Native development checks retained failures: an initial Claude missing-input run invented defaults; another run used a factor-of-two variance error while its unit arithmetic was consistent. After the correction, a fresh missing-input variant stopped and a supplied cluster variant passed actual R execution, reference/unit checks and an independent Python calculation. Prompt instructions alone cannot enforce arbitrary native-agent compliance. The mathematical protocol was tested with native2.2.1;2.2.2 added final-record reporting/digest binding. Bundle2.2.5 contains shared runtime2.1.2 with actual-stdout JSON parsing and explicit effect/preceding-design name mapping; it adds no native model trial and leaves the native mathematical/report helpers unchanged. Model-authored prose is not automatically certified.
 
 ## Validation and environment
 
@@ -55,7 +55,7 @@ npm ci
 npm test
 ```
 
-The twenty-seven scientific/API/reference tests cover real R failure and environment filtering, fresh-process state, numeric grounding, actual reviewer execution, failed/budgeted review outcomes, clarification, source paths, session ownership, atomic allowance reservation and workspace cleanup/export/cancellation. API tests use local mocks and need the pinned development dependencies; no API key or live database is used. Portable tests cover input recognition, units, limited mathematical reference checks and stale/tampered-record reporting.
+The thirty-two scientific/API/reference tests cover real R failure and environment filtering, fresh-process state, numeric grounding, actual reviewer execution, failed/budgeted review outcomes, clarification, source paths, session ownership, atomic allowance reservation and workspace cleanup/export/cancellation. API tests use local mocks and need the pinned development dependencies; no API key or live database is used. Portable tests cover input recognition, units, limited mathematical reference checks and stale/tampered-record reporting.
 
 [Docker instructions](docs/PORTABLE-CONTAINER.md) provide a public R 4.4.1/Node 20 recipe with pinned `jsonlite`, `pwr` and `pmsampsize`, independent of the private production image. It contains no credentials. Provision additional pinned packages at build time when a study requires them. The hosted deployment used its existing private production base; that base is not needed for the portable recipe.
 

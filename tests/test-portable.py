@@ -86,5 +86,19 @@ class PortableContracts(unittest.TestCase):
         for name,digest in manifest['core_sources_sha256'].items():
             a=(ROOT/'scientific'/name).read_bytes(); b=(SCRIPTS/'runtime'/name).read_bytes(); self.assertEqual(a,b); self.assertEqual(hashlib.sha256(a).hexdigest(),digest)
         cli=subprocess.run(['node',str(ROOT/'scripts/run-scientific.mjs'),'--help'],capture_output=True,text=True); self.assertEqual(cli.returncode,0); self.assertIn('--mode',cli.stdout)
+    def test_api_record_checker_cannot_accept_failed_or_missing_current_reference(self):
+        results=[{'metric':'sample_size','value':64,'unit':'participants_per_arm'}]
+        code='cat('+json.dumps('POWER_AGENT_RESULT='+json.dumps({'results':results})+'\n')+')'
+        evidence={'id':'e1','role':'coder','success':True,'exitCode':0,'code':code,'code_sha256':hashlib.sha256(code.encode()).hexdigest(),'output':'POWER_AGENT_RESULT='+json.dumps({'results':results})+'\n'}
+        record={'scientificStatus':'completed','harnessVersion':'2.1.2','workflowMode':'single','plan':{'request_kind':'calculation'},'answer':{'summary':'Evidence-consistency fixture','method':'fixture','results':results,'assumptions':[],'limitations':['Not a new scientific calculation'],'evidence_ids':['e1'],'simulation':None,'citations':[]},'executions':[evidence],'referenceAudit':{'status':'failed','checks':[],'evidence_id':None}}
+        with tempfile.TemporaryDirectory() as temp:
+            p=Path(temp)/'record.json'
+            def verify(value):
+                p.write_text(json.dumps(value));run=subprocess.run(['node',str(SCRIPTS/'verify-record.mjs'),str(p)],capture_output=True,text=True);return run.returncode,json.loads(run.stdout)
+            status,audit=verify(record);self.assertEqual(status,1);self.assertFalse(audit['valid']);self.assertTrue(any('Reference audit failed' in issue for issue in audit['issues']))
+            missing=copy.deepcopy(record);missing.pop('referenceAudit');self.assertFalse(verify(missing)[1]['valid'])
+            passed=copy.deepcopy(record);passed['referenceAudit']={'status':'passed','checks':[{'name':'fixture','passed':True}],'evidence_id':'e1'};self.assertFalse(verify(passed)[1]['valid'])
+            skipped=copy.deepcopy(record);skipped['referenceAudit']={'status':'skipped','reason':'Fixture is outside the limited reference profile'};self.assertTrue(verify(skipped)[1]['valid'])
+            historical=copy.deepcopy(missing);historical['harnessVersion']='2.0.0';historical_audit=verify(historical)[1];self.assertTrue(historical_audit['valid']);self.assertEqual(historical_audit['reference_audit_status'],'not_recorded_historical')
 
 if __name__=='__main__':unittest.main(verbosity=2)

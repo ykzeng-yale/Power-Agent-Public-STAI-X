@@ -11,22 +11,16 @@ export function pooledTReferenceSpecification(plan) {
   const tMethod = /two[ -]?sample[ -]?t|noncentral[ -]?t|pooled.*t[ -]?test|power[ .]?t[ .]?test/.test(method);
   const common = /common.*(?:sd|variance|standard deviation)|equal variance|pooled variance/.test(notes);
   const independent = /independent.*(?:groups|samples|normal)|two[ -]?sample/.test(notes);
-  const twoGroups = /\btwo[ -]?sample\b/.test(method + ' ' + notes) || /\b(?:two|2)\s+(?:(?:independent|normal|normally|distributed)\s+)*(?:groups|samples)\b/.test(notes);
-  const normal = /\bnormal(?:ly)?(?: distributed)?\b/.test(notes);
+  const normal = /normal(?:ly)?(?: distributed)?/.test(notes);
   const noAttrition = /no attrition|no .*loss to follow|attrition.*not included|no .*dropout/.test(notes);
-  if (!tMethod || !common || !independent || !twoGroups || !normal || !noAttrition || plan?.request_kind !== 'calculation' || plan?.calculation_type !== 'sample_size' || plan?.sidedness !== 'two-sided' || plan?.allocation_ratio !== 1) {
+  if (!tMethod || !common || !independent || !normal || !noAttrition || plan?.request_kind !== 'calculation' || plan?.calculation_type !== 'sample_size' || plan?.sidedness !== 'two-sided' || plan?.allocation_ratio !== 1) {
     return { status: 'skipped', scope: POOLED_T_SCOPE, reason: 'The declared design is outside this narrowly supported reference profile; no independent certification is implied.' };
   }
   const forbidden = (plan?.parameters || []).some(parameter => /icc|cluster|interim/.test(normalized(parameter.name)) || (/attrition|dropout/.test(normalized(parameter.name)) && parameter.value !== 0));
-  if (forbidden || /one[ -]?(?:sample|group)|single[ -]?(?:sample|group)|\bnon[ -]?normal(?:ly)?\b|\blog[ -]?normal(?:ly)?\b|\bnot normal(?:ly)?\b|welch|unequal(?:[ -]+(?:population|group|within[ -]group))?[ -]+(?:variances?|sds?|standard deviations?)|heteroscedastic|\bpaired(?: |$)|cluster|crossover|repeated measure|normal approximation|z[ -]?test/.test(method + ' ' + notes)) return { status: 'skipped', scope: POOLED_T_SCOPE, reason: 'A material design feature is outside the pooled-t reference profile.' };
-  // Recognize the parameter's declared name, not an incidental Cohen-d mention
-  // in a nuisance parameter's unit (for example, a common SD's implied scale).
-  const effectName = /^(?:cohen(?: s|s)? (?:d|standardized (?:mean )?difference)|standardized (?:mean )?difference|standardized effect(?: size)?|effect size d|d)(?: \((?:effect size|standardized (?:mean )?difference|standardized effect(?: size)?)\))?$/;
-  const effectLike = /cohen|standardized|^effect size\b|^d(?:\b|\d)/;
-  const effects = (plan?.parameters || []).filter(parameter => effectName.test(normalized(parameter.name)));
-  const malformedEffect = (plan?.parameters || []).some(parameter => effectLike.test(normalized(parameter.name)) && !effectName.test(normalized(parameter.name)));
-  const values = effects.map(parameter => parameter.value);
-  if (malformedEffect || values.length !== 1 || !finite(values[0]) || values[0] === 0 || !finite(plan.alpha) || !(plan.alpha > 0 && plan.alpha < 1) || !finite(plan.target_power) || !(plan.target_power > 0 && plan.target_power < 1)) {
+  if (forbidden || /welch|unequal variance|\bpaired(?: |$)|cluster|crossover|repeated measure|normal approximation|z[ -]?test/.test(method + ' ' + notes)) return { status: 'skipped', scope: POOLED_T_SCOPE, reason: 'A material design feature is outside the pooled-t reference profile.' };
+  const effects = (plan?.parameters || []).filter(parameter => /cohen.*\bd\b|standardized.*(?:difference|effect)|\beffect size d\b|^d$/.test(normalized(parameter.name + ' ' + parameter.unit)));
+  const values = [...new Set(effects.map(parameter => parameter.value))];
+  if (values.length !== 1 || !finite(values[0]) || values[0] === 0 || !finite(plan.alpha) || !(plan.alpha > 0 && plan.alpha < 1) || !finite(plan.target_power) || !(plan.target_power > 0 && plan.target_power < 1)) {
     return { status: 'failed', scope: POOLED_T_SCOPE, reason: 'The supported profile lacks an unambiguous numeric standardized effect, alpha or target power; no values were inferred.' };
   }
   return { status: 'applicable', scope: POOLED_T_SCOPE, specification: { standardized_effect: values[0], alpha: plan.alpha, target_power: plan.target_power, allocation_ratio: 1, sidedness: 'two-sided' } };
@@ -56,21 +50,12 @@ function candidateQuantities(plan, answer) {
     const precedingLabel = /preceding|previous|smaller/.test(metric);
     // Consume a whole token rather than a numeric prefix. For example, n=86e2
     // means 8600, while n-10 is not the immediately preceding design.
-    const numericLabel = (operator, rawToken) => {
-      const token = rawToken.replace(/[),;\]]+$/, '');
-      const valid = /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i.test(token);
-      return { operator, value: valid ? Number(token) : NaN };
-    };
-    const labels = [...metric.matchAll(/\bn\s*([=:+-])\s*(\S*)/g)].map(match => numericLabel(match[1], match[2]));
-    const wordLabels = [...metric.matchAll(/\bn\s+(minus|plus)\s+(\S*)/g)].map(match => {
+    const labels = [...metric.matchAll(/\bn\s*([=:+-])\s*(\S*)/g)].map(match => {
       const token = match[2].replace(/[),;\]]+$/, '');
-      const trailing = metric.slice(match.index + match[0].length);
-      const compoundOffset = /^\s*(?:(?:and\s+)?(?:plus|minus|times|divided|multiplied)\b|[+*/=:-])/.test(trailing);
-      // The verbal/underscore alias is deliberately bounded to literal n minus 1.
-      return { operator: match[1] === 'minus' ? '-' : '+', value: token === '1' && !compoundOffset ? 1 : NaN };
+      const valid = /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i.test(token);
+      return { operator: match[1], value: valid ? Number(token) : NaN };
     });
-    labels.push(...wordLabels);
-    if (labels.length || /\bn\s*(?:plus|minus)/.test(metric)) {
+    if (labels.length || /\bn\s+(?:plus|minus)\b/.test(metric)) {
       const label = labels[0];
       const offset = label && ['+', '-'].includes(label.operator);
       const n = offset ? selected[0] + (label.operator === '-' ? -label.value : label.value) : label?.value;

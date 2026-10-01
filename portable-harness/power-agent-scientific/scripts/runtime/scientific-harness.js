@@ -34,9 +34,9 @@ const reviewSchema = object({
   checked_evidence_ids: strings, independent_check_evidence_ids: strings,
   checks: { type: 'array', items: object({ name: string, passed: { type: 'boolean' }, evidence: string }) }
 });
-const executeTool = { name: 'execute_r', description: 'Actually execute a self-contained R script. Each call starts a fresh R process. Emit computed numerical results as a single line POWER_AGENT_RESULT=<JSON object with results:[{metric,value,unit}] and optional simulation:{seed,trials,failures,mcse,confidence_interval}>. Use jsonlite::toJSON(...,auto_unbox=TRUE,digits=15). Never hardcode an answer in this marker. The real exit status, stdout and stderr are returned.', input_schema: object({ code: string, purpose: string }) };
+const executeTool = { name: 'execute_r', description: 'Actually execute a self-contained R script. Each call starts a fresh R process. Emit computed numerical results as a single JSON object with results:[{metric,value,unit}] and optional simulation:{seed,trials,failures,mcse,confidence_interval}; the single-line POWER_AGENT_RESULT= prefix is preferred but a single unambiguous stdout JSON object is also accepted. Use jsonlite::toJSON(...,auto_unbox=TRUE,digits=15). Use explicit participant count units such as participants_per_arm or participants_total, and probability for power on the 0–1 scale. Never hardcode an answer in this object. The real exit status, stdout, stderr and parsed computed_result are returned. A valid computed_result already provides evidence; do not rerun merely to add the optional prefix.', input_schema: object({ code: string, purpose: string }) };
 const designTool = { name: 'submit_design', description: 'Submit the study design specification or identify information needed before calculation.', input_schema: designSchema };
-const answerTool = { name: 'submit_answer', description: 'Submit an answer grounded in successful execute_r evidence. Copy every numerical result and its units from computed POWER_AGENT_RESULT output. Do not submit a final answer until all failed executions have been addressed.', input_schema: answerSchema };
+const answerTool = { name: 'submit_answer', description: 'Submit an answer grounded in successful execute_r evidence. Copy every numerical result and its units from the returned computed_result. Do not submit a final answer until all failed executions have been addressed.', input_schema: answerSchema };
 const reviewTool = { name: 'submit_review', description: 'Submit an independent critique grounded in cited execution evidence and a separately executed numerical check. A pass is not proof or ground truth.', input_schema: reviewSchema };
 
 export const SCIENTIFIC_PRINCIPLES = `You are a statistical power and sample-size collaborator.
@@ -47,7 +47,7 @@ For Monte Carlo power specify a seed, replication count, fitted test, data-gener
 Use reproducible self-contained code with package versions. Generate plots or supplementary files when useful or requested, not on every task. Distinguish mathematical assumptions, executed evidence, model critique and limitations. Never treat a language-model review as a scientific oracle.`;
 
 const designPrompt = `${SCIENTIFIC_PRINCIPLES}\nYou are the design planner, including clinical/scientific context when relevant. Extract the task's parameters and their provenance before code execution. If critical inputs or the scientific target are missing set ready=false and ask focused clarification questions. For a calculation set a concrete method identifier (for example two_sample_t, two_sample_z, paired_t, logrank_schoenfeld, cluster_design_effect), allocation_ratio (n_treatment/n_control) and units. Use submit_design; no numerical answers at this stage.`;
-const coderPrompt = `${SCIENTIFIC_PRINCIPLES}\nYou are the implementation agent. Use execute_r to calculate and validate. Each script must be self-contained; earlier objects do not persist. Base R statistical functions are available; prefer documented packages when needed. Emit POWER_AGENT_RESULT only for values computed by the script. Include achieved power and power at the preceding admissible design for sample-size inversion. Use submit_answer to finish. Cite only source URLs actually supplied or retrieved, not recalled fictional references. If search is unavailable, say that documentation was not retrieved. Evidence ids are returned by execute_r.`;
+const coderPrompt = `${SCIENTIFIC_PRINCIPLES}\nYou are the implementation agent. Use execute_r to calculate and validate. Each script must be self-contained; earlier objects do not persist. Base R statistical functions are available; prefer documented packages when needed. Emit one JSON results object only for values computed by the script; POWER_AGENT_RESULT is an optional preferred prefix. Inspect the returned computed_result and reuse its evidence id rather than re-executing solely to change formatting. Use explicit units participants_per_arm or participants_total for participant counts and probability for power on the 0–1 scale. Include achieved power and power at the preceding admissible design for sample-size inversion; label the preceding row with n-1 or its actual integer n. Use submit_answer to finish. Cite only source URLs actually supplied or retrieved, not recalled fictional references. If search is unavailable, say that documentation was not retrieved. Evidence ids are returned by execute_r.`;
 const reviewerPrompt = `${SCIENTIFIC_PRINCIPLES}\nYou are an independent statistical reviewer with a fresh conversation. You did not author the candidate. Examine the original request, design, code, real output and candidate. Recompute a check using execute_r, preferably with a different implementation or formula; for a complex simulation a smaller independently specified pilot or analytic limiting case is acceptable, with its limitation stated. Inspect power/null-test calibration, minimum-design verification, assumptions and units. Use submit_review. Set pass only when no critical/major issues remain and every substantive check passes. Do not claim independence of model errors: all agents can share one model.`;
 
 function validateSchema(value, schema, at = 'value') {
@@ -74,12 +74,89 @@ function validateSchema(value, schema, at = 'value') {
   return [];
 }
 
+function stdoutJsonBlocks(text) {
+  // These R print labels are not JSON containers. They commonly accompany a
+  // package result, version print, vector or matrix before the results object.
+  text = text.split('\n').map(line => {
+    if (/^[ \t]*(?:\[,\d+\][ \t]*)+$/.test(line) || /^[ \t]*\[\d+,\][ \t]*$/.test(line)) return '';
+    // Remove only the R index label: retain any actual JSON after it so a
+    // competing object cannot be hidden behind a diagnostic-looking prefix.
+    return line.replace(/^[ \t]*\[(?:\d+|\d+,)\][ \t]+/, '');
+  }).join('\n');
+  const blocks = []; let quotedOutside = false, escapedOutside = false;
+  for (let start = 0; start < text.length; start++) {
+    const current = text[start];
+    if (quotedOutside) {
+      if (escapedOutside) escapedOutside = false;
+      else if (current === '\\') escapedOutside = true;
+      else if (current === '"') quotedOutside = false;
+      continue;
+    }
+    if (current === '"') { quotedOutside = true; continue; }
+    if (current !== '{' && current !== '[') continue;
+    const stack = []; let quoted = false, escaped = false, end = start;
+    for (; end < text.length; end++) {
+      const char = text[end];
+      if (quoted) {
+        if (escaped) escaped = false;
+        else if (char === '\\') escaped = true;
+        else if (char === '"') quoted = false;
+        continue;
+      }
+      if (char === '"') quoted = true;
+      else if (char === '{' || char === '[') stack.push(char);
+      else if (char === '}' || char === ']') {
+        const opening = stack.pop();
+        if (opening !== (char === '}' ? '{' : '[') || !stack.length) { end++; break; }
+      }
+    }
+    blocks.push(text.slice(start, end).trim());
+    start = end - 1;
+  }
+  return blocks;
+}
+
+function hasDuplicateJsonKeys(text) {
+  // JSON.parse first validates syntax. Then retain key tokens before duplicate
+  // properties can be silently overwritten, including equivalent escaped keys.
+  const tokens = text.match(/"(?:\\.|[^"\\])*"|[{}\[\]:,]/g) || [];
+  const stack = [];
+  for (let index = 0; index < tokens.length; index++) {
+    const token = tokens[index];
+    if (token === '{') stack.push(new Set());
+    else if (token === '[') stack.push(null);
+    else if (token === '}' || token === ']') stack.pop();
+    else if (token.startsWith('"') && tokens[index + 1] === ':') {
+      const key = JSON.parse(token), keys = stack.at(-1);
+      if (!keys || keys.has(key)) return true;
+      keys.add(key);
+    }
+  }
+  return false;
+}
+
 export function extractComputedResult(output) {
-  const lines = String(output || '').split(/\r?\n/).filter(line => line.startsWith('POWER_AGENT_RESULT='));
-  if (!lines.length) return null;
+  let text = String(output || '').replace(/\r\n/g, '\n');
+  // The executor appends sessionInfo after the script. Its R print vectors are
+  // diagnostics, not JSON results. Trim only the final complete reserved block.
+  const sessionStart = text.lastIndexOf('\nPOWER_AGENT_SESSION_INFO_BEGIN\n');
+  if (sessionStart !== -1 && /\nPOWER_AGENT_SESSION_INFO_END\s*$/.test(text)) text = text.slice(0, sessionStart);
+  const lines = text.split('\n'), markers = lines.filter(line => line.startsWith('POWER_AGENT_RESULT='));
+  if (markers.length > 1) return null;
+  const unmarked = stdoutJsonBlocks(lines.filter(line => !line.startsWith('POWER_AGENT_RESULT=')).join('\n'));
+  if (markers.length && unmarked.length) return null;
+  const candidates = markers.length ? [markers[0].slice('POWER_AGENT_RESULT='.length)] : unmarked;
+  if (candidates.length !== 1) return null;
   try {
-    const result = JSON.parse(lines.at(-1).slice('POWER_AGENT_RESULT='.length));
-    if (validateSchema(result.results, resultsSchema).length) return null;
+    const result = JSON.parse(candidates[0]);
+    if (hasDuplicateJsonKeys(candidates[0])) return null;
+    const finiteData = value => typeof value === 'number' ? Number.isFinite(value) : value && typeof value === 'object' ? Object.values(value).every(finiteData) : true;
+    if (!finiteData(result)) return null;
+    if (!result || typeof result !== 'object' || Array.isArray(result) || validateSchema(result.results, resultsSchema).length || !result.results.length) return null;
+    if (result.results.some(row => !row.metric.trim() || !row.unit.trim())) return null;
+    const identities = result.results.map(row => JSON.stringify([row.metric, row.unit]));
+    if (new Set(identities).size !== identities.length) return null;
+    if ('simulation' in result && validateSchema(result.simulation, answerSchema.properties.simulation).length) return null;
     return result;
   } catch { return null; }
 }

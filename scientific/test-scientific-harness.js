@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { promises as fs } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { runScientificAnalysis, validateAnswerEvidence } from './scientific-harness.js';
+import { runScientificAnalysis, validateAnswerEvidence, extractComputedResult } from './scientific-harness.js';
 import { ScientificRExecutor } from './scientific-r-executor.js';
 import { prepareScientificContext } from './scientific-api.js';
 
@@ -40,6 +40,32 @@ test('numerical answer cannot cite absent, failed, or mismatched output', () => 
   assert.deepEqual(validateAnswerEvidence(answer, [evidence], plan), []);
   assert.ok(validateAnswerEvidence({ ...answer, results: [{ ...answer.results[0], value: 65 }] }, [evidence], plan).length);
   assert.ok(validateAnswerEvidence(answer, [{ ...evidence, success: false }], plan).length);
+});
+test('a single actual stdout JSON object and marked object have identical computed evidence', () => {
+  const value={results:answer.results}, json=JSON.stringify(value);
+  assert.deepEqual(extractComputedResult('POWER_AGENT_RESULT='+json),value);
+  assert.deepEqual(extractComputedResult(json),value);
+  assert.deepEqual(extractComputedResult('Calculation diagnostics\n'+JSON.stringify(value,null,2)+'\n\nPOWER_AGENT_SESSION_INFO_BEGIN\n[1] compiler_4.4.1\nPOWER_AGENT_SESSION_INFO_END\n'),value);
+  assert.deepEqual(extractComputedResult('POWER_AGENT_RESULT='+json+'\n\nPOWER_AGENT_SESSION_INFO_BEGIN\n[1] compiler_4.4.1\nPOWER_AGENT_SESSION_INFO_END\n'),value);
+  const consoleDiagnostics='[1] 86\n[1] "text"\n     [,1] [,2]\n[1,] 86 172\n     [,1]\n[1,] 86\n';
+  assert.deepEqual(extractComputedResult(consoleDiagnostics+'POWER_AGENT_RESULT='+json),value);
+  assert.deepEqual(extractComputedResult(consoleDiagnostics+json),value);
+});
+test('ambiguous, malformed, nonfinite and wrong-shaped stdout cannot become computed evidence', () => {
+  const json=JSON.stringify({results:answer.results});
+  for (const stdout of [json+'\n'+json,json+' '+json,'POWER_AGENT_RESULT='+json+'\nPOWER_AGENT_RESULT='+json,'POWER_AGENT_RESULT='+json+'\n'+json,'POWER_AGENT_RESULT=broken\n'+json,'There is no computed JSON', '{"results":', '{"results":[]}', '{"results":{}}','[{"results":'+JSON.stringify(answer.results)+'}]', '[\n'+json+'\n]', '{"results":[{"metric":"sample_size","value":1e400,"unit":"participants_per_group"}]}','{"results":'+JSON.stringify(answer.results)+',"metadata":{"bad":1e400}}','{"results":[{"metric":"sample_size","value":"64","unit":"participants_per_group"}]}',JSON.stringify({results:[...answer.results,...answer.results]}),JSON.stringify({results:answer.results,simulation:{seed:1}})]) assert.equal(extractComputedResult(stdout),null,stdout);
+  for (const stdout of ['POWER_AGENT_RESULT='+json+'\nResult: '+json,json+'\nResult: '+json,'POWER_AGENT_RESULT='+json+'\n[1] '+json,'POWER_AGENT_RESULT='+json+'\n[1] [1,2]','{"results":'+JSON.stringify(answer.results)+',"results":'+JSON.stringify(answer.results)+'}','{"results":[{"metric":"sample_size","value":99,"value":64,"unit":"participants_per_group"}]}','{"results":[{"metric":"sample_size","value":99,"\\u0076alue":64,"unit":"participants_per_group"}]}','POWER_AGENT_RESULT='+json+'\n[1,2]']) assert.equal(extractComputedResult(stdout),null,stdout);
+});
+test('raw JSON from actual successful R execution finishes without a formatting rerun', async () => {
+  const root=await fs.mkdtemp(path.join(os.tmpdir(),'power-json-format-test-'));await fs.chmod(root,0o711);
+  const executor=new ScientificRExecutor({root});
+  const code='n <- 8*8; cat(jsonlite::toJSON(list(results=list(list(metric="sample_size",value=n,unit="participants_per_group"))),auto_unbox=TRUE,digits=15),"\\n")';
+  const queue=[tool('submit_design',plan),tool('execute_r',{code,purpose:'Actual arithmetic fixture with unmarked JSON'}),tool('submit_answer',answer)];
+  try {
+    const result=await runScientificAnalysis('Complete fixture design', {executor,transport:async()=>queue.shift(),maxModelCalls:3});
+    assert.equal(result.harnessVersion,'2.1.2');assert.equal(result.scientificStatus,'completed');assert.equal(result.iterations,3);assert.equal(result.executions.length,1);assert.deepEqual(result.executions[0].computed.results,answer.results);
+    assert.equal(validateAnswerEvidence(answer,[{...result.executions[0],success:false}],plan).length>0,true);
+  } finally {await fs.rm(root,{recursive:true,force:true});}
 });
 test('multi workflow has separate reviewer context and actual independent execution', async () => {
   const queue = [tool('submit_design', plan), tool('execute_r', { code: 'coder-code', purpose: 'main calculation' }), tool('submit_answer', answer), tool('execute_r', { code: 'review-code', purpose: 'independent check' }), tool('submit_review', review)];
