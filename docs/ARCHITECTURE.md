@@ -1,6 +1,6 @@
 # Current scientific architecture
 
-Runtime 2.1.2 uses the exact tested files in `scientific/`; their digests are in `scientific/manifest.json`. The optional skill API runner copies the same six core files. Haiku4.5 is pinned by dated model id; actual request model and usage are retained.
+Runtime 2.1.3 uses the exact tested files in `scientific/`; their digests are in `scientific/manifest.json`. The optional skill API runner copies the same six core files. Haiku4.5 is pinned by dated model id; actual request model and usage are retained.
 
 The planner submits a structured design with estimand/hypothesis, test, alpha/sidedness, allocation, effect/nuisance inputs and provenance, units, assumptions and missing-input questions. Missing material inputs stop the numerical path. Single mode retains the planner's conversation for implementation. Multi mode starts a fresh coder conversation, then a fresh reviewer conversation with the original request, design, code, actual evidence and candidate. All roles can share model errors.
 
@@ -12,6 +12,6 @@ Each R call is a fresh self-contained process with real exit code/stdout/stderr,
 
 `scientific-api.js` is the tested adapter for the hosted application: authenticated session ownership, atomic credits/anonymous reservations, source scoping, streamed/JSON events, uploaded exports and private workspace cleanup. The public standalone CLI does not require its database or cloud integration. API tests use injected mocks. The active hosted frontend/backend deployment is maintained separately; legacy frontend and routing files in this repository remain source history.
 
-Native skill 2.2.5 can use the host's own tools/model and separately records requested/executed workflow and whether a true independent reviewer exists. Its input/units/reference/report tools cover explicit limited profiles. Role-labelled self-critique and deterministic mathematical checks must not be described as independent model-agent evidence.
+Native skill 2.2.6 can use the host's own tools/model and separately records requested/executed workflow and whether a true independent reviewer exists. Its input/units/reference/report tools cover explicit limited profiles. Role-labelled self-critique and deterministic mathematical checks must not be described as independent model-agent evidence.
 
 The prior architecture document is preserved in `archive/source-history/docs/ARCHITECTURE.md`; its classification/data-manager roles and template-verification statements are historical, not current release claims.

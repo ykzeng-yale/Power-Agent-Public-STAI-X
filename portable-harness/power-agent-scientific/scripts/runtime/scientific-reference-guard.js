@@ -32,8 +32,34 @@ export function pooledTReferenceSpecification(plan) {
   return { status: 'applicable', scope: POOLED_T_SCOPE, specification: { standardized_effect: values[0], alpha: plan.alpha, target_power: plan.target_power, allocation_ratio: 1, sidedness: 'two-sided' } };
 }
 
+function sampleSizeLabels(metric) {
+  metric = metric.replace(/[−–—]/g, '-');
+  // Consume a whole token rather than a numeric prefix. For example, n=86e2
+  // means 8600, while n-10 is not the immediately preceding design.
+  const numericLabel = (operator, rawToken) => {
+    const token = rawToken.replace(/[),;\]]+$/, '');
+    const valid = /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i.test(token);
+    return { operator, value: valid ? Number(token) : NaN };
+  };
+  const labels = [...metric.matchAll(/\bn\s*([=:+-])\s*(\S*)/g)].map(match => {
+    const label = numericLabel(match[1], match[2]);
+    const trailing = metric.slice(match.index + match[0].length);
+    if (['+', '-'].includes(label.operator) && /^\s*(?:(?:and\s+)?(?:plus|minus|times|divided|multiplied)\b|[+*/=:-])/.test(trailing)) label.value = NaN;
+    return label;
+  });
+  const wordLabels = [...metric.matchAll(/\bn\s+(minus|plus)\s+(\S*)/g)].map(match => {
+    const token = match[2].replace(/[),;\]]+$/, '');
+    const trailing = metric.slice(match.index + match[0].length);
+    const compoundOffset = /^\s*(?:(?:and\s+)?(?:plus|minus|times|divided|multiplied)\b|[+*/=:-])/.test(trailing);
+    // The verbal/underscore alias is deliberately bounded to literal n minus 1.
+    return { operator: match[1] === 'minus' ? '-' : '+', value: token === '1' && !compoundOffset ? 1 : NaN };
+  });
+  labels.push(...wordLabels);
+  return { labels, hasLabel: Boolean(labels.length || /\bn\s*(?:plus|minus)/.test(metric)) };
+}
+
 function candidateQuantities(plan, answer) {
-  const counts = [], totals = [], powers = [], previous = [], invalidUnits = [], powerRows = [], invalidMappings = [];
+  const counts = [], totals = [], priorCounts = [], priorTotals = [], powers = [], previous = [], invalidUnits = [], powerRows = [], invalidMappings = [], invalidCountMappings = [], countLabels = [];
   for (const row of answer?.results || []) {
     const metric = normalized(row.metric), unit = normalized(row.unit), combined = metric + ' ' + unit;
     if (/power/.test(metric)) {
@@ -41,36 +67,37 @@ function candidateQuantities(plan, answer) {
       if (!/target|nominal|requested/.test(metric)) powerRows.push({ ...row, metric });
       continue;
     }
-    if (/preceding|previous|smaller|unrounded|continuous|prior|initial/.test(metric)) continue;
+    if (/unrounded|continuous|initial/.test(metric)) continue;
     const countRow = /total.*(?:participant|subject|sample|\bn\b)|(?:participant|subject).*total|per (?:arm|group)|perarm|pergroup|sample size|^n$/.test(combined);
     const explicitParticipantUnit = /^(?:participants?|subjects?|patients?)(?: per (?:arm|group)| total)?$/.test(unit);
     const labeledIntegerCount = /^(?:integer|count)$/.test(unit) && /participant|subject|patient/.test(metric);
     if (countRow && (/cluster|event|failure/.test(combined) || !(explicitParticipantUnit || labeledIntegerCount))) invalidUnits.push({ metric: row.metric, unit: row.unit });
-    if (/total.*(?:participant|subject|sample|\bn\b)|(?:participant|subject).*total/.test(combined)) totals.push(row.value);
-    else if (/per (?:arm|group)|perarm|pergroup/.test(combined) || (/sample size|^n$/.test(metric) && /per (?:arm|group)/.test(normalized(plan.sample_size_unit)))) counts.push(row.value);
+    const total = /total.*(?:participant|subject|sample|\bn\b)|(?:participant|subject).*total/.test(combined);
+    const perArm = /per (?:arm|group)|perarm|pergroup/.test(combined) || (/sample size|^n$/.test(metric) && /per (?:arm|group)/.test(normalized(plan.sample_size_unit)));
+    if (!total && !perArm) continue;
+    let prior = /\bpreceding\b|\bprevious\b|\bsmaller\b|\bprior\b/.test(metric);
+    const { labels, hasLabel } = sampleSizeLabels(metric);
+    if (hasLabel) {
+      const label = labels[0], offset = label && ['+', '-'].includes(label.operator);
+      if (labels.length !== 1 || !Number.isInteger(label.value) || (offset && !(label.operator === '-' && label.value === 1))) {
+        invalidCountMappings.push({ metric: row.metric, value: row.value }); continue;
+      }
+      if (offset) prior = true;
+      else countLabels.push({ metric: row.metric, value: label.value, prior });
+    }
+    if (prior && /\bminimum\b|\bselected\b|\bchosen\b/.test(metric)) { invalidCountMappings.push({ metric: row.metric, value: row.value }); continue; }
+    (total ? (prior ? priorTotals : totals) : (prior ? priorCounts : counts)).push(row.value);
   }
   const unique = values => [...new Set(values)];
   const selected = unique(counts);
+  for (const label of countLabels) {
+    if (selected.length !== 1 || label.value !== selected[0] - (label.prior ? 1 : 0)) invalidCountMappings.push(label);
+  }
   for (const row of powerRows) {
     const metric = row.metric.replace(/[−–—]/g, '-');
     const precedingLabel = /preceding|previous|smaller/.test(metric);
-    // Consume a whole token rather than a numeric prefix. For example, n=86e2
-    // means 8600, while n-10 is not the immediately preceding design.
-    const numericLabel = (operator, rawToken) => {
-      const token = rawToken.replace(/[),;\]]+$/, '');
-      const valid = /^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i.test(token);
-      return { operator, value: valid ? Number(token) : NaN };
-    };
-    const labels = [...metric.matchAll(/\bn\s*([=:+-])\s*(\S*)/g)].map(match => numericLabel(match[1], match[2]));
-    const wordLabels = [...metric.matchAll(/\bn\s+(minus|plus)\s+(\S*)/g)].map(match => {
-      const token = match[2].replace(/[),;\]]+$/, '');
-      const trailing = metric.slice(match.index + match[0].length);
-      const compoundOffset = /^\s*(?:(?:and\s+)?(?:plus|minus|times|divided|multiplied)\b|[+*/=:-])/.test(trailing);
-      // The verbal/underscore alias is deliberately bounded to literal n minus 1.
-      return { operator: match[1] === 'minus' ? '-' : '+', value: token === '1' && !compoundOffset ? 1 : NaN };
-    });
-    labels.push(...wordLabels);
-    if (labels.length || /\bn\s*(?:plus|minus)/.test(metric)) {
+    const { labels, hasLabel } = sampleSizeLabels(metric);
+    if (hasLabel) {
       const label = labels[0];
       const offset = label && ['+', '-'].includes(label.operator);
       const n = offset ? selected[0] + (label.operator === '-' ? -label.value : label.value) : label?.value;
@@ -81,13 +108,14 @@ function candidateQuantities(plan, answer) {
       else (n === selected[0] ? powers : previous).push(row.value);
     } else (precedingLabel ? previous : powers).push(row.value);
   }
-  return { counts: selected, totals: unique(totals), powers: unique(powers), previous: unique(previous), invalidUnits, invalidMappings };
+  return { counts: selected, totals: unique(totals), priorCounts: unique(priorCounts), priorTotals: unique(priorTotals), powers: unique(powers), previous: unique(previous), invalidUnits, invalidMappings, invalidCountMappings };
 }
 
 export async function checkPooledTReference(plan, answer, execute) {
   const scope = pooledTReferenceSpecification(plan);
   if (scope.status !== 'applicable') return { ...scope, checks: [], evidence_id: null };
   const quantities = candidateQuantities(plan, answer);
+  if (quantities.invalidCountMappings.length) return { status: 'failed', scope: POOLED_T_SCOPE, specification: scope.specification, checks: [{ name: 'declared_count_design_mapping', passed: false, observed: quantities.invalidCountMappings }], evidence_id: null, reason: 'Reported participant-count labels do not uniquely identify the selected or immediately preceding design.' };
   if (quantities.invalidMappings.length) return { status: 'failed', scope: POOLED_T_SCOPE, specification: scope.specification, checks: [{ name: 'declared_power_design_mapping', passed: false, observed: quantities.invalidMappings }], evidence_id: null, reason: 'Reported power labels contradict or do not uniquely identify the selected or immediately preceding per-arm design.' };
   if (quantities.invalidUnits.length) return { status: 'failed', scope: POOLED_T_SCOPE, specification: scope.specification, checks: [{ name: 'declared_reference_units', passed: false, observed: quantities.invalidUnits }], evidence_id: null, reason: 'Reported quantities have units outside the supported participant-count and probability reference profile; no units were inferred or converted.' };
   if (quantities.counts.length !== 1 || !Number.isInteger(quantities.counts[0]) || quantities.counts[0] < 2) return { status: 'failed', scope: POOLED_T_SCOPE, specification: scope.specification, checks: [], reason: 'No unique admissible integer per-arm sample-size result was declared.', evidence_id: null };
@@ -125,6 +153,8 @@ cat("POWER_AGENT_REFERENCE_AUDIT=",toJSON(list(checks=checks,minimum_per_arm=min
   if (!validResult) return { status: 'failed', scope: POOLED_T_SCOPE, specification: scope.specification, checks: [], evidence_id: evidence.evidence_id, reason: 'Reference audit is missing required named checks or finite reference quantities.' };
   const checks = [...(result.checks || [])];
   if (quantities.totals.length) checks.push({ name: 'candidate_total_units', passed: quantities.totals.length === 1 && quantities.totals[0] === 2 * n, observed: quantities.totals });
+  if (quantities.priorCounts.length) checks.push({ name: 'reported_preceding_per_arm_count', passed: quantities.priorCounts.length === 1 && Number.isInteger(quantities.priorCounts[0]) && quantities.priorCounts[0] === n - 1, observed: quantities.priorCounts, expected: n - 1 });
+  if (quantities.priorTotals.length) checks.push({ name: 'reported_preceding_total_count', passed: quantities.priorTotals.length === 1 && quantities.priorTotals[0] === 2 * (n - 1), observed: quantities.priorTotals, expected: 2 * (n - 1) });
   if (quantities.powers.length) checks.push({ name: 'reported_achieved_power', passed: quantities.powers.length === 1 && Math.abs(quantities.powers[0] - result.power_at_candidate) <= 0.0001, observed: quantities.powers, expected: result.power_at_candidate });
   if (quantities.previous.length && n > 2) {
     // A candidate preceding-design claim concerns its own n-1. Only an accepted

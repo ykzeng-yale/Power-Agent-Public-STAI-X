@@ -1,6 +1,6 @@
 {
   "name": "power-agent-scientific",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "private": true,
   "description": "Executed statistical power and sample-size workflow with selectable independent model review and portable scientific skill",
   "type": "module",

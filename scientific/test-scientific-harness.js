@@ -63,7 +63,7 @@ test('raw JSON from actual successful R execution finishes without a formatting 
   const queue=[tool('submit_design',plan),tool('execute_r',{code,purpose:'Actual arithmetic fixture with unmarked JSON'}),tool('submit_answer',answer)];
   try {
     const result=await runScientificAnalysis('Complete fixture design', {executor,transport:async()=>queue.shift(),maxModelCalls:3});
-    assert.equal(result.harnessVersion,'2.1.2');assert.equal(result.scientificStatus,'completed');assert.equal(result.iterations,3);assert.equal(result.executions.length,1);assert.deepEqual(result.executions[0].computed.results,answer.results);
+    assert.equal(result.harnessVersion,'2.1.3');assert.equal(result.scientificStatus,'completed');assert.equal(result.iterations,3);assert.equal(result.executions.length,1);assert.deepEqual(result.executions[0].computed.results,answer.results);
     assert.equal(validateAnswerEvidence(answer,[{...result.executions[0],success:false}],plan).length>0,true);
   } finally {await fs.rm(root,{recursive:true,force:true});}
 });

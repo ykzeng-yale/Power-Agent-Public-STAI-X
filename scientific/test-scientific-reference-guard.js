@@ -138,7 +138,49 @@ test('execution-grounded wrong candidate is retained with review_failed and actu
   const code='cat('+JSON.stringify('POWER_AGENT_RESULT='+JSON.stringify({results:candidate.results})+'\n')+')';
   const queue=[tool('submit_design',plan),tool('execute_r',{code,purpose:'Regression fixture reproduces a preserved erroneous candidate, not a scientific solution'}),tool('submit_answer',candidate)];
   const result=await runScientificAnalysis('Independent normal groups, common SD, d=.5, two-sided alpha=.05, power=.90, 1:1, no attrition.',{executor,transport:async()=>queue.shift()});
-  assert.equal(result.harnessVersion,'2.1.2'); assert.equal(result.scientificStatus,'review_failed'); assert.equal(result.success,false);
+  assert.equal(result.harnessVersion,'2.1.3'); assert.equal(result.scientificStatus,'review_failed'); assert.equal(result.success,false);
   assert.equal(result.results[0].value,44); assert.equal(result.referenceAudit.status,'failed');
   assert.deepEqual(result.executions.map(e=>e.role),['coder','reference_check']); assert.equal(result.referenceAudit.evidence_id,'e2');
+}));
+
+const sevenRowFixture = JSON.parse(await fs.readFile(new URL('./test-fixtures/reference-seven-row-2.1.2.json', import.meta.url), 'utf8'));
+test('saved seven-row result separates selected and preceding participant counts without rounding the continuous diagnostic', async () => withExecutor(async (_executor, execute) => {
+  assert.equal(sevenRowFixture.source_sha256, 'c18d1e58f4576fbc1aece337f835ab17b98d6ccff30bc6ccccba3721bd2b75e9');
+  const candidate = structuredClone(sevenRowFixture.answer), before = JSON.stringify(candidate);
+  const audit = await checkPooledTReference(sevenRowFixture.plan, candidate, execute);
+  assert.equal(audit.status, 'passed'); assert.equal(audit.reference.minimum_per_arm, 64);
+  assert.equal(audit.reference.participants_total, 128); assert.equal(candidate.results[0].value, 63.76561017078221);
+  assert.ok(audit.checks.find(c => c.name === 'reported_preceding_per_arm_count').passed);
+  assert.ok(audit.checks.find(c => c.name === 'reported_preceding_total_count').passed);
+  assert.equal(JSON.stringify(candidate), before);
+  for (const [index, value, check] of [[4, 62, 'reported_preceding_per_arm_count'], [5, 125, 'reported_preceding_total_count']]) {
+    const wrong = structuredClone(candidate); wrong.results[index].value = value;
+    const rejected = await checkPooledTReference(sevenRowFixture.plan, wrong, execute);
+    assert.equal(rejected.status, 'failed'); assert.equal(rejected.checks.find(c => c.name === check).passed, false);
+    assert.equal(wrong.results[index].value, value);
+  }
+  for (const alias of ['Participants per arm (n minus 1)', 'participants_per_arm_at_n_minus_1', 'Participants per arm (previous design)']) {
+    const variant = structuredClone(candidate); variant.results[4].metric = alias;
+    assert.equal((await checkPooledTReference(sevenRowFixture.plan, variant, execute)).status, 'passed');
+  }
+  for (const change of [
+    {metric: 'Participants per arm (n-10)'}, {metric: 'Participants per arm (n-1 + 1)'},
+    {metric: 'Participants per arm (n minus 1 plus 1)'}, {metric: 'Participants per arm (n minus 11)'},
+    {metric: 'Selected participants per arm (n-1)'}, {metric: 'Participants per arm'},
+    {unit: 'clusters_per_arm'}, {unit: 'events_per_group'}, {unit: 'kg'}
+  ]) {
+    const wrong = structuredClone(candidate); Object.assign(wrong.results[4], change);
+    assert.equal((await checkPooledTReference(sevenRowFixture.plan, wrong, async () => { throw Error('must reject ambiguous count mapping or units before R'); })).status, 'failed');
+  }
+}));
+test('execution-grounded candidate with a wrong preceding count is retained after reference failure', async () => withExecutor(async (executor) => {
+  const candidate = structuredClone(sevenRowFixture.answer); candidate.results[4].value = 62; candidate.evidence_ids = ['e1'];
+  const code = 'cat(' + JSON.stringify('POWER_AGENT_RESULT=' + JSON.stringify({results: candidate.results}) + '\n') + ')';
+  const queue = [tool('submit_design', sevenRowFixture.plan), tool('execute_r', {code, purpose: 'Regression fixture reproduces a wrong preceding count'}), tool('submit_answer', candidate)];
+  const result = await runScientificAnalysis('Use the explicitly declared pooled-t specification in the fixture.', {executor, transport: async () => queue.shift()});
+  assert.equal(result.harnessVersion, '2.1.3'); assert.equal(result.scientificStatus, 'review_failed'); assert.equal(result.success, false);
+  assert.equal(result.results[1].value, 64); assert.equal(result.results[4].value, 62);
+  assert.equal(result.referenceAudit.status, 'failed'); assert.equal(result.referenceAudit.evidence_id, 'e2');
+  assert.equal(result.referenceAudit.checks.find(c => c.name === 'reported_preceding_per_arm_count').passed, false);
+  assert.deepEqual(result.executions.map(e => e.role), ['coder', 'reference_check']);
 }));
