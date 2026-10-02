@@ -1,0 +1,663 @@
+{
+  "audit_type": "Read-only engineering audit of a retained browser follow-up demonstration",
+  "created_at": "2026-10-02T07:27:49.075661+00:00",
+  "runtime_version": "2.2.0",
+  "model": "claude-haiku-4-5-20251001",
+  "deployment_revision": "power-agent-api-00170-zuz",
+  "raw_record": "browser-paired-multi-record.json",
+  "raw_record_sha256": "0f3604cbb746fd73a14bec20077aa8a0ed83ea8a6b2b8051af895b3ea09cf481",
+  "frozen_harness_sha256": "7fcde84beda8d5dcd5058a370ade3cb639f6b761ae3557b608dbfa8564876fd3",
+  "scope": {
+    "provider_calls": 0,
+    "model_calls": 0,
+    "new_R_calls": 0,
+    "core_edits": 0,
+    "frozen_evaluator_edits": 0,
+    "audited_existing_model_calls": 12,
+    "audited_existing_R_executions": 5,
+    "export_policy": "No credentials, environment values, artifact base64, signed URLs or workspace paths serialized."
+  },
+  "outcome": {
+    "scientific_status": "budget_exhausted",
+    "success": false,
+    "error": "HARNESS_BUDGET_EXHAUSTED",
+    "elapsed_ms": 170290,
+    "answer_accepted": false,
+    "reviewer_started": false,
+    "accepted_artifacts": 0,
+    "retained_execution_artifacts": 3,
+    "classification": "Unsuccessful solver phase; retained calculations/files do not make this a completed independent-review result."
+  },
+  "budget": {
+    "global": {
+      "maxModelCalls": 26,
+      "maxExecutions": 12,
+      "maxSearches": 6,
+      "maxSourceReads": 4,
+      "maxSourceChars": 80000,
+      "deadlineMs": 540000
+    },
+    "profile": {
+      "id": "hosted-balanced",
+      "plannerMaxCalls": 3,
+      "solverMaxCalls": 9,
+      "solverMaxExecutions": 5,
+      "verificationMaxCalls": 5,
+      "verificationMaxExecutions": 3,
+      "repairMaxCalls": 4,
+      "repairMaxExecutions": 1,
+      "reserveRepair": true
+    },
+    "planned_repair_allowance": 1,
+    "phases": [
+      {
+        "name": "planner",
+        "round": 0,
+        "context_topology": null,
+        "max_model_calls": 3,
+        "max_executions": 0,
+        "model_calls": 3,
+        "executions": 0,
+        "searches": 1,
+        "source_reads": 1,
+        "blind_pending": false,
+        "reservation": {
+          "calls": 0,
+          "executions": 0
+        },
+        "started_ms": 0,
+        "stop_reason": "submitted",
+        "elapsed_ms": 19184
+      },
+      {
+        "name": "solver",
+        "round": 0,
+        "context_topology": null,
+        "max_model_calls": 9,
+        "max_executions": 5,
+        "model_calls": 9,
+        "executions": 5,
+        "searches": 1,
+        "source_reads": 1,
+        "blind_pending": false,
+        "reservation": {
+          "calls": 6,
+          "executions": 3
+        },
+        "started_ms": 19186,
+        "stop_reason": "HARNESS_BUDGET_EXHAUSTED",
+        "elapsed_ms": 151103
+      }
+    ],
+    "decisions": [
+      {
+        "name": "repair_reservation",
+        "allowed_rounds": 1,
+        "requested_rounds": 1,
+        "reason": "Reserve only complete repair/review cycles that fit the fixed global capacity; unused slots remain available within phase caps."
+      }
+    ],
+    "used": {
+      "model_calls": 12,
+      "executions": 5,
+      "searches": 2,
+      "source_reads": 2,
+      "source_chars": 14558
+    }
+  },
+  "usage": {
+    "input_tokens": 219139,
+    "output_tokens": 20902,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0
+  },
+  "verification": {
+    "required": true,
+    "context_topology": "fresh_review_conversation",
+    "requested_independent_agent_review": true,
+    "independent_agent_review": false,
+    "reviewer_started": false,
+    "successful_precheck_executed": false,
+    "numerical_check_performed": false,
+    "review_accepted": false,
+    "current_review_accepted": false,
+    "review_passed": false,
+    "precheck_scope": "Candidate withheld from model messages; filesystem restrictions depend on the executor/platform and are recorded separately.",
+    "current_candidate_round": 0,
+    "rounds": []
+  },
+  "failure_chain": [
+    {
+      "id": "e1",
+      "actual_role": "coder",
+      "phase": "solver",
+      "candidate_round": 0,
+      "success": true,
+      "exit_code": 0,
+      "computed_result_present": false,
+      "computed_metrics": [],
+      "artifact_count": 0,
+      "cause_or_scope": "Successful calculation printed the primary quantities but emitted no results-row JSON; computed=null. Its RData save is not a captured artifact.",
+      "code_sha256": "5177f9f541d8b554b9f6271b91aa5203451f0b5a3c7c3930845bf70df4a92b6e"
+    },
+    {
+      "id": "e2",
+      "actual_role": "coder",
+      "phase": "solver",
+      "candidate_round": 0,
+      "success": true,
+      "exit_code": 0,
+      "computed_result_present": true,
+      "computed_metrics": [
+        {
+          "metric": "CSV rows generated",
+          "value": 45,
+          "unit": "rows"
+        },
+        {
+          "metric": "Correlation scenarios",
+          "value": 3,
+          "unit": "scenarios"
+        },
+        {
+          "metric": "Sample size grid points",
+          "value": 15,
+          "unit": "points"
+        },
+        {
+          "metric": "PNG file status",
+          "value": 1,
+          "unit": "boolean"
+        },
+        {
+          "metric": "PDF file status",
+          "value": 1,
+          "unit": "boolean"
+        }
+      ],
+      "artifact_count": 3,
+      "cause_or_scope": "Successful grid/files execution emitted only file/grid metadata rows, not minimum sample-size or attained/preceding-power rows.",
+      "code_sha256": "704fb12a5ca327e64fd695322c9a2b075bf7891041605584a5928dd204a7c126"
+    },
+    {
+      "id": "e3",
+      "actual_role": "coder",
+      "phase": "solver",
+      "candidate_round": 0,
+      "success": false,
+      "exit_code": 1,
+      "computed_result_present": false,
+      "computed_metrics": [],
+      "artifact_count": 0,
+      "cause_or_scope": "Failed with unexpected symbol after an unterminated cat(sprintf(...)) call; partial stdout is not successful evidence.",
+      "code_sha256": "e26c5e2c9d31a59ad076236fe40e31e3958aff30edffa873fec18aac0b638d52"
+    },
+    {
+      "id": "e4",
+      "actual_role": "coder",
+      "phase": "solver",
+      "candidate_round": 0,
+      "success": true,
+      "exit_code": 0,
+      "computed_result_present": true,
+      "computed_metrics": [
+        {
+          "metric": "Minimum_n_rho_0.25",
+          "value": 178,
+          "unit": "participants"
+        },
+        {
+          "metric": "Minimum_n_rho_0.50",
+          "value": 119,
+          "unit": "participants"
+        },
+        {
+          "metric": "Minimum_n_rho_0.75",
+          "value": 61,
+          "unit": "participants"
+        },
+        {
+          "metric": "CSV_check_pass",
+          "value": 0,
+          "unit": "boolean"
+        },
+        {
+          "metric": "PNG_exists",
+          "value": 0,
+          "unit": "boolean"
+        },
+        {
+          "metric": "PDF_exists",
+          "value": 0,
+          "unit": "boolean"
+        }
+      ],
+      "artifact_count": 0,
+      "cause_or_scope": "Successful coder calculation emitted minimum rows under Minimum_n_rho_* / participants. Bare fresh-cwd file checks returned zero despite e2 captured artifacts. It emitted no attained/preceding-power JSON rows.",
+      "code_sha256": "c5d63b026f7024eae55644b3fa38943e25e5e8603ec1e486b8c3fd1c5f87aa94"
+    },
+    {
+      "id": "e5",
+      "actual_role": "coder",
+      "phase": "solver",
+      "candidate_round": 0,
+      "success": false,
+      "exit_code": 1,
+      "computed_result_present": false,
+      "computed_metrics": [],
+      "artifact_count": 0,
+      "cause_or_scope": "Failed before calculation at undefined string concatenation operator %+%.",
+      "code_sha256": "cf88fcc633f99841c4ace9e8e8fd75555cd018d691f83c7147c0298399718738"
+    }
+  ],
+  "final_submission": {
+    "cited_evidence_ids": [
+      "e1",
+      "e2",
+      "e4"
+    ],
+    "accepted": false,
+    "issues": [
+      "Unverified result: Minimum_n_correlation_0.25 (paired_participants)",
+      "Unverified result: Power_at_min_n_correlation_0.25 (probability)",
+      "Unverified result: Power_at_n_minus_1_correlation_0.25 (probability)",
+      "Unverified result: Minimum_n_correlation_0.50 (paired_participants)",
+      "Unverified result: Power_at_min_n_correlation_0.50 (probability)",
+      "Unverified result: Power_at_n_minus_1_correlation_0.50 (probability)",
+      "Unverified result: Minimum_n_correlation_0.75 (paired_participants)",
+      "Unverified result: Power_at_min_n_correlation_0.75 (probability)",
+      "Unverified result: Power_at_n_minus_1_correlation_0.75 (probability)"
+    ],
+    "mechanism": "e4 minimum metric/unit strings differ from submitted rows; attained and preceding powers occur only in printed or failed outputs, not successful structured rows. Artifact producing e2 was cited correctly; the final rejection was numerical grounding, not missing artifact provenance."
+  },
+  "sources": {
+    "search_calls": 2,
+    "read_calls": 2,
+    "stored_receipts": 10,
+    "cache_hit_calls": 1,
+    "additional_provider_reported_credits": 2,
+    "receipts": [
+      {
+        "id": "s1",
+        "url": "https://cran.r-project.org/web/packages/pwrss/vignettes/examples.html",
+        "content_scope": "provider_excerpt",
+        "content_truncated": false,
+        "content_sha256": "44026e7b94d3a92eaa39d782e2bcb31ef11bc0f31740a55cad4d82103ba033b4",
+        "stored_content_sha256_matches": true,
+        "retrieval_roles": [
+          "planner"
+        ]
+      },
+      {
+        "id": "s2",
+        "url": "https://cran.r-project.org/package=pwrss/vignettes/examples.html",
+        "content_scope": "provider_excerpt",
+        "content_truncated": false,
+        "content_sha256": "a456718fd65e38322861cfbb208e78dbe1b9e4987e14d742d08307f89cbbf077",
+        "stored_content_sha256_matches": true,
+        "retrieval_roles": [
+          "planner"
+        ]
+      },
+      {
+        "id": "s3",
+        "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/power.t.test.html",
+        "content_scope": "provider_excerpt",
+        "content_truncated": false,
+        "content_sha256": "72019f4575ad335b81c4e0d751763d7194965cf9cc06def88eb7a19b55eba13b",
+        "stored_content_sha256_matches": true,
+        "retrieval_roles": [
+          "planner"
+        ]
+      },
+      {
+        "id": "s4",
+        "url": "https://cran.r-project.org/web/packages/pwr/refman/pwr.html",
+        "content_scope": "provider_excerpt",
+        "content_truncated": false,
+        "content_sha256": "04add42d9cd12ff50fb3d84cb7dda00566b218bd0ef37db9a62628ab8ec630d8",
+        "stored_content_sha256_matches": true,
+        "retrieval_roles": [
+          "planner",
+          "solver"
+        ]
+      },
+      {
+        "id": "s5",
+        "url": "https://search.r-project.org/CRAN/refmans/MESS/html/power_prop_test.html",
+        "content_scope": "provider_excerpt",
+        "content_truncated": false,
+        "content_sha256": "33f5e0627e9fab5de54f8e7d498364f29baee6454a5bebc30f69e4dac72cc8b6",
+        "stored_content_sha256_matches": true,
+        "retrieval_roles": [
+          "planner"
+        ]
+      },
+      {
+        "id": "s6",
+        "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/power.t.test.html",
+        "content_scope": "provider_extracted_document_text",
+        "content_truncated": false,
+        "content_sha256": "d48192f465b4bb8cecf766f470516e765fb0fd30eed9eac456b309a3205edd79",
+        "stored_content_sha256_matches": true,
+        "retrieval_roles": [
+          "planner",
+          "solver"
+        ]
+      },
+      {
+        "id": "s7",
+        "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/power.t.test.html",
+        "content_scope": "provider_excerpt",
+        "content_truncated": false,
+        "content_sha256": "745222f21eabcbea9af93ce3e9911f4d1557f4cddfbb57b1f4a16da4e5bebe68",
+        "stored_content_sha256_matches": true,
+        "retrieval_roles": [
+          "solver"
+        ]
+      },
+      {
+        "id": "s8",
+        "url": "https://search.r-project.org/CRAN/refmans/mosaic/html/ttest.html",
+        "content_scope": "provider_excerpt",
+        "content_truncated": false,
+        "content_sha256": "5795699464efc2eafc737a82de541798f5e554c195d430b567fa301f30ca639e",
+        "stored_content_sha256_matches": true,
+        "retrieval_roles": [
+          "solver"
+        ]
+      },
+      {
+        "id": "s9",
+        "url": "https://link.springer.com/10.1007/978-981-97-3385-9_8?fromPaywallRec=true",
+        "content_scope": "provider_excerpt",
+        "content_truncated": false,
+        "content_sha256": "bae2c40a3dc5cb3893e1270d224cde8a0fa66ffea583d67afda9d6aa55083ca7",
+        "stored_content_sha256_matches": true,
+        "retrieval_roles": [
+          "solver"
+        ]
+      },
+      {
+        "id": "s10",
+        "url": "https://link.springer.com/chapter/10.1007/978-981-97-3385-9_8",
+        "content_scope": "provider_excerpt",
+        "content_truncated": false,
+        "content_sha256": "bae2c40a3dc5cb3893e1270d224cde8a0fa66ffea583d67afda9d6aa55083ca7",
+        "stored_content_sha256_matches": true,
+        "retrieval_roles": [
+          "solver"
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "tool": "search_sources",
+        "phase": "planner",
+        "query": "R stats power.t.test paired Student t-test documentation",
+        "success": true,
+        "source_ids": [
+          "s1",
+          "s2",
+          "s3",
+          "s4",
+          "s5"
+        ],
+        "provider": "tavily",
+        "provider_usage": {
+          "credits": 1
+        },
+        "additional_provider_usage": {
+          "credits": 1
+        },
+        "billing_scope": "Provider-reported request usage; not an invoice or model-token charge.",
+        "cache_hit": false,
+        "usage_unknown": false
+      },
+      {
+        "tool": "read_source",
+        "phase": "planner",
+        "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/power.t.test.html",
+        "success": true,
+        "source_ids": [
+          "s6"
+        ],
+        "provider": "tavily_extract",
+        "provider_usage": {
+          "credits": 0
+        },
+        "additional_provider_usage": {
+          "credits": 0
+        },
+        "billing_scope": "Provider-reported request usage; not an invoice or model-token charge.",
+        "cache_hit": false,
+        "usage_unknown": false
+      },
+      {
+        "tool": "search_sources",
+        "phase": "solver",
+        "query": "R stats power.t.test official documentation paired t-test",
+        "success": true,
+        "source_ids": [
+          "s7",
+          "s8",
+          "s9",
+          "s10",
+          "s4"
+        ],
+        "provider": "tavily",
+        "provider_usage": {
+          "credits": 1
+        },
+        "additional_provider_usage": {
+          "credits": 1
+        },
+        "billing_scope": "Provider-reported request usage; not an invoice or model-token charge.",
+        "cache_hit": false,
+        "usage_unknown": false
+      },
+      {
+        "tool": "read_source",
+        "phase": "solver",
+        "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/power.t.test.html",
+        "success": true,
+        "source_ids": [
+          "s6"
+        ],
+        "provider": "tavily_extract",
+        "provider_usage": {
+          "credits": 0
+        },
+        "additional_provider_usage": {
+          "credits": 0
+        },
+        "billing_scope": "Local callback cache hit; no additional provider request or charge.",
+        "cache_hit": true,
+        "usage_unknown": false
+      }
+    ],
+    "limits": "Provider excerpts/extracted text, not a guarantee of a full PDF or complete document; source availability does not certify calculations."
+  },
+  "artifacts": [
+    {
+      "artifact_id": "a-235850fa-5508-4ce3-bf3a-90df7dfc387e-0",
+      "name": "paired_t_power_grid.csv",
+      "size": 2439,
+      "type": "csv",
+      "mime_type": "text/csv",
+      "sha256": "47d114be4e9c0c19dda262b4312cdaef302feb72f774bedffa6d81a00c60f513",
+      "execution_id": "e2",
+      "decoded_sha256_matches": true,
+      "decoded_size_matches": true,
+      "acceptance": "Retained successful coder execution artifact; not a final accepted output because no answer was accepted."
+    },
+    {
+      "artifact_id": "a-235850fa-5508-4ce3-bf3a-90df7dfc387e-1",
+      "name": "paired_t_power_plot.pdf",
+      "size": 7446,
+      "type": "pdf",
+      "mime_type": "application/pdf",
+      "sha256": "4e2de8e8f73e7d3881e07f2370d87a67634ec81bbee74ed51d4f7e20d1e1b965",
+      "execution_id": "e2",
+      "decoded_sha256_matches": true,
+      "decoded_size_matches": true,
+      "acceptance": "Retained successful coder execution artifact; not a final accepted output because no answer was accepted."
+    },
+    {
+      "artifact_id": "a-235850fa-5508-4ce3-bf3a-90df7dfc387e-2",
+      "name": "paired_t_power_plot.png",
+      "size": 82335,
+      "type": "png",
+      "mime_type": "image/png",
+      "sha256": "7e1745929be7a3c2d12b7c6534f3ac9a23df19e05f114bcc00ca72cd3331390c",
+      "execution_id": "e2",
+      "decoded_sha256_matches": true,
+      "decoded_size_matches": true,
+      "acceptance": "Retained successful coder execution artifact; not a final accepted output because no answer was accepted."
+    }
+  ],
+  "csv_checks": {
+    "rows": 45,
+    "columns": [
+      "correlation",
+      "SD_difference",
+      "effect_size_d",
+      "n_participants",
+      "power"
+    ],
+    "correlation_values": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "n_grid": [
+      20,
+      40,
+      60,
+      80,
+      100,
+      120,
+      140,
+      160,
+      180,
+      200,
+      220,
+      240,
+      260,
+      280,
+      300
+    ],
+    "all_numeric_fields_finite": true,
+    "powers_in_0_1": true,
+    "SD_difference_formula_consistent": true,
+    "effect_size_formula_consistent": true,
+    "verification_scope": "Byte, schema, domain and elementary formula consistency checks only. No new R execution or independent power oracle calculation."
+  },
+  "visual_inspection": {
+    "PNG": {
+      "inspected": true,
+      "source": "e2 retained base64 bytes, locally decoded",
+      "axis_ranges": "0–310 paired participants and 0–1 power; no y-limit point exclusion evident",
+      "defect": "The second main-title line is clipped at both horizontal edges.",
+      "review_state": "No actual reviewer inspected this file during the run."
+    },
+    "PDF": {
+      "rendered": false,
+      "checks": "Hash/size only; actual stderr records font conversion warnings for rho/approx glyphs."
+    },
+    "status": "Candidate execution artifacts; no accepted final artifact set."
+  },
+  "context_assessment": {
+    "conversation_length": 12,
+    "prior_chat_restored": "Confirmed by parent/browser procedure; previous pooled-t context was restored before this follow-up.",
+    "request_archiving_limit": "Downloaded record lacks a separate complete user request/history payload, so provenance of each history message cannot be reconstructed from the audit file alone.",
+    "evidence_against_design_carryover": "Declared method and executed formulas use paired differences, new mean change/marginal SD, three rho values and target .90. No pooled two-group formula is used in these numerical executions.",
+    "causal_conclusion": "No demonstrated causal attribution to previous chat. Role mislabeling and fresh-cwd/serialization errors are concrete observations, not evidence that history caused them.",
+    "planner_prose_error": {
+      "claimed_SD_difference_at_rho_0_75": 0.6,
+      "stated_formula_value": 0.848528137423857,
+      "execution_uses_stated_formula": true,
+      "failure_attribution": "Not demonstrated as cause of grounding or phase exhaustion."
+    }
+  },
+  "frontend_observation": {
+    "screenshot": "browser-paired-multi-failure.png",
+    "observed": "A green failure panel says Reference check: not recorded for this historical analysis on a new 2.2.0 incomplete record.",
+    "interpretation": "Reference audit is absent because no candidate was accepted; absence does not identify a historical analysis. Parent is correcting frontend-only wording/color; frozen core remains unchanged."
+  },
+  "checks": {
+    "raw_record_sha_matches_parent": true,
+    "frozen_harness_bytes_unchanged": true,
+    "twelve_actual_model_calls": true,
+    "five_actual_R_executions": true,
+    "all_R_role_coder": true,
+    "two_failed_R_executions_retained": true,
+    "blocked_extra_R_has_no_fabricated_execution_id": true,
+    "source_callbacks_all_successful": true,
+    "all_source_receipt_content_hashes_match": true,
+    "all_artifact_hashes_sizes_match": true,
+    "45_CSV_rows_3_rho_15_n_values": true,
+    "structured_final_answer_rejected": true,
+    "no_final_answer_or_review": true,
+    "no_accepted_candidate_or_output_files": true,
+    "actual_independent_review_flags_false": true,
+    "no_reviewer_phase": true,
+    "failure_is_phase_ceiling_not_deadline_or_global_ceiling": true,
+    "input_token_sum_matches": true,
+    "output_token_sum_matches": true
+  },
+  "check_summary": {
+    "passed": 19,
+    "total": 19,
+    "scientific_accuracy_certified": false
+  },
+  "post_study_proposals": [
+    {
+      "priority": 1,
+      "proposal": "Ensure primary computed variables are serialized as requested typed rows in the first numerical execution; separate successful table/file metadata from completeness of requested scientific quantities. Any future assembly must use actual structured evidence, preserve exact names/units, and never transcribe rounded stdout into uncomputed final rows.",
+      "basis": "e1/e2/e4 and final nine unverified rows"
+    },
+    {
+      "priority": 1,
+      "proposal": "Use artifact registry read_path for later inspection and distinguish current cwd absence from missing immutable artifacts. Avoid regenerating already captured files merely because a bare filename is absent in a new worker.",
+      "basis": "e4 returned CSV/PNG/PDF absence despite e2 verified bytes"
+    },
+    {
+      "priority": 1,
+      "proposal": "Make actual execution role and independent-review state explicit in any final prose verification claim; a coder script called blind reviewer is still a coder execution.",
+      "basis": "e3/e4 purposes and rejected summary/limitations mislabel coder checks as independent"
+    },
+    {
+      "priority": 2,
+      "proposal": "Test a bounded solver checkpoint/recovery policy with the same available evidence/tools across modes; reserve capacity cannot guarantee review if the solver never submits a valid candidate. Future ceilings must be evaluated prospectively, not justified as improving accuracy from this failure.",
+      "basis": "9 solver calls/5 executions exhausted; 14 global model calls and 7 R slots remained"
+    },
+    {
+      "priority": 2,
+      "proposal": "Reuse source receipts across roles and avoid redundant retrieval when an adequate official document is already available; keep cache usage and source-content scope visible.",
+      "basis": "same official document read twice, second cached; two similar searches"
+    },
+    {
+      "priority": 2,
+      "proposal": "Keep the current task specification distinct from quoted prior conversation and evaluate fresh versus history-bearing follow-ups prospectively. Do not infer causal history contamination from this one demonstration.",
+      "basis": "restored history exposed, but code/plan used new paired design and no matched fresh-chat control exists"
+    },
+    {
+      "priority": 2,
+      "proposal": "Check consistency between numeric planner prose and its stated formulas; retain source/input provenance accurately for user-specified sensitivity scenarios.",
+      "basis": "rho=.75 SD_difference prose .600 contradicts its formula and e1/e4 .8485; correlation provenance source was explicit_assumption despite parent reporting requested scenarios"
+    },
+    {
+      "priority": 2,
+      "proposal": "Inspect plots for title clipping and font warnings in addition to ranges, row counts and file signatures. These are review tasks, not proof of scientific accuracy.",
+      "basis": "PNG second title line clipped; PDF rho/approx glyph conversion warnings; no actual reviewer started"
+    }
+  ],
+  "fairness_limits": [
+    "This single history-bearing browser demonstration is outside the prospectively frozen main cohort.",
+    "The configured multi product profile has larger global ceilings than default single; it is not a cost-matched comparison.",
+    "No single-mode or fresh-chat matched attempt was run for this audit.",
+    "Observed exact grounding failures must not be removed by relaxing schema/units, fabricating JSON or coercing role claims.",
+    "All suggested changes are post-study proposals only; none were applied to evaluated 2.2.0 or frozen scorers."
+  ]
+}

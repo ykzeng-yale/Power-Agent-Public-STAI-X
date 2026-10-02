@@ -1,0 +1,65 @@
+{
+  "build_id": "617dbd43-1ba8-48f5-a654-fe7f34bb9bca",
+  "proofs": [
+    {
+      "runtime_files": {
+        "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+        "scientific-harness.js": "7fcde84beda8d5dcd5058a370ade3cb639f6b761ae3557b608dbfa8564876fd3",
+        "scientific-r-executor.js": "4c9cace7439dfa660e09a91a43a0acdb98181cae231ffbc95a11230049414080",
+        "scientific-reference-guard.js": "ed219830b8c2a1e223a9ddd6ad34d2d3d33dd02f7895ea0edcaa046f77185c02",
+        "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+        "model-config.js": "af4ebb1329a24c9a7048255d3da9761bd722beff7dadc68c2f9a55dd15e67a57",
+        "scientific-sources.js": "acf5f6f3d7469dec75e035e0723284784c37764c1e170d03334959c9a41de78c"
+      },
+      "app_files_after_cleanup": [
+        "model-config.js",
+        "package.json",
+        "scientific-harness-cli.js",
+        "scientific-harness.js",
+        "scientific-r-executor.js",
+        "scientific-r-worker.py",
+        "scientific-reference-guard.js",
+        "scientific-sources.js"
+      ],
+      "app_mode": "0o700",
+      "inherited_matching_files_removed": [
+        "benchmark-real-cases.js",
+        "test-benchmark-direct.js",
+        "test-single-benchmark.js",
+        "test-realistic-benchmarks.js",
+        "llm-benchmark-judge.js",
+        "benchmark-ground-truth.js",
+        "test-quick-benchmark.js"
+      ],
+      "inherited_matching_file_count": 7,
+      "R_library_paths": [
+        "/usr/local/lib/R/site-library",
+        "/usr/local/lib/R/library"
+      ],
+      "qualification": "Container runtime filesystem removes inherited application files; parent layers remain in image history. Restricted R cannot traverse app/workspace paths. No benchmark oracles copied into study runtime."
+    },
+    {
+      "actual_linux_r_artifacts": [
+        {
+          "type": "csv",
+          "size": 8,
+          "sha256": "5da7abf7865df9eb2c5e68695e894930ca00b64f3835c5728ee5a38d24c2e5b5"
+        },
+        {
+          "type": "pdf",
+          "size": 4509,
+          "sha256": "edc691d2a2fe196416c3f6acc460a837600bf05a0a4c3ae72f4954815fcc36d1"
+        },
+        {
+          "type": "png",
+          "size": 3517,
+          "sha256": "0a9940d3158ec5c5bdb6fa73a14c32a13ad8843da9d95bb86a734d65dcb9814a"
+        }
+      ],
+      "actual_blind_input_access": true,
+      "actual_candidate_artifact_denial": true,
+      "runtime_smoke_only": true
+    }
+  ],
+  "qualification": "Build-time deterministic runtime checks, not model-behavior outcomes."
+}

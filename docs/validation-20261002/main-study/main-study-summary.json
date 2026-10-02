@@ -1,0 +1,288 @@
+{
+  "single_shared": {
+    "planned_attempts": 16,
+    "dispatched_attempts": 16,
+    "transport_captured": 16,
+    "actual_provider_records": 16,
+    "undispatched": 0,
+    "capture_or_process_errors": 0,
+    "strict_pass": 4,
+    "calculation_tasks": {
+      "planned_attempts": 12,
+      "strict_pass": 0,
+      "numeric_agreement": 6,
+      "completed_numeric_agreement": 5,
+      "source_acquisition": 0,
+      "artifact_delivery_and_data": 1
+    },
+    "missing_input_tasks": {
+      "planned_attempts": 4,
+      "appropriate_clarification": 4
+    },
+    "observed_statuses": {
+      "needs_clarification": 4,
+      "budget_exhausted": 7,
+      "completed": 5
+    },
+    "median_observed_seconds": 100.1695,
+    "usage_observed": {
+      "input_tokens": 2617412,
+      "output_tokens": 145018,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "operation_usage_observed": {
+      "model_calls": 96,
+      "executions": 33,
+      "searches": 12,
+      "source_reads": 12,
+      "source_chars": 263508
+    },
+    "scientific_figure_content": "Requires separate frozen blinded visual rubric; parseable delivery is not content certification.",
+    "uncached_token_cost_estimate_usd": 3.342501999999999,
+    "source_provider_usage_observed": {
+      "attempted_requests": 24,
+      "successful_requests": 24,
+      "cache_hits": 0,
+      "requests_with_observed_additional_usage": 24,
+      "requests_with_unknown_usage": 0,
+      "observed_additional_provider_counters": {
+        "credits": 16
+      },
+      "qualification": "Provider-reported counters/credits, not a dollar invoice. Local cache-hit credits count0; missing usage is unknown, not imputed0. Model-token estimate excludes source-provider dollar pricing."
+    },
+    "required_verification_coverage": {
+      "reviewer_started": 6,
+      "accepted_review": 5,
+      "successful_blind_precheck": 0,
+      "requested_fresh_context": 0
+    }
+  },
+  "multi_shared": {
+    "planned_attempts": 16,
+    "dispatched_attempts": 16,
+    "transport_captured": 16,
+    "actual_provider_records": 16,
+    "undispatched": 0,
+    "capture_or_process_errors": 0,
+    "strict_pass": 4,
+    "calculation_tasks": {
+      "planned_attempts": 12,
+      "strict_pass": 0,
+      "numeric_agreement": 4,
+      "completed_numeric_agreement": 2,
+      "source_acquisition": 0,
+      "artifact_delivery_and_data": 0
+    },
+    "missing_input_tasks": {
+      "planned_attempts": 4,
+      "appropriate_clarification": 4
+    },
+    "observed_statuses": {
+      "budget_exhausted": 10,
+      "needs_clarification": 4,
+      "completed": 2
+    },
+    "median_observed_seconds": 98.815,
+    "usage_observed": {
+      "input_tokens": 2282412,
+      "output_tokens": 179132,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "operation_usage_observed": {
+      "model_calls": 118,
+      "executions": 42,
+      "searches": 12,
+      "source_reads": 27,
+      "source_chars": 251306
+    },
+    "scientific_figure_content": "Requires separate frozen blinded visual rubric; parseable delivery is not content certification.",
+    "uncached_token_cost_estimate_usd": 3.1780720000000002,
+    "source_provider_usage_observed": {
+      "attempted_requests": 39,
+      "successful_requests": 39,
+      "cache_hits": 15,
+      "requests_with_observed_additional_usage": 39,
+      "requests_with_unknown_usage": 0,
+      "observed_additional_provider_counters": {
+        "credits": 14
+      },
+      "qualification": "Provider-reported counters/credits, not a dollar invoice. Local cache-hit credits count0; missing usage is unknown, not imputed0. Model-token estimate excludes source-provider dollar pricing."
+    },
+    "required_verification_coverage": {
+      "reviewer_started": 4,
+      "accepted_review": 3,
+      "successful_blind_precheck": 4,
+      "requested_fresh_context": 16
+    }
+  },
+  "single_expanded": {
+    "planned_attempts": 16,
+    "dispatched_attempts": 16,
+    "transport_captured": 16,
+    "actual_provider_records": 16,
+    "undispatched": 0,
+    "capture_or_process_errors": 0,
+    "strict_pass": 4,
+    "calculation_tasks": {
+      "planned_attempts": 12,
+      "strict_pass": 0,
+      "numeric_agreement": 4,
+      "completed_numeric_agreement": 3,
+      "source_acquisition": 0,
+      "artifact_delivery_and_data": 1
+    },
+    "missing_input_tasks": {
+      "planned_attempts": 4,
+      "appropriate_clarification": 4
+    },
+    "observed_statuses": {
+      "budget_exhausted": 9,
+      "completed": 3,
+      "needs_clarification": 4
+    },
+    "median_observed_seconds": 124.1705,
+    "usage_observed": {
+      "input_tokens": 4512519,
+      "output_tokens": 201670,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "operation_usage_observed": {
+      "model_calls": 130,
+      "executions": 48,
+      "searches": 12,
+      "source_reads": 13,
+      "source_chars": 274069
+    },
+    "scientific_figure_content": "Requires separate frozen blinded visual rubric; parseable delivery is not content certification.",
+    "uncached_token_cost_estimate_usd": 5.520868999999999,
+    "source_provider_usage_observed": {
+      "attempted_requests": 25,
+      "successful_requests": 25,
+      "cache_hits": 1,
+      "requests_with_observed_additional_usage": 25,
+      "requests_with_unknown_usage": 0,
+      "observed_additional_provider_counters": {
+        "credits": 13
+      },
+      "qualification": "Provider-reported counters/credits, not a dollar invoice. Local cache-hit credits count0; missing usage is unknown, not imputed0. Model-token estimate excludes source-provider dollar pricing."
+    },
+    "required_verification_coverage": {
+      "reviewer_started": 6,
+      "accepted_review": 4,
+      "successful_blind_precheck": 0,
+      "requested_fresh_context": 0
+    }
+  },
+  "multi_expanded": {
+    "planned_attempts": 16,
+    "dispatched_attempts": 16,
+    "transport_captured": 16,
+    "actual_provider_records": 16,
+    "undispatched": 0,
+    "capture_or_process_errors": 0,
+    "strict_pass": 4,
+    "calculation_tasks": {
+      "planned_attempts": 12,
+      "strict_pass": 0,
+      "numeric_agreement": 7,
+      "completed_numeric_agreement": 5,
+      "source_acquisition": 1,
+      "artifact_delivery_and_data": 1
+    },
+    "missing_input_tasks": {
+      "planned_attempts": 4,
+      "appropriate_clarification": 4
+    },
+    "observed_statuses": {
+      "completed": 5,
+      "budget_exhausted": 7,
+      "needs_clarification": 4
+    },
+    "median_observed_seconds": 141.7115,
+    "usage_observed": {
+      "input_tokens": 3759469,
+      "output_tokens": 230517,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "operation_usage_observed": {
+      "model_calls": 162,
+      "executions": 69,
+      "searches": 12,
+      "source_reads": 30,
+      "source_chars": 259812
+    },
+    "scientific_figure_content": "Requires separate frozen blinded visual rubric; parseable delivery is not content certification.",
+    "uncached_token_cost_estimate_usd": 4.912054,
+    "source_provider_usage_observed": {
+      "attempted_requests": 42,
+      "successful_requests": 42,
+      "cache_hits": 18,
+      "requests_with_observed_additional_usage": 42,
+      "requests_with_unknown_usage": 0,
+      "observed_additional_provider_counters": {
+        "credits": 14
+      },
+      "qualification": "Provider-reported counters/credits, not a dollar invoice. Local cache-hit credits count0; missing usage is unknown, not imputed0. Model-token estimate excludes source-provider dollar pricing."
+    },
+    "required_verification_coverage": {
+      "reviewer_started": 8,
+      "accepted_review": 5,
+      "successful_blind_precheck": 6,
+      "requested_fresh_context": 16
+    }
+  },
+  "paired_modes_by_profile": {
+    "shared": {
+      "task_paired_mean_multi_minus_single": 0.0,
+      "source_family_count": 6,
+      "source_family_cluster_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "per_task_difference": {
+        "wc26-pooled-t": 0.0,
+        "wc26-paired-t": 0.0,
+        "wc26-anova": 0.0,
+        "wc26-cox-binary": 0.0,
+        "wc26-cox-continuous": 0.0,
+        "wc26-open-cohort-sw": 0.0,
+        "wc26-missing-cluster": 0.0,
+        "wc26-missing-survival": 0.0
+      },
+      "interpretation": "Exploratory descriptive selected-task/family variability; two repeated calls per task/condition. Only six selected family labels, including missing-input cases; not a confidence interval for general scientific capability. Operational denominator includes all planned jobs."
+    },
+    "expanded": {
+      "task_paired_mean_multi_minus_single": 0.0,
+      "source_family_count": 6,
+      "source_family_cluster_bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "per_task_difference": {
+        "wc26-pooled-t": 0.0,
+        "wc26-paired-t": 0.0,
+        "wc26-anova": 0.0,
+        "wc26-cox-binary": 0.0,
+        "wc26-cox-continuous": 0.0,
+        "wc26-open-cohort-sw": 0.0,
+        "wc26-missing-cluster": 0.0,
+        "wc26-missing-survival": 0.0
+      },
+      "interpretation": "Exploratory descriptive selected-task/family variability; two repeated calls per task/condition. Only six selected family labels, including missing-input cases; not a confidence interval for general scientific capability. Operational denominator includes all planned jobs."
+    }
+  },
+  "capacity_effect_by_mode": {
+    "single": {
+      "expanded_minus_shared_strict_rate": 0.0,
+      "interpretation": "Budget-profile and wall-clock capacity contrast; actual tokens, costs and search/read usage need separate comparison, not an architecture-only causal effect."
+    },
+    "multi": {
+      "expanded_minus_shared_strict_rate": 0.0,
+      "interpretation": "Budget-profile and wall-clock capacity contrast; actual tokens, costs and search/read usage need separate comparison, not an architecture-only causal effect."
+    }
+  }
+}
