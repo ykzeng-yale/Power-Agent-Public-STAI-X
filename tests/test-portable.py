@@ -43,6 +43,15 @@ class PortableContracts(unittest.TestCase):
     def test_conflicts_and_unsupported_design_stop(self):
         self.assertIn('alpha',preflight.inspect_request('Two independent groups d .5, power .8, alpha .05, alpha .01, two-sided, equal allocation')['conflicting_information'])
         self.assertEqual(preflight.inspect_request('Survival logrank planning')['status'],'manual_specification_required')
+    def test_paired_design_and_review_wording_do_not_invent_independent_inputs(self):
+        text='Plan a paired continuous-outcome study with normally distributed paired differences. SD of each measurement is1.2, mean change=.36, two-sided paired Student-t test alpha=.05, target power=.90, correlation scenarios rho=.25,.50,.75. Preserve independent check evidence.'
+        paired=preflight.inspect_request(text)
+        self.assertEqual(paired['status'],'manual_specification_required')
+        self.assertEqual(paired['missing_information'],[])
+        workflow=preflight.inspect_request('Use an independent check for a survival logrank design')
+        self.assertFalse(workflow['supported']);self.assertEqual(workflow['missing_information'],[])
+        actual=preflight.inspect_request('Two independent normally distributed groups d=.5, alpha=.05, power=.8, two-sided, equal allocation; independent check evidence')
+        self.assertTrue(actual['ready_for_method_review'])
     def test_unit_arithmetic_does_not_certify_math(self):
         record=computed_record(); self.assertTrue(units.audit(record)['passed'])
         bad=copy.deepcopy(record); bad['results'][1]['value']-=1; self.assertFalse(units.audit(bad)['passed'])

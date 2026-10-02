@@ -2,6 +2,8 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { runScientificAnalysis } from './scientific-harness.js';
 import { ScientificRExecutor } from './scientific-r-executor.js';
+import { createSourceSearch, createSourceReader } from './scientific-sources.js';
+import { createHash } from 'node:crypto';
 
 export async function prepareScientificContext(body, workspace, { supabase, datasetBucket, parseFile } = {}) {
   const files = [];
@@ -106,15 +108,15 @@ export function registerScientificRoutes(app, dependencies) {
       workspace = await executor.createWorkspace();
       cleanupDirectory = workspace.directory;
       const context = await prepareScientificContext(body, workspace, dependencies);
-      const search = process.env.TAVILY_API_KEY ? async query => {
-        const response = await fetch('https://api.tavily.com/search', { method: 'POST', headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ api_key: process.env.TAVILY_API_KEY, query, max_results: 4, include_domains: ['cran.r-project.org', 'stat.ethz.ch', 'r-project.org', 'pubmed.ncbi.nlm.nih.gov', 'pmc.ncbi.nlm.nih.gov', 'doi.org', 'onlinelibrary.wiley.com', 'academic.oup.com'] }), signal: AbortSignal.timeout(20000) });
-        if (!response.ok) throw new Error(`Source search failed (HTTP ${response.status})`);
-        const found = await response.json();
-        return { results: (found.results || []).map(r => ({ title: r.title, url: r.url, content: r.content })) };
-      } : null;
-      const result = await analyze(body.query, { workflowMode, workspace, executor, context, conversationHistory: priorConversation, search,
-        signal: controller.signal, maxModelCalls: 18, maxExecutions: 8, maxRepairs: 1, deadlineMs: 540000,
+      const search = createSourceSearch();
+      const readSource = createSourceReader();
+      const result = await analyze(body.query, { workflowMode, workspace, executor, context, conversationHistory: priorConversation, search, readSource,
+        signal: controller.signal, maxModelCalls: workflowMode === 'multi' ? 26 : 18,
+        maxExecutions: workflowMode === 'multi' ? 12 : 8, maxRepairs: 1, maxSearches: 6, maxSourceReads: 4, deadlineMs: 540000,
+        budgetProfile: workflowMode === 'multi' ? { id: 'hosted-balanced', plannerMaxCalls: 3,
+          solverMaxCalls: 9, solverMaxExecutions: 5, verificationMaxCalls: 5,
+          verificationMaxExecutions: 3, repairMaxCalls: 4, repairMaxExecutions: 1,
+          reserveRepair: true } : undefined,
         onEvent: async event => {
           const mapped = { ...event, title: `${event.role || 'Scientific workflow'}: ${event.type.replace(/_/g, ' ')}`, status: event.type === 'agent_start' ? 'running' : event.success === false ? 'error' : 'completed' };
           await send(event.type === 'agent_start' ? 'thinking' : event.type, mapped);
@@ -124,13 +126,15 @@ export function registerScientificRoutes(app, dependencies) {
       result.executionEnvironment = { platform: process.platform, nodeVersion: process.version, deploymentRevision: process.env.K_REVISION || null,
         restrictedLinuxWorker: executor.restrictedLinux, worker: executor.restrictedLinux ? 'scientific-r-worker.py' : 'fresh Rscript process',
         perExecutionTimeoutMs: 120000, maxOutputBytes: 2000000, networkInWorker: executor.restrictedLinux ? 'denied' : 'not sandboxed' };
-      result.outputFiles = [...new Map(result.outputFiles.map(file => [file.name, file])).values()];
+      result.outputFiles = [...new Map(result.outputFiles.map(file => [file.artifact_id || file.name, file])).values()];
       // Persist real outputs where configured; an unavailable export must not be
       // described as a downloadable file. The full JSON record remains in SSE.
       if (storage) for (const file of result.outputFiles) {
         try {
-          const blob = storage.bucket(process.env.POWER_AGENT_RESULTS_BUCKET || 'power-agent-results-476822').file(`scientific/${result.runId}/${file.name}`);
-          await blob.save(await fs.readFile(file.path), { resumable: false });
+          const bytes = await fs.readFile(file.path);
+          if (file.sha256 && createHash('sha256').update(bytes).digest('hex') !== file.sha256) throw new Error('Captured artifact changed before export');
+          const blob = storage.bucket(process.env.POWER_AGENT_RESULTS_BUCKET || 'power-agent-results-476822').file(`scientific/${result.runId}/${file.artifact_id || 'output'}/${file.name}`);
+          await blob.save(bytes, { resumable: false, contentType: file.mime_type || 'application/octet-stream' });
           [file.download_url] = await blob.getSignedUrl({ action: 'read', expires: Date.now() + 24 * 60 * 60 * 1000 });
           if (sessionId && trackGeneratedFile) await persistence(() => trackGeneratedFile(sessionId, null, file));
         } catch { file.export_error = 'File export unavailable; execution record is retained'; }

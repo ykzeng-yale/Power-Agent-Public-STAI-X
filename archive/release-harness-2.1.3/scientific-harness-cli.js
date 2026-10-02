@@ -26,12 +26,8 @@ else for await (const chunk of process.stdin) inputText += chunk;
 try {
   const input = JSON.parse(inputText);
   const { runScientificAnalysis } = await import('./scientific-harness.js');
-  const { createSourceSearch, createSourceReader } = await import('./scientific-sources.js');
-  const search = args.includes('--no-search') || input.enableSearch === false ? null : createSourceSearch();
-  const readSource = args.includes('--no-search') || input.enableSearch === false ? null : createSourceReader();
   const result = await runScientificAnalysis(input.query, {
     ...input, workflowMode: flag('--mode') || input.workflowMode || 'single',
-    search, readSource,
     ...(flag('--deadline-ms') ? { deadlineMs: Number(flag('--deadline-ms')) } : {}),
     onEvent: args.includes('--progress') ? event => process.stderr.write(`${event.type} ${event.role || ''}\n`) : null
   });

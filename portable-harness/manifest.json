@@ -1,19 +1,20 @@
 {
-  "harness_version": "2.1.3",
+  "harness_version": "2.2.0",
   "model": "claude-haiku-4-5-20251001",
-  "verified_date": "2026-10-01",
+  "verified_date": "2026-10-02",
   "model_catalogue": "https://platform.claude.com/docs/en/models/overview",
   "runtime_sources_sha256": {
-    "scientific-harness.js": "8b985c50daab16a3603e6c743647f9d8861339213c356c8ce8e4f6f5e594b17b",
+    "scientific-harness.js": "7fcde84beda8d5dcd5058a370ade3cb639f6b761ae3557b608dbfa8564876fd3",
     "scientific-reference-guard.js": "ed219830b8c2a1e223a9ddd6ad34d2d3d33dd02f7895ea0edcaa046f77185c02",
-    "scientific-r-executor.js": "08a45cbb0b12e0f2661940f3ef39e3e0f9176d37c46d3c028cb239c03a13174d",
-    "scientific-harness-cli.js": "a7ce5af97e8c6d1ec8bc9d6deaff22f2287d78118d596d66d5348a8363de5aa4",
+    "scientific-r-executor.js": "4c9cace7439dfa660e09a91a43a0acdb98181cae231ffbc95a11230049414080",
+    "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
     "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
-    "model-config.js": "0a50c527197125f01df6c3e66d2ed122ffb0ac4036d24d686c336c98d6624f97"
+    "model-config.js": "af4ebb1329a24c9a7048255d3da9761bd722beff7dadc68c2f9a55dd15e67a57",
+    "scientific-sources.js": "acf5f6f3d7469dec75e035e0723284784c37764c1e170d03334959c9a41de78c"
   },
   "host_native_runs": "Record the host model and tools separately; equivalence to the pinned runner is not assumed.",
   "skill_files_sha256": {
-    "SKILL.md": "3daacb449d4cfbc899b9d2538015683c079d70d5d1500423a64de79f3c55ac69",
+    "SKILL.md": "f61f3e97f1cedfa1d8a231c0d9ff65c627ac9494656701ef2d3846afbf481d55",
     "agents/openai.yaml": "404f598af7538a30ebccbe6b6b564f474d81d9eb11f3ca834907f918337f816d",
     "references/mean-reference-checks.md": "e4709c425f35c73d0808fc703bc8455bc4f37a6b0ecd657349e15f1c5e53dc83",
     "references/record-contract.md": "caf7a1cbf9b72b7d47a1f686a0da143bfd8e511248b190628a6ae722240946fb",
@@ -22,25 +23,26 @@
     "scripts/reference-checks.R": "b26cd4795065b8aa9110de4198f6cb5aae0f4691342c7e5b140eccca40a6dca4",
     "scripts/render-record.py": "2a69dc627732f60db5179b9e76167ee926afe7d1f822a6229b5ccf56ab7c9121",
     "scripts/run-power-agent.mjs": "a44e12617ed3e5f9fd989775718d36e732c6b9e9dcb5ffe4afeeffc20a936a04",
-    "scripts/runtime/model-config.js": "0a50c527197125f01df6c3e66d2ed122ffb0ac4036d24d686c336c98d6624f97",
+    "scripts/runtime/model-config.js": "af4ebb1329a24c9a7048255d3da9761bd722beff7dadc68c2f9a55dd15e67a57",
     "scripts/runtime/package.json": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428",
-    "scripts/runtime/scientific-harness-cli.js": "a7ce5af97e8c6d1ec8bc9d6deaff22f2287d78118d596d66d5348a8363de5aa4",
-    "scripts/runtime/scientific-harness.js": "8b985c50daab16a3603e6c743647f9d8861339213c356c8ce8e4f6f5e594b17b",
-    "scripts/runtime/scientific-r-executor.js": "08a45cbb0b12e0f2661940f3ef39e3e0f9176d37c46d3c028cb239c03a13174d",
+    "scripts/runtime/scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+    "scripts/runtime/scientific-harness.js": "7fcde84beda8d5dcd5058a370ade3cb639f6b761ae3557b608dbfa8564876fd3",
+    "scripts/runtime/scientific-r-executor.js": "4c9cace7439dfa660e09a91a43a0acdb98181cae231ffbc95a11230049414080",
     "scripts/runtime/scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
     "scripts/runtime/scientific-reference-guard.js": "ed219830b8c2a1e223a9ddd6ad34d2d3d33dd02f7895ea0edcaa046f77185c02",
-    "scripts/specification-preflight.py": "ba701d7ac51b01d4a33c62208032eaeee1fd11e32c684645fd558efb1adbf859",
+    "scripts/runtime/scientific-sources.js": "acf5f6f3d7469dec75e035e0723284784c37764c1e170d03334959c9a41de78c",
+    "scripts/specification-preflight.py": "fc81eb2ff082fdb4e87daa92dc04cc65abc2f67e304bac465dbc85579d204211",
     "scripts/verify-record.mjs": "f2dfd99a1bb6fe4e869441bd52e2ebc66a09578f4f2af10770b97761e2c4dd0b"
   },
-  "native_skill_version": "2.2.6",
+  "native_skill_version": "2.3.1",
   "native_checkers": {
-    "specification-preflight.py": "1.0.1",
+    "specification-preflight.py": "1.0.2",
     "check-sample-size-units.py": "1.0.0",
     "reference-checks.R": "1.0.1",
     "render-record.py": "1.0.0"
   },
-  "bundled_api_runtime_status": "Post-cohort scoped count-role regression, actual-R saved seven-row replay and preservation of failing candidates; no new agent cohort or native-host behavioral trial.",
-  "native_validation_scope": "Input/unit/method checks are limited and host compliance must be audited. Preserved native failures remain evidence; separate API runtime equivalence is not assumed.",
+  "bundled_api_runtime_status": "Workflow2.2.0: source tools, blind precheck, phase/repair reservation and execution-specific artifact capture; separately evaluated prospectively.",
+  "native_validation_scope": "Native numerical/report helper behavior retains earlier evidence. Native preflight1.0.2 separately corrects observed paired/independent-check routing; native forward runs are separate from the bundled-runtime cohort.",
   "prior_runtime_release_relation": {
     "historical_runtime_version": "2.0.0",
     "historical_sources_sha256": {
@@ -197,7 +199,40 @@
       "stdout_parser_change": false,
       "budget_change": false,
       "validation_scope": "Post-study scoped guard mapping regression and actual-R replay of unchanged saved2.1.1 candidates; no new native-host behavioral trial. Each agent cohort is reported under its prospectively frozen release."
+    },
+    {
+      "historical_runtime_version": "2.1.3",
+      "historical_sources_sha256": {
+        "scientific-harness.js": "8b985c50daab16a3603e6c743647f9d8861339213c356c8ce8e4f6f5e594b17b",
+        "scientific-reference-guard.js": "ed219830b8c2a1e223a9ddd6ad34d2d3d33dd02f7895ea0edcaa046f77185c02",
+        "scientific-r-executor.js": "08a45cbb0b12e0f2661940f3ef39e3e0f9176d37c46d3c028cb239c03a13174d",
+        "scientific-harness-cli.js": "a7ce5af97e8c6d1ec8bc9d6deaff22f2287d78118d596d66d5348a8363de5aa4",
+        "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+        "model-config.js": "0a50c527197125f01df6c3e66d2ed122ffb0ac4036d24d686c336c98d6624f97"
+      },
+      "release_runtime_version": "2.2.0",
+      "release_sources_sha256": {
+        "scientific-harness.js": "7fcde84beda8d5dcd5058a370ade3cb639f6b761ae3557b608dbfa8564876fd3",
+        "scientific-reference-guard.js": "ed219830b8c2a1e223a9ddd6ad34d2d3d33dd02f7895ea0edcaa046f77185c02",
+        "scientific-r-executor.js": "4c9cace7439dfa660e09a91a43a0acdb98181cae231ffbc95a11230049414080",
+        "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+        "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+        "model-config.js": "af4ebb1329a24c9a7048255d3da9761bd722beff7dadc68c2f9a55dd15e67a57",
+        "scientific-sources.js": "acf5f6f3d7469dec75e035e0723284784c37764c1e170d03334959c9a41de78c"
+      },
+      "changes": [
+        "Same bounded search and document reading for planner/coder/checker",
+        "Candidate-blind actual numerical precheck in fresh multi conversation; single shared-conversation verification",
+        "Global/phase operation caps and reserved complete repair/review cycles",
+        "Captured immutable CSV/PNG/PDF bytes, hashes and execution linkage"
+      ],
+      "validation_scope": "Separate prospectively frozen workflow-capabilities20261002 cohort. Historical outcomes unchanged; native host skills are not equivalent to the API runner."
     }
   ],
-  "api_record_checker_contract": "Failed reference audits are invalid;2.1.2 and later records require passed/skipped. Passed audits need successful cited reference execution and passed checks. Historical absence remains qualified; this does not certify mathematical correctness."
+  "api_record_checker_contract": "Failed reference audits are invalid;2.1.2 and later records require passed/skipped. Passed audits need successful cited reference execution and passed checks. Historical absence remains qualified; this does not certify mathematical correctness.",
+  "native_preflight": {
+    "version": "1.0.2",
+    "sha256": "fc81eb2ff082fdb4e87daa92dc04cc65abc2f67e304bac465dbc85579d204211",
+    "scope": "Input-recognition routing only; supported profiles remain simple independent/clustered means; paired/other designs require complete manual specification; no defaults or numerical reference changes."
+  }
 }

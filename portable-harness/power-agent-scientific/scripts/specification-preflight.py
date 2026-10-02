@@ -16,8 +16,12 @@ SEP = r'\s*(?:is|of|=|:)?\s*'
 
 def inspect_request(text, kind='auto'):
     if kind == 'auto':
-        if re.search(r'\bcluster(?:ed|[- ]randomi[sz]ed)?\b', text, re.I): kind = 'clustered_mean'
-        elif re.search(r'\b(independent|two[- ]sample|two[- ]arm|two\s+groups)\b', text, re.I): kind = 'independent_mean'
+        # Dependence/outcome design takes precedence over incidental workflow
+        # phrases such as 'independent check evidence'. Other designs need a
+        # manual specification; this helper does not invent their inputs.
+        if re.search(r'\b(?:paired|matched[- ]pairs?|within[- ](?:person|subject)|survival|log[- ]?rank|cox|binary|logistic|anova|one[- ]sample)\b', text, re.I): kind = 'unsupported'
+        elif re.search(r'\bcluster(?:ed|[- ]randomi[sz]ed)?\b', text, re.I): kind = 'clustered_mean'
+        elif re.search(r'\b(?:two[- ]sample|two[- ]arm|two\s+groups|independent\s+(?:normal(?:ly)?\s+(?:distributed\s+)?)?(?:groups|samples|means?))\b', text, re.I): kind = 'independent_mean'
         else: kind = 'unsupported'
     findings = {}
     conflicts = []
@@ -56,10 +60,10 @@ def inspect_request(text, kind='auto'):
     if 'standardized_effect' in findings and findings['standardized_effect']['value'] == 0: invalid.append('standardized_effect')
     if 'intracluster_correlation' in findings and not 0 <= findings['intracluster_correlation']['value'] < 1: invalid.append('intracluster_correlation')
     if 'cluster_size' in findings and (findings['cluster_size']['value'] < 1 or findings['cluster_size']['value'] % 1): invalid.append('cluster_size')
-    missing = [name for name in required if name not in findings]
     supported = kind in ['clustered_mean', 'independent_mean']
+    missing = [name for name in required if name not in findings] if supported else []
     ready = supported and not missing and not conflicts and not invalid
-    return {'preflight_version': '1.0.1', 'supported_profile': kind, 'supported': supported,
+    return {'preflight_version': '1.0.2', 'supported_profile': kind, 'supported': supported,
             'status': 'specified_inputs' if ready else 'needs_clarification' if supported else 'manual_specification_required',
             'ready_for_method_review': ready, 'supplied_inputs': findings, 'missing_information': missing,
             'conflicting_information': sorted(set(conflicts)), 'invalid_information': sorted(set(invalid)),

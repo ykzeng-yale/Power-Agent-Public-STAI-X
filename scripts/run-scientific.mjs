@@ -2,7 +2,7 @@
 import { promises as fs } from 'node:fs';
 import { ScientificRExecutor } from '../scientific/scientific-r-executor.js';
 if (process.argv.includes('--help')) {
-  process.stdout.write('Power Agent scientific CLI\n--input request.json (or JSON stdin) --mode single|multi --env-file private.env --output record.json --deadline-ms 600000 --progress\nThe request requires a query; missing scientific inputs remain unresolved.\n');
+  process.stdout.write('Power Agent scientific CLI\n--input request.json (or JSON stdin) --mode single|multi --env-file private.env --output record.json --deadline-ms 600000 --progress --no-search\nThe request requires a query; missing scientific inputs remain unresolved.\n');
   process.exit(0);
 }
 const executor = new ScientificRExecutor();
