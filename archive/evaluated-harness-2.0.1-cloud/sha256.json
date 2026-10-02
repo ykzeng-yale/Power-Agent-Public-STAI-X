@@ -1,0 +1,11 @@
+{
+  "version": "2.0.1-cloud",
+  "description": "Exact pre-reference-guard runtime retained after completed Mac and Linux cohorts.",
+  "files": {
+    "scientific-harness.js": "41cb210d1627725d0715a83a76c73c7b19314c87dfee248c26bc286600dfe0b5",
+    "scientific-r-executor.js": "08a45cbb0b12e0f2661940f3ef39e3e0f9176d37c46d3c028cb239c03a13174d",
+    "scientific-harness-cli.js": "a7ce5af97e8c6d1ec8bc9d6deaff22f2287d78118d596d66d5348a8363de5aa4",
+    "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+    "model-config.js": "c1cc9d51feca670dcdb82c54d54523fceaaaaebf7dc758de80579d6ffe60231b"
+  }
+}

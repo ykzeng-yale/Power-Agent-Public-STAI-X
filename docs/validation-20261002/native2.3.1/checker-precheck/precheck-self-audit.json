@@ -1,0 +1,111 @@
+{
+  "audit_id": "blind-precheck-self-audit-889d18e0-0be8-498d-b47b-87c85a6ce991",
+  "phase": 1,
+  "candidate_not_accessed": true,
+  "start_time_utc": "2026-10-02T06:20:24.045713+00:00",
+  "end_time_utc": "2026-10-02T06:20:24.050852+00:00",
+  "elapsed_seconds": 0.005010042000000001,
+  "status": "passed",
+  "command_argv": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "/Users/yukangzengcmac/Power-Agent/jsm-2026/multi-agent-20261002/native-forward-2.3.1/checker-precheck/verify-precheck.py"
+  ],
+  "script": {
+    "path": "/Users/yukangzengcmac/Power-Agent/jsm-2026/multi-agent-20261002/native-forward-2.3.1/checker-precheck/verify-precheck.py",
+    "size_bytes": 9296,
+    "sha256": "976df15239a15254c3c4eaa12750662320645146b18cdbe7103e6646c0694848"
+  },
+  "exact_final_precheck": {
+    "path": "/Users/yukangzengcmac/Power-Agent/jsm-2026/multi-agent-20261002/native-forward-2.3.1/checker-precheck/precheck.json",
+    "size_bytes": 21386,
+    "sha256": "4f527c0e52c8fd610245853b48386496f7ee979b3620f0cadc11aece7d8aecaf"
+  },
+  "exact_execution_record": {
+    "path": "/Users/yukangzengcmac/Power-Agent/jsm-2026/multi-agent-20261002/native-forward-2.3.1/checker-precheck/execution.json",
+    "size_bytes": 9120,
+    "sha256": "6516eec0e8573a0b93b24ebc7379c450e8ec743c3a33432b19c7f1c34b004525"
+  },
+  "checks": {
+    "candidate_not_accessed": true,
+    "no_candidate_comparison": true,
+    "fresh_session_topology": true,
+    "execution_success": true,
+    "executed_script_digest_matches": true,
+    "artifact_manifest_matches_current_bytes": true,
+    "record_execution_id_matches": true,
+    "allowed_input_fingerprints_match": true,
+    "source_receipts_match": true,
+    "one_actual_structured_result": true,
+    "record_results_equal_actual_stdout": true,
+    "record_checks_equal_actual_stdout": true,
+    "record_status_equal_actual_stdout": true,
+    "empty_actual_stderr": true,
+    "grid_row_count_matches_record": true,
+    "search_row_count_matches_record": true,
+    "scenario_evidence_all_pass": true,
+    "all_CSV_units_consistent": true,
+    "record_numerical_agreement_passed": true
+  },
+  "source_receipt_checks": [
+    {
+      "receipt": "source-receipt.json",
+      "source": "source-power-t-test.html",
+      "receipt_matches_local_bytes": true,
+      "actual": {
+        "path": "/Users/yukangzengcmac/Power-Agent/jsm-2026/multi-agent-20261002/native-forward-2.3.1/source-power-t-test.html",
+        "size_bytes": 4215,
+        "sha256": "b9c436abfd10e0fd7435422950a7c66cc638f0ccb2ade447f655eba7f52506ca"
+      }
+    },
+    {
+      "receipt": "source-t-distribution-receipt.json",
+      "source": "source-t-distribution.html",
+      "receipt_matches_local_bytes": true,
+      "actual": {
+        "path": "/Users/yukangzengcmac/Power-Agent/jsm-2026/multi-agent-20261002/native-forward-2.3.1/source-t-distribution.html",
+        "size_bytes": 10544,
+        "sha256": "7119259ab57eec4888fda512f60f595bb082d962c099d8e739b5d548a44a942d"
+      }
+    }
+  ],
+  "scenario_evidence_checks": [
+    {
+      "rho_assumed": 0.25,
+      "grid_exactly_supplied": true,
+      "per_scenario_CSVs_match_combined": true,
+      "integer_search_has_all_admissible_smaller_counts": true,
+      "all_smaller_counts_below_target": true,
+      "selected_reaches_target": true,
+      "summary_power_matches_selected_csv": true,
+      "summary_previous_matches_csv": true,
+      "summary_units_consistent": true
+    },
+    {
+      "rho_assumed": 0.5,
+      "grid_exactly_supplied": true,
+      "per_scenario_CSVs_match_combined": true,
+      "integer_search_has_all_admissible_smaller_counts": true,
+      "all_smaller_counts_below_target": true,
+      "selected_reaches_target": true,
+      "summary_power_matches_selected_csv": true,
+      "summary_previous_matches_csv": true,
+      "summary_units_consistent": true
+    },
+    {
+      "rho_assumed": 0.75,
+      "grid_exactly_supplied": true,
+      "per_scenario_CSVs_match_combined": true,
+      "integer_search_has_all_admissible_smaller_counts": true,
+      "all_smaller_counts_below_target": true,
+      "selected_reaches_target": true,
+      "summary_power_matches_selected_csv": true,
+      "summary_previous_matches_csv": true,
+      "summary_units_consistent": true
+    }
+  ],
+  "report": {
+    "path": "/Users/yukangzengcmac/Power-Agent/jsm-2026/multi-agent-20261002/native-forward-2.3.1/checker-precheck/precheck-report.md",
+    "size_bytes": 2056,
+    "sha256": "3898f94faac7559c132cd654ee34d23613f9a6f47fb508e4252de1f726c81a06"
+  }
+}

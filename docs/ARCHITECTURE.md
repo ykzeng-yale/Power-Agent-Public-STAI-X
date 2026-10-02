@@ -1,105 +1,25 @@
-# Multi-Agent Architecture Design
+# Current scientific architecture
 
-## Overview
-This application follows the **Orchestrator-Worker Pattern** for multi-agent coordination, allowing independent, reusable agents that can be composed for complex tasks.
+Runtime 2.2.0 uses the exact tested files in `scientific/`; their digests are in `scientific/manifest.json`. The optional skill API runner copies the same seven core files. Haiku4.5 is pinned by dated model id; actual request model and usage are retained.
 
-## Agents
+The planner submits a structured design with estimand/hypothesis, test, alpha/sidedness, allocation, effect/nuisance inputs and provenance, units, assumptions and missing-input questions. Missing material inputs stop the numerical path. Single mode retains the planner's conversation for implementation. Multi mode starts a fresh coder conversation, then a fresh reviewer conversation with original request, design and source evidence. Candidate code, results and artifacts are withheld until the checker has successfully executed a numerical precheck; they are then revealed for comparison. All roles can share model errors.
 
-### 1. Data Manager Agent (`/api/analyze-file`)
-**Role**: Orchestrator
-**Responsibility**: Content classification and routing
+The coder calls `execute_r` and emits one computed JSON object with metric/value/unit rows. The `POWER_AGENT_RESULT=` prefix is preferred; a single unambiguous unmarked JSON object is accepted. Duplicate keys and competing objects fail closed. Final numerical claims must match successful cited execution evidence. The reviewer independently calls the same tool for a quantitative check and returns pass/revise/clarification with explicit issues/checks/evidence ids. A pass requires an actual successful reviewer execution, no major/critical issue and passed substantive checks. One repair is allowed by default within shared call/execution/time limits. No fictional fallback numeric answer is accepted.
 
-**Workflow**:
-1. Receives uploaded file
-2. Uses AI (Claude Haiku 4.5) to classify content as "data" or "document"
-3. Routes based on classification:
-   - **Data files** → Delegates to Biostatistics Coding Agent
-   - **Documents** → Uses Claude API for text analysis
+A post-study deterministic pooled-t reference gate executes stats::power.t.test(strict=TRUE) and an independently specified noncentral-t calculation for declared two-sided, equal-allocation independent normal/common-SD means with no attrition. It checks participant/probability units, the minimum integer and preceding power, and retains inconsistent candidates with review_failed. Other profiles explicitly skip the check. This validates the declared plan only, not source-input binding or general methodology. Historical benchmark cohorts evaluated earlier runtimes.
 
-**Key Feature**: Does NOT execute code directly - delegates to specialized agents
+Each R call is a fresh self-contained process with real exit code/stdout/stderr, code digest, elapsed time and session information. Linux production additionally drops worker identity and enforces syscall/network restrictions/resource limits; Mac workers retain shared host filesystem/package-library limitations. Structured output grounding and model review are computational evidence, not a reference oracle or mathematical proof.
 
-### 2. Biostatistics Coding Agent (`/api/analyze-biostat`)
-**Role**: Worker
-**Responsibility**: R code execution with iteration and error fixing
+`scientific-api.js` is the tested adapter for the hosted application: authenticated session ownership, atomic credits/anonymous reservations, source scoping, streamed/JSON events, uploaded exports and private workspace cleanup. The public standalone CLI does not require its database or cloud integration. API tests use injected mocks. The active hosted frontend/backend deployment is maintained separately; legacy frontend and routing files in this repository remain source history.
 
-**Modes**:
-- `full_analysis` (default): Complete workflow with PI routing, iteration, streaming
-- `preliminary_analysis`: Fast, simplified analysis for file uploads
+Native skill 2.3.1 can use the host's own tools/model and separately records requested/executed workflow and whether a true independent reviewer exists. Its input/units/reference/report tools cover explicit limited profiles. Role-labelled self-critique and deterministic mathematical checks must not be described as independent model-agent evidence.
 
-**Key Feature**: Fully independent and reusable - can be called by any agent or directly by users
+The prior architecture document is preserved in `archive/source-history/docs/ARCHITECTURE.md`; its classification/data-manager roles and template-verification statements are historical, not current release claims.
 
-### 3. PI (Planning/Inference) Agent (`pi-agent.js`)
-**Role**: Worker
-**Responsibility**: Query routing (direct answer vs code execution)
+All roles receive the same tool definitions, actual source receipt ledger and operation metadata. Search excludes provider-generated answers and records primary-domain snippets; read_source records provider-extracted text with digests and truncation. Receipt linkage alone does not validate a claim's support. Source budgets are shared across roles.
 
-**Workflow**:
-1. Analyzes user query
-2. Decides: "Can I answer directly?" or "Need code execution?"
-3. Returns decision to calling agent
+Required verification is available in either topology. Single verification retains the author conversation; multi verification uses a fresh conversation and a blind precheck. Phase and global caps are explicit, with reservation decisions, failed candidates, actual check code/output, repairs and current-round rereview retained. This is a sequential multi-agent workflow, not parallel speedup or statistical independence.
 
-## Design Patterns
+Successful R output files are captured from fresh execution directories, bounded in size/count, hashed, copied into immutable archives and retained as bytes in the record. Reviewer handoffs contain file metadata rather than binary data. On restricted Linux a blind worker has a distinct UID and cannot traverse candidate artifact inputs or earlier coder execution directories; original user inputs remain readable. Non-Linux operation does not enforce this filesystem separation. After precheck, reviewer evidence receives readonly artifact paths. Only accepted candidate execution artifacts are selected for delivery.
 
-### Orchestrator-Worker Pattern
-```
-┌─────────────────────────────┐
-│   Data Manager Agent        │  Orchestrator
-│   (Content Classification)  │
-└──────────┬──────────────────┘
-           │
-           ├─ Data → ┌────────────────────────────┐
-           │         │ Biostatistics Coding Agent │  Worker
-           │         │  (R Code Execution)        │
-           │         └────────────────────────────┘
-           │
-           └─ Document → Claude API
-```
-
-### Sequential Orchestration
-```
-User Request
-    ↓
-Data Manager Agent (classifies content)
-    ↓
-Coding Agent (executes R code)
-    ↓
-Results returned to user
-```
-
-## Key Benefits
-
-1. **Separation of Concerns**
-   - Each agent has a single, well-defined responsibility
-   - No code duplication
-
-2. **Reusability**
-   - Coding agent can be called by:
-     - Data Manager Agent (preliminary analysis)
-     - Frontend directly (full analysis)
-     - Future agents (specialized analyses)
-
-3. **Independence**
-   - Each agent operates autonomously
-   - Agents communicate via standard API calls
-   - Easy to test, modify, or replace individual agents
-
-4. **Extensibility**
-   - New agents can be added easily
-   - Existing agents can call new agents
-   - Framework supports growth
-
-## Backward Compatibility
-
-All existing functionality is preserved:
-- `/api/analyze-biostat` works unchanged for direct calls
-- `/api/analyze-file` behavior is unchanged for users
-- Internal architecture improved without breaking APIs
-
-## Future Extensions
-
-Potential new agents:
-- **Visualization Agent**: Specialized plot generation
-- **Report Generation Agent**: Create formatted reports
-- **Data Cleaning Agent**: Automated data preprocessing
-- **Model Selection Agent**: Choose optimal statistical models
-
-All can reuse the Biostatistics Coding Agent for R execution!
+The current frontend shows citation links, artifact downloads and PNG previews from actual captured bytes. Automatic file parsing and correct CSV data are separate from scientific plot-content QA. The2.2.0 evaluation is a new prospectively frozen exploratory developer-prepared suite; earlier study outcomes remain unchanged.

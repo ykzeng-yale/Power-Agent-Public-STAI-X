@@ -1,0 +1,14 @@
+{
+  "harness_version": "2.1.3",
+  "model": "claude-haiku-4-5-20251001",
+  "core_sources_sha256": {
+    "scientific-harness.js": "8b985c50daab16a3603e6c743647f9d8861339213c356c8ce8e4f6f5e594b17b",
+    "scientific-reference-guard.js": "ed219830b8c2a1e223a9ddd6ad34d2d3d33dd02f7895ea0edcaa046f77185c02",
+    "scientific-r-executor.js": "08a45cbb0b12e0f2661940f3ef39e3e0f9176d37c46d3c028cb239c03a13174d",
+    "scientific-harness-cli.js": "a7ce5af97e8c6d1ec8bc9d6deaff22f2287d78118d596d66d5348a8363de5aa4",
+    "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+    "model-config.js": "0a50c527197125f01df6c3e66d2ed122ffb0ac4036d24d686c336c98d6624f97"
+  },
+  "scientific_validation": "Post-cohort scoped count-role regression, actual-R saved seven-row replay and preservation of failing candidates; no new agent cohort or native-host behavioral trial.",
+  "api_adapter_sha256": "bc70b77ff504dab44209ca2efece85ce7ec563d220f9149731dcbd455b14a3ab"
+}
