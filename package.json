@@ -1,6 +1,6 @@
 {
   "name": "power-agent-scientific",
-  "version": "2.2.0",
+  "version": "2.4.2",
   "private": true,
   "description": "Executed statistical power and sample-size workflow with selectable independent model review and portable scientific skill",
   "type": "module",
@@ -9,7 +9,7 @@
     "start": "node scripts/run-scientific.mjs",
     "analyze": "node scripts/run-scientific.mjs",
     "test": "npm run test:scientific && npm run test:portable",
-    "test:scientific": "node --test scientific/test-scientific-harness.js scientific/test-scientific-api.js scientific/test-anonymous-reservation.js scientific/test-scientific-reference-guard.js scientific/test-scientific-sources.js scientific/test-scientific-r-artifacts.js",
+    "test:scientific": "node --test scientific/test-scientific*.js scientific/test-hosted-scientific-config.js scientific/test-anonymous-reservation.js",
     "test:portable": "python3 tests/test-portable.py"
   },
   "engines": {
@@ -17,7 +17,14 @@
   },
   "devDependencies": {
     "express": "4.21.2",
-    "@supabase/supabase-js": "2.75.0"
+    "@supabase/supabase-js": "2.75.0",
+    "@anthropic-ai/sdk": "0.38.0",
+    "docx": "9.5.1",
+    "jszip": "3.10.1",
+    "mammoth": "1.11.0",
+    "pdf-parse": "2.4.5",
+    "pdfjs-dist": "4.10.38",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "repository": {
     "type": "git",

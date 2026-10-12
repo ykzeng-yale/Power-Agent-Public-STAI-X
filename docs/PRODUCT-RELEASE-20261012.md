@@ -1,0 +1,25 @@
+# Power Agent production restoration — October 12, 2026
+
+The production app at [power-agent.io](https://power-agent.io/) retains the Aug5 interface used around the Aug6 JSM presentation. Its main stylesheet and static DOM are preserved. The original templates, file sidebar, planning/code/output cards, figures, report previews and history connect to the actual planner–analyst–reviewer workflow. Public analysis does not require signup or a credit deduction RPC. The research API and CLI retain the single workflow for comparison experiments.
+
+Vercel deployment `dpl_2vWwNKcR3yCKnYHR3r7odQoHHE5K` serves the verified original interface with a thin compatibility patch. Cloud Run revision `power-agent-api-00184-yav` receives 100% of default traffic and uses image `sha256:de0b7b3aa5afc180b031409f7757c0fab2ed0e49bed0a705923f1567e64d5ee5`, runtime `2.4.2`. Scientific roles use `claude-sonnet-5-5`; advisory routing uses `claude-haiku-5-5`. All nine served assets match the release manifest. The index SHA-256 is `3ad0d57e0e83880dc4dce36cc546337dd15c15ab8e2593e9e062b1234b4c9d8a`.
+
+| Verification | Observed scope | Result |
+|---|---|---|
+| Linux build and startup | Frozen production image, parsers, hosted scientific modules and regression checks | 223 passed, zero failed/skipped |
+| Original interface source | Display, history, bytes, budgets and Library boundary regressions | 52 passed |
+| Independent live deployment readback | Apex assets, Vercel target, Cloud traffic/image and model health | 17 passed |
+| Final native production case | CSV, two-sheet Excel, PDF and DOCX; retrieval, executed calculations, plots, reports, minimal Word proposal, downloads and history reload | 72 scoped checks passed |
+| Native Library candidate | Explicit save, reload, original-byte download, new-chat use, another reload and actual descriptive analysis | 41 scoped checks passed |
+
+The final production case returned 64 participants per group and 128 total for the declared strict two-sided pooled-t design. All 16 reported scalars, the 41-point power curve, descriptive summaries and a fresh-process RDS read agreed with the frozen offline evaluator. Eleven individual native downloads and both live/history ZIPs matched the captured file bytes. Only `word/document.xml` changed in the DOCX proposal; the other 19 archive member contents and their order were preserved. Actual PNG/PDF figures, Word and all five report PDF pages passed visual review. The record contains nine main workflow model calls and two separately recorded Sonnet editorial receipts; this does not count all preliminary provider calls.
+
+Library saves use owner-validated `session_files` records and verified original bytes. They do not create raw-byte `shared_files` entries. Cached recovery rechecks owner and session after asynchronous reads, validates MIME/size/SHA, and stops before analysis when distinct selected files have the same filename. The [manual owner-policy package](../supabase/owner-rls-20261012/README.md) records the separate six-table RLS repair, its retained policies and read-only verification limits. Existing owner history and real new-session operations remained usable.
+
+These are selected engineering checks. They do not estimate representative benchmark accuracy, establish multi-agent superiority, or certify arbitrary study designs or the whole product. Reviewer context and execution are separate, but shared preliminary interpretation can contain answer suggestions and calculations can share R functions. Actual executed code governs the interpretation of reviewer method labels. File units and unique subject identifiers were not established. The Word proposal is an author-review artifact; its correct total of 128 also means an earlier illustrative literal sentence containing only “64 participants per group.” was not met verbatim. Original analyst prose remains labelled as preceding final review and document processing. Earlier unsuccessful trials and the frozen benchmark are preserved.
+
+The final native production case used Chrome with normal macOS file pickers after in-app browser control became unreliable. Real downloads were collected from completed browser downloads; their bytes were checked separately. The captured application-origin warning/error log for that case had zero entries. This is an observation for the validation tab, not a guarantee about all browser extensions or sessions.
+
+The portable native skill remains `2.3.1`. Its separately versioned optional runner is `2.4.2`; the frozen package SHA-256 is `4996b86ea17f3f32f49d7fbd4fc3b625c2e4ed8cca3224362c5803f604427399`. Installing it does not automatically provide the hosted document processor. See [the sanitized release audit](PRODUCT-RELEASE-20261012.json) for exact verification bindings.
+
+For subsequent releases, preserve the authoritative interface before changing scripts; test explicit save/reload/reuse using original bytes; validate the exact served assets and image; keep numerical acceptance separate from document delivery; and retain failed trials without rescoring them as later successes.

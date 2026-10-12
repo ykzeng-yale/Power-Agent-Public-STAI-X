@@ -1,0 +1,52 @@
+{
+  "schema": "power-agent-owner-rls-source-manifest/1.0",
+  "scope": "Positive payload allowlist only; source-manifest.json is excluded from its own digest list.",
+  "deployed_migration_sha256": "0c4500a8e5c0fe2beb7ffa3365ee9c063806fa0ad82538641effd7647db7aee3",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "9f510f0c9bc14e14de62a2ced2e5d7dfd500bfd5f015449f76d6222b95db39dd",
+      "bytes": 6047
+    },
+    {
+      "path": "audit.json",
+      "sha256": "54721e7183179c255f70a3544e8e84be80b22e1b63c76670ba43fb051dd3f3a6",
+      "bytes": 5283
+    },
+    {
+      "path": "deployed-owner-rls.sql",
+      "sha256": "0c4500a8e5c0fe2beb7ffa3365ee9c063806fa0ad82538641effd7647db7aee3",
+      "bytes": 13410
+    },
+    {
+      "path": "inspect-owner-rls-readonly.sql",
+      "sha256": "a1919a88d4e85bc617b689d637e8c5a343d5fd573a38b576cf1d510a949596c2",
+      "bytes": 1704
+    },
+    {
+      "path": "rollback-owner-rls.sql",
+      "sha256": "3f3b5dc41fdbe99fd220312aeba10060ab4932bd17b6f6bfc335e08ff26b7b30",
+      "bytes": 1105
+    },
+    {
+      "path": "test_owner_rls_package.py",
+      "sha256": "e59e4122267e10fed6c5a3c4c5e5786ddbef443bad13617786fe5b6774768c6f",
+      "bytes": 4345
+    },
+    {
+      "path": "verify-anon-readonly.sql",
+      "sha256": "3c150a22ba352725d8f8e74185fa4a951a9ba7df4fafcb25deb8889a7ba53a65",
+      "bytes": 989
+    },
+    {
+      "path": "verify-owner-outside-owner-readonly.sql",
+      "sha256": "8649d270a52fe1b1b111630b5f658a4420db6e3913323afeddaca0b3ca3edfd6",
+      "bytes": 6046
+    },
+    {
+      "path": "verify-service-counts-readonly.sql",
+      "sha256": "83c022bb3a90ceb5110313ed1a0082f574ae58cce5e584b06fe447b023edeffe",
+      "bytes": 942
+    }
+  ]
+}

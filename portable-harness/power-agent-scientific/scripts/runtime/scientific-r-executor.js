@@ -114,8 +114,9 @@ export class ScientificRExecutor {
     result.output_files = [];
     result.artifact_issues = [];
     if (!result.success) return result;
-    const mime = { csv: 'text/csv', json: 'application/json', png: 'image/png', pdf: 'application/pdf',
-      svg: 'image/svg+xml', html: 'text/html', md: 'text/markdown', txt: 'text/plain' };
+    const mime = { csv: 'text/csv', json: 'application/json', png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', pdf: 'application/pdf',
+      svg: 'image/svg+xml', html: 'text/html', md: 'text/markdown', txt: 'text/plain',
+      rds: 'application/octet-stream', rdata: 'application/octet-stream', rda: 'application/octet-stream' };
     const visit = async (directory, prefix = '', depth = 0) => {
       for (const name of (await fs.readdir(directory)).sort()) {
         const sourcePath = path.join(directory, name), info = await fs.lstat(sourcePath);

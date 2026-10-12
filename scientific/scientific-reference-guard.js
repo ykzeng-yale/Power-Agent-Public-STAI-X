@@ -3,6 +3,11 @@
  */
 const normalized = value => String(value || '').toLowerCase().replace(/[_’']/g, ' ').replace(/\s+/g, ' ').trim();
 const finite = value => typeof value === 'number' && Number.isFinite(value);
+const primaryQuantityLabel = label => /\b(?:selected|chosen|accepted|required|minimum|achieved|preceding|previous|smaller|prior)\b/.test(label);
+const diagnosticQuantityLabel = (label, kind) => !primaryQuantityLabel(label) &&
+  ( /\b(?:claim|claimed|protocol|source|diagnostic|comparison|sensitivity|scenario)\b/.test(label) ||
+    kind === 'count' && /\b(?:observed|descriptive|pilot)\b/.test(label) );
+const diagnosticScope = 'Explicit comparison/source/observed quantity; retained but not certified by the primary selected-design reference.';
 export const POOLED_T_SCOPE = 'Two-sided, equal-allocation, fixed two-independent-normal-group pooled-t sample-size inversion with a common SD and no attrition inflation. Checks the declared plan, not source-input validity or other methods.';
 
 export function pooledTReferenceSpecification(plan) {
@@ -55,16 +60,32 @@ function sampleSizeLabels(metric) {
     return { operator: match[1] === 'minus' ? '-' : '+', value: token === '1' && !compoundOffset ? 1 : NaN };
   });
   labels.push(...wordLabels);
+  // Scalar table names may use n64 rather than n=64. Consume the complete
+  // token and apply the same mapping checks; do not accept a numeric prefix.
+  for (const match of metric.matchAll(/\bn(\d\S*)/g)) labels.push(numericLabel('=', match[1]));
   return { labels, hasLabel: Boolean(labels.length || /\bn\s*(?:plus|minus)/.test(metric)) };
 }
 
 function candidateQuantities(plan, answer) {
-  const counts = [], totals = [], priorCounts = [], priorTotals = [], powers = [], previous = [], invalidUnits = [], powerRows = [], invalidMappings = [], invalidCountMappings = [], countLabels = [];
+  const counts = [], totals = [], priorCounts = [], priorTotals = [], powers = [], previous = [], invalidUnits = [], powerRows = [], diagnosticQuantities = [], invalidMappings = [], invalidCountMappings = [], countLabels = [];
   for (const row of answer?.results || []) {
-    const metric = normalized(row.metric), unit = normalized(row.unit), combined = metric + ' ' + unit;
+    const label = normalized(row.metric), unit = normalized(row.unit);
+    const withoutMethod = normalized(label.replace(/\b(?:stats\s*::\s*)?power\.t\.test\b/g, ''));
+    // A named R method does not turn an explicitly labeled n/count into power.
+    // Keep unfamiliar/method-only labels on their prior conservative path;
+    // any genuine power word remaining in a count annotation is still checked.
+    const countLabel = /\b(?:n|counts?)\b|sample size|participants?|subjects?|patients?|per (?:arm|group)|perarm|pergroup/.test(withoutMethod);
+    const metric = countLabel ? withoutMethod : label, combined = metric + ' ' + unit;
     if (/power/.test(metric)) {
-      if (!/target|nominal|requested/.test(metric) && unit !== 'probability') invalidUnits.push({ metric: row.metric, unit: row.unit });
-      if (!/target|nominal|requested/.test(metric)) powerRows.push({ ...row, metric });
+      const requestedCriterion = /target|nominal|requested/.test(metric) && !primaryQuantityLabel(metric);
+      if (!requestedCriterion && unit !== 'probability') invalidUnits.push({ metric: row.metric, unit: row.unit });
+      if (!requestedCriterion && diagnosticQuantityLabel(metric, 'power')) {
+        const { labels, hasLabel } = sampleSizeLabels(metric);
+        const validDiagnostic = finite(row.value) && row.value >= 0 && row.value <= 1 &&
+          (!hasLabel || labels.length === 1 && labels[0].operator === '=' && Number.isInteger(labels[0].value) && labels[0].value >= 2);
+        if (!validDiagnostic) invalidMappings.push({ metric: row.metric, value: row.value });
+        diagnosticQuantities.push({ ...row, reference_scope: diagnosticScope });
+      } else if (!requestedCriterion) powerRows.push({ ...row, metric });
       continue;
     }
     if (/unrounded|continuous|initial/.test(metric)) continue;
@@ -83,9 +104,19 @@ function candidateQuantities(plan, answer) {
         invalidCountMappings.push({ metric: row.metric, value: row.value }); continue;
       }
       if (offset) prior = true;
-      else countLabels.push({ metric: row.metric, value: label.value, prior });
     }
-    if (prior && /\bminimum\b|\bselected\b|\bchosen\b/.test(metric)) { invalidCountMappings.push({ metric: row.metric, value: row.value }); continue; }
+    // Validate the complete label before excluding a scoped source count.
+    // A known preceding-design alias stays on the primary reference path.
+    if (!prior && diagnosticQuantityLabel(metric, 'count')) {
+      if (!Number.isInteger(row.value) || row.value < 0 ||
+          (hasLabel && (labels[0].value < 0 || labels[0].value !== row.value))) {
+        invalidCountMappings.push({ metric: row.metric, value: row.value }); continue;
+      }
+      diagnosticQuantities.push({ ...row, reference_scope: diagnosticScope });
+      continue;
+    }
+    if (hasLabel && labels[0].operator !== '-') countLabels.push({ metric: row.metric, value: labels[0].value, prior });
+    if (prior && /\b(?:minimum|selected|chosen|accepted|required)\b/.test(metric)) { invalidCountMappings.push({ metric: row.metric, value: row.value }); continue; }
     (total ? (prior ? priorTotals : totals) : (prior ? priorCounts : counts)).push(row.value);
   }
   const unique = values => [...new Set(values)];
@@ -95,7 +126,8 @@ function candidateQuantities(plan, answer) {
   }
   for (const row of powerRows) {
     const metric = row.metric.replace(/[−–—]/g, '-');
-    const precedingLabel = /preceding|previous|smaller/.test(metric);
+    const precedingLabel = /preceding|previous|smaller|\bprior\b/.test(metric);
+    const selectedLabel = /\b(?:selected|chosen|accepted|required|minimum)\b/.test(metric);
     const { labels, hasLabel } = sampleSizeLabels(metric);
     if (hasLabel) {
       const label = labels[0];
@@ -103,12 +135,17 @@ function candidateQuantities(plan, answer) {
       const n = offset ? selected[0] + (label.operator === '-' ? -label.value : label.value) : label?.value;
       const valid = labels.length === 1 && selected.length === 1 && Number.isInteger(label.value) &&
         (!offset || (label.operator === '-' && label.value === 1)) &&
-        [selected[0], selected[0]-1].includes(n) && (!precedingLabel || n === selected[0]-1);
+        [selected[0], selected[0]-1].includes(n) && (!precedingLabel || n === selected[0]-1) &&
+        (!selectedLabel || n === selected[0]);
       if (!valid) invalidMappings.push({ metric: row.metric, value: row.value });
       else (n === selected[0] ? powers : previous).push(row.value);
-    } else (precedingLabel ? previous : powers).push(row.value);
+    } else if (precedingLabel && selectedLabel) invalidMappings.push({ metric: row.metric, value: row.value });
+    else (precedingLabel ? previous : powers).push(row.value);
   }
-  return { counts: selected, totals: unique(totals), priorCounts: unique(priorCounts), priorTotals: unique(priorTotals), powers: unique(powers), previous: unique(previous), invalidUnits, invalidMappings, invalidCountMappings };
+  // Independent implementations may differ in their last floating-point bits.
+  // Keep every declared power and compare each with the same reference; only
+  // participant counts require an exactly unique integer value.
+  return { counts: selected, totals: unique(totals), priorCounts: unique(priorCounts), priorTotals: unique(priorTotals), powers, previous, invalidUnits, invalidMappings, invalidCountMappings, diagnosticQuantities };
 }
 
 export async function checkPooledTReference(plan, answer, execute) {
@@ -155,13 +192,14 @@ cat("POWER_AGENT_REFERENCE_AUDIT=",toJSON(list(checks=checks,minimum_per_arm=min
   if (quantities.totals.length) checks.push({ name: 'candidate_total_units', passed: quantities.totals.length === 1 && quantities.totals[0] === 2 * n, observed: quantities.totals });
   if (quantities.priorCounts.length) checks.push({ name: 'reported_preceding_per_arm_count', passed: quantities.priorCounts.length === 1 && Number.isInteger(quantities.priorCounts[0]) && quantities.priorCounts[0] === n - 1, observed: quantities.priorCounts, expected: n - 1 });
   if (quantities.priorTotals.length) checks.push({ name: 'reported_preceding_total_count', passed: quantities.priorTotals.length === 1 && quantities.priorTotals[0] === 2 * (n - 1), observed: quantities.priorTotals, expected: 2 * (n - 1) });
-  if (quantities.powers.length) checks.push({ name: 'reported_achieved_power', passed: quantities.powers.length === 1 && Math.abs(quantities.powers[0] - result.power_at_candidate) <= 0.0001, observed: quantities.powers, expected: result.power_at_candidate });
+  const agreesWithReferencePower = (values, expected) => values.every(value => finite(value) && value >= 0 && value <= 1 && Math.abs(value - expected) <= 0.0001);
+  if (quantities.powers.length) checks.push({ name: 'reported_achieved_power', passed: agreesWithReferencePower(quantities.powers, result.power_at_candidate), observed: quantities.powers, expected: result.power_at_candidate });
   if (quantities.previous.length && n > 2) {
     // A candidate preceding-design claim concerns its own n-1. Only an accepted
     // minimum can be compared with the reference minimum's preceding result.
-    checks.push({ name: 'reported_preceding_power', passed: n === result.minimum_per_arm && quantities.previous.length === 1 && Math.abs(quantities.previous[0] - result.power_preceding) <= 0.0001, observed: quantities.previous, expected: result.power_preceding });
+    checks.push({ name: 'reported_preceding_power', passed: n === result.minimum_per_arm && agreesWithReferencePower(quantities.previous, result.power_preceding), observed: quantities.previous, expected: result.power_preceding });
   }
   const passed = checks.length >= 3 && checks.every(check => check.passed === true);
-  return { status: passed ? 'passed' : 'failed', scope: POOLED_T_SCOPE, specification: scope.specification, evidence_id: evidence.evidence_id, checks, reference: result,
+  return { status: passed ? 'passed' : 'failed', scope: POOLED_T_SCOPE, specification: scope.specification, evidence_id: evidence.evidence_id, checks, reference: result, diagnostic_quantities: quantities.diagnosticQuantities,
     reason: passed ? 'Declared structured quantities agree under this limited pooled-t specification.' : 'Candidate disagrees with the independently executed pooled-t reference; candidate outputs are retained and are not accepted.' };
 }

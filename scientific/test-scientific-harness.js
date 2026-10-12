@@ -4,7 +4,9 @@ import { promises as fs } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
-import { runScientificAnalysis, validateAnswerEvidence, extractComputedResult } from './scientific-harness.js';
+import { runScientificAnalysis as runAnalysis, validateAnswerEvidence, extractComputedResult, HOSTED_RESEARCH_PROFILE, SCIENTIFIC_ANSWER_TOOL } from './scientific-harness.js';
+import { codeWithResultSerializer, explicitRequestConstraints, computationAudit, RESULT_SERIALIZER_R } from './scientific-output-contract.js';
+import { HARNESS_VERSION } from './model-config.js';
 import { ScientificRExecutor } from './scientific-r-executor.js';
 import { prepareScientificContext } from './scientific-api.js';
 
@@ -13,6 +15,9 @@ const answer = { summary: '64 participants per group', method: 'two_sample_t', r
 const review = { verdict: 'pass', summary: 'Independent check agrees', issues: [], checked_evidence_ids: ['e1'], independent_check_evidence_ids: ['e2'], checks: [{ name: 'formula', passed: true, evidence: 'e2' }] };
 const tool = (name, input) => ({ content: [{ type: 'tool_use', id: `tool-${name}-${Math.random()}`, name, input }], usage: { input_tokens: 1, output_tokens: 1 }, stop_reason: 'tool_use', model: 'fixture-model' });
 const fakeExecutor = { createWorkspace: async () => ({ runId: 'test-run' }), executeRCode: async () => ({ success: true, exitCode: 0, output: 'POWER_AGENT_RESULT={"results":[{"metric":"sample_size","value":64,"unit":"participants_per_group"}]}\n' }) };
+// Existing scientific/budget fixtures retain the evaluated model request path.
+// Current Sonnet/Haiku routing and provider compatibility have separate tests.
+const runScientificAnalysis = (query, options = {}) => runAnalysis(query, { model: 'claude-haiku-4-5-20251001', ...options });
 
 test('real R process exit status is not masked and worker receives no API credentials', async () => {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'power-harness-test-'));
@@ -64,7 +69,7 @@ test('raw JSON from actual successful R execution finishes without a formatting 
   const queue=[tool('submit_design',plan),tool('execute_r',{code,purpose:'Actual arithmetic fixture with unmarked JSON'}),tool('submit_answer',answer)];
   try {
     const result=await runScientificAnalysis('Complete fixture design', {executor,transport:async()=>queue.shift(),maxModelCalls:3});
-    assert.equal(result.harnessVersion,'2.2.0');assert.equal(result.scientificStatus,'completed');assert.equal(result.iterations,3);assert.equal(result.executions.length,1);assert.deepEqual(result.executions[0].computed.results,answer.results);
+    assert.equal(result.harnessVersion,HARNESS_VERSION);assert.equal(result.scientificStatus,'completed');assert.equal(result.iterations,3);assert.equal(result.executions.length,1);assert.deepEqual(result.executions[0].computed.results,answer.results);
     assert.equal(validateAnswerEvidence(answer,[{...result.executions[0],success:false}],plan).length>0,true);
   } finally {await fs.rm(root,{recursive:true,force:true});}
 });
@@ -147,9 +152,9 @@ test('invented citation URLs are rejected and source-search limits remain shared
   assert.equal(limited.scientificStatus,'completed');assert.equal(searches,1);assert.equal(limited.budget.used.searches,1);
   assert.ok(limited.trace.some(t=>t.type==='tool_result'&&t.tool==='search_sources'&&t.result.error?.includes('exhausted')));
 });
-test('initial solver cannot consume reserved reviewer and repair executions', async () => {
+test('explicit legacy profile retains its minimum reviewer and repair execution reservation', async () => {
   const queue=[tool('submit_design',plan),...Array.from({length:6},()=>tool('execute_r',{code:'coder-code',purpose:'repeated candidate attempt'})),tool('submit_answer',{...answer,evidence_ids:['e5']}),tool('execute_r',{code:'review-code',purpose:'reserved check'}),tool('submit_review',{...review,checked_evidence_ids:['e5'],independent_check_evidence_ids:['e6'],checks:[{name:'check',passed:true,evidence:'e6'}]})];
-  const result=await runScientificAnalysis('Calculate sample size',{workflowMode:'multi',maxExecutions:8,executor:fakeExecutor,transport:async()=>queue.shift()});
+  const result=await runScientificAnalysis('Calculate sample size',{workflowMode:'multi',maxExecutions:8,budgetProfile:{reservationPolicy:'minimum'},executor:fakeExecutor,transport:async()=>queue.shift()});
   assert.equal(result.scientificStatus,'completed');assert.equal(result.executions.filter(e=>e.role==='coder').length,5);
   assert.equal(result.executions.filter(e=>e.role==='reviewer').length,1);assert.equal(result.budget.planned_repair_allowance,1);
   assert.equal(result.budget.phases.find(p=>p.name==='solver').max_executions,5);
@@ -171,7 +176,7 @@ test('repair receives actual reviewer execution and stale earlier-round review e
 });
 test('artifact bytes remain in records while model tool and role handoff receive only actual metadata', async () => {
   const bytes='ZmFrZS1iaW5hcnktYXJ0aWZhY3Q=';
-  const executor={...fakeExecutor,executeRCode:async code=>({...await fakeExecutor.executeRCode(code),output_files:[{artifact_id:code==='coder-code'?'a1':'check-a2',name:'sensitivity.csv',size:20,type:'csv',mime_type:'text/csv',sha256:'0'.repeat(64),read_path:'/readonly/sensitivity.csv',path:'/exports/immutable.csv',content_base64:bytes}]})};
+  const executor={...fakeExecutor,executeRCode:async code=>({...await fakeExecutor.executeRCode(code),output_files:[{artifact_id:code.endsWith('\ncoder-code')?'a1':'check-a2',name:'sensitivity.csv',size:20,type:'csv',mime_type:'text/csv',sha256:'0'.repeat(64),read_path:'/readonly/sensitivity.csv',path:'/exports/immutable.csv',content_base64:bytes}]})};
   const queue=[tool('submit_design',plan),tool('execute_r',{code:'coder-code',purpose:'calculation plus table'}),tool('submit_answer',answer),tool('execute_r',{code:'review-code',purpose:'check'}),tool('submit_review',review)];
   const calls=[];const result=await runScientificAnalysis('Calculate and provide a sensitivity table',{workflowMode:'multi',executor,transport:async p=>{calls.push(structuredClone(p));return queue.shift();}});
   assert.equal(result.scientificStatus,'completed');assert.equal(result.outputFiles.length,1);assert.equal(result.outputFiles[0].content_base64,bytes);assert.equal(result.outputFiles[0].execution_id,'e1');
@@ -310,7 +315,7 @@ test('custom stdout keys require actual fresh recomputation and results-row feed
 
 test('solver failure cannot claim independent numerical review that never started', async () => {
   const queue=[tool('submit_design',plan),tool('execute_r',{code:'custom-output',purpose:'Missing results schema'}),tool('submit_answer',answer)];
-  const result=await runScientificAnalysis('Calculate the supplied task',{workflowMode:'multi',maxModelCalls:5,maxRepairs:0,executor:{...fakeExecutor,executeRCode:async()=>({success:true,exitCode:0,output:'{"custom_number":64}'})},transport:async()=>queue.shift()});
+  const result=await runScientificAnalysis('Calculate the supplied task',{workflowMode:'multi',maxModelCalls:5,maxRepairs:0,budgetProfile:{reservationPolicy:'minimum'},executor:{...fakeExecutor,executeRCode:async()=>({success:true,exitCode:0,output:'{"custom_number":64}'})},transport:async()=>queue.shift()});
   assert.equal(result.scientificStatus,'budget_exhausted');assert.equal(result.verification.requested_independent_agent_review,true);
   for(const field of ['reviewer_started','numerical_check_performed','independent_agent_review','review_accepted','current_review_accepted','review_passed']) assert.equal(result.verification[field],false,field);
   assert.equal(result.executions.length,1);assert.equal(result.executions[0].computed,null);
@@ -323,9 +328,9 @@ test('mode defaults disclose expanded multi capacity and explicit matched caps r
       return runScientificAnalysis('Calculate the supplied design',{workflowMode:mode,verificationPolicy:'required',executor:fakeExecutor,transport:async()=>queue.shift(),...explicit});
     };
     const standard=await run({});assert.equal(standard.scientificStatus,'completed');
-    assert.equal(standard.budget.global.maxModelCalls,mode==='multi'?26:18);assert.equal(standard.budget.global.maxExecutions,mode==='multi'?12:8);
-    assert.equal(standard.budget.profile.verificationMaxCalls,5);assert.equal(standard.budget.profile.verificationMaxExecutions,3);
-    assert.equal(standard.budget.profile.repairMaxCalls,4);assert.equal(standard.budget.profile.repairMaxExecutions,1);
+    assert.equal(standard.budget.global.maxModelCalls,mode==='multi'?64:18);assert.equal(standard.budget.global.maxExecutions,mode==='multi'?32:8);
+    assert.equal(standard.budget.profile.verificationMaxCalls,mode==='multi'?10:5);assert.equal(standard.budget.profile.verificationMaxExecutions,mode==='multi'?6:3);
+    assert.equal(standard.budget.profile.repairMaxCalls,mode==='multi'?8:4);assert.equal(standard.budget.profile.repairMaxExecutions,mode==='multi'?4:1);
     const solver=standard.budget.phases.find(p=>p.name==='solver');assert.ok(solver.reservation.calls>=2);assert.ok(solver.reservation.executions>=1);
     assert.ok(solver.max_model_calls<standard.budget.global.maxModelCalls);assert.ok(solver.max_executions<standard.budget.global.maxExecutions);
     const explicit={maxModelCalls:18,maxExecutions:8,budgetProfile:{...sharedProfile,verificationMaxCalls:4,verificationMaxExecutions:2}};
@@ -429,7 +434,7 @@ test('actual file-only CSV and plot evidence require their producing ID alongsid
 test('repaired candidates cannot claim stale artifacts and feedback lists only current captures', async () => {
   const revise={...review,verdict:'revise',issues:[{severity:'major',description:'Recompute candidate',correction:'Execute the revised implementation'}],checks:[{name:'implementation',passed:false,evidence:'e2'}]};
   const old={artifact_id:'old-artifact',name:'old.csv',sha256:'1'.repeat(64)},fresh={artifact_id:'fresh-artifact',name:'fresh.csv',sha256:'2'.repeat(64)};
-  const executor={...fakeExecutor,executeRCode:async code=>({...await fakeExecutor.executeRCode(code),output_files:code==='initial-code'?[old]:code==='repair-code'?[fresh]:[]})};
+  const executor={...fakeExecutor,executeRCode:async code=>({...await fakeExecutor.executeRCode(code),output_files:code.endsWith('\ninitial-code')?[old]:code.endsWith('\nrepair-code')?[fresh]:[]})};
   const initial={...answer,artifact_claims:[{artifact_id:old.artifact_id,purpose:'Initial output'}]};
   const repaired={...answer,evidence_ids:['e3'],artifact_claims:[{artifact_id:fresh.artifact_id,purpose:'Repaired output'}]};
   const queue=[tool('submit_design',plan),tool('execute_r',{code:'initial-code',purpose:'Candidate'}),tool('submit_answer',initial),tool('execute_r',{code:'review-code',purpose:'Review'}),tool('submit_review',revise),tool('execute_r',{code:'repair-code',purpose:'Repair'}),tool('submit_answer',{...repaired,artifact_claims:initial.artifact_claims}),tool('submit_answer',repaired),tool('execute_r',{code:'fresh-review-code',purpose:'Review revised candidate'}),tool('submit_review',{...review,checked_evidence_ids:['e3'],independent_check_evidence_ids:['e4']})];
@@ -438,4 +443,146 @@ test('repaired candidates cannot claim stale artifacts and feedback lists only c
   const rejection=result.trace.find(t=>t.type==='tool_result'&&t.tool==='submit_answer'&&t.result.issues?.some(issue=>issue.includes(old.artifact_id)));
   assert.deepEqual(rejection.result.available_artifact_evidence,[{artifact_id:fresh.artifact_id,producing_evidence_id:'e3',name:fresh.name,sha256:fresh.sha256}]);
   assert.equal(result.outputFiles.length,1);assert.equal(result.outputFiles[0].artifact_id,fresh.artifact_id);assert.equal(result.executions[0].output_files[0].artifact_id,old.artifact_id);
+});
+
+test('research profile borrows unused capacity while protecting full review and repair cycles', async () => {
+  const profile={...HOSTED_RESEARCH_PROFILE,solverMaxCalls:2,solverMaxExecutions:1};
+  const queue=[tool('submit_design',plan),...Array.from({length:8},()=>tool('execute_r',{code:'calculation',purpose:'Synthetic bounded solver recovery'})),tool('submit_answer',{...answer,evidence_ids:['e8']}),tool('execute_r',{code:'verification',purpose:'Fresh check'}),tool('submit_review',{...review,checked_evidence_ids:['e8'],independent_check_evidence_ids:['e9']})];
+  const result=await runScientificAnalysis('Synthetic recovery fixture',{workflowMode:'multi',maxModelCalls:64,maxExecutions:32,budgetProfile:profile,executor:fakeExecutor,transport:async()=>queue.shift()});
+  assert.equal(result.scientificStatus,'completed');assert.equal(result.executions.length,9);
+  const solver=result.budget.phases.find(p=>p.name==='solver');assert.deepEqual(solver.reservation,{calls:28,executions:16});
+  assert.equal(solver.configured_model_calls,2);assert.equal(solver.configured_executions,1);assert.equal(solver.max_model_calls,35);assert.equal(solver.max_executions,16);
+  assert.equal(solver.model_calls,9);assert.equal(solver.executions,8);assert.equal(solver.phase_limit_policy,'elastic');
+  assert.deepEqual(result.budget.phases.find(p=>p.name==='verification').reservation,{calls:18,executions:10});
+});
+
+test('full future allocation leaves a complete actual repair and blind rereview after solver recovery', async () => {
+  const revise={...review,verdict:'revise',issues:[{severity:'major',description:'Synthetic implementation defect',correction:'Recompute'}],checks:[{name:'implementation',passed:false,evidence:'e9'}],checked_evidence_ids:['e8'],independent_check_evidence_ids:['e9']};
+  const queue=[tool('submit_design',plan),...Array.from({length:8},()=>tool('execute_r',{code:'initial',purpose:'Synthetic recovery'})),tool('submit_answer',{...answer,evidence_ids:['e8']}),tool('execute_r',{code:'blind',purpose:'Blind check'}),tool('submit_review',revise),tool('execute_r',{code:'repair',purpose:'Actual revised calculation'}),tool('submit_answer',{...answer,evidence_ids:['e10']}),tool('execute_r',{code:'blind-recheck',purpose:'New-round blind check'}),tool('execute_r',{code:'comparison',purpose:'Post-reveal check'}),tool('submit_review',{...review,checked_evidence_ids:['e10'],independent_check_evidence_ids:['e11','e12']})];
+  const result=await runScientificAnalysis('Synthetic complete repair cycle',{workflowMode:'multi',maxModelCalls:64,maxExecutions:32,budgetProfile:HOSTED_RESEARCH_PROFILE,executor:fakeExecutor,transport:async()=>queue.shift()});
+  assert.equal(result.scientificStatus,'completed');assert.equal(result.candidates.length,2);assert.equal(result.executions.length,12);
+  assert.deepEqual(result.verification.rounds.map(r=>r.precheck_evidence_ids),[['e9'],['e11']]);
+  assert.ok(result.budget.phases.find(p=>p.name==='rereview').max_model_calls>=10);
+  assert.equal(result.budget.phases.find(p=>p.name==='repair').executions,1);assert.equal(result.budget.phases.find(p=>p.name==='rereview').model_calls,3);
+});
+
+test('strict answer transport omits unsupported bounds but local simulation constraints still reject', async () => {
+  assert.equal(SCIENTIFIC_ANSWER_TOOL.strict,true);assert.equal(SCIENTIFIC_ANSWER_TOOL.input_schema.properties.simulation.properties.trials.minimum,undefined);
+  const invalid={...answer,simulation:{seed:1,trials:0,failures:-1,mcse:-.1,confidence_interval:[.5]}};
+  const queue=[tool('submit_design',plan),tool('execute_r',{code:'numeric',purpose:'Synthetic arithmetic'}),tool('submit_answer',invalid),tool('submit_answer',answer)];const calls=[];
+  const result=await runScientificAnalysis('Typed answer fixture',{executor:fakeExecutor,transport:async p=>{calls.push(p);return queue.shift();}});
+  assert.equal(result.scientificStatus,'completed');assert.equal(calls[1].tools.find(t=>t.name==='submit_answer').strict,true);
+  const feedback=result.trace.find(t=>t.type==='tool_result'&&t.tool==='submit_answer'&&t.result.accepted===false).result;
+  assert.ok(feedback.issues.some(i=>i.includes('trials')));assert.ok(feedback.issues.some(i=>i.includes('confidence_interval')));
+  assert.equal(feedback.expected_input_schema.properties.simulation.properties.trials.minimum,1);assert.equal(result.answer.simulation,null);
+});
+
+test('generic R serializer preserves computed variables and rejects malformed rows without any answer repair', async () => {
+  const root=await fs.mkdtemp(path.join(os.tmpdir(),'power-serializer-'));await fs.chmod(root,0o711);const executor=new ScientificRExecutor({root});
+  const code='computed <- sqrt(2)/2; bad <- list(function() power_agent_row("x","0.5","probability"), function() power_agent_row("x",c(1,2),"count"), function() power_agent_row("x",Inf,"count"), function() power_agent_emit(list(list(metric="x",value=1))), function() power_agent_emit(list(power_agent_row("x",1,"count"),power_agent_row("x",2,"count")))); for (f in bad) stopifnot(inherits(tryCatch(f(),error=function(e)e),"error")); power_agent_emit(list(power_agent_row("computed_quantity",computed,"probability")))';
+  try {const result=await executor.executeRCode(RESULT_SERIALIZER_R+'\n'+code);assert.equal(result.success,true);const parsed=extractComputedResult(result.output);assert.equal(parsed.results[0].metric,'computed_quantity');assert.equal(parsed.results[0].unit,'probability');assert.ok(Math.abs(parsed.results[0].value-Math.sqrt(2)/2)<1e-14);}
+  finally{await fs.rm(root,{recursive:true,force:true});}
+});
+
+test('constraint feedback identifies app ceilings and a final schema rejection stays a failure', async () => {
+  const queue=[tool('submit_design',plan),tool('execute_r',{code:'numeric',purpose:'Real synthetic evidence'}),tool('submit_answer',{...answer,results:[{...answer.results[0],metric:'renamed'}]})];
+  const result=await runScientificAnalysis('Unverified result fixture',{maxModelCalls:3,budgetProfile:{plannerMaxCalls:1,solverMaxCalls:2,reservationPolicy:'full',reserveRepair:false},executor:fakeExecutor,transport:async()=>queue.shift()});
+  assert.equal(result.scientificStatus,'budget_exhausted');assert.deepEqual(result.budget_exhaustion,result.budget.exhaustion);assert.equal(result.budget_exhaustion.kind,'global_model_calls');assert.equal(result.budget_exhaustion.used,3);assert.equal(result.budget_exhaustion.limit,3);
+  const bad=result.trace.find(t=>t.type==='tool_result'&&t.tool==='submit_answer'&&t.result.accepted===false).result;
+  assert.equal(bad.result_linkage_diagnostics[0].reason,'no_exact_executed_metric_unit_pair');assert.deepEqual(bad.available_executed_metric_unit_pairs,[{evidence_id:'e1',metric:'sample_size',unit:'participants_per_group'}]);assert.equal(result.answer,null);
+  assert.ok(result.trace.filter(t=>['agent_start','model_call','execution'].includes(t.type)).every(t=>t.remaining));
+});
+
+test('last full-profile call asks for typed submission rather than another unnecessary execution', async () => {
+  const queue=[tool('submit_design',plan),tool('execute_r',{code:'numeric',purpose:'fixture'}),tool('submit_answer',answer)];const calls=[];
+  const result=await runScientificAnalysis('Final call fixture',{maxModelCalls:3,budgetProfile:{plannerMaxCalls:1,solverMaxCalls:2,reservationPolicy:'full',reserveRepair:false},executor:fakeExecutor,transport:async p=>{calls.push(p);return queue.shift();}});
+  assert.equal(result.scientificStatus,'completed');assert.deepEqual(calls[0].tool_choice,{type:'tool',name:'submit_design'});assert.deepEqual(calls[2].tool_choice,{type:'tool',name:'submit_answer'});
+});
+
+test('R timeout configuration reaches executor and retains actual timeout evidence', async () => {
+  let observed;const executor={...fakeExecutor,timeoutMs:300000,executeRCode:async(code,opts)=>{observed=opts;return {success:false,exitCode:null,timedOut:true,output:'partial',stderr:'fixture timer expired'};}};
+  const queue=[tool('submit_design',plan),tool('execute_r',{code:'slow',purpose:'Timeout fixture'})];
+  const result=await runScientificAnalysis('Timeout metadata fixture',{maxModelCalls:2,maxRExecutionMs:300000,deadlineMs:1200000,executor,transport:async()=>queue.shift()});
+  assert.equal(observed.timeout,300000);assert.equal(result.executions[0].timedOut,true);assert.equal(result.executions[0].timeoutMs,300000);assert.equal(result.executions[0].computed,null);assert.equal(result.success,false);assert.equal(result.budget_exhaustion.kind,'global_model_calls');
+});
+
+test('portable executor constructor and reported timeout agree, and external lower caps remain enforced', async () => {
+  const originalExecute = ScientificRExecutor.prototype.executeRCode;
+  let actualConstructorTimeout, requestedTimeout;
+  ScientificRExecutor.prototype.executeRCode = async function(code, opts) {
+    actualConstructorTimeout = this.timeoutMs; requestedTimeout = opts.timeout;
+    return { success: false, exitCode: 1, output: '', stderr: 'Synthetic execution failure' };
+  };
+  try {
+    let queue=[tool('submit_design',plan),tool('execute_r',{code:'fixture',purpose:'Constructor alignment'})];
+    const result=await runScientificAnalysis('Portable timer alignment fixture',{workspace:{runId:'synthetic-timeout'},maxModelCalls:2,maxRExecutionMs:300000,deadlineMs:1200000,transport:async()=>queue.shift()});
+    assert.equal(actualConstructorTimeout,300000);assert.equal(requestedTimeout,300000);
+    assert.equal(result.budget.global.maxRExecutionMs,300000);assert.equal(result.executions[0].timeoutMs,300000);
+    queue=[tool('submit_design',plan),tool('execute_r',{code:'fixture',purpose:'Respect external timer'})];
+    const executor={...fakeExecutor,timeoutMs:120000,executeRCode:async(code,opts)=>{requestedTimeout=opts.timeout;return {success:false,exitCode:1,output:'',stderr:'Synthetic execution failure'};}};
+    const capped=await runScientificAnalysis('Externally capped timer fixture',{executor,maxModelCalls:2,maxRExecutionMs:300000,deadlineMs:1200000,transport:async()=>queue.shift()});
+    assert.equal(requestedTimeout,120000);assert.equal(capped.budget.global.maxRExecutionMs,120000);assert.equal(capped.executions[0].timeoutMs,120000);
+  } finally { ScientificRExecutor.prototype.executeRCode=originalExecute; }
+});
+
+
+test('request ledger recognizes only explicit statistical strict options and preserves current request in every topology', async () => {
+  const query='Use strict two-sided Student-t power; check power.t.test with its documented option.';
+  const constraints=explicitRequestConstraints(query);assert.equal(constraints.power_t_test_strict,true);assert.equal(constraints.exact_request,query);assert.equal(constraints.source_quotes[0].text,'strict two-sided');
+  assert.equal(explicitRequestConstraints('stats::power.t.test(n=20, strict=FALSE)').power_t_test_strict,false);
+  for(const text of ['Use strict=TRUE for JSON schema validation; calculate power.t.test with its usual defaults','Do not use strict two-sided power; use default power.t.test','Use two-sided power with the documented defaults']) assert.equal(explicitRequestConstraints(text).power_t_test_strict,null);
+  for(const mode of ['single','multi']) {
+    const calls=[];const queue=[tool('submit_design',plan),tool('execute_r',{code:'fixture',purpose:'Synthetic check'}),tool('submit_answer',answer),tool('execute_r',{code:'review-fixture',purpose:'Check'}),tool('submit_review',review)];
+    const record=await runScientificAnalysis(query,{workflowMode:mode,verificationPolicy:'required',executor:fakeExecutor,transport:async payload=>{calls.push(structuredClone(payload));return queue.shift();}});
+    assert.equal(record.scientificStatus,'completed');assert.equal(record.request_constraints.request_sha256,constraints.request_sha256);
+    for(const payload of [calls[0],calls[1],calls[3]]) assert.match(JSON.stringify(payload.messages),/request_constraints/);
+  }
+});
+
+test('actual R rejects literal-only result serialization and accepts computed minimum grids and actual captured reads', async () => {
+  const root=await fs.mkdtemp(path.join(os.tmpdir(),'power-provenance-'));await fs.chmod(root,0o711);const executor=new ScientificRExecutor({root});const workspace=await executor.createWorkspace();
+  const literalJSON=JSON.stringify({results:[{metric:'quantity',value:.25,unit:'probability'}]});
+  const bad=['data<-data.frame(power=.25);power_agent_emit(list(power_agent_row("quantity",data$power,"probability")))','power_agent_emit(list(power_agent_row("quantity",.25,"probability")))','x<-.25;y<-x;power_agent_emit(list(power_agent_row("quantity",as.numeric(y),"probability")))','unrelated<-sqrt(2);rows<-list(list(metric="quantity",value=.25,unit="probability"));cat(jsonlite::toJSON(list(results=rows),auto_unbox=TRUE))','cat('+JSON.stringify('POWER_AGENT_RESULT='+literalJSON)+')'];
+  try {
+    for(const code of bad){const result=await executor.executeRCode(codeWithResultSerializer(code),{workspace});assert.equal(result.success,false);assert.match(result.stderr,/computation contract/);assert.equal(extractComputedResult(result.output),null);}
+    const computed='power_fn<-function(n) stats::power.t.test(n=n,delta=.4,sd=1,sig.level=.05,type="two.sample",alternative="two.sided",strict=TRUE)$power; grid<-data.frame(n=seq(2,200),power=vapply(seq(2,200),power_fn,numeric(1))); selected<-min(grid$n[grid$power>=.8]); power_agent_emit(list(power_agent_row("minimum",selected,"participants_per_arm"),power_agent_row("power",grid$power[grid$n==selected],"probability")))';
+    const actual=await executor.executeRCode(codeWithResultSerializer(computed,explicitRequestConstraints('strict two-sided power')),{workspace});assert.equal(actual.success,true,actual.stderr);assert.equal(computationAudit(actual.stderr).explicit_method_option_calls,1);assert.ok(extractComputedResult(actual.output).results[0].value>2);
+    const writer=await executor.executeRCode('derived<-sqrt(2)/2;write.csv(data.frame(value=derived),"derived.csv",row.names=FALSE)',{workspace});assert.equal(writer.success,true);const captured=writer.output_files.find(file=>file.name==='derived.csv');assert.ok(captured.read_path);
+    const reader=await executor.executeRCode(codeWithResultSerializer('data<-read.csv('+JSON.stringify(captured.read_path)+');computed<-data$value[1];power_agent_emit(list(power_agent_row("read_quantity",computed,"probability")))'),{workspace});assert.equal(reader.success,true,reader.stderr);assert.ok(Math.abs(extractComputedResult(reader.output).results[0].value-Math.sqrt(2)/2)<1e-14);assert.equal(computationAudit(reader.stderr).computed_or_read_expressions,1);
+  }finally{await fs.rm(root,{recursive:true,force:true});}
+});
+
+test('actual R checks explicitly requested package options without inserting defaults or scientific answers', async () => {
+  const root=await fs.mkdtemp(path.join(os.tmpdir(),'power-method-option-'));await fs.chmod(root,0o711);const executor=new ScientificRExecutor({root});
+  const base='computed<-stats::power.t.test(n=20,delta=.4,sd=1,sig.level=.05,type="one.sample",alternative="two.sided"OPTIONS)$power;power_agent_emit(list(power_agent_row("power",computed,"probability")))';
+  try {
+    const requested=explicitRequestConstraints('Use strict two-sided noncentral Student-t power.');
+    for(const option of ['',',strict=FALSE']) {const result=await executor.executeRCode(codeWithResultSerializer(base.replace('OPTIONS',option),requested));assert.equal(result.success,false);assert.match(result.stderr,/request contract/);}
+    const correct=await executor.executeRCode(codeWithResultSerializer(base.replace('OPTIONS',',strict=TRUE'),requested));assert.equal(correct.success,true,correct.stderr);assert.equal(computationAudit(correct.stderr).explicit_method_option_calls,1);
+    const usual=await executor.executeRCode(codeWithResultSerializer(base.replace('OPTIONS',''),explicitRequestConstraints('Use documented function defaults for two-sided power.')));assert.equal(usual.success,true,usual.stderr);assert.equal(computationAudit(usual.stderr).explicit_method_option_calls,0);
+    const noMethod=await executor.executeRCode(codeWithResultSerializer('computed<-sqrt(2)/2;power_agent_emit(list(power_agent_row("quantity",computed,"probability")))',requested));assert.equal(noMethod.success,true);
+  }finally{await fs.rm(root,{recursive:true,force:true});}
+});
+
+test('fallback receipts preserve failed-provider unknown usage and distinguish logical callbacks from network attempts', async () => {
+  const attempts=[{provider:'tavily_extract',status:'failed',operation:'extract',success:false,dispatched:true,http_status:403,reason:'http_error',provider_usage:null,usage_unknown:true},{provider:'direct_primary_http',status:'succeeded',operation:'read',success:true,dispatched:true,http_status:200,reason:null,provider_usage:null,usage_unknown:false}];
+  const response={provider:'direct_primary_http',fallback_used:true,provider_attempts:attempts,provider_usage:null,billing_scope:'Failed provider usage unknown; direct HTTP has no provider invoice.',results:[{url:'https://stat.ethz.ch/manual',title:'Official source',content:'Primary method source',source_type:'primary'}]};
+  const queue=[tool('read_source',{url:'https://stat.ethz.ch/manual'}),tool('read_source',{url:'https://stat.ethz.ch/manual'}),tool('submit_design',plan),tool('execute_r',{code:'fixture',purpose:'Numeric fixture'}),tool('submit_answer',answer)];
+  let reads=0;const result=await runScientificAnalysis('Use documented calculation',{readSource:async()=>({...response,cache_hit:reads++>0}),executor:fakeExecutor,transport:async()=>queue.shift()});
+  assert.equal(result.scientificStatus,'completed');const receipt=result.source_requests[0];assert.deepEqual(receipt.provider_attempts,attempts);assert.equal(receipt.network_attempt_count,2);assert.equal(receipt.usage_unknown,true);assert.equal(receipt.fallback_used,true);assert.equal(result.budget.used.source_reads,2);
+  assert.equal(result.source_requests[1].network_attempt_count,0);assert.equal(result.source_requests[1].usage_unknown,false);assert.equal(result.source_requests[1].historical_attempt_usage_unknown,true);
+});
+
+
+test('hosted document postprocessing context reaches every scientific role equally in single and multi workflows', async () => {
+  for (const workflowMode of ['single', 'multi']) {
+    const calls = [], queue = [tool('submit_design', plan), tool('execute_r', { code: 'coder-code', purpose: 'Check supplied claim' }), tool('submit_answer', answer), tool('execute_r', { code: 'review-code', purpose: 'Independent numerical check' }), tool('submit_review', review)];
+    const context = { document_revision_support: 'post_scientific_acceptance', source_files: [{ name: 'protocol.docx', text: 'Source claim: 20 participants per group.' }] };
+    const result = await runScientificAnalysis('Assess the source claim and propose its minimal correction.', { workflowMode, verificationPolicy: 'required', context, executor: fakeExecutor, maxRepairs: 0, transport: async request => { calls.push(structuredClone(request)); return queue.shift(); } });
+    assert.equal(result.scientificStatus, 'completed');
+    for (const request of calls) { assert.match(request.system, /AFTER scientific acceptance/); assert.match(request.system, /no captured DOCX output capability/); assert.match(request.system, /real scientific error still blocks acceptance/); assert.doesNotMatch(request.system, /replace 20|replace.*64/); }
+    const reviewerCall = calls[3]; assert.ok(JSON.stringify(reviewerCall.messages).includes('post_scientific_acceptance')); assert.ok(JSON.stringify(reviewerCall.messages).includes('Source claim: 20'));
+  }
+  const { scientificDocumentRevisionInstruction } = await import('./scientific-harness.js');
+  assert.equal(scientificDocumentRevisionInstruction({}), ''); assert.equal(scientificDocumentRevisionInstruction({document_revision_support:'unavailable'}), '');
 });

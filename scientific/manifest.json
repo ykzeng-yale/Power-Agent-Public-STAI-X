@@ -1,15 +1,138 @@
 {
-  "harness_version": "2.2.0",
-  "model": "claude-haiku-4-5-20251001",
+  "harness_version": "2.4.2",
+  "model": "claude-sonnet-5-5",
   "core_sources_sha256": {
-    "scientific-harness.js": "7fcde84beda8d5dcd5058a370ade3cb639f6b761ae3557b608dbfa8564876fd3",
-    "scientific-reference-guard.js": "ed219830b8c2a1e223a9ddd6ad34d2d3d33dd02f7895ea0edcaa046f77185c02",
-    "scientific-r-executor.js": "4c9cace7439dfa660e09a91a43a0acdb98181cae231ffbc95a11230049414080",
+    "scientific-harness.js": "cc8fefc72a3178195abda09e27ad053a7c4f9288cb6d949ef483856a5c5d25b3",
+    "scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+    "scientific-reference-guard.js": "9db3174f066b17448d92bc511d0a5daba47a89cda0e0cb6b4a63596e9fe48ec5",
+    "scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
     "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
     "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
-    "model-config.js": "af4ebb1329a24c9a7048255d3da9761bd722beff7dadc68c2f9a55dd15e67a57",
-    "scientific-sources.js": "acf5f6f3d7469dec75e035e0723284784c37764c1e170d03334959c9a41de78c"
+    "model-config.js": "df63b1d4f7d519ce831c7159713ac7c3da66a09725f971e1228277bd98a50f15",
+    "scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a"
   },
-  "scientific_validation": "New prospective capability cohort with identical two budget profiles in both modes; old frozen cohorts retained. Actual independent mathematical oracles and artifact file parsing are separate from scientific figure visual QA.",
-  "api_adapter_sha256": "c8abdc324844237138f9f6fbf8c92fab7c41eba984f8af1ba43dd2b6b3963e82"
+  "scientific_validation": "2.4.2 document-delivery/diagnostic-boundary source release. Candidate/native/production acceptance pending separately; prior2.4.1 scoped successes and allfailures retained. Native2.3.1 and scoredstudies unchanged; no generalaccuracy/superiority/hostequivalence.",
+  "api_adapter_sha256": "8b339a98a55a9db7a4ad1c51dc14ddc9ec7c22f925fc1d35d08780fe4054e8ac",
+  "hosted_support_sources_sha256": {
+    "auth-middleware.js": "baaf6cbd204e897965ed5d857003c38d5aaf343c715403058e1b775d41e32c31",
+    "hosted-scientific-config.js": "a794f91c5bc3499c894daa46df69519af0c7327d1f08c3bb951565bb7aa43bcc",
+    "scientific-access-ticket.js": "a64655f6dbd2495e45ff092a4c213771899ab46723bf7acfe15b05ac3ef1cf80",
+    "scientific-public-access.js": "adf27ccd7808da4c8ebc2b46e0982bb6a152f91303604ff7d867381032f7a634",
+    "file-parser-improved.js": "828c228e27ae52fb9916cdc7380baddd20fe024e8e9ad51170dd5a47cf5d4232",
+    "file-parser-pdf-worker.js": "58f36c5dbded25d0a6945e42a488a9f1bce7ce089ac34c62d1cf01239eb71f2c",
+    "scientific-file-data.js": "850b05bce18e6366be2c68caf2bf62003089a8b41e7c5ed080cf79a46cec966b",
+    "scientific-file-api.js": "ffbca6d7c8692271f5b27ae7490d10e37f90ecceb130c79f91ca7cb869b762bf",
+    "scientific-report-adapter.js": "c8a2f4e83e80533c7f9fa3e44a268b34b5285b0540853b8561d2d145f0fa8d59",
+    "scientific-document-adapter.js": "2f60b68a4a49e5450842f29ebe4958b0395b244bec33f2c3311e12c49264a193",
+    "scientific-input-formats.js": "e3a4907e200a46dc30160d85acd60f7da9d8ca044e6b546f614884e41e12441e",
+    "document-corrector.js": "2aeaaee924cd992a689ccf0200a489ee39728651aeeb29ff7e21b54fa9bd021b",
+    "scientific-legacy-events.js": "002fb6c5f61fe42e33fa2a275e5b87d55b500e94d40e9d999dcdd165f8d58b0d",
+    "scientific-private-session.js": "538e2ec9fe7e63b7e1b68d17077df708bb299893a7006abb5c8adfa63449c113"
+  },
+  "test_sources_sha256": {
+    "test-anonymous-reservation.js": "87f25973def702964121e3c82199f8e992c95e467daf7e166ed346a7c76f945a",
+    "test-hosted-scientific-config.js": "eb179615b1a96de64d6e6fa6932f9027e9eb77a42215bcbc171c7bbde3a64455",
+    "test-scientific-access-ticket.js": "80ec1c62b68f077a5c1516641787ff53cd890c01fb8fa3d5f1654f59a31f74a4",
+    "test-scientific-api.js": "3c49969cb1ff8a9964c5fdffbd982b20ad8d719f1dd38f7f909dbde9ddf555b0",
+    "test-scientific-design-binding.js": "d8cccfa8801d5aa0ceeee4373bf51b2e1628577b41c72395dc976e245364f2d9",
+    "test-scientific-document-adapter.js": "a6df26189e15f0a60690915366457e8c10c374ea68602247d6a1b50f05675420",
+    "test-scientific-document-corrector.js": "c6d46ee7d5978146db12db0f1fbf6cf563364570135a79624844e70a3b700b64",
+    "test-scientific-file-api.js": "3768a453cbf62a991e5901ed29530666984ee2422bc530f5b31e6ae523c8e16e",
+    "test-scientific-file-data.js": "b6074b033f2de21cff0a50f736ec57505c5bc1a275037a4bf8bc795790ee2f4b",
+    "test-scientific-harness.js": "85a59fb5d0d5c1154d2a280311e14846cfe7a462430a60229593b1a75e567acd",
+    "test-scientific-legacy-events.js": "9bab9c5962beeca36d941bf66171fff4a16b62ff60749f9c85a305c51a155b74",
+    "test-scientific-model-config.js": "0fd09c7bf09380a55374ec9d32dbf1f10afdc12bfc146bdd0211e7e8a1c8c4c6",
+    "test-scientific-output-contract.js": "d66d93e4cd4683fb28bec829d4037a124d24d7737821c2916d2a90c6265dad01",
+    "test-scientific-private-session.js": "d667775910a5410c6ae90d36706ea8f22ded2b1184ee409bb7b9d2b1fa49dd86",
+    "test-scientific-public-access.js": "f1df13578d4b50c102ef894fb9a5f3e0216ff563d1893c2c346d95e61ce39f43",
+    "test-scientific-r-artifacts.js": "05c2ace206f6cfc5e4a6a15bfbdbc30e3658181ff4699f7a2a1560ca1f1fed3c",
+    "test-scientific-reference-guard.js": "96e52c2cc19056b5ccd54c90337de80c966513090e023276e6203ec74c2fd0de",
+    "test-scientific-report-adapter.js": "0397d8cc105352f0e1cbae3e29dd9126d6788e8abb1b698221620048362b9a11",
+    "test-scientific-sources.js": "0439d08aa841165782be7273e8851b85302e42e005e4e06339653c2bd56a3770"
+  },
+  "routing_model": "claude-haiku-5-5",
+  "native_skill_version": "2.3.1",
+  "optional_api_dependencies_scope": "Pinned root devDependencies are required only for optional hosted API/file/document/report tests; default standalone CLI/core has no npm runtime dependency.",
+  "public_test_scope_adaptations": {
+    "source_test_sha256": "9504282c048d473c5c079b4a9ee35a868de37285a957e3e6ab75ee8f89368dc2",
+    "public_scoped_test_sha256": "d667775910a5410c6ae90d36706ea8f22ded2b1184ee409bb7b9d2b1fa49dd86",
+    "only_change": "Explicitly skip APP/Cloud-only static main-registration check because no monolithic hosted main is bundled. Original static assertions are retained; mounted Express owner/ticket/foreign-ID/direct-R tests remain exact.",
+    "app_main_receipt_source": "backend-legacy-adapter-source-sha256.txt",
+    "no_public_main_fixture_added": true
+  },
+  "shared_preprocessing_blind_review_qualification": {
+    "status": "CANDIDATE_BLIND_AFTER_SHARED_PREPROCESSING",
+    "qualification": "Preliminary input preparation is shared context, not an independent scientific check. In the selected 2.4.1 PDF/DOCX engineering trial, preliminary model interpretations included approximate 63/64-participant suggestions and remained in the reviewer\u2019s original source material. No offline oracle or current candidate answer/code/artifacts were exposed before the recorded numerical precheck. The workflow is therefore candidate-blind after shared preprocessing, not fully answer-blind. This qualification does not change the retained raw records, numerical tolerance, scored studies or native 2.3.1 evidence.",
+    "preliminary_model_interpretation_shared_with_reviewer": true,
+    "fully_answer_blind_claimed": false
+  },
+  "document_delivery_release": {
+    "previous_version": "2.4.1",
+    "runtime_version": "2.4.2",
+    "previous_runtime_sources_sha256": {
+      "scientific-harness.js": "61e935e682acf2fa62653c185f749ae5f08e33a219e032d7dbf453d5bcb880f5",
+      "scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+      "scientific-reference-guard.js": "58b85c5ab07ccde1bce18108c676fb59c5704dba981abcc3e8ac0081953e9d7d",
+      "scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
+      "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+      "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+      "model-config.js": "da385d798cb9b147c6f6314f52aca5b95720ec302fe670f505ce50e540381cb3",
+      "scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a"
+    },
+    "changed_core_sources": [
+      "scientific-harness.js",
+      "scientific-reference-guard.js",
+      "model-config.js"
+    ],
+    "source_changes": [
+      "Server-declared hosted document contract in scientific-role prompts; standalone unsupported contexts unchanged.",
+      "Bounded editorial proposals after accepted numerical science and before reports with actual source/file/model/application receipts.",
+      "Separate numerical scientificSuccess/scientificStatus from required-document productSuccess/productStatus; no full-product celebration for missing required proposal.",
+      "Conservative primary/diagnostic quantity-label boundary with unchanged R reference formulas and inclusive tolerance.",
+      "HARNESS_VERSION2.4.2 metadata."
+    ],
+    "native_instructions_checkers_changed": false,
+    "workers_or_model_choices_or_scientific_budgets_changed": false,
+    "scientific_reference_formulas_or_tolerance_changed": false,
+    "scored_studies_rerun": false,
+    "new_native_host_trial": false,
+    "source_validation_status": "Public223tests:221pass/2documentedscopedskips/0fail; portable11/11pass; source package only, nativecandidate/production pending.",
+    "candidate_native_production_validation_status": "Pending separate root-owned2.4.2 finalimage/provider/native/production receipts",
+    "prior2.4.1_selected_successes_scope": "Separately scoped science, freshRDS/live-history UIbyte downloads, minimalDOCXproposal withprose qualifications. Priorpartial/failing product/trials retained; no2.4.2 validation inferred.",
+    "shared_preprocessing_blind_scope": "Candidate-blind after shared preliminary interpretation, not fullyanswer-blind."
+  },
+  "source_release_tests": {
+    "public_scientific": {
+      "suite": "scientific",
+      "exit_code": 0,
+      "log": "public-scientific-tests.log",
+      "tests": 223,
+      "pass": 221,
+      "fail": 0,
+      "skipped": 2
+    },
+    "portable": {
+      "suite": "portable",
+      "exit_code": 0,
+      "log": "public-portable-tests.log",
+      "tests": 11,
+      "pass": 11
+    },
+    "skip_scopes": [
+      "Linux-only blind UID isolation not exercised onmacOS.",
+      "APP/Cloud-only staticmonolithic main-registration sourcebinding notbundled inPublic; mountedExpressguard HTTPtests run."
+    ]
+  },
+  "test_only_formatting_cleanup": {
+    "before_sha256": "bcdb4f1d86e028580c2a073052bc48cb3690e60e0d9257f23141731d6cbae808",
+    "after_sha256": "85a59fb5d0d5c1154d2a280311e14846cfe7a462430a60229593b1a75e567acd",
+    "removed_bytes": 1,
+    "line": 584,
+    "affected_app_and_public_tests": {
+      "total": 48,
+      "pass": 48,
+      "fail": 0
+    },
+    "deployed_runtime_changed": false
+  }
 }

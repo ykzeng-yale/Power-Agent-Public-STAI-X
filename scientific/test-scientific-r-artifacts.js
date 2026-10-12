@@ -6,6 +6,16 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { ScientificRExecutor } from './scientific-r-executor.js';
 
+test('original JPEG figure formats retain actual captured bytes, hashes and MIME types', async () => {
+  const root=await fs.mkdtemp(path.join(os.tmpdir(),'pa-jpeg-test-'));await fs.chmod(root,0o711);
+  const executor=new ScientificRExecutor({root});const workspace=await executor.createWorkspace();
+  try {
+    const result=await executor.executeRCode('jpeg("figure.jpg",width=500,height=400);plot(1:3,2:4);dev.off();jpeg("figure.jpeg",width=500,height=400);plot(1:3,2:4);dev.off()', {workspace});
+    assert.equal(result.success,true,result.stderr);assert.equal(result.output_files.length,2);
+    for(const file of result.output_files){const bytes=await fs.readFile(file.path);assert.equal(file.mime_type,'image/jpeg');assert.equal(bytes.readUInt16BE(0),0xffd8);assert.equal(file.sha256,createHash('sha256').update(bytes).digest('hex'));assert.deepEqual(bytes,Buffer.from(file.content_base64,'base64'));}
+  } finally {await fs.rm(root,{recursive:true,force:true});}
+});
+
 test('actual R artifacts are execution-specific, hashed and readable by a subsequent checker', async () => {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'pa-artifact-test-'));
   await fs.chmod(root, 0o711);
@@ -63,6 +73,32 @@ test('artifact limits and linked files are rejected without borrowing earlier ou
     assert.equal(result.success, true, result.stderr);
     assert.equal(result.output_files.length, 0);
     assert.equal(result.artifact_issues.length, 1);
+  } finally { await fs.rm(root, { recursive: true, force: true }); }
+});
+
+test('an actual captured RDS checkpoint can be explicitly adopted by a new fresh workspace', async () => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'pa-rds-source-test-'));
+  await fs.chmod(root, 0o711);
+  const executor = new ScientificRExecutor({ root });
+  const firstWorkspace = await executor.createWorkspace();
+  const nextWorkspace = await executor.createWorkspace();
+  try {
+    const first = await executor.executeRCode('values <- seq_len(7); saveRDS(list(values=values,mean=mean(values)), "checkpoint.rds"); save(values,file="values.RData")', { workspace: firstWorkspace });
+    assert.equal(first.success, true, first.stderr);
+    assert.equal(first.output_files.length, 2);
+    const checkpoint = first.output_files.find(file => file.type === 'rds');
+    assert.equal(checkpoint.mime_type, 'application/octet-stream');
+    const bytes = await fs.readFile(checkpoint.path);
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), checkpoint.sha256);
+    assert.deepEqual(bytes, Buffer.from(checkpoint.content_base64, 'base64'));
+    const adopted = path.join(nextWorkspace.directory, 'source-1-checkpoint.rds');
+    await fs.writeFile(adopted, bytes);
+    const next = await executor.executeRCode(`stopifnot(!exists("values")); state <- readRDS(${JSON.stringify(adopted)}); stopifnot(length(state$values)==7, mean(state$values)==state$mean); write.csv(data.frame(value=state$values), "continued.csv",row.names=FALSE)`, { workspace: nextWorkspace, phase: 'blind_verification' });
+    assert.equal(next.success, true, next.stderr);
+    assert.equal(next.output_files.length, 1);
+    assert.equal(next.output_files[0].name, 'continued.csv');
+    assert.notEqual(first.executionDirectory, next.executionDirectory);
+    assert.equal(createHash('sha256').update(await fs.readFile(checkpoint.path)).digest('hex'), checkpoint.sha256);
   } finally { await fs.rm(root, { recursive: true, force: true }); }
 });
 

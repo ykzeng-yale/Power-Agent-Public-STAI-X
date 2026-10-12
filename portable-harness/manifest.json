@@ -1,16 +1,17 @@
 {
-  "harness_version": "2.2.0",
-  "model": "claude-haiku-4-5-20251001",
-  "verified_date": "2026-10-02",
+  "harness_version": "2.4.2",
+  "model": "claude-sonnet-5-5",
+  "verified_date": "2026-10-12",
   "model_catalogue": "https://platform.claude.com/docs/en/models/overview",
   "runtime_sources_sha256": {
-    "scientific-harness.js": "7fcde84beda8d5dcd5058a370ade3cb639f6b761ae3557b608dbfa8564876fd3",
-    "scientific-reference-guard.js": "ed219830b8c2a1e223a9ddd6ad34d2d3d33dd02f7895ea0edcaa046f77185c02",
-    "scientific-r-executor.js": "4c9cace7439dfa660e09a91a43a0acdb98181cae231ffbc95a11230049414080",
+    "scientific-harness.js": "cc8fefc72a3178195abda09e27ad053a7c4f9288cb6d949ef483856a5c5d25b3",
+    "scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+    "scientific-reference-guard.js": "9db3174f066b17448d92bc511d0a5daba47a89cda0e0cb6b4a63596e9fe48ec5",
+    "scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
     "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
     "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
-    "model-config.js": "af4ebb1329a24c9a7048255d3da9761bd722beff7dadc68c2f9a55dd15e67a57",
-    "scientific-sources.js": "acf5f6f3d7469dec75e035e0723284784c37764c1e170d03334959c9a41de78c"
+    "model-config.js": "df63b1d4f7d519ce831c7159713ac7c3da66a09725f971e1228277bd98a50f15",
+    "scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a"
   },
   "host_native_runs": "Record the host model and tools separately; equivalence to the pinned runner is not assumed.",
   "skill_files_sha256": {
@@ -23,14 +24,15 @@
     "scripts/reference-checks.R": "b26cd4795065b8aa9110de4198f6cb5aae0f4691342c7e5b140eccca40a6dca4",
     "scripts/render-record.py": "2a69dc627732f60db5179b9e76167ee926afe7d1f822a6229b5ccf56ab7c9121",
     "scripts/run-power-agent.mjs": "a44e12617ed3e5f9fd989775718d36e732c6b9e9dcb5ffe4afeeffc20a936a04",
-    "scripts/runtime/model-config.js": "af4ebb1329a24c9a7048255d3da9761bd722beff7dadc68c2f9a55dd15e67a57",
-    "scripts/runtime/package.json": "a90fc33418afa2b9cbf4768524b021135b965ecdf993457505bfae3ac44a8428",
+    "scripts/runtime/model-config.js": "df63b1d4f7d519ce831c7159713ac7c3da66a09725f971e1228277bd98a50f15",
+    "scripts/runtime/package.json": "91be85e7c0cd8eec2a4cf7c45f3637be6b6449a2783186759777ad2497db22f3",
     "scripts/runtime/scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
-    "scripts/runtime/scientific-harness.js": "7fcde84beda8d5dcd5058a370ade3cb639f6b761ae3557b608dbfa8564876fd3",
-    "scripts/runtime/scientific-r-executor.js": "4c9cace7439dfa660e09a91a43a0acdb98181cae231ffbc95a11230049414080",
+    "scripts/runtime/scientific-harness.js": "cc8fefc72a3178195abda09e27ad053a7c4f9288cb6d949ef483856a5c5d25b3",
+    "scripts/runtime/scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+    "scripts/runtime/scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
     "scripts/runtime/scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
-    "scripts/runtime/scientific-reference-guard.js": "ed219830b8c2a1e223a9ddd6ad34d2d3d33dd02f7895ea0edcaa046f77185c02",
-    "scripts/runtime/scientific-sources.js": "acf5f6f3d7469dec75e035e0723284784c37764c1e170d03334959c9a41de78c",
+    "scripts/runtime/scientific-reference-guard.js": "9db3174f066b17448d92bc511d0a5daba47a89cda0e0cb6b4a63596e9fe48ec5",
+    "scripts/runtime/scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a",
     "scripts/specification-preflight.py": "fc81eb2ff082fdb4e87daa92dc04cc65abc2f67e304bac465dbc85579d204211",
     "scripts/verify-record.mjs": "f2dfd99a1bb6fe4e869441bd52e2ebc66a09578f4f2af10770b97761e2c4dd0b"
   },
@@ -41,7 +43,7 @@
     "reference-checks.R": "1.0.1",
     "render-record.py": "1.0.0"
   },
-  "bundled_api_runtime_status": "Workflow2.2.0: source tools, blind precheck, phase/repair reservation and execution-specific artifact capture; separately evaluated prospectively.",
+  "bundled_api_runtime_status": "OptionalCLIcore2.4.2 with server-only document-capability prompting and conservative diagnostic/primary label handling. No hostedDOCXpipeline or cloud/npm runtime dependency is silently added toCLI. Sonnet5.5/Haiku5.5 pins unchanged. Actual2.4.2candidate/native/production acceptance pending separate receipts; native2.3.1 unchanged.",
   "native_validation_scope": "Selected native2.3.1 paired-design planning/coding/blind-checker demonstration retained; final record SHA3820474ba451266f2dc5464ef1149d102384e60242aa43d3992aaa68bf9b1699. Native preflight1.0.2 corrects paired/independent-check routing. Native optional runtime was not invoked; host model identifier unavailable, no API equivalence or representative accuracy claim.",
   "prior_runtime_release_relation": {
     "historical_runtime_version": "2.0.0",
@@ -234,5 +236,160 @@
     "version": "1.0.2",
     "sha256": "fc81eb2ff082fdb4e87daa92dc04cc65abc2f67e304bac465dbc85579d204211",
     "scope": "Input-recognition routing only; supported profiles remain simple independent/clustered means; paired/other designs require complete manual specification; no defaults or numerical reference changes."
+  },
+  "post_study_runtime_correction": {
+    "previous_version": "2.2.1",
+    "release_version": "2.2.2",
+    "validation_scope": "Deterministic and actual local R request/provenance/interface regressions, plus replay rejection of preserved failed2.2.1 code. No new native skill behavioral trial or representative accuracy claim.",
+    "mathematical_reference_change": false,
+    "stdout_parser_change": false,
+    "budget_change": false,
+    "scientific_numeric_unit_coercion": false,
+    "provenance_filter_scope": "Conservative source AST transcription detector; unresolved dynamic/function flows remain qualified, no dynamic-dataflow/file-authenticity/math certification."
+  },
+  "format_regressions": [
+    {
+      "historical_runtime_version": "2.2.1",
+      "historical_sources_sha256": {
+        "scientific-harness.js": "16cb687ce8ec24f4a4c2f9d6ba2acd4b6fc24a35498d018c77b566dc32e1b5a9",
+        "scientific-output-contract.js": "3e4ef843fe2e5c9bfe0592185fd5a6bfcffea6e36b6f0224593992e8a6e2b21d",
+        "scientific-reference-guard.js": "ed219830b8c2a1e223a9ddd6ad34d2d3d33dd02f7895ea0edcaa046f77185c02",
+        "scientific-r-executor.js": "4c9cace7439dfa660e09a91a43a0acdb98181cae231ffbc95a11230049414080",
+        "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+        "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+        "model-config.js": "5e2f22ad13908ac345409e18731eb69cda6fc0f0d8fce3b31f95998bff96974f",
+        "scientific-sources.js": "acf5f6f3d7469dec75e035e0723284784c37764c1e170d03334959c9a41de78c"
+      },
+      "release_runtime_version": "2.2.2",
+      "release_sources_sha256": {
+        "scientific-harness.js": "0f7987fcd8a0174df7d6570c6fcc92dae35e599d8fe79427946d3d49f78b0d25",
+        "scientific-output-contract.js": "bdac6e6846676c8d6643b69c07bdb0b6b973e8314de98fa5a4d6efa61ab645dc",
+        "scientific-reference-guard.js": "ed219830b8c2a1e223a9ddd6ad34d2d3d33dd02f7895ea0edcaa046f77185c02",
+        "scientific-r-executor.js": "4c9cace7439dfa660e09a91a43a0acdb98181cae231ffbc95a11230049414080",
+        "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+        "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+        "model-config.js": "e1a9fce65b50b9868125ddb2d74e04b0f39422036e30f97883c02bcbd85c2c82",
+        "scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a"
+      },
+      "validation_scope": "Predecessor engineering acceptance failure preserved, not a benchmark cohort. Current method/provenance/source-interface regression and later live acceptance are separate."
+    }
+  ],
+  "routing_model": "claude-haiku-5-5",
+  "current_optional_api_runtime": {
+    "version": "2.4.2",
+    "scientific_roles_model": "claude-sonnet-5-5",
+    "advisory_router_model": "claude-haiku-5-5",
+    "scope": "Document-delivery/guard source release; actual2.4.2native/production pending. Native2.3.1/checkers and alloldstudies unchanged; prior2.4.1selectedsuccesses/failures scopedseparately."
+  },
+  "verified_date_scope": "Source/package construction only; actual tagged-preview/Linux/production/browser acceptance is recorded separately.",
+  "product_restoration_release": {
+    "previous_version": "2.4.0",
+    "runtime_version": "2.4.1",
+    "previous_runtime_sources_sha256": {
+      "scientific-harness.js": "61e935e682acf2fa62653c185f749ae5f08e33a219e032d7dbf453d5bcb880f5",
+      "scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+      "scientific-reference-guard.js": "58b85c5ab07ccde1bce18108c676fb59c5704dba981abcc3e8ac0081953e9d7d",
+      "scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
+      "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+      "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+      "model-config.js": "e1797beb92824ee04aa95576018539110f607697736b44517f76f703edf437eb",
+      "scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a"
+    },
+    "only_core_version_metadata_changed": true,
+    "hosted_api_changes": "Real scientific events adapted to original full UI; stable evidence groups, truthful terminal states, byte-backed files, raw Markdown once-escape contract, scoped tickets/private-session guards.",
+    "native_instructions_checkers_changed": false,
+    "scientific_reference_formulas_or_tolerance_changed": false,
+    "scored_studies_rerun": false,
+    "new_native_host_trial": false,
+    "production_validation_status": "Pending separate root receipts",
+    "created_at": "2026-10-12T06:14:07.636158+00:00"
+  },
+  "product_restoration_history": [
+    {
+      "previous_version": "2.3.1",
+      "runtime_version": "2.4.0",
+      "previous_runtime_sources_sha256": {
+        "scientific-harness.js": "be9a755c5bec5162e39387fe863262943db264ea51e8b0e95c88a095e29cabab",
+        "scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+        "scientific-reference-guard.js": "58b85c5ab07ccde1bce18108c676fb59c5704dba981abcc3e8ac0081953e9d7d",
+        "scientific-r-executor.js": "4c9cace7439dfa660e09a91a43a0acdb98181cae231ffbc95a11230049414080",
+        "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+        "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+        "model-config.js": "46abbf5a0049a48b5ecfa79d002f85fdca52f02c34504c96e132003f5dab2d10",
+        "scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a"
+      },
+      "native_instructions_checkers_changed": false,
+      "scientific_reference_formulas_or_tolerance_changed": false,
+      "scored_studies_rerun": false,
+      "new_native_host_trial": false,
+      "validation_scope": "Selected source/unit/actual-R engineering and separate root deployment/browser receipts; no general correctness or single/multi superiority claim",
+      "created_at": "2026-10-12T05:25:40.826522+00:00",
+      "product_ux_status": "Rewritten frontend rejected by user; package/source/evidence retained."
+    }
+  ],
+  "shared_preprocessing_blind_review_qualification": {
+    "status": "CANDIDATE_BLIND_AFTER_SHARED_PREPROCESSING",
+    "qualification": "Preliminary input preparation is shared context, not an independent scientific check. In the selected 2.4.1 PDF/DOCX engineering trial, preliminary model interpretations included approximate 63/64-participant suggestions and remained in the reviewer\u2019s original source material. No offline oracle or current candidate answer/code/artifacts were exposed before the recorded numerical precheck. The workflow is therefore candidate-blind after shared preprocessing, not fully answer-blind. This qualification does not change the retained raw records, numerical tolerance, scored studies or native 2.3.1 evidence.",
+    "no_offline_oracle_or_current_candidate_before_recorded_precheck": true,
+    "preliminary_model_interpretation_shared_with_reviewer": true,
+    "fully_answer_blind_claimed": false,
+    "native_or_scored_study_claim_changed": false
+  },
+  "document_delivery_release": {
+    "previous_version": "2.4.1",
+    "runtime_version": "2.4.2",
+    "previous_runtime_sources_sha256": {
+      "scientific-harness.js": "61e935e682acf2fa62653c185f749ae5f08e33a219e032d7dbf453d5bcb880f5",
+      "scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+      "scientific-reference-guard.js": "58b85c5ab07ccde1bce18108c676fb59c5704dba981abcc3e8ac0081953e9d7d",
+      "scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
+      "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+      "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+      "model-config.js": "da385d798cb9b147c6f6314f52aca5b95720ec302fe670f505ce50e540381cb3",
+      "scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a"
+    },
+    "changed_core_sources": [
+      "scientific-harness.js",
+      "scientific-reference-guard.js",
+      "model-config.js"
+    ],
+    "source_changes": [
+      "Server-declared hosted document contract in scientific-role prompts; standalone unsupported contexts unchanged.",
+      "Bounded editorial proposals after accepted numerical science and before reports with actual source/file/model/application receipts.",
+      "Separate numerical scientificSuccess/scientificStatus from required-document productSuccess/productStatus; no full-product celebration for missing required proposal.",
+      "Conservative primary/diagnostic quantity-label boundary with unchanged R reference formulas and inclusive tolerance.",
+      "HARNESS_VERSION2.4.2 metadata."
+    ],
+    "native_instructions_checkers_changed": false,
+    "workers_or_model_choices_or_scientific_budgets_changed": false,
+    "scientific_reference_formulas_or_tolerance_changed": false,
+    "scored_studies_rerun": false,
+    "new_native_host_trial": false,
+    "source_validation_status": "Public223tests:221pass/2documentedscopedskips/0fail; portable11/11pass; source package only, nativecandidate/production pending.",
+    "candidate_native_production_validation_status": "Pending separate root-owned2.4.2 finalimage/provider/native/production receipts",
+    "prior2.4.1_selected_successes_scope": "Separately scoped science, freshRDS/live-history UIbyte downloads, minimalDOCXproposal withprose qualifications. Priorpartial/failing product/trials retained; no2.4.2 validation inferred.",
+    "shared_preprocessing_blind_scope": "Candidate-blind after shared preliminary interpretation, not fullyanswer-blind."
+  },
+  "source_release_tests": {
+    "public_scientific": {
+      "suite": "scientific",
+      "exit_code": 0,
+      "log": "public-scientific-tests.log",
+      "tests": 223,
+      "pass": 221,
+      "fail": 0,
+      "skipped": 2
+    },
+    "portable": {
+      "suite": "portable",
+      "exit_code": 0,
+      "log": "public-portable-tests.log",
+      "tests": 11,
+      "pass": 11
+    },
+    "skip_scopes": [
+      "Linux-only blind UID isolation not exercised onmacOS.",
+      "APP/Cloud-only staticmonolithic main-registration sourcebinding notbundled inPublic; mountedExpressguard HTTPtests run."
+    ]
   }
 }

@@ -1,6 +1,7 @@
 // Auth & Credit System Middleware
 import { randomUUID } from 'crypto';
 import { supabase } from './supabase-client.js';
+import { verifyAnonymousAnalysisTicket, isAnonymousScientificRoute } from './scientific-access-ticket.js';
 
 // ========================================
 // AUTHENTICATION MIDDLEWARE
@@ -15,13 +16,13 @@ import { supabase } from './supabase-client.js';
  * 2. anon_fp cookie -> anonymous user
  * 3. Generate new anonymous fingerprint
  */
-export function authenticateUser(req, res, next) {
+export function authenticateUser(req, res, next, client = supabase) {
   const authHeader = req.headers.authorization;
 
   if (authHeader && authHeader.startsWith('Bearer ')) {
     const token = authHeader.slice(7);
 
-    supabase.auth.getUser(token)
+    client.auth.getUser(token)
       .then(({ data, error }) => {
         if (!error && data?.user) {
           req.user = {
@@ -32,13 +33,13 @@ export function authenticateUser(req, res, next) {
           req.authToken = token;
         } else {
           // Invalid token - fall through to anonymous
-          assignAnonymousFingerprint(req, res);
+          if (!assignAnonymousFingerprint(req, res)) return;
         }
         next();
       })
       .catch((err) => {
         console.error('[auth-middleware] JWT verification error:', err.message);
-        assignAnonymousFingerprint(req, res);
+        if (!assignAnonymousFingerprint(req, res)) return;
         next();
       });
 
@@ -46,7 +47,7 @@ export function authenticateUser(req, res, next) {
   }
 
   // No Authorization header - check for anonymous fingerprint cookie
-  assignAnonymousFingerprint(req, res);
+  if (!assignAnonymousFingerprint(req, res)) return;
   next();
 }
 
@@ -54,6 +55,17 @@ export function authenticateUser(req, res, next) {
  * Assign anonymous fingerprint from cookie or generate a new one.
  */
 function assignAnonymousFingerprint(req, res) {
+  const ticket = req.headers['x-power-agent-anonymous-ticket'];
+  if (ticket !== undefined) {
+    try {
+      if (!isAnonymousScientificRoute(req.path)) throw new Error('Ticket scope mismatch');
+      req.anonFingerprint = verifyAnonymousAnalysisTicket(ticket, req.headers.origin);
+      return true;
+    } catch {
+      res.status(401).json({ error: 'invalid_anonymous_analysis_ticket', message: 'Refresh the page to obtain a valid analysis connection.' });
+      return false;
+    }
+  }
   const existingFp = req.cookies?.anon_fp;
 
   if (existingFp) {
@@ -68,6 +80,7 @@ function assignAnonymousFingerprint(req, res) {
       maxAge: 365 * 24 * 60 * 60 * 1000 // 1 year
     });
   }
+  return true;
 }
 
 // ========================================
