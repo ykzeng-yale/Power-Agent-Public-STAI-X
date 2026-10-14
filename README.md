@@ -2,7 +2,7 @@
 
 Power Agent assists with statistical power and sample-size planning through a structured design specification and executed R code. This release provides a standalone API-backed CLI and an installable scientific skill for Codex and Claude Code. The hosted application is [power-agent.io](https://power-agent.io/).
 
-The standalone API runtime defaults to `claude-sonnet-5-5` for scientific roles and `claude-haiku-5-5` for advisory routing. It remains version `2.4.2`; the native skill is `2.3.2` (native knowledge `1.0.2`). The hosted service separately restores the original Domain Expert, PI and iterative R-coding workflow with semantic report/conclusion review. See [current scientific checks](docs/SCIENTIFIC-CHECKS-20261014.md) for the implementation boundaries and the separate matched 16-attempt comparison. Earlier dated release sections retain their historical scope. Actual models, execution, code hashes, units, assumptions, role calls, resource usage and terminal status accompany run records. A model critique or successful program does not certify statistical validity.
+The standalone API runtime defaults to `claude-sonnet-5-5` for scientific roles and `claude-haiku-5-5` for advisory routing. Current source is version `2.4.3`; the native skill is `2.3.3` (native knowledge `1.0.2`). The hosted service separately restores the original Domain Expert, PI and iterative R-coding workflow with semantic report/conclusion review. See [current scientific checks](docs/SCIENTIFIC-CHECKS-20261014.md) for the implementation boundaries and the separate matched 16-attempt comparison. Earlier dated release sections retain their historical scope. Actual models, execution, code hashes, units, assumptions, role calls, resource usage and terminal status accompany run records. A model critique or successful program does not certify statistical validity.
 
 ## Standalone API workflow
 
@@ -120,3 +120,8 @@ The reference guard now distinguishes explicitly labelled diagnostic source/comp
 ## Production restoration verified October 12, 2026
 
 The original interface and selected complete hosted workflow passed native production validation. The dated [release audit](docs/PRODUCT-RELEASE-20261012.md) records deployment, exact file-byte checks and scientific limits. Earlier source-package status notes and frozen benchmark/native-skill evidence keep their historical scope.
+
+
+## Prospective source correction after the matched comparison
+
+API2.4.3 clarifies canonical planner unit tokens and rejects annotated strings before computation without converting their meanings. Native2.3.3 clarifies reviewer-session support; the optional kernel and mathematical helper scopes are separate. Prior16 API2.4.2 results and native2.3.2 failures are unchanged. The original hosted production UI/workflow is unchanged by this source-only release. See docs/SCIENTIFIC-CHECKS-20261014.md for separately scoped evidence.

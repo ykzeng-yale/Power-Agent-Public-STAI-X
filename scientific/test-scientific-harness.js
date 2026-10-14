@@ -99,6 +99,93 @@ test('underspecified request asks for clarification and runs no code', async () 
   const result = await runScientificAnalysis('How many people do I need?', { executor: { executeRCode: () => { throw new Error('must not execute'); } }, transport: async () => tool('submit_design', unresolved) });
   assert.equal(result.scientificStatus, 'needs_clarification'); assert.equal(result.executions.length, 0);
 });
+test('design unit contract rejects annotations and invalid tokens before any R execution', async () => {
+  for (const mode of ['single', 'multi']) {
+    for (const unit of ['participants_total (events separate)', 'participants per arm', 'Participants_total', 'participants-total', ' participants_total', 'participants_total ', 'participants__total', 'participants_total_', '']) {
+      let executions = 0;
+      const candidate = { ...plan, sample_size_unit: unit };
+      const result = await runScientificAnalysis('Use the supplied complete design', {
+        workflowMode: mode, maxModelCalls: 1,
+        executor: { executeRCode: async () => { executions++; throw new Error('Invalid design must not execute'); } },
+        transport: async () => tool('submit_design', candidate)
+      });
+      assert.equal(result.scientificStatus, 'budget_exhausted'); assert.equal(result.success, false);
+      assert.equal(executions, 0); assert.equal(result.executions.length, 0); assert.equal(result.plan, null);
+      const rejected = result.trace.find(t => t.type === 'tool_result' && t.tool === 'submit_design');
+      assert.equal(rejected.result.accepted, false); assert.equal(rejected.submitted_input.sample_size_unit, unit);
+      assert.ok(rejected.result.issues.some(issue => /sample_size_unit.*canonical lowercase underscore token/.test(issue)));
+      assert.ok(rejected.result.issues.some(issue => /scientific_notes.*re-submit.*before execution/.test(issue)));
+      assert.equal(result.budget.used.model_calls, 1);
+    }
+  }
+});
+test('design unit contract accepts an explicit corrected resubmission with notes in both modes', async () => {
+  for (const mode of ['single', 'multi']) {
+    const annotated = { ...plan, sample_size_unit: 'participants_per_group (two equal groups)' };
+    const corrected = { ...plan, scientific_notes: ['There are two equal groups; per-group and total counts remain distinct.'] };
+    const queue = [tool('submit_design', annotated), tool('submit_design', corrected), tool('execute_r', { code: 'coder-count-fixture', purpose: 'mock calculated count' }), tool('submit_answer', answer), tool('execute_r', { code: 'review-count-fixture', purpose: 'mock independent check' }), tool('submit_review', review)];
+    const requests = []; let executions = 0;
+    const executor = { ...fakeExecutor, executeRCode: async () => { executions++; return fakeExecutor.executeRCode(); } };
+    const result = await runScientificAnalysis('Use the supplied complete design', {
+      workflowMode: mode, verificationPolicy: 'required', executor, maxModelCalls: 6,
+      budgetProfile: { id: 'unit-contract-fixture', plannerMaxCalls: 2, solverMaxCalls: 2, solverMaxExecutions: 1, verificationMaxCalls: 2, verificationMaxExecutions: 1, repairMaxCalls: 1, repairMaxExecutions: 1, reserveRepair: false },
+      transport: async request => { if (requests.length <= 2) assert.equal(executions, 0); requests.push(structuredClone(request)); return queue.shift(); }
+    });
+    assert.equal(result.scientificStatus, 'completed'); assert.equal(executions, 2);
+    assert.equal(result.iterations, 6); assert.equal(result.budget.used.model_calls, 6);
+    assert.equal(result.plan.sample_size_unit, corrected.sample_size_unit);
+    assert.equal(result.design.sample_size_unit, corrected.sample_size_unit);
+    assert.deepEqual(result.plan.scientific_notes, corrected.scientific_notes);
+    assert.deepEqual(result.results, answer.results); assert.equal(result.verification.review_passed, true);
+    const submissions = result.trace.filter(t => t.type === 'tool_result' && t.tool === 'submit_design');
+    assert.deepEqual(submissions.map(t => t.result.accepted), [false, true]);
+    assert.equal(submissions[0].submitted_input.sample_size_unit, annotated.sample_size_unit);
+    const field = requests[0].tools.find(t => t.name === 'submit_design').input_schema.properties.sample_size_unit;
+    assert.equal(field.type, 'string'); assert.equal(field.enum, undefined);
+    assert.match(field.description, /scientific_notes/); assert.match(requests[0].system, /one canonical lowercase underscore token/);
+  }
+});
+test('design unit contract preserves canonical count distinctions without conversion or a closed enum', async () => {
+  for (const unit of ['participants_per_arm', 'participants_per_group', 'participants_total', 'participants_per_cell', 'clusters_per_arm', 'clusters_per_sequence', 'clusters_total', 'events', 'pairs', 'observations', 'families_per_site']) {
+    const specified = { ...plan, method: 'declared_count_fixture', sample_size_unit: unit };
+    const rows = [{ metric: 'sample_size', value: 4, unit }];
+    const proposed = { ...answer, method: specified.method, summary: 'Mock declared count', results: rows };
+    const queue = [tool('submit_design', specified), tool('execute_r', { code: 'count-fixture', purpose: 'mock count' }), tool('submit_answer', proposed)];
+    const executor = { createWorkspace: fakeExecutor.createWorkspace, executeRCode: async () => ({ success: true, exitCode: 0, output: 'POWER_AGENT_RESULT=' + JSON.stringify({ results: rows }) + '\n' }) };
+    const result = await runScientificAnalysis('Use the supplied complete design', { executor, maxModelCalls: 3, transport: async () => queue.shift() });
+    assert.equal(result.scientificStatus, 'completed'); assert.equal(result.iterations, 3);
+    assert.equal(result.plan.sample_size_unit, unit); assert.equal(result.design.sample_size_unit, unit);
+    assert.deepEqual(result.results, rows); assert.equal(result.executions.length, 1);
+    assert.equal(result.trace.filter(t => t.type === 'tool_result' && t.tool === 'submit_design')[0].result.accepted, true);
+  }
+});
+test('design unit contract retains generic items calculations', async () => {
+  const specified = { ...plan, calculation_type: 'other', method: 'arithmetic_sum', alpha: null, target_power: null, sidedness: 'not-applicable', sample_size_unit: 'items' };
+  const rows = [{ metric: 'computed_sum', value: 4, unit: 'items' }];
+  const proposed = { ...answer, method: specified.method, summary: 'Mock sum', results: rows };
+  const queue = [tool('submit_design', specified), tool('execute_r', { code: 'items-fixture', purpose: 'mock sum' }), tool('submit_answer', proposed)];
+  const executor = { createWorkspace: fakeExecutor.createWorkspace, executeRCode: async () => ({ success: true, exitCode: 0, output: 'POWER_AGENT_RESULT=' + JSON.stringify({ results: rows }) + '\n' }) };
+  const result = await runScientificAnalysis('Sum the supplied items', { executor, maxModelCalls: 3, transport: async () => queue.shift() });
+  assert.equal(result.scientificStatus, 'completed'); assert.equal(result.design.sample_size_unit, 'items');
+  assert.deepEqual(result.results, rows); assert.equal(result.executions.length, 1);
+});
+test('design unit contract leaves nonnumerical explanations unaffected without R', async () => {
+  const specified = { ...plan, request_kind: 'explanation', calculation_type: 'other', method: 'explanation', alpha: null, target_power: null, sidedness: 'not-applicable', sample_size_unit: 'no design count is required' };
+  const proposed = { ...answer, method: specified.method, summary: 'Nonnumerical explanation', results: [], evidence_ids: [] };
+  const queue = [tool('submit_design', specified), tool('submit_answer', proposed)];
+  const result = await runScientificAnalysis('Explain the design concept without calculating', { maxModelCalls: 2, executor: { executeRCode: async () => { throw new Error('Explanation must not execute'); } }, transport: async () => queue.shift() });
+  assert.equal(result.scientificStatus, 'completed'); assert.equal(result.design.sample_size_unit, specified.sample_size_unit);
+  assert.equal(result.executions.length, 0); assert.deepEqual(result.results, []);
+});
+test('design unit contract leaves unresolved clarification unaffected without R', async () => {
+  for (const mode of ['single', 'multi']) {
+    const unresolved = { ...plan, ready: false, sample_size_unit: 'clusters per arm and total participants remain unresolved', missing_information: ['cluster size'], clarification_questions: ['What is the planned cluster size?'] };
+    const result = await runScientificAnalysis('How many clusters are needed?', { workflowMode: mode, maxModelCalls: 1, executor: { executeRCode: async () => { throw new Error('Clarification must not execute'); } }, transport: async () => tool('submit_design', unresolved) });
+    assert.equal(result.scientificStatus, 'needs_clarification'); assert.equal(result.plan.sample_size_unit, unresolved.sample_size_unit);
+    assert.equal(result.design.sample_size_unit, unresolved.sample_size_unit); assert.equal(result.executions.length, 0);
+    assert.equal(result.trace.find(t => t.type === 'tool_result' && t.tool === 'submit_design').result.accepted, true);
+  }
+});
 test('uploaded data are available in a scoped path; arbitrary storage URLs are rejected', async () => {
   const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'power-source-test-'));
   const context = await prepareScientificContext({ dataset: { name: '../../data.csv', content: Buffer.from('x,y\n1,2\n').toString('base64') } }, { directory });

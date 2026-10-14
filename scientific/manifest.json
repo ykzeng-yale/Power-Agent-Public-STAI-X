@@ -1,17 +1,17 @@
 {
-  "harness_version": "2.4.2",
+  "harness_version": "2.4.3",
   "model": "claude-sonnet-5-5",
   "core_sources_sha256": {
-    "scientific-harness.js": "cc8fefc72a3178195abda09e27ad053a7c4f9288cb6d949ef483856a5c5d25b3",
+    "scientific-harness.js": "2037394d4369969214343959325c1b7959d19b6a5e1aef1471f37b8c4f107741",
     "scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
     "scientific-reference-guard.js": "9db3174f066b17448d92bc511d0a5daba47a89cda0e0cb6b4a63596e9fe48ec5",
     "scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
     "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
     "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
-    "model-config.js": "df63b1d4f7d519ce831c7159713ac7c3da66a09725f971e1228277bd98a50f15",
+    "model-config.js": "36eeb9504f0759e638c48cd7e9885082e1e89e5763fa00056d192191b29f88af",
     "scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a"
   },
-  "scientific_validation": "2.4.2 document-delivery/diagnostic-boundary source release. Candidate/native/production acceptance pending separately; prior2.4.1 scoped successes and allfailures retained. Native2.3.1 and scoredstudies unchanged; no generalaccuracy/superiority/hostequivalence.",
+  "scientific_validation": "API2.4.3 prospective planner unit-format/figure-guidance source release. Historical16 API2.4.2 comparison and all earlier scored cohorts remain exact; selected tests and any separate native persistent-session diagnostic do not establish accuracy/superiority/hosted-equivalence.",
   "api_adapter_sha256": "8b339a98a55a9db7a4ad1c51dc14ddc9ec7c22f925fc1d35d08780fe4054e8ac",
   "hosted_support_sources_sha256": {
     "auth-middleware.js": "baaf6cbd204e897965ed5d857003c38d5aaf343c715403058e1b775d41e32c31",
@@ -34,12 +34,12 @@
     "test-hosted-scientific-config.js": "eb179615b1a96de64d6e6fa6932f9027e9eb77a42215bcbc171c7bbde3a64455",
     "test-scientific-access-ticket.js": "80ec1c62b68f077a5c1516641787ff53cd890c01fb8fa3d5f1654f59a31f74a4",
     "test-scientific-api.js": "3c49969cb1ff8a9964c5fdffbd982b20ad8d719f1dd38f7f909dbde9ddf555b0",
-    "test-scientific-design-binding.js": "d8cccfa8801d5aa0ceeee4373bf51b2e1628577b41c72395dc976e245364f2d9",
+    "test-scientific-design-binding.js": "a420212355431245e3220f0440fbeb287fed4dc2fd75eb254ae69b8d6c03fc9a",
     "test-scientific-document-adapter.js": "a6df26189e15f0a60690915366457e8c10c374ea68602247d6a1b50f05675420",
     "test-scientific-document-corrector.js": "c6d46ee7d5978146db12db0f1fbf6cf563364570135a79624844e70a3b700b64",
     "test-scientific-file-api.js": "3768a453cbf62a991e5901ed29530666984ee2422bc530f5b31e6ae523c8e16e",
     "test-scientific-file-data.js": "b6074b033f2de21cff0a50f736ec57505c5bc1a275037a4bf8bc795790ee2f4b",
-    "test-scientific-harness.js": "85a59fb5d0d5c1154d2a280311e14846cfe7a462430a60229593b1a75e567acd",
+    "test-scientific-harness.js": "ba02f1c1da888564f3e61c26f434f4298883c21110924d2e94ff971023d97cfc",
     "test-scientific-legacy-events.js": "9bab9c5962beeca36d941bf66171fff4a16b62ff60749f9c85a305c51a155b74",
     "test-scientific-model-config.js": "0fd09c7bf09380a55374ec9d32dbf1f10afdc12bfc146bdd0211e7e8a1c8c4c6",
     "test-scientific-output-contract.js": "d66d93e4cd4683fb28bec829d4037a124d24d7737821c2916d2a90c6265dad01",
@@ -51,7 +51,7 @@
     "test-scientific-sources.js": "0439d08aa841165782be7273e8851b85302e42e005e4e06339653c2bd56a3770"
   },
   "routing_model": "claude-haiku-5-5",
-  "native_skill_version": "2.3.1",
+  "native_skill_version": "2.3.3",
   "optional_api_dependencies_scope": "Pinned root devDependencies are required only for optional hosted API/file/document/report tests; default standalone CLI/core has no npm runtime dependency.",
   "public_test_scope_adaptations": {
     "source_test_sha256": "9504282c048d473c5c079b4a9ee35a868de37285a957e3e6ab75ee8f89368dc2",
@@ -134,5 +134,24 @@
       "fail": 0
     },
     "deployed_runtime_changed": false
+  },
+  "historical_2_4_2_scientific_validation": "2.4.2 document-delivery/diagnostic-boundary source release. Candidate/native/production acceptance pending separately; prior2.4.1 scoped successes and allfailures retained. Native2.3.1 and scoredstudies unchanged; no generalaccuracy/superiority/hostequivalence.",
+  "post_comparison_component_checks": {
+    "version": "2.4.3",
+    "canonical_harness_design_model_tests": {
+      "APP": {
+        "tests": 69,
+        "passed": 69,
+        "failed": 0,
+        "skipped": 0
+      },
+      "Public": {
+        "tests": 69,
+        "passed": 69,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    "scope": "Local tests including actual R controls; mock transports, no provider calls. Historical source_release_tests remain their original release checks."
   }
 }

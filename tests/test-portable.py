@@ -87,9 +87,12 @@ class PortableContracts(unittest.TestCase):
                 project=Path(temp)/target; project.mkdir(); settings=project/'settings.txt'; settings.write_text('preserve')
                 command=['python3',str(ROOT/'portable-harness/install.py'),'--target',target,'--project',str(project)]
                 self.assertEqual(subprocess.run(command,capture_output=True).returncode,0)
-                destination=project/('.codex' if target=='codex' else '.claude')/'skills/power-agent-scientific'
+                destination=project/('.agents' if target=='codex' else '.claude')/'skills/power-agent-scientific'
                 self.assertEqual((destination/'SKILL.md').read_bytes(),(SKILL/'SKILL.md').read_bytes()); self.assertEqual(subprocess.run(command,capture_output=True).returncode,2)
-                self.assertEqual(subprocess.run(command+['--replace'],capture_output=True).returncode,0); self.assertEqual(settings.read_text(),'preserve'); self.assertEqual(len(list(destination.parent.glob('power-agent-scientific.backup-*'))),1)
+                self.assertEqual(subprocess.run(command+['--replace'],capture_output=True).returncode,0); self.assertEqual(settings.read_text(),'preserve')
+                backups=list(destination.parent.with_name('skills-backups').glob('power-agent-scientific.backup-*'))
+                self.assertEqual(len(backups),1); self.assertEqual((backups[0]/'SKILL.md').read_bytes(),(SKILL/'SKILL.md').read_bytes())
+                self.assertEqual(len(list(destination.parent.glob('power-agent-scientific.backup-*'))),0)
     def test_exact_runtime_digest_identity_and_cli_discovery(self):
         manifest=json.loads((ROOT/'scientific/manifest.json').read_text())
         for name,digest in manifest['core_sources_sha256'].items():

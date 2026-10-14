@@ -7,7 +7,7 @@ import { explicitDesignInputBindings, validateScientificDesignBindings, runScien
 import { ScientificRExecutor } from './scientific-r-executor.js';
 
 const query = "Two independent normal groups with common variance, no attrition, equal allocation: Cohen's d = 0.5, alpha = 0.05, target 80% power, strict two-sided pooled t test. Find the minimum sample size per group.";
-const plan = { ready: true, request_kind: 'calculation', calculation_type: 'sample_size', estimand: 'Difference between two independent normal groups', hypothesis: 'Two-sided difference in means', method: 'two_sample_t', alpha: .05, sidedness: 'two-sided', target_power: .8, allocation_ratio: 1, sample_size_unit: 'participants per group',
+const plan = { ready: true, request_kind: 'calculation', calculation_type: 'sample_size', estimand: 'Difference between two independent normal groups', hypothesis: 'Two-sided difference in means', method: 'two_sample_t', alpha: .05, sidedness: 'two-sided', target_power: .8, allocation_ratio: 1, sample_size_unit: 'participants_per_group',
   parameters: [{ name: 'delta', value: .5, unit: 'SD units', source: 'user' }, { name: 'sd', value: 1, unit: 'SD units', source: 'explicit_assumption' }], assumptions: ['Two independent normal groups', 'Common SD and equal variance', 'No attrition'], missing_information: [], clarification_questions: [], scientific_notes: [] };
 const repaired = () => ({ ...structuredClone(plan), parameters: [...structuredClone(plan.parameters), { name: 'cohens_d', value: .5, unit: 'standardized mean difference', source: 'user' }] });
 const tool = (name, input, id = name) => ({ content: [{ type: 'tool_use', id, name, input }], usage: { input_tokens: 1, output_tokens: 1 }, stop_reason: 'tool_use', model: 'fixture-model' });

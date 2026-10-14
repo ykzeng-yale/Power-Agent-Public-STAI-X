@@ -5,7 +5,7 @@ export const DEFAULT_POWER_AGENT_MODEL = 'claude-sonnet-5-5';
 export const DEFAULT_POWER_AGENT_ROUTING_MODEL = 'claude-haiku-5-5';
 export const POWER_AGENT_MODEL = process.env.POWER_AGENT_MODEL || DEFAULT_POWER_AGENT_MODEL;
 export const POWER_AGENT_ROUTING_MODEL = process.env.POWER_AGENT_ROUTING_MODEL || DEFAULT_POWER_AGENT_ROUTING_MODEL;
-export const HARNESS_VERSION = '2.4.2';
+export const HARNESS_VERSION = '2.4.3';
 
 export function resolveModelRoles(options = {}, environment = process.env) {
   const roles = ['router', 'planner', 'coder', 'reviewer'];

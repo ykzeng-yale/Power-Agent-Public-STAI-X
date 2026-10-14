@@ -1,21 +1,21 @@
 {
-  "harness_version": "2.4.2",
+  "harness_version": "2.4.3",
   "model": "claude-sonnet-5-5",
   "verified_date": "2026-10-12",
   "model_catalogue": "https://platform.claude.com/docs/en/models/overview",
   "runtime_sources_sha256": {
-    "scientific-harness.js": "cc8fefc72a3178195abda09e27ad053a7c4f9288cb6d949ef483856a5c5d25b3",
+    "scientific-harness.js": "2037394d4369969214343959325c1b7959d19b6a5e1aef1471f37b8c4f107741",
     "scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
     "scientific-reference-guard.js": "9db3174f066b17448d92bc511d0a5daba47a89cda0e0cb6b4a63596e9fe48ec5",
     "scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
     "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
     "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
-    "model-config.js": "df63b1d4f7d519ce831c7159713ac7c3da66a09725f971e1228277bd98a50f15",
+    "model-config.js": "36eeb9504f0759e638c48cd7e9885082e1e89e5763fa00056d192191b29f88af",
     "scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a"
   },
   "host_native_runs": "Record the host model and tools separately; equivalence to the pinned runner is not assumed.",
   "skill_files_sha256": {
-    "SKILL.md": "c4183fa688b9ec2349286718b182ad12ac2c610cdd6e38a8c80da70df0beb8cd",
+    "SKILL.md": "bcb2dc8d0bbeaf4974cb77ba79de667d3fec8af4fca4cd67e6cfd412bf45a762",
     "agents/openai.yaml": "404f598af7538a30ebccbe6b6b564f474d81d9eb11f3ca834907f918337f816d",
     "references/mean-reference-checks.md": "e4709c425f35c73d0808fc703bc8455bc4f37a6b0ecd657349e15f1c5e53dc83",
     "references/record-contract.md": "caf7a1cbf9b72b7d47a1f686a0da143bfd8e511248b190628a6ae722240946fb",
@@ -24,10 +24,10 @@
     "scripts/reference-checks.R": "b26cd4795065b8aa9110de4198f6cb5aae0f4691342c7e5b140eccca40a6dca4",
     "scripts/render-record.py": "2a69dc627732f60db5179b9e76167ee926afe7d1f822a6229b5ccf56ab7c9121",
     "scripts/run-power-agent.mjs": "a44e12617ed3e5f9fd989775718d36e732c6b9e9dcb5ffe4afeeffc20a936a04",
-    "scripts/runtime/model-config.js": "df63b1d4f7d519ce831c7159713ac7c3da66a09725f971e1228277bd98a50f15",
-    "scripts/runtime/package.json": "91be85e7c0cd8eec2a4cf7c45f3637be6b6449a2783186759777ad2497db22f3",
+    "scripts/runtime/model-config.js": "36eeb9504f0759e638c48cd7e9885082e1e89e5763fa00056d192191b29f88af",
+    "scripts/runtime/package.json": "37b73b213446b93a0dec440501464fff1941a0034bf23a99a11541e9b451361e",
     "scripts/runtime/scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
-    "scripts/runtime/scientific-harness.js": "cc8fefc72a3178195abda09e27ad053a7c4f9288cb6d949ef483856a5c5d25b3",
+    "scripts/runtime/scientific-harness.js": "2037394d4369969214343959325c1b7959d19b6a5e1aef1471f37b8c4f107741",
     "scripts/runtime/scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
     "scripts/runtime/scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
     "scripts/runtime/scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
@@ -36,15 +36,15 @@
     "scripts/specification-preflight.py": "fc81eb2ff082fdb4e87daa92dc04cc65abc2f67e304bac465dbc85579d204211",
     "scripts/verify-record.mjs": "f2dfd99a1bb6fe4e869441bd52e2ebc66a09578f4f2af10770b97761e2c4dd0b"
   },
-  "native_skill_version": "2.3.2",
+  "native_skill_version": "2.3.3",
   "native_checkers": {
     "specification-preflight.py": "1.0.2",
     "check-sample-size-units.py": "1.0.0",
     "reference-checks.R": "1.0.1",
     "render-record.py": "1.0.0"
   },
-  "bundled_api_runtime_status": "Optional CLI core 2.4.2 is unchanged, including all eight runtime source hashes. Native 2.3.2 updates instruction references and installer paths; hosted prompts and API compiled instructions are not changed or claimed equivalent. Historical runtime and scientific acceptance scopes remain as previously recorded.",
-  "native_validation_scope": "Selected native2.3.1 paired-design planning/coding/blind-checker demonstration retained; final record SHA3820474ba451266f2dc5464ef1149d102384e60242aa43d3992aaa68bf9b1699. Native preflight1.0.2 corrects paired/independent-check routing. Native optional runtime was not invoked; host model identifier unavailable, no API equivalence or representative accuracy claim. Native 2.3.2 changes instructions and packaging only; the earlier selected host demonstration does not validate these new instructions. Clean installation and deterministic helper component checks are recorded separately; no new host-model or API trial is claimed.",
+  "bundled_api_runtime_status": "Prospective API2.4.3 planner unit-format and figure-guidance source update; only scientific-harness.js and model-config.js differ from API2.4.2. Six other core sources and all native mathematical helpers remain exact. Hosted original workflow/source is unchanged.",
+  "native_validation_scope": "Four actual native2.3.2 demonstrations retain their original self-check and failed reviewer-startup scope. Native2.3.3 setup guidance is a subsequent source update. Separate persistent-session diagnostic outcomes must be recorded separately; no retrospective independent review or general accuracy claim.",
   "prior_runtime_release_relation": {
     "historical_runtime_version": "2.0.0",
     "historical_sources_sha256": {
@@ -63,8 +63,8 @@
       "model-config.js": "c1cc9d51feca670dcdb82c54d54523fceaaaaebf7dc758de80579d6ffe60231b"
     },
     "changes": [
-      "Linux-only RLIMIT_NOFILE128→512 to satisfy R startup",
-      "HARNESS_VERSION metadata2.0.0→2.0.1-cloud"
+      "Linux-only RLIMIT_NOFILE128\u2192512 to satisfy R startup",
+      "HARNESS_VERSION metadata2.0.0\u21922.0.1-cloud"
     ],
     "unchanged_workflow_files": [
       "scientific-harness.js",
@@ -94,7 +94,7 @@
       "model-config.js": "0a50c527197125f01df6c3e66d2ed122ffb0ac4036d24d686c336c98d6624f97"
     },
     "changes": [
-      "Separate explicitly preceding participant-count rows from the selected integer design and check n−1 per arm and 2(n−1) total",
+      "Separate explicitly preceding participant-count rows from the selected integer design and check n\u22121 per arm and 2(n\u22121) total",
       "Reject malformed or conflicting count-role labels and unsupported count units without numerical conversion",
       "HARNESS_VERSION2.1.3"
     ],
@@ -329,7 +329,7 @@
   ],
   "shared_preprocessing_blind_review_qualification": {
     "status": "CANDIDATE_BLIND_AFTER_SHARED_PREPROCESSING",
-    "qualification": "Preliminary input preparation is shared context, not an independent scientific check. In the selected 2.4.1 PDF/DOCX engineering trial, preliminary model interpretations included approximate 63/64-participant suggestions and remained in the reviewer’s original source material. No offline oracle or current candidate answer/code/artifacts were exposed before the recorded numerical precheck. The workflow is therefore candidate-blind after shared preprocessing, not fully answer-blind. This qualification does not change the retained raw records, numerical tolerance, scored studies or native 2.3.1 evidence.",
+    "qualification": "Preliminary input preparation is shared context, not an independent scientific check. In the selected 2.4.1 PDF/DOCX engineering trial, preliminary model interpretations included approximate 63/64-participant suggestions and remained in the reviewer\u2019s original source material. No offline oracle or current candidate answer/code/artifacts were exposed before the recorded numerical precheck. The workflow is therefore candidate-blind after shared preprocessing, not fully answer-blind. This qualification does not change the retained raw records, numerical tolerance, scored studies or native 2.3.1 evidence.",
     "no_offline_oracle_or_current_candidate_before_recorded_precheck": true,
     "preliminary_model_interpretation_shared_with_reviewer": true,
     "fully_answer_blind_claimed": false,
@@ -408,7 +408,41 @@
     "installer_backup_scope": "Timestamped backups are outside the live skill discovery directory."
   },
   "package_support_files_sha256": {
-    "README.md": "2689de7b32bac6c6f21e51cff5d68fc29943093bb30da80c39543e618d24da92",
+    "README.md": "7c1bd33ab4fc99e72beeec8d933e9bf0c0f01260dc17c4d16b2bb042cbf82b31",
     "install.py": "5b74af66d69296185ef684ef465e6b02e79198f40a3f9a36e93200f4fdce3e1f"
+  },
+  "historical_2_3_2_package_component_scope": {
+    "harness_version": "2.4.2",
+    "native_skill_version": "2.3.2",
+    "bundled_api_runtime_status": "Optional CLI core 2.4.2 is unchanged, including all eight runtime source hashes. Native 2.3.2 updates instruction references and installer paths; hosted prompts and API compiled instructions are not changed or claimed equivalent. Historical runtime and scientific acceptance scopes remain as previously recorded.",
+    "native_validation_scope": "Selected native2.3.1 paired-design planning/coding/blind-checker demonstration retained; final record SHA3820474ba451266f2dc5464ef1149d102384e60242aa43d3992aaa68bf9b1699. Native preflight1.0.2 corrects paired/independent-check routing. Native optional runtime was not invoked; host model identifier unavailable, no API equivalence or representative accuracy claim. Native 2.3.2 changes instructions and packaging only; the earlier selected host demonstration does not validate these new instructions. Clean installation and deterministic helper component checks are recorded separately; no new host-model or API trial is claimed."
+  },
+  "post_comparison_contract_release": {
+    "version": "2.4.3",
+    "native_version": "2.3.3",
+    "prior_core_sources_sha256": {
+      "scientific-harness.js": "cc8fefc72a3178195abda09e27ad053a7c4f9288cb6d949ef483856a5c5d25b3",
+      "scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+      "scientific-reference-guard.js": "9db3174f066b17448d92bc511d0a5daba47a89cda0e0cb6b4a63596e9fe48ec5",
+      "scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
+      "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+      "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+      "model-config.js": "df63b1d4f7d519ce831c7159713ac7c3da66a09725f971e1228277bd98a50f15",
+      "scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a"
+    },
+    "current_core_sources_sha256": {
+      "scientific-harness.js": "2037394d4369969214343959325c1b7959d19b6a5e1aef1471f37b8c4f107741",
+      "scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+      "scientific-reference-guard.js": "9db3174f066b17448d92bc511d0a5daba47a89cda0e0cb6b4a63596e9fe48ec5",
+      "scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
+      "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+      "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+      "model-config.js": "36eeb9504f0759e638c48cd7e9885082e1e89e5763fa00056d192191b29f88af",
+      "scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a"
+    },
+    "old_scored_records_unchanged": true,
+    "automatic_unit_conversion": false,
+    "count_semantics_certified_by_token_format": false,
+    "source_validation_scope": "Versioned source/component checks; no new agent-accuracy cohort or changed deployment is claimed."
   }
 }
