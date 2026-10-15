@@ -10,7 +10,7 @@
     "analyze": "node scripts/run-scientific.mjs",
     "test": "npm run test:scientific && npm run test:portable",
     "test:scientific": "node --test scientific/test-scientific*.js scientific/test-hosted-scientific-config.js scientific/test-anonymous-reservation.js",
-    "test:portable": "python3 tests/test-portable.py"
+    "test:portable": "python3 tests/test-portable.py && python3 -B -m unittest discover -s portable-harness/tests -v"
   },
   "engines": {
     "node": ">=20"

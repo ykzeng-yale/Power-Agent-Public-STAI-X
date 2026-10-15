@@ -1,0 +1,1008 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_revision": "2026-10-14.1",
+  "provenance": {
+    "source_path": "backend/legacy-method-catalog.js",
+    "source_sha256": "b7cc5e1a23ebbb67106a8cc5d994c11138402cfc9dca8f8bfbdb26b3209d290d",
+    "snapshot_date": "2026-10-14",
+    "scope": "Source-audited discovery cards copied without task answers. The original read_scope belongs to the audit, not a read by a future installed agent. Candidate APIs require current installed-version and task checks."
+  },
+  "cards": [
+    {
+      "id": "t-test",
+      "title": "Two-Sample T-Test",
+      "tier": 1,
+      "method": "Independent continuous two-group mean contrast.",
+      "candidates": [
+        "stats::power.t.test",
+        "pwr::pwr.t.test",
+        "pwr::pwr.t2n.test"
+      ],
+      "required_inputs": [
+        "Mean contrast/common SD or unrounded standardized d",
+        "Alpha, power, direction/sidedness, allocation ratio",
+        "Independent participant count in each arm"
+      ],
+      "limits": [
+        "Gaussian/common-variance Student t if using these balanced routines; Welch needs matching variance inputs and method",
+        "Two-sided default must be explicit; unequal allocation is not the same problem"
+      ],
+      "sources": [
+        {
+          "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/power.t.test.html",
+          "read_scope": "Complete function help, arguments, strict two-tail behavior and examples; browser read 2026-10-14. R-devel docs, not production version validation."
+        },
+        {
+          "url": "https://cran.r-project.org/web/packages/pwr/pwr.pdf",
+          "read_scope": "Relevant manual sections for t, ANOVA, proportions, chi-square and ES.w2; examples and argument conventions; not every page reviewed. Candidate basic functions, not a method allowlist."
+        }
+      ]
+    },
+    {
+      "id": "mixed-model",
+      "title": "Linear Mixed Effects Model",
+      "tier": 2,
+      "method": "Power for the prespecified fixed contrast in its actual hierarchical Gaussian model; analytic mixed-model methods or model-matched simulation.",
+      "candidates": [
+        "simr::makeLmer",
+        "simr::powerSim",
+        "simr::fixed"
+      ],
+      "required_inputs": [
+        "Randomization level and allocation; cluster/subject/time identifiers and all fixed/random terms.",
+        "Effect contrast and scale; residual SD versus marginal SD; all variance components/correlations.",
+        "Chosen test and finite-cluster degrees-of-freedom method; alpha, target power and design-search axis.",
+        "For simulation: seed, repetitions, failed-fit policy and Monte Carlo uncertainty."
+      ],
+      "limits": [
+        "ICC plus an unspecified standardized effect does not identify all hierarchical designs.",
+        "A generic design effect or asymptotic z test does not establish finite-cluster calibration."
+      ],
+      "sources": [
+        {
+          "url": "https://cran.r-project.org/web/packages/simr/simr.pdf",
+          "read_scope": "Official CRAN manual sections makeLmer/makeGlmer, powerSim, tests, variance modification; not an audit of all package methods."
+        }
+      ]
+    },
+    {
+      "id": "simulation-power",
+      "title": "Power Analysis via Simulation",
+      "tier": 3,
+      "method": "Prospective mixed-model simulation matching the actual randomization, repeated measures and tested contrast.",
+      "candidates": [
+        "simr::makeLmer",
+        "simr::makeGlmer",
+        "simr::powerSim",
+        "simr::fixed",
+        "simr::fcompare"
+      ],
+      "required_inputs": [
+        "Randomization unit, exact arm/site allocation, admissible participant designs and measurement times.",
+        "Outcome family/link, fixed coefficients, coding and tested contrast.",
+        "All random-effect variances/covariances and residual SD/correlation on compatible scales; the planned fitted model and test.",
+        "Seed, simulation precision, fit-failure policy and Monte Carlo interval."
+      ],
+      "limits": [
+        "A standardized effect and random-effects formula alone do not define a data-generating model. Reference-time and time-averaged contrasts differ.",
+        "Inspect generated design rows after extension. A qualifying simulated grid point is not a proven exact sample-size minimum."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/simr/html/powerSim.html",
+          "read_scope": "Official powerSim/test help and selected CRAN source sections were read; package not newly executed for this audit."
+        },
+        {
+          "url": "https://doi.org/10.1111/2041-210X.12504",
+          "read_scope": "Original publication method summary was read; no claim of a complete new literature review."
+        }
+      ]
+    },
+    {
+      "id": "anova-oneway",
+      "title": "One-Way ANOVA",
+      "tier": 1,
+      "method": "Balanced fixed-effect omnibus one-way F test.",
+      "candidates": [
+        "pwr::pwr.anova.test",
+        "stats::power.anova.test"
+      ],
+      "required_inputs": [
+        "Number of independent groups k",
+        "Cohen f or full group means/common within-group variance with exact convention",
+        "Balanced n/group, alpha, target power"
+      ],
+      "limits": [
+        "Independent Gaussian common-variance observations",
+        "Omnibus equal-means null; omnibus power does not guarantee any individual post-hoc comparison"
+      ],
+      "sources": [
+        {
+          "url": "https://cran.r-project.org/web/packages/pwr/pwr.pdf",
+          "read_scope": "Relevant manual sections for t, ANOVA, proportions, chi-square and ES.w2; examples and argument conventions; not every page reviewed. Candidate basic functions, not a method allowlist."
+        },
+        {
+          "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/power.anova.test.html",
+          "read_scope": "Complete function help; balanced one-way group variance and per-group n convention."
+        }
+      ]
+    },
+    {
+      "id": "two-proportions",
+      "title": "Two-Sample Proportion Test",
+      "tier": 1,
+      "method": "Two independent binomial proportions.",
+      "candidates": [
+        "stats::power.prop.test",
+        "pwr::pwr.2p.test",
+        "pwr::pwr.2p2n.test"
+      ],
+      "required_inputs": [
+        "Raw p1 and p2, each in[0,1]",
+        "Allocation, alpha, target power, sidedness and one-sided direction",
+        "Chosen large-sample/exact procedure and correction"
+      ],
+      "limits": [
+        "Independent binary observations",
+        "Arcsine h approximation and raw-proportion normal approximation are different methods; neither is automatically an exact test"
+      ],
+      "sources": [
+        {
+          "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/power.prop.test.html",
+          "read_scope": "Complete function help; two-sample n, p1/p2, sidedness and strict option."
+        },
+        {
+          "url": "https://cran.r-project.org/web/packages/pwr/pwr.pdf",
+          "read_scope": "Relevant manual sections for t, ANOVA, proportions, chi-square and ES.w2; examples and argument conventions; not every page reviewed. Candidate basic functions, not a method allowlist."
+        }
+      ]
+    },
+    {
+      "id": "survival-logrank",
+      "title": "Survival Analysis (Log-Rank Test)",
+      "tier": 2,
+      "method": "Two-arm log-rank/proportional-hazards design with a documented event requirement and separately justified event-to-enrollment conversion.",
+      "candidates": [
+        "powerSurvEpi::ssizeCT.default"
+      ],
+      "required_inputs": [
+        "Hazard ratio under PH, allocation ratio, sidedness, alpha and target power.",
+        "Control survival/event probability over the design horizon and a compatible treatment survival law.",
+        "Accrual distribution, whether follow-up is per-person or total study duration, censoring and any explicitly requested losses."
+      ],
+      "limits": [
+        "A median requires an explicit survival-shape assumption before it defines event probabilities.",
+        "Accrual duration plus maximum follow-up alone does not define the enrollment conversion."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/powerSurvEpi/html/ssizeCT.default.html",
+          "read_scope": "Official R help: usage, k allocation ratio, group event probabilities, returned sample sizes and documented approximation."
+        }
+      ]
+    },
+    {
+      "id": "logistic-regression",
+      "title": "Logistic Regression",
+      "tier": 2,
+      "method": "Power for a specified logistic coefficient or joint contrast; distinguish this from prediction-model development.",
+      "candidates": [
+        "pwrss::power.z.logistic"
+      ],
+      "required_inputs": [
+        "Target predictor type, coding/unit change and its distribution or treatment allocation.",
+        "Conditional baseline probability and specified OR; do not silently substitute marginal prevalence.",
+        "Covariate dependence relevant to information, planned test, sidedness, alpha and target power."
+      ],
+      "limits": [
+        "Predictor count and outcome prevalence alone do not define coefficient power.",
+        "A cases-per-predictor rule does not substitute for test power or prediction-development criteria."
+      ],
+      "sources": [
+        {
+          "url": "https://metinbulus.github.io/pwrss/reference/power.z.logistic.html",
+          "read_scope": "Package author documentation: single-coefficient Wald method, predictor distribution, baseline probability, covariate dependence and legacy aliases."
+        },
+        {
+          "url": "https://cran.r-project.org/web/packages/pmsampsize/pmsampsize.pdf",
+          "read_scope": "Official CRAN manual: development sample size is criterion based, distinct from one-coefficient testing."
+        }
+      ]
+    },
+    {
+      "id": "repeated-measures-anova",
+      "title": "Repeated Measures ANOVA",
+      "tier": 1,
+      "method": "Within-subject omnibus time test or specified longitudinal contrast.",
+      "candidates": [
+        "WebPower::wp.rmanova",
+        "Superpower::ANOVA_design"
+      ],
+      "required_inputs": [
+        "Number/timing of measurements and groups",
+        "Target omnibus time effect versus interaction/contrast",
+        "Full means+covariance or documented repeated-measures f definition",
+        "Nonsphericity epsilon or an explicit compatible covariance assumption, alpha/power, complete subject count"
+      ],
+      "limits": [
+        "Independent subjects; within-subject dependence specified",
+        "Do not equate a single time coefficient with the omnibus time effect",
+        "Correlation alone does not identify arbitrary covariance/nonsphericity"
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/WebPower/html/wp.rmanova.html",
+          "read_scope": "Function help, type, ng/nm/f and nonsphericity correction; no executed package validation."
+        },
+        {
+          "url": "https://cran.r-project.org/web/packages/Superpower/vignettes/intro_to_superpower.html",
+          "read_scope": "Introductory design/simulation vignette; ANOVA_design and ANOVA_power candidate workflow; not every design or installed API tested."
+        }
+      ]
+    },
+    {
+      "id": "correlation",
+      "title": "Correlation Analysis",
+      "tier": 2,
+      "method": "Power for a specified Pearson correlation test in independent paired observations; use a documented approximation or justified exact method.",
+      "candidates": [
+        "pwr::pwr.r.test"
+      ],
+      "required_inputs": [
+        "Null and alternative correlation, sign/direction, sidedness, alpha and target power.",
+        "Independent observational pairs and distributional assumption; specify a different method for rank, partial, clustered or repeated correlations.",
+        "For precision requests: confidence level and correlation-CI method."
+      ],
+      "limits": [
+        "The ordinary pwr correlation workflow is a candidate for null-zero Pearson testing, not every correlation design.",
+        "A planning correlation and anticipated CI width do not guarantee a realized interval."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/pwr/html/pwr.r.test.html",
+          "read_scope": "Official R help for correlation-test sample size, signed alternative and null-zero method."
+        }
+      ]
+    },
+    {
+      "id": "non-inferiority",
+      "title": "Non-Inferiority / Equivalence Test",
+      "tier": 2,
+      "method": "Prespecified one-sided non-inferiority test or intersection of two one-sided equivalence tests, with margins on a defined outcome scale.",
+      "candidates": [
+        "PowerTOST::sampleN.noninf",
+        "PowerTOST::sampleN.TOST"
+      ],
+      "required_inputs": [
+        "NI direction or both equivalence limits; expected difference/ratio, SD and raw/log scale.",
+        "Parallel versus paired/crossover design, allocation, alpha convention and target success event.",
+        "Clinical justification of margins is an external scientific input, not inferred from statistical convenience."
+      ],
+      "limits": [
+        "Equivalence requires both rejection conditions; one one-sided power is not their joint power.",
+        "Defaults for bioequivalence scale/design cannot be silently applied to a parallel continuous superiority/NI problem."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/PowerTOST/html/sampleN.noninf.html",
+          "read_scope": "Official R help: one-sided NI, raw/log scale, parallel/crossover choices and total sample-size units."
+        },
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/PowerTOST/html/sampleN.TOST.html",
+          "read_scope": "Official R help: two one-sided tests, alpha convention, exact power, margins, scale, SD and design."
+        }
+      ]
+    },
+    {
+      "id": "cluster-rct",
+      "title": "Cluster Randomized Trial",
+      "tier": 3,
+      "method": "Parallel cluster-randomized planning with a matching cluster-level or mixed-model analysis.",
+      "candidates": [
+        "CRTSize::n4means",
+        "simr::makeLmer",
+        "simr::powerSim"
+      ],
+      "required_inputs": [
+        "Outcome family; raw contrast and marginal SD, binary group risks, or count rates/exposure as appropriate.",
+        "Clusters per arm, allocation/stratification, cluster-size distribution, ICC and the planned test.",
+        "Alpha, direction, target power and any explicitly requested recruitment/missingness adjustments."
+      ],
+      "limits": [
+        "A design effect does not create independent participants or additional cluster degrees of freedom. Fixed cluster counts can limit attainable power.",
+        "CRTSize::n4means has a valid n field for balanced allocation; inspect nE/nC for unequal allocation and check the actual interface."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/CRTSize/html/n4means.html",
+          "read_scope": "Official help and selected n4means source/return fields were read; no new package execution."
+        },
+        {
+          "url": "https://doi.org/10.1093/ije/dyv113",
+          "read_scope": "Original methods overview page was read; it does not validate a particular implementation."
+        },
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/simr/html/powerSim.html",
+          "read_scope": "Official powerSim/test help and selected CRAN source sections were read; package not newly executed for this audit."
+        }
+      ]
+    },
+    {
+      "id": "stepped-wedge-crt",
+      "title": "Stepped-Wedge CRT",
+      "tier": 3,
+      "method": "Period-adjusted stepped-wedge cluster power using the actual intervention matrix and matching cohort or cross-sectional covariance.",
+      "candidates": [
+        "swCRTdesign::swDsn",
+        "swCRTdesign::swPwr",
+        "swdpwr::swdpower"
+      ],
+      "required_inputs": [
+        "Complete cluster-by-period treatment matrix, sequence counts, transitions and measurement schedule.",
+        "Outcome aggregation/family/link, baseline, raw effect and variance scale.",
+        "Cross-sectional versus cohort sampling, within-period/between-period correlations and any within-person dependence.",
+        "Period adjustment, treatment-effect timing, participant/observation units, test, alpha, power and feasible design range."
+      ],
+      "limits": [
+        "Check each implementation's support for incomplete cells, unequal sizes and correlation decay; do not invent a time trend to select a code branch.",
+        "With explicit random-effect components, swCRTdesign uses residual sigma; swdpwr uses marginal sigma2. Map these and the correlation parameters from the same covariance model. Cohort observations must not be counted as distinct people."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/swdpwr/html/swdpower.html",
+          "read_scope": "Official help and selected CRAN source were read for covariance, scale and time-branch behavior; no new execution."
+        },
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/swCRTdesign/html/swPwr.html",
+          "read_scope": "Official swPwr help/model parameterizations were read; no new numerical validation."
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0169260721005964",
+          "read_scope": "Original publication abstract was read for supported designs and correlation scope; full paper not claimed."
+        }
+      ]
+    },
+    {
+      "id": "chi-square",
+      "title": "Chi-Square Test",
+      "tier": 1,
+      "method": "Pearson contingency-table independence chi-square.",
+      "candidates": [
+        "pwr::pwr.chisq.test",
+        "pwr::ES.w2"
+      ],
+      "required_inputs": [
+        "Rows/columns and corresponding df",
+        "Cohen w or alternative joint cell probabilities/margins",
+        "Alpha, power, total independent n",
+        "Margins/joint table if expected counts or odds ratio are requested"
+      ],
+      "limits": [
+        "Specified multinomial sampling and asymptotic Pearson test",
+        "Chi-square rejection uses an upper tail; omnibus association is nondirectional",
+        "w alone does not identify odds ratio or cell counts"
+      ],
+      "sources": [
+        {
+          "url": "https://cran.r-project.org/web/packages/pwr/pwr.pdf",
+          "read_scope": "Relevant manual sections for t, ANOVA, proportions, chi-square and ES.w2; examples and argument conventions; not every page reviewed. Candidate basic functions, not a method allowlist."
+        }
+      ]
+    },
+    {
+      "id": "paired-t-test",
+      "title": "Paired T-Test",
+      "tier": 1,
+      "method": "One-sample t test of independent pair differences.",
+      "candidates": [
+        "stats::power.t.test",
+        "pwr::pwr.t.test"
+      ],
+      "required_inputs": [
+        "Mean paired difference and SD of differences or unrounded dz",
+        "Alpha, sidedness/direction, target power",
+        "Number of complete independent pairs"
+      ],
+      "limits": [
+        "Normally distributed differences for exact small-sample t calibration",
+        "If SDdifference is provided, correlation is not an additional power parameter",
+        "Correlation sensitivity requires holding marginal SDs fixed and recomputing difference SD coherently"
+      ],
+      "sources": [
+        {
+          "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/power.t.test.html",
+          "read_scope": "Complete function help, arguments, strict two-tail behavior and examples; browser read 2026-10-14. R-devel docs, not production version validation."
+        },
+        {
+          "url": "https://cran.r-project.org/web/packages/pwr/pwr.pdf",
+          "read_scope": "Relevant manual sections for t, ANOVA, proportions, chi-square and ES.w2; examples and argument conventions; not every page reviewed. Candidate basic functions, not a method allowlist."
+        }
+      ]
+    },
+    {
+      "id": "one-sample-t-test",
+      "title": "One-Sample T-Test",
+      "tier": 1,
+      "method": "Continuous mean against a fixed known reference.",
+      "candidates": [
+        "stats::power.t.test",
+        "pwr::pwr.t.test"
+      ],
+      "required_inputs": [
+        "Fixed null mean and alternative mean",
+        "Positive observation SD, alpha, power, sidedness/direction",
+        "Independent participant count"
+      ],
+      "limits": [
+        "Reference value treated fixed/known, not an independently estimated sample mean",
+        "Gaussian observations for exact small-sample t calibration"
+      ],
+      "sources": [
+        {
+          "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/power.t.test.html",
+          "read_scope": "Complete function help, arguments, strict two-tail behavior and examples; browser read 2026-10-14. R-devel docs, not production version validation."
+        },
+        {
+          "url": "https://cran.r-project.org/web/packages/pwr/pwr.pdf",
+          "read_scope": "Relevant manual sections for t, ANOVA, proportions, chi-square and ES.w2; examples and argument conventions; not every page reviewed. Candidate basic functions, not a method allowlist."
+        }
+      ]
+    },
+    {
+      "id": "one-proportion",
+      "title": "One-Sample Proportion Test",
+      "tier": 1,
+      "method": "Single binomial probability against a fixed null.",
+      "candidates": [
+        "MKpower::power.prop1.test",
+        "pwr::pwr.p.test",
+        "stats::binom.test"
+      ],
+      "required_inputs": [
+        "Fixed p0 and anticipated p1",
+        "Alpha, target power, one/two-sided direction",
+        "Planned exact/approximate rejection rule and continuity convention",
+        "Independent Bernoulli count n"
+      ],
+      "limits": [
+        "Exact binomial rejection sets are discrete; do not label a normal/arcsine routine exact",
+        "Population reference is treated fixed; uncertainty in an estimated national rate needs another model"
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/MKpower/html/power.prop1.test.html",
+          "read_scope": "Function help for approximate one-proportion calculation and continuity correction. Page labels MKpower0.9; installed help must be checked."
+        },
+        {
+          "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/binom.test.html",
+          "read_scope": "Complete exact binomial help and alternatives; exact rejection-set power requires summing binomial probabilities, not a power function call."
+        },
+        {
+          "url": "https://cran.r-project.org/web/packages/pwr/pwr.pdf",
+          "read_scope": "Relevant manual sections for t, ANOVA, proportions, chi-square and ES.w2; examples and argument conventions; not every page reviewed. Candidate basic functions, not a method allowlist."
+        }
+      ]
+    },
+    {
+      "id": "mcnemar-test",
+      "title": "McNemar's Test",
+      "tier": 1,
+      "method": "Paired binary marginal-change test.",
+      "candidates": [
+        "MESS::power_mcnemar_test",
+        "stats::mcnemar.test",
+        "stats::binom.test"
+      ],
+      "required_inputs": [
+        "Unconditional discordant joint probabilities p01 and p10 with p01+p10<=1",
+        "Alternative direction, alpha, target power",
+        "Chosen corrected/uncorrected asymptotic or conditional exact test",
+        "Number of matched pairs"
+      ],
+      "limits": [
+        "Discordant counts are mutually exclusive multinomial cells of the same n pairs",
+        "Do not interpret p01/p10 as probabilities conditional on being discordant unless converted",
+        "Zero discordant probability/ratio boundaries need explicit handling"
+      ],
+      "sources": [
+        {
+          "url": "https://ekstroem.github.io/MESS/reference/power_mcnemar_test.html",
+          "read_scope": "Maintainer function help including paid, psi, n pairs and normal/exact/cond.exact. Documentation cell notation is inconsistent with its example: inspect installed source and check against explicit p01/p10 before mapping."
+        },
+        {
+          "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/mcnemar.test.html",
+          "read_scope": "Complete function help; paired table symmetry and continuity correction."
+        },
+        {
+          "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/binom.test.html",
+          "read_scope": "Complete exact binomial help and alternatives; exact rejection-set power requires summing binomial probabilities, not a power function call."
+        }
+      ]
+    },
+    {
+      "id": "wilcoxon-mann-whitney",
+      "title": "Mann-Whitney U Test (Wilcoxon Rank-Sum)",
+      "tier": 1,
+      "method": "Independent two-distribution rank-sum power.",
+      "candidates": [
+        "MKpower::sim.ssize.wilcox.test",
+        "MKpower::sim.power.wilcox.test",
+        "stats::wilcox.test"
+      ],
+      "required_inputs": [
+        "Group distributions or a supported alternative/variance model",
+        "Probability superiority orientation and tie convention",
+        "Allocation, alpha, sidedness/direction and planned exact/asymptotic/corrected rank test",
+        "Seed, repetitions, failed-test treatment, Monte Carlo uncertainty for simulation"
+      ],
+      "limits": [
+        "A=P(X>Y)+.5P(X=Y) under ties; smaller pain may favor treatment rather than larger scores",
+        "Probability superiority alone does not universally identify alternative rank-statistic variance/power",
+        "d=sqrt(2)*qnorm(A) is conditional on equal-variance Gaussian location shift, not universal"
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/MKpower/html/sim.ssize.wilcox.test.html",
+          "read_scope": "Function help and design examples: two generators, sidedness, test options and grid. Page labels MKpower0.9; current CRAN package manual also opened; installed version must be checked."
+        },
+        {
+          "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/wilcox.test.html",
+          "read_scope": "Function help including rank-sum hypothesis, tie and exact/correction behavior. R-devel behavior can differ from deployed R."
+        }
+      ]
+    },
+    {
+      "id": "multiple-regression",
+      "title": "Multiple Linear Regression",
+      "tier": 2,
+      "method": "Documented incremental partial F test comparing nested Gaussian linear models.",
+      "candidates": [
+        "WebPower::wp.regression"
+      ],
+      "required_inputs": [
+        "Full/reduced models, number of tested coefficients q and full-model parameter count P excluding intercept.",
+        "Anticipated reduced/full R-squared and their compatible incremental change; allocation/design assumptions.",
+        "Alpha, target power and the chosen package-specific noncentrality convention."
+      ],
+      "limits": [
+        "The corrected current template already distinguishes q, P and incremental R-squared.",
+        "pwr.f2.test mapping is not automatically a general adjusted-model mapping; verify both df and noncentrality."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/WebPower/html/wp.regression.html",
+          "read_scope": "Official R help: full/reduced predictor counts, f-squared and regular/Cohen convention."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cran/pwr/master/R/pwr.f2.test.R",
+          "read_scope": "Package source: exact noncentrality f2*(u+v+1) and F tails; not a general fixed-design specification."
+        }
+      ]
+    },
+    {
+      "id": "two-way-anova",
+      "title": "Two-Way ANOVA",
+      "tier": 2,
+      "method": "Power for prespecified main-effect or interaction contrasts/omnibus tests in the complete factorial Gaussian model.",
+      "candidates": [
+        "WebPower::wp.kanova"
+      ],
+      "required_inputs": [
+        "Factor levels/cells, allocation, complete fitted model and error degrees of freedom.",
+        "Selected contrast/omnibus numerator df and effect-size definition relative to residual variance.",
+        "Which effects are requirements; separate each-test, joint and multiplicity-adjusted power."
+      ],
+      "limits": [
+        "A collapsed one-way comparison and full factorial model need not have the same error df.",
+        "A scalar d does not identify an arbitrary multi-level omnibus effect."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/WebPower/html/wp.kanova.html",
+          "read_scope": "Official R help: sample size, selected numerator degrees of freedom, f and number of groups."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cran/pwr/master/R/pwr.f2.test.R",
+          "read_scope": "Package source: exact noncentrality f2*(u+v+1) and F tails; not a general fixed-design specification."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cran/pwr/master/R/pwr.anova.test.R",
+          "read_scope": "Package source: one-way balanced numerator/residual degrees of freedom, noncentrality and per-group units."
+        }
+      ]
+    },
+    {
+      "id": "ancova",
+      "title": "ANCOVA (Analysis of Covariance)",
+      "tier": 2,
+      "method": "Power for the selected adjusted group contrast/omnibus F test in a defined ANCOVA model.",
+      "candidates": [
+        "pwrss::power.f.ancova",
+        "pwrss::power.f.ancova.keppel"
+      ],
+      "required_inputs": [
+        "Groups/allocation, selected contrast, number of actual covariate parameters and fitted model.",
+        "Whether f/partial eta-squared already uses adjusted residual variance, or raw means/SD plus covariate explanatory R-squared.",
+        "Covariate-outcome joint structure, treatment-covariate relationship, alpha and power."
+      ],
+      "limits": [
+        "One pairwise covariate-outcome correlation does not identify multiple-covariate explanatory R-squared.",
+        "Do not apply variance reduction twice to an already adjusted effect size; gain is conditional on the model."
+      ],
+      "sources": [
+        {
+          "url": "https://metinbulus.github.io/pwrss/reference/power.f.ancova.html",
+          "read_scope": "Package author documentation: adjusted-effect-size ANCOVA interface."
+        },
+        {
+          "url": "https://metinbulus.github.io/pwrss/reference/power.f.ancova.keppel.html",
+          "read_scope": "Package author documentation: means/SD, covariate explanatory variance and adjusted versus unadjusted effect conventions."
+        }
+      ]
+    },
+    {
+      "id": "cox-regression",
+      "title": "Cox Proportional Hazards Regression",
+      "tier": 2,
+      "method": "Power for a specified Cox coefficient or contrast; identify event and covariate information separately from predictor count.",
+      "candidates": [
+        "powerSurvEpi::ssizeEpi.default",
+        "survival::coxph"
+      ],
+      "required_inputs": [
+        "PH coefficient target, HR per predictor unit, predictor coding/distribution and allocation/prevalence.",
+        "Dependence of the target predictor on adjustment covariates.",
+        "Event fraction over the defined observation design or survival/accrual/censoring law; alpha, sidedness, target power."
+      ],
+      "limits": [
+        "ssizeEpi.default is specifically documented for a binary target predictor and its stated covariance setup.",
+        "coxph fits data; it is not itself a power/sample-size function."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/powerSurvEpi/html/ssizeEpi.default.html",
+          "read_scope": "Official R help: binary target predictor, predictor prevalence, event fraction, covariate dependence and interpretation limits."
+        },
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/survival/html/coxph.html",
+          "read_scope": "Official R help for actual Cox model fitting; fitting is not itself a power calculator."
+        },
+        {
+          "url": "https://cran.r-project.org/web/packages/pmsampsize/pmsampsize.pdf",
+          "read_scope": "Official CRAN manual: development sample size is criterion based, distinct from one-coefficient testing."
+        }
+      ]
+    },
+    {
+      "id": "poisson-regression",
+      "title": "Poisson Regression",
+      "tier": 2,
+      "method": "Power for a Poisson log-link coefficient with explicit predictor distribution and exposure; use a distinct method for overdispersed/clustered counts.",
+      "candidates": [
+        "pwrss::power.z.poisson"
+      ],
+      "required_inputs": [
+        "Target rate ratio per specified predictor contrast, predictor distribution/allocation and adjustment dependence.",
+        "Baseline rate and exposure units, or expected count over an explicitly defined exposure.",
+        "Conditional variance/dispersion, clustering if present, planned test, alpha and power."
+      ],
+      "limits": [
+        "A predictor count alone does not determine covariate information.",
+        "Standard Poisson power does not automatically apply to negative-binomial, zero-inflated or cluster-correlated data."
+      ],
+      "sources": [
+        {
+          "url": "https://metinbulus.github.io/pwrss/reference/power.z.poisson.html",
+          "read_scope": "Package author documentation: Poisson single-coefficient Wald procedure, exposure, predictor distribution and rate specification."
+        }
+      ]
+    },
+    {
+      "id": "gee-model",
+      "title": "Generalized Estimating Equations (GEE)",
+      "tier": 2,
+      "method": "Power for a prespecified marginal mean contrast with a valid joint outcome distribution and the planned GEE variance/test.",
+      "candidates": [
+        "geepack::geeglm"
+      ],
+      "required_inputs": [
+        "Outcome family/link, marginal baseline means/probabilities and marginal effect scale.",
+        "Independent subjects/clusters, allocation, measurement times and covariance/correlation structure.",
+        "Working versus data-generating dependence, missingness, variance estimator/small-cluster correction, alpha and power.",
+        "For simulation: explicit fit-failure accounting, repetitions/seed and Monte Carlo precision."
+      ],
+      "limits": [
+        "A random-intercept logit variance is not an observed binary ICC, and its coefficient is not automatically a marginal OR.",
+        "A fitting package requires a matching power/simulation procedure; syntax success alone does not establish calibration."
+      ],
+      "sources": [
+        {
+          "url": "https://cran.r-project.org/web/packages/geepack/geepack.pdf",
+          "read_scope": "Official CRAN manual geeglm and id/waves: within-cluster contiguous row ordering, working correlation, sandwich variance."
+        }
+      ]
+    },
+    {
+      "id": "crossover-design",
+      "title": "Crossover Design",
+      "tier": 3,
+      "method": "Design-adjusted crossover treatment-contrast power under explicitly stated superiority, non-inferiority or equivalence hypotheses.",
+      "candidates": [
+        "PowerTOST::power.noninf",
+        "stats::pt",
+        "stats::qt",
+        "stats::lm"
+      ],
+      "required_inputs": [
+        "Sequences, periods, allocation, planned model, contrast and sidedness.",
+        "Marginal, residual or paired-difference SD with a compatible covariance/correlation model.",
+        "Period adjustment, carryover assumption, completeness, alpha, target power and any requested attrition."
+      ],
+      "limits": [
+        "A planned washout does not prove absent carryover. An ordinary paired test can differ from the planned period-adjusted analysis.",
+        "PowerTOST::power.noninf is directional; two-sided superiority requires a verified full rejection-region calculation. Default TOST addresses a different hypothesis.",
+        "Preserve admissible sequence balance and distinguish people, sequences and measurements."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/PowerTOST/html/power.noninf.html",
+          "read_scope": "Official help and original source were read in the prior audit; directional-power scope was checked."
+        },
+        {
+          "url": "https://www.bmj.com/content/366/bmj.l4378",
+          "read_scope": "Original CONSORT crossover extension was read with the browser; a separate direct HTML request failed."
+        }
+      ]
+    },
+    {
+      "id": "factorial-design",
+      "title": "Factorial Design (2×2 or Higher)",
+      "tier": 3,
+      "method": "Power for defined full-factorial contrasts or omnibus tests with the specified success and multiplicity rules.",
+      "candidates": [
+        "Superpower::ANOVA_design",
+        "Superpower::ANOVA_exact",
+        "Superpower::ANOVA_exact2",
+        "stats::lm",
+        "stats::pf",
+        "stats::qf",
+        "stats::pt",
+        "stats::qt"
+      ],
+      "required_inputs": [
+        "Factor levels, cells, allocations, cell means or fully defined contrasts and residual variance.",
+        "Complete model, including the intended interaction terms, and selected numerator/error degrees of freedom.",
+        "Marginal versus simple effects, each-test versus joint success, alpha and multiplicity policy."
+      ],
+      "limits": [
+        "A scalar standardized difference does not define an arbitrary multi-level omnibus test. Collapsing factors can change residual degrees of freedom.",
+        "A nonzero interaction can coexist with a well-defined marginal contrast. Interaction power is a separate design requirement."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/Superpower/html/ANOVA_exact.html",
+          "read_scope": "Official exact-ANOVA help and noncentrality convention were read; equivalence to another target method was not established."
+        }
+      ]
+    },
+    {
+      "id": "meta-analysis",
+      "title": "Meta-Analysis Power",
+      "tier": 3,
+      "method": "Power for a pooled effect under a stated study sampling-variance and heterogeneity model, matched to the planned meta-analysis test.",
+      "candidates": [
+        "metapower::mpower",
+        "metafor::rma.uni",
+        "metafor::escalc"
+      ],
+      "required_inputs": [
+        "Effect metric/scale, pooled effect, study count, within-study arm allocation and sample-size/variance distribution.",
+        "A coherent heterogeneity parameterization, estimation method and normal, t or Knapp-Hartung inference.",
+        "Alpha, target power and any modeled dependence or selection process."
+      ],
+      "limits": [
+        "I-squared depends on within-study variances; it is not an independent variance scale. Heterogeneity estimation matters with few studies.",
+        "metapower::mpower uses an equal-study-size normal approximation with supplied heterogeneity. It does not reproduce every estimated-heterogeneity or Knapp-Hartung analysis. metafor fitting functions need a separate prospective power procedure.",
+        "Do not infer publication-bias effects without a specified selection model. Record simulation failures."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/metapower/html/mpower.html",
+          "read_scope": "Official help and selected variance/power source were read; approximate equal-size method, no new execution."
+        },
+        {
+          "url": "https://wviechtb.github.io/metafor/reference/rma.uni.html",
+          "read_scope": "Author documentation for effect estimates, variances and inference choices was read; no new model fit."
+        },
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28378395/",
+          "read_scope": "Original publication abstract was read; full article not claimed."
+        }
+      ]
+    },
+    {
+      "id": "sample-size-reestimation",
+      "title": "Sample Size Re-estimation",
+      "tier": 3,
+      "method": "Prespecified blinded nuisance-parameter re-estimation, separated from unblinded effect-based adaptation with its own protected inference.",
+      "candidates": [
+        "blindrecalc::setupStudent",
+        "blindrecalc::toer",
+        "blindrecalc::pow",
+        "blindrecalc::adjusted_alpha",
+        "blindrecalc::n_dist"
+      ],
+      "required_inputs": [
+        "Outcome model, fixed alternative, sidedness, original design and interim timing.",
+        "What remains blinded, the nuisance estimator and whether treatment effects or conditional power enter adaptation.",
+        "Exact interim-to-final sample-size rule, admissible bounds/rounding and final test or combination rule.",
+        "Null/alternative nuisance scenarios and simulation precision when operating characteristics require evaluation."
+      ],
+      "limits": [
+        "Blinding alone does not guarantee nominal Type I error for every adaptation rule. Unblinded adaptation needs a justified error-control method.",
+        "blindrecalc's documented Student interface is one-sided; do not assume automatic two-sided calibration.",
+        "Information fraction need not equal recruitment fraction; blinded pooled variance alone does not supply effect-based conditional power."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/blindrecalc/html/Student.html",
+          "read_scope": "Official Student/alpha-adjustment help was read; one-sided interface, no simulation certification."
+        },
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/10750058/",
+          "read_scope": "Original internal-pilot article abstract was read; full article not claimed."
+        }
+      ]
+    },
+    {
+      "id": "prediction-binary",
+      "title": "Binary Outcome Prediction Model (Riley's Method)",
+      "tier": 4,
+      "method": "Binary prediction-model development using all candidate coefficient parameters and the applicable Riley overfitting/precision criteria.",
+      "candidates": [
+        "pmsampsize::pmsampsize"
+      ],
+      "required_inputs": [
+        "Outcome definition, prediction horizon and representative prevalence.",
+        "All candidate coefficient parameters, excluding intercept and counting dummy, nonlinear and interaction terms.",
+        "Conservative anticipated Cox-Snell R-squared or a documented AUC approximation with its assumptions; shrinkage/precision targets."
+      ],
+      "limits": [
+        "AUC alone does not determine Cox-Snell R-squared. An approximation requires prevalence and score-distribution assumptions.",
+        "Planning criteria do not guarantee realized shrinkage, prediction error or event counts. Report each requirement and the governing maximum."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/pmsampsize/html/pmsampsize.html",
+          "read_scope": "Official help and selected binary/survival/continuous/AUC-conversion source were read; no new production test."
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6519266/",
+          "read_scope": "Original Part II sections and abstract were read; correction identified with limited full-text access. Current implementation still needs checking."
+        }
+      ]
+    },
+    {
+      "id": "prediction-survival",
+      "title": "Survival Outcome Prediction Model (Riley's Method)",
+      "tier": 4,
+      "method": "Time-to-event prediction-model development with horizon-risk precision and conditional overfitting criteria.",
+      "candidates": [
+        "pmsampsize::pmsampsize"
+      ],
+      "required_inputs": [
+        "Event, censoring and competing-risk definitions and prediction horizon.",
+        "Event rate with time units, compatible mean follow-up and anticipated Cox-Snell R-squared.",
+        "All candidate coefficient parameters, shrinkage and any additional follow-up/accrual assumptions."
+      ],
+      "limits": [
+        "An event probability is not a hazard/rate. Inspect the package's working survival and risk assumptions.",
+        "A fully observed fixed-horizon binary target may be a binary model; recurrence terminology alone does not force a Cox model.",
+        "Do not invent an effective event-rate correction for competing risks. Use a matching source-supported method."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/pmsampsize/html/pmsampsize.html",
+          "read_scope": "Official help and selected binary/survival/continuous/AUC-conversion source were read; no new production test."
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6519266/",
+          "read_scope": "Original Part II sections and abstract were read; correction identified with limited full-text access. Current implementation still needs checking."
+        }
+      ]
+    },
+    {
+      "id": "prediction-continuous",
+      "title": "Continuous Outcome Prediction Model (Riley's Method)",
+      "tier": 4,
+      "method": "Continuous prediction-model development using the four relevant overfitting and precision requirements.",
+      "candidates": [
+        "pmsampsize::pmsampsize"
+      ],
+      "required_inputs": [
+        "Outcome units, target-population mean and marginal SD.",
+        "All candidate coefficient parameters and conservative anticipated adjusted R-squared.",
+        "Shrinkage and precision requirements, including the meaning of the mean/intercept precision criterion."
+      ],
+      "limits": [
+        "Inspect residual SD precision rather than relabeling it residual variance precision. Defaults are not universal thresholds.",
+        "Increasing anticipated R-squared can change a particular requirement while the governing maximum remains set by another criterion.",
+        "Check applicability for near-zero outcome means and the specified residual distribution."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/pmsampsize/html/pmsampsize.html",
+          "read_scope": "Official help and selected binary/survival/continuous/AUC-conversion source were read; no new production test."
+        },
+        {
+          "url": "https://onlinelibrary.wiley.com/doi/10.1002/sim.7993",
+          "read_scope": "Original Part I abstract and criteria were read; not a new verification of every formula."
+        }
+      ]
+    },
+    {
+      "id": "prediction-validation",
+      "title": "Prediction Model External Validation Sample Size",
+      "tier": 4,
+      "method": "External validation of a fixed prediction model using metric-specific precision in the intended population.",
+      "candidates": [
+        "pmvalsampsize::pmvalsampsize"
+      ],
+      "required_inputs": [
+        "Fixed model, external population, outcome/horizon and censoring definition.",
+        "Anticipated outcome frequency, discrimination, calibration and the linear-predictor distribution as required by the method.",
+        "Explicit CI-width/precision requirements for each metric; decision threshold and net-benefit precision if requested."
+      ],
+      "limits": [
+        "The audited pmvalsampsize interface supports binary outcomes; do not apply it unchanged to survival concordance or continuous R-squared.",
+        "Event-count rules do not guarantee calibration or decision-curve precision. Validation can require more participants than development.",
+        "Model updating/refitting is a different estimation task and needs its own design."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/pmvalsampsize/html/pmvalsampsize.html",
+          "read_scope": "Official binary-validation help/source were read; no new package execution."
+        },
+        {
+          "url": "https://onlinelibrary.wiley.com/doi/10.1002/sim.9025",
+          "read_scope": "Original validation-method criteria and worked example were read; no universal event-count guarantee inferred."
+        }
+      ]
+    },
+    {
+      "id": "prediction-highdim",
+      "title": "High-Dimensional Prediction Model (Machine Learning / Penalized Regression)",
+      "tier": 4,
+      "method": "Prospective simulation or learning-curve planning of the complete high-dimensional prediction pipeline.",
+      "candidates": [
+        "glmnet::glmnet",
+        "glmnet::cv.glmnet",
+        "pmsampsize::pmsampsize"
+      ],
+      "required_inputs": [
+        "Outcome/horizon/censoring, feature distributions/correlation, sparsity, effect/noise assumptions or another justified data generator.",
+        "Preprocessing, selection, tuning and validation design, including leakage prevention.",
+        "Explicit prediction/calibration/stability goals, outcome frequency or variance, and assurance/simulation precision."
+      ],
+      "limits": [
+        "glmnet functions fit and tune models; they are not sample-size calculators. Alpha/lambda tuning and outer evaluation must be specified.",
+        "Applying regression planning only to the selected predictor count does not account for selection/search cost.",
+        "No universal events-per-feature multiplier guarantees stability across penalized and machine-learning methods. Selection frequency is not selection power."
+      ],
+      "sources": [
+        {
+          "url": "https://search.r-project.org/CRAN/refmans/glmnet/html/cv.glmnet.html",
+          "read_scope": "Official fitting/tuning help and selected source were read; not a sample-size-function validation."
+        },
+        {
+          "url": "https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/1471-2288-14-137",
+          "read_scope": "Original simulation abstract/discussion were read; context-specific findings are not universal machine-learning multipliers."
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6519266/",
+          "read_scope": "Original Part II sections and abstract were read; correction identified with limited full-text access. Current implementation still needs checking."
+        }
+      ]
+    }
+  ]
+}

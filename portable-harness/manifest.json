@@ -15,15 +15,20 @@
   },
   "host_native_runs": "Record the host model and tools separately; equivalence to the pinned runner is not assumed.",
   "skill_files_sha256": {
-    "SKILL.md": "bcb2dc8d0bbeaf4974cb77ba79de667d3fec8af4fca4cd67e6cfd412bf45a762",
+    "SKILL.md": "950d6a1ccd63bc87829f0ecc207109abb76c1b183efff6d9d5c23a70f7e096e9",
     "agents/openai.yaml": "404f598af7538a30ebccbe6b6b564f474d81d9eb11f3ca834907f918337f816d",
+    "manifest.json": "a4bbd368040a7409dc798056563bc2bf4b00747f68cf8cc1a97c6d67c8665256",
     "references/mean-reference-checks.md": "e4709c425f35c73d0808fc703bc8455bc4f37a6b0ecd657349e15f1c5e53dc83",
+    "references/method-catalog.json": "c284b65d80c2369062bf6e68c086a9bc7469a3e40351b890cfbc10f6667179b6",
+    "references/method-selection.md": "b1fe7f9d73860597ade2d4f55c9bc3c7bcd74cf18b27ec0f06323c8b90e9a169",
+    "references/native-multi-agent.md": "9b18bc0f6a672835433c5446e6557fc21ec781feae88159509a30c497d7f30a3",
     "references/record-contract.md": "caf7a1cbf9b72b7d47a1f686a0da143bfd8e511248b190628a6ae722240946fb",
     "references/scientific-principles.md": "01e69adb449b135c9e72fff9f507e8cdfcc5459c7edef9ff357356b02d91734d",
+    "scripts/check-native-review.py": "5b469d149a5ee790c3521f8cb1d30c671dae472bb0c07830f2867a39cbcc6ba7",
     "scripts/check-sample-size-units.py": "a98125acad74b0121155291c1012c4e6eebb3e265c9a61229af08e9b064d1259",
     "scripts/reference-checks.R": "b26cd4795065b8aa9110de4198f6cb5aae0f4691342c7e5b140eccca40a6dca4",
     "scripts/render-record.py": "2a69dc627732f60db5179b9e76167ee926afe7d1f822a6229b5ccf56ab7c9121",
-    "scripts/run-power-agent.mjs": "a44e12617ed3e5f9fd989775718d36e732c6b9e9dcb5ffe4afeeffc20a936a04",
+    "scripts/run-power-agent.mjs": "da516b699b5e1e5e1149b9953442c1fc27d84bea90b8e3bec9e83343dd9e7331",
     "scripts/runtime/model-config.js": "36eeb9504f0759e638c48cd7e9885082e1e89e5763fa00056d192191b29f88af",
     "scripts/runtime/package.json": "37b73b213446b93a0dec440501464fff1941a0034bf23a99a11541e9b451361e",
     "scripts/runtime/scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
@@ -36,15 +41,16 @@
     "scripts/specification-preflight.py": "fc81eb2ff082fdb4e87daa92dc04cc65abc2f67e304bac465dbc85579d204211",
     "scripts/verify-record.mjs": "f2dfd99a1bb6fe4e869441bd52e2ebc66a09578f4f2af10770b97761e2c4dd0b"
   },
-  "native_skill_version": "2.3.3",
+  "native_skill_version": "2.3.5",
   "native_checkers": {
     "specification-preflight.py": "1.0.2",
     "check-sample-size-units.py": "1.0.0",
     "reference-checks.R": "1.0.1",
-    "render-record.py": "1.0.0"
+    "render-record.py": "1.0.0",
+    "check-native-review.py": "1.0.0"
   },
   "bundled_api_runtime_status": "Prospective API2.4.3 planner unit-format and figure-guidance source update; only scientific-harness.js and model-config.js differ from API2.4.2. Six other core sources and all native mathematical helpers remain exact. Hosted original workflow/source is unchanged.",
-  "native_validation_scope": "Four actual native2.3.2 demonstrations retain their original self-check and failed reviewer-startup scope. Native2.3.3 setup guidance is a subsequent source update. Separate persistent-session diagnostic outcomes must be recorded separately; no retrospective independent review or general accuracy claim.",
+  "native_validation_scope": "Prior native cohorts and all failed attempts retain their exact versions and scope. Native2.3.4 has selected actual Codex pooled-t multi-agent and stepped-wedge clarification observations, with a retained raw-input preflight parser diagnostic. Native2.3.5 corrects instruction interpretation prospectively; component checks and a separately recorded same-request native regression are distinct from representative accuracy, Claude behavioral validation or API equivalence.",
   "prior_runtime_release_relation": {
     "historical_runtime_version": "2.0.0",
     "historical_sources_sha256": {
@@ -276,10 +282,10 @@
   ],
   "routing_model": "claude-haiku-5-5",
   "current_optional_api_runtime": {
-    "version": "2.4.2",
+    "version": "2.4.3",
     "scientific_roles_model": "claude-sonnet-5-5",
     "advisory_router_model": "claude-haiku-5-5",
-    "scope": "Document-delivery/guard source release; actual2.4.2native/production pending. Native2.3.1/checkers and alloldstudies unchanged; prior2.4.1selectedsuccesses/failures scopedseparately. Current native packaging 2.3.2 does not modify or reevaluate this API kernel."
+    "scope": "Frozen optional API2.4.3 kernel; unchanged by native2.3.5/knowledge1.0.4. Native hosts use their own configured model/tools; hosted original-workflow changes are separately validated."
   },
   "verified_date_scope": "Source/package construction only; actual tagged-preview/Linux/production/browser acceptance is recorded separately.",
   "product_restoration_release": {
@@ -392,24 +398,19 @@
       "APP/Cloud-only staticmonolithic main-registration sourcebinding notbundled inPublic; mountedExpressguard HTTPtests run."
     ]
   },
-  "native_knowledge_revision": "1.0.2",
+  "native_knowledge_revision": "1.0.4",
   "scientific_principles_revision": "1.0.1",
   "scientific_principles_sha256": "01e69adb449b135c9e72fff9f507e8cdfcc5459c7edef9ff357356b02d91734d",
   "native_knowledge_update": {
-    "native_skill_version": "2.3.2",
-    "native_knowledge_revision": "1.0.2",
+    "native_skill_version": "2.3.5",
+    "native_knowledge_revision": "1.0.4",
     "canonical_principles_revision": "1.0.1",
     "canonical_principles_sha256": "01e69adb449b135c9e72fff9f507e8cdfcc5459c7edef9ff357356b02d91734d",
-    "new_native_only_lessons": [
-      "Synthetic pilot descriptive effect-scale comparability does not provide clinical effect evidence or replace prespecified planning inputs.",
-      "Reserve separate title and secondary-axis margins; visual-quality claims require inspection of actual exported figures."
-    ],
-    "scope": "Instruction and installation component update; unchanged native numerical helpers and API runtime. No provider calls, new scored study, native-host compliance or runtime-equivalence claim.",
-    "installer_backup_scope": "Timestamped backups are outside the live skill discovery directory."
+    "scope": "One prospective native instruction correction: distinguish limited-helper nonrecognition of supplied raw contrast/SD from genuinely missing inputs. Preserve unchanged request, failed diagnostic and complete manual input provenance. No parser, mathematical helper, method-catalog, API-kernel or historical-result changes."
   },
   "package_support_files_sha256": {
-    "README.md": "7c1bd33ab4fc99e72beeec8d933e9bf0c0f01260dc17c4d16b2bb042cbf82b31",
-    "install.py": "5b74af66d69296185ef684ef465e6b02e79198f40a3f9a36e93200f4fdce3e1f"
+    "README.md": "fda6d8b2592f1c0fda0f977d757a85447fdb1c60c26c0afaca795241b235bb2e",
+    "install.py": "49718d796801957a959213ffa3854b011a9a7ac7e07fa9d030b70acf2cf04303"
   },
   "historical_2_3_2_package_component_scope": {
     "harness_version": "2.4.2",
@@ -444,5 +445,144 @@
     "automatic_unit_conversion": false,
     "count_semantics_certified_by_token_format": false,
     "source_validation_scope": "Versioned source/component checks; no new agent-accuracy cohort or changed deployment is claimed."
-  }
+  },
+  "historical_optional_api_runtime_metadata_2_4_2": {
+    "version": "2.4.2",
+    "scientific_roles_model": "claude-sonnet-5-5",
+    "advisory_router_model": "claude-haiku-5-5",
+    "scope": "Document-delivery/guard source release; actual2.4.2native/production pending. Native2.3.1/checkers and alloldstudies unchanged; prior2.4.1selectedsuccesses/failures scopedseparately. Current native packaging 2.3.2 does not modify or reevaluate this API kernel."
+  },
+  "native_package_date": "2026-10-14",
+  "native_knowledge_history": [
+    {
+      "native_skill_version": "2.3.2",
+      "native_knowledge_revision": "1.0.2",
+      "canonical_principles_revision": "1.0.1",
+      "canonical_principles_sha256": "01e69adb449b135c9e72fff9f507e8cdfcc5459c7edef9ff357356b02d91734d",
+      "new_native_only_lessons": [
+        "Synthetic pilot descriptive effect-scale comparability does not provide clinical effect evidence or replace prespecified planning inputs.",
+        "Reserve separate title and secondary-axis margins; visual-quality claims require inspection of actual exported figures."
+      ],
+      "scope": "Instruction and installation component update; unchanged native numerical helpers and API runtime. No provider calls, new scored study, native-host compliance or runtime-equivalence claim.",
+      "installer_backup_scope": "Timestamped backups are outside the live skill discovery directory."
+    },
+    {
+      "native_skill_version": "2.3.4",
+      "native_knowledge_revision": "1.0.3",
+      "canonical_principles_revision": "1.0.1",
+      "canonical_principles_sha256": "01e69adb449b135c9e72fff9f507e8cdfcc5459c7edef9ff357356b02d91734d",
+      "scope": "Native method/package/history/precision/simulation guidance and separate-session handoff receipt consistency. API 2.4.3, canonical principles 1.0.1 and existing mathematical helpers remain unchanged. Source/component checks are not host behavioral validation.",
+      "new_native_only_lessons": [
+        "Select an appropriate method from design and inspected evidence, not preinstalled package inventory; prepare a needed compatible package using authorized host tools.",
+        "Allow source/help inspection to identify missing scientific inputs without inventing or computing a default scenario.",
+        "Preserve adopted earlier user-input attribution; unsupported clinical importance remains qualified.",
+        "Check both interval endpoints on the requested precision scale and require actual repeated data generation/fitting/rejection for simulation claims.",
+        "Use actual fresh separate-session precheck/disclosure/comparison evidence; saved receipt consistency does not certify authenticity, hidden context or science."
+      ]
+    }
+  ],
+  "native_method_catalog": {
+    "revision": "2026-10-14.1",
+    "card_count": 33,
+    "path": "references/method-catalog.json",
+    "source_path": "backend/legacy-method-catalog.js",
+    "source_sha256": "b7cc5e1a23ebbb67106a8cc5d994c11138402cfc9dca8f8bfbdb26b3209d290d",
+    "snapshot_date": "2026-10-14",
+    "scope": "Source-audited discovery cards copied without task answers. The original read_scope belongs to the audit, not a read by a future installed agent. Candidate APIs require current installed-version and task checks."
+  },
+  "native_2_3_4_release": {
+    "prior_native_skill_version": "2.3.3",
+    "prior_native_knowledge_revision": "1.0.2",
+    "prior_skill_files_sha256": {
+      "SKILL.md": "bcb2dc8d0bbeaf4974cb77ba79de667d3fec8af4fca4cd67e6cfd412bf45a762",
+      "agents/openai.yaml": "404f598af7538a30ebccbe6b6b564f474d81d9eb11f3ca834907f918337f816d",
+      "references/mean-reference-checks.md": "e4709c425f35c73d0808fc703bc8455bc4f37a6b0ecd657349e15f1c5e53dc83",
+      "references/record-contract.md": "caf7a1cbf9b72b7d47a1f686a0da143bfd8e511248b190628a6ae722240946fb",
+      "references/scientific-principles.md": "01e69adb449b135c9e72fff9f507e8cdfcc5459c7edef9ff357356b02d91734d",
+      "scripts/check-sample-size-units.py": "a98125acad74b0121155291c1012c4e6eebb3e265c9a61229af08e9b064d1259",
+      "scripts/reference-checks.R": "b26cd4795065b8aa9110de4198f6cb5aae0f4691342c7e5b140eccca40a6dca4",
+      "scripts/render-record.py": "2a69dc627732f60db5179b9e76167ee926afe7d1f822a6229b5ccf56ab7c9121",
+      "scripts/run-power-agent.mjs": "a44e12617ed3e5f9fd989775718d36e732c6b9e9dcb5ffe4afeeffc20a936a04",
+      "scripts/runtime/model-config.js": "36eeb9504f0759e638c48cd7e9885082e1e89e5763fa00056d192191b29f88af",
+      "scripts/runtime/package.json": "37b73b213446b93a0dec440501464fff1941a0034bf23a99a11541e9b451361e",
+      "scripts/runtime/scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+      "scripts/runtime/scientific-harness.js": "2037394d4369969214343959325c1b7959d19b6a5e1aef1471f37b8c4f107741",
+      "scripts/runtime/scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+      "scripts/runtime/scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
+      "scripts/runtime/scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+      "scripts/runtime/scientific-reference-guard.js": "9db3174f066b17448d92bc511d0a5daba47a89cda0e0cb6b4a63596e9fe48ec5",
+      "scripts/runtime/scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a",
+      "scripts/specification-preflight.py": "fc81eb2ff082fdb4e87daa92dc04cc65abc2f67e304bac465dbc85579d204211",
+      "scripts/verify-record.mjs": "f2dfd99a1bb6fe4e869441bd52e2ebc66a09578f4f2af10770b97761e2c4dd0b"
+    },
+    "prior_package_support_files_sha256": {
+      "README.md": "7c1bd33ab4fc99e72beeec8d933e9bf0c0f01260dc17c4d16b2bb042cbf82b31",
+      "install.py": "5b74af66d69296185ef684ef465e6b02e79198f40a3f9a36e93200f4fdce3e1f"
+    },
+    "unchanged_optional_api_runtime_sha256": {
+      "scientific-harness.js": "2037394d4369969214343959325c1b7959d19b6a5e1aef1471f37b8c4f107741",
+      "scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+      "scientific-reference-guard.js": "9db3174f066b17448d92bc511d0a5daba47a89cda0e0cb6b4a63596e9fe48ec5",
+      "scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
+      "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+      "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+      "model-config.js": "36eeb9504f0759e638c48cd7e9885082e1e89e5763fa00056d192191b29f88af",
+      "scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a"
+    },
+    "scope": "Prospective native package source/component release; historical archives and results retained. Actual host delegation and scientific accuracy require their own observed evidence.",
+    "launcher_help": "Native launcher adds offline --help before API invocation; the eight-file API 2.4.3 core and mathematical helpers remain unchanged.",
+    "receipt_consistency_scope": "Comparison binds both candidate code and candidate output SHA256; verifies declared session/file/timestamp consistency only, not receipt authenticity, hidden context or statistical truth."
+  },
+  "package_test_files_sha256": {
+    "tests/test_package.py": "5f73bfad3426c3e12768d110f4261963efd93b9a4452eb1f2037bd5717decfed"
+  },
+  "native_2_3_5_release": {
+    "prior_native_skill_version": "2.3.4",
+    "prior_native_knowledge_revision": "1.0.3",
+    "prior_skill_files_sha256": {
+      "SKILL.md": "875557387b7358ca160c04bcc4a553ffe2e88b7bb37e97b97946ef792c4ef521",
+      "agents/openai.yaml": "404f598af7538a30ebccbe6b6b564f474d81d9eb11f3ca834907f918337f816d",
+      "manifest.json": "26166214752d9045a30b58efa787fb69bd99aa916be9eeac6e1ba0e73a83c79d",
+      "references/mean-reference-checks.md": "e4709c425f35c73d0808fc703bc8455bc4f37a6b0ecd657349e15f1c5e53dc83",
+      "references/method-catalog.json": "c284b65d80c2369062bf6e68c086a9bc7469a3e40351b890cfbc10f6667179b6",
+      "references/method-selection.md": "1368afa2a618a120c1d4ba98347550a91f1ae4bf1082f18c483a5e246a3b1121",
+      "references/native-multi-agent.md": "9b18bc0f6a672835433c5446e6557fc21ec781feae88159509a30c497d7f30a3",
+      "references/record-contract.md": "caf7a1cbf9b72b7d47a1f686a0da143bfd8e511248b190628a6ae722240946fb",
+      "references/scientific-principles.md": "01e69adb449b135c9e72fff9f507e8cdfcc5459c7edef9ff357356b02d91734d",
+      "scripts/check-native-review.py": "5b469d149a5ee790c3521f8cb1d30c671dae472bb0c07830f2867a39cbcc6ba7",
+      "scripts/check-sample-size-units.py": "a98125acad74b0121155291c1012c4e6eebb3e265c9a61229af08e9b064d1259",
+      "scripts/reference-checks.R": "b26cd4795065b8aa9110de4198f6cb5aae0f4691342c7e5b140eccca40a6dca4",
+      "scripts/render-record.py": "2a69dc627732f60db5179b9e76167ee926afe7d1f822a6229b5ccf56ab7c9121",
+      "scripts/run-power-agent.mjs": "da516b699b5e1e5e1149b9953442c1fc27d84bea90b8e3bec9e83343dd9e7331",
+      "scripts/runtime/model-config.js": "36eeb9504f0759e638c48cd7e9885082e1e89e5763fa00056d192191b29f88af",
+      "scripts/runtime/package.json": "37b73b213446b93a0dec440501464fff1941a0034bf23a99a11541e9b451361e",
+      "scripts/runtime/scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+      "scripts/runtime/scientific-harness.js": "2037394d4369969214343959325c1b7959d19b6a5e1aef1471f37b8c4f107741",
+      "scripts/runtime/scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+      "scripts/runtime/scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
+      "scripts/runtime/scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+      "scripts/runtime/scientific-reference-guard.js": "9db3174f066b17448d92bc511d0a5daba47a89cda0e0cb6b4a63596e9fe48ec5",
+      "scripts/runtime/scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a",
+      "scripts/specification-preflight.py": "fc81eb2ff082fdb4e87daa92dc04cc65abc2f67e304bac465dbc85579d204211",
+      "scripts/verify-record.mjs": "f2dfd99a1bb6fe4e869441bd52e2ebc66a09578f4f2af10770b97761e2c4dd0b"
+    },
+    "prior_package_support_files_sha256": {
+      "README.md": "b9a97e696659aa90f71e3e7f1bc3da585ab67d8b6612d7894d19b9b08e043d86",
+      "install.py": "516a9d70e97c2328ad58135f046278ba8a0529b1b324d346c6a5f2af0a66431d"
+    },
+    "unchanged_optional_api_runtime_sha256": {
+      "scientific-harness.js": "2037394d4369969214343959325c1b7959d19b6a5e1aef1471f37b8c4f107741",
+      "scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+      "scientific-reference-guard.js": "9db3174f066b17448d92bc511d0a5daba47a89cda0e0cb6b4a63596e9fe48ec5",
+      "scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
+      "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+      "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+      "model-config.js": "36eeb9504f0759e638c48cd7e9885082e1e89e5763fa00056d192191b29f88af",
+      "scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a"
+    },
+    "scope": "Prospective prompt correction after a selected native2.3.4 demonstration; no retrospective compliance, general accuracy or superiority claim.",
+    "pre_installed_metadata_correction_archive_sha256": "83610381ca54a4ad8757cc4a49aec1cde145580c5664b1358d536cac31432ba0",
+    "installed_manifest_correction_scope": "Installed identity metadata synchronized after the exact frozen2.3.5 selected native demonstration; no instruction/helper/API/parser changes. Outer manifest hashes all installed files; installed manifest excludes its own digest."
+  },
+  "installed_manifest_policy": "Installed manifest is a concise current identity snapshot. Its skill_files_sha256 excludes manifest.json; this outer manifest binds exact inner bytes and the complete inventory. Historical distribution fields and archives remain preserved."
 }

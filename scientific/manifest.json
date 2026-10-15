@@ -51,7 +51,7 @@
     "test-scientific-sources.js": "0439d08aa841165782be7273e8851b85302e42e005e4e06339653c2bd56a3770"
   },
   "routing_model": "claude-haiku-5-5",
-  "native_skill_version": "2.3.3",
+  "native_skill_version": "2.3.5",
   "optional_api_dependencies_scope": "Pinned root devDependencies are required only for optional hosted API/file/document/report tests; default standalone CLI/core has no npm runtime dependency.",
   "public_test_scope_adaptations": {
     "source_test_sha256": "9504282c048d473c5c079b4a9ee35a868de37285a957e3e6ab75ee8f89368dc2",
@@ -153,5 +153,11 @@
       }
     },
     "scope": "Local tests including actual R controls; mock transports, no provider calls. Historical source_release_tests remain their original release checks."
+  },
+  "native_knowledge_version": "1.0.4",
+  "native_2_3_5_verification": {
+    "document": "../docs/PORTABLE-NATIVE-20261015.md",
+    "record": "../docs/PORTABLE-NATIVE-20261015.json",
+    "scope": "Selected Codex native observations and component/installation checks; API core and historical evaluations unchanged."
   }
 }

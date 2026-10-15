@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0.0",
+  "native_skill_version": "2.3.5",
+  "native_knowledge_revision": "1.0.4",
+  "optional_api_kernel_version": "2.4.3",
+  "canonical_principles_revision": "1.0.1",
+  "final_archive": {
+    "filename": "power-agent-portable-harness-native-2.3.5-runtime-2.4.3-knowledge-1.0.4-component-checked-v2.zip",
+    "sha256": "c14060e2b534a627ef3c05783e5ee994e08acb33c9345e547dee3f1ce90df74f",
+    "size_bytes": 126673,
+    "file_count": 29,
+    "installed_skill_file_count": 25,
+    "outer_manifest_sha256": "8759480942a3c4712efacffcf902e62e75ec748ae50c3642474d8a22aae90049",
+    "installed_manifest_sha256": "a4bbd368040a7409dc798056563bc2bf4b00747f68cf8cc1a97c6d67c8665256"
+  },
+  "component_validation": {
+    "source_tests_passed": 16,
+    "archive_tests_passed": 16,
+    "failed": 0,
+    "skill_creator_validator_passed": true,
+    "clean_project_codex_install_verified": true,
+    "clean_project_claude_code_install_verified": true,
+    "cross_layer_versions_and_installed_file_map_verified": true,
+    "repinned_stale_installed_metadata_rejected_before_replacement": true,
+    "source_log_sha256": "0c5beb9edef3d229f1d02462bf597bf04c3de74e7e70c84ac87f10f37527bf23",
+    "archive_log_sha256": "28ec77647402a8c7ef2f96b27a907bd9e68e656ebd01a7c7efb45b36ce04ced7",
+    "eight_api_core_files_and_prior_math_helpers_unchanged": true
+  },
+  "method_catalog": {
+    "cards": 33,
+    "revision": "2026-10-14.1",
+    "hosted_source_sha256": "b7cc5e1a23ebbb67106a8cc5d994c11138402cfc9dca8f8bfbdb26b3209d290d",
+    "scope": "Source-audited discovery candidates and original read scopes; no task answers, package allowlist or current-agent full-read claims."
+  },
+  "selected_native_observations": [
+    {
+      "instruction_version": "2.3.4",
+      "task": "Specified pooled-t minimum sample size with fresh separate checker",
+      "exit_code": 0,
+      "elapsed_seconds": 225.59,
+      "scope": "Numerical and byte-bound review checks passed; raw-effect parser diagnostic and unconditional-stop instruction conflict retained."
+    },
+    {
+      "instruction_version": "2.3.4",
+      "task": "Incomplete stepped-wedge specification",
+      "exit_code": 0,
+      "elapsed_seconds": 48.353,
+      "scope": "Source-informed material clarification, no guessed numerical planning scenario; installed help/R wrapper read, compiled implementation uninspected."
+    },
+    {
+      "instruction_version": "2.3.5",
+      "task": "Same specified pooled-t request after prospective preflight interpretation correction",
+      "request_sha256": "615c33df3de1f6741ac793e865f053034f437f3bf1b83e43d89c6ff89418b4dd",
+      "exit_code": 0,
+      "elapsed_seconds": 239.032,
+      "observed_parent_model_contexts": [
+        {
+          "model": "gpt-6-astra",
+          "effort": "high"
+        }
+      ],
+      "numerical_result": {
+        "participants_per_arm": 163,
+        "participants_total": 326,
+        "achieved_power": 0.850911588178587,
+        "predecessor_per_arm": 162,
+        "predecessor_power": 0.8487479400844524
+      },
+      "checks": {
+        "executed_stdout_results_equal_final_record": true,
+        "unit_audit_passed_and_final_record_bound": true,
+        "reference_audit_passed_and_final_record_bound": true,
+        "frozen_precheck_files_unchanged": true,
+        "native_receipt_consistency": true,
+        "auditor_normal_chisquare_integral_agrees": true,
+        "actual_fresh_checker_spawn_observed": true
+      },
+      "manual_input_handling": "Retains helper false-missing diagnostic, quotes supplied raw contrast/SD, derives standardized effect, executes complete specified test without asking for repeated inputs.",
+      "candidate_archive_sha256": "83610381ca54a4ad8757cc4a49aec1cde145580c5664b1358d536cac31432ba0",
+      "packaging_qualification": "Observed candidate retained stale installed manifest metadata. Final v2 synchronizes metadata/install validation; every installed instruction/helper/API/catalog byte except manifest is identical. No extra provider run for metadata-only correction.",
+      "host_evidence_qualification": "Captured parent rollout exposes actual fresh checker spawn and subsequent disclosure; child canonical role identifier and saved execution/comparison receipts retained, opaque child provider/model receipts unavailable. Shared R distribution dependencies and shared filesystem remain disclosed."
+    }
+  ],
+  "claims_boundary": "Selected Codex demonstrations and adaptive same-question regression, not representative accuracy, causal latency comparison, multi-agent superiority, Claude behavioral validation, optional API behavior or hosted/API equivalence. Retained prior failures and pre-correction archives are not replaced.",
+  "retained_prior_archives_sha256": [
+    "503f7f9591b700479cb09e138359e33ed9d292805c2436e142e052ed46a609a4",
+    "a7020a3c47155ea62859090b4a6c31f1ac4d4f44ad7b1e133c8b810a34355253",
+    "83610381ca54a4ad8757cc4a49aec1cde145580c5664b1358d536cac31432ba0"
+  ]
+}
