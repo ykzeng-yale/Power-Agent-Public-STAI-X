@@ -1,0 +1,16 @@
+.git
+.env
+.env.*
+!.env.example
+node_modules
+**/node_modules
+backend
+frontend
+public
+benchmark
+archive
+assets
+record*.json
+**/__pycache__
+*.zip
+*.pdf

@@ -1,0 +1,11 @@
+{
+  "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/TDist.html",
+  "retrieved_at_utc": "2026-10-02T05:57:22.026347+00:00",
+  "response_status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "local_file": "source-t-distribution.html",
+  "raw_sha256": "7119259ab57eec4888fda512f60f595bb082d962c099d8e739b5d548a44a942d",
+  "bytes": 10544,
+  "retrieval_scope": "complete HTTP response body of one official R-devel stats HTML page; no PDF or wider manual coverage claimed",
+  "local_truncation": false
+}

@@ -1,3 +1,5 @@
+> Historical prototype document. Its role, benchmark and performance claims are retained source history and are not current release evidence. See the root README.
+
 # Test Biostat Agent Skill
 
 Test the biostatistics agent with comprehensive E2E tests.

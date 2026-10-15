@@ -1,0 +1,17 @@
+# Limited independent-means reference checks
+
+This checker supports two equal arms, a common individual outcome SD, and a supplied standardized difference `d=(mu1-mu0)/sigma`. It covers normal independent means, the explicitly requested normal design-effect approximation for equal-size clusters, and exact equal-allocation two-sample Student-t power. It does not substitute for finite-cluster small-sample inference or support arbitrary repeated-measure, unequal-variance, unequal-allocation, or generalized outcome designs.
+
+For independent group means, their variances add:
+
+`Var(mean1-mean0) = sigma² DE/n1 + sigma² DE/n0 = 2 sigma² DE/n_per_arm = 4 sigma² DE/N_total`.
+
+Here `DE=1` for independent observations. Under the explicitly specified equal-size exchangeable cluster approximation, summing the `m` individual variances and `m(m-1)` pair covariances within a cluster gives `DE=1+(m-1) ICC`. This algebra assumes the cluster approximation the user requested; it does not establish that approximation's suitability.
+
+The standardized normal noncentrality is `d sqrt(n_per_arm/(2 DE))`, equivalently `d sqrt(N_total/(4 DE))`. The two-sided rejection probability is the sum of both normal tails. The checker independently recomputes power by constructing the difference of two group-mean distributions and verifies the minimum admissible integer design and preceding design. For the Student-t profile it compares noncentral-t tails with `stats::power.t.test(...,strict=TRUE)`; its `n` is per group, as stated in the [official R documentation](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/power.t.test.html). Normal CDF/quantile conventions follow [official R normal distribution documentation](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Normal.html).
+
+Prepare the actual computed native `record.json` with design fields `reference_profile`, `arms`, `allocation_ratio`, `standardized_effect`, `alpha`, `target_power`, `sidedness`, and `icc`/`cluster_size` for the cluster profile. Allowed profiles are `normal_independent_means`, `normal_equal_cluster_design_effect`, and `two_sample_t_equal_allocation`. Sidedness is `two-sided`, `one-sided-greater`, or `one-sided-less`. All inputs must come from the user or explicit source context; do not fill missing values to run this check.
+
+Final computed results use canonical metrics `sample_size` with `participants_per_arm`, `participants_total`, plus `clusters_per_arm`/`clusters_total` for a cluster calculation; `achieved_power` and `power_preceding` use unit `probability`. Retain other intermediate results with explicit paired units. Do not replace values with reference outputs merely to pass; correct the actual calculation and rerun it, preserving the failed attempt.
+
+Run `Rscript --vanilla scripts/reference-checks.R --record record.json --output reference-audit.json` from the skill folder. `jsonlite` and Python3 must already be installed; Python3 supplies the final-file SHA256 only. A failed or unsupported check cannot support completed validation. A passed check verifies the declared formula/profile only; source input errors or inappropriate assumptions remain possible. Version1.0.1 binds its output to the exact final record digest without changing the mathematical implementation validated in version1.0.0. Rerun both checkers after all record edits and preserve actual checker logs. Evidence checks for a different earlier record do not validate the final record.

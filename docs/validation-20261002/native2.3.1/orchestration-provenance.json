@@ -1,0 +1,29 @@
+{
+  "run_id": "native-forward-2.3.1-20261002",
+  "native_skill_version": "2.3.1",
+  "preflight_version": "1.0.2",
+  "requested_workflow_mode": "multi",
+  "executed_workflow_mode": "multi",
+  "requested_scope": "One exploratory host-native scientific workflow demonstration",
+  "initial_failure_retained": "/Users/yukangzengcmac/Power-Agent/jsm-2026/multi-agent-20261002/native-forward-2.3.0",
+  "revised_attempt_authorization": "Root explicitly authorized 2.3.1 canonical source and this fresh work directory after preserving 2.3.0 gate failure",
+  "original_request_sha256": "cd8a845837e84d501ec13d45a29e8aa7c4c851ebe79ba0efdc47c3dd838fcc70",
+  "project_install": {
+    "command": "python3 '/Users/yukangzengcmac/Power-Agent/Power Agent Claude Code 1016/portable-harness/install.py' --target codex --project '/Users/yukangzengcmac/Power-Agent/jsm-2026/multi-agent-20261002/native-forward-2.3.1'",
+    "tool_chunk_id": "4d3c14",
+    "exit_code": 0,
+    "stdout": "Installed codex scientific skill: /Users/yukangzengcmac/Power-Agent/jsm-2026/multi-agent-20261002/native-forward-2.3.1/.codex/skills/power-agent-scientific\n",
+    "stderr": "",
+    "scope": "Project-local installed skill; no global settings changed; installer executed only after complete manual specification"
+  },
+  "sessions": [
+    {"identity": "/root/native_skill_forward", "role": "orchestrator", "context": "delegated root task; no benchmark answer supplied in task"},
+    {"identity": "/root/native_skill_forward/native_planner_231", "role": "scientific planner", "spawn_fork_turns": "none", "status": "completed", "candidate_supplied": false, "outputs": ["planner-specification.json", "planner-report.md"]},
+    {"identity": "/root/native_skill_forward/native_coder_231", "role": "implementation", "spawn_fork_turns": "none", "status": "completed", "candidate_or_intended_answer_supplied": false, "execution_evidence_id": "native-coder-231-calculation-7179861e-b2c3-4e3c-846c-e2c6767a6a2f"},
+    {"identity": "/root/native_skill_forward/native_checker_231", "role": "candidate-blind check then revealed comparison", "spawn_fork_turns": "none", "status": "candidate_blind_precheck_completed_before_reveal", "candidate_code_numbers_and_artifacts_supplied_in_phase_1": false, "first_phase_allowed_reads": "original request, complete manual planner specification, official source HTML/receipts, preflight, installed skill instructions only", "precheck_record_sha256": "4f527c0e52c8fd610245853b48386496f7ee979b3620f0cadc11aece7d8aecaf", "precheck_freeze_receipt": "precheck-freeze-receipt.json", "isolation_limit": "Context/role instruction separation; filesystem access is unrestricted and not an adversarial sandbox"}
+  ],
+  "context_separation": "Exactly one concurrent child. Each fresh child receives explicit task/files only, without inherited parent conversation. Same configured native host model is inherited; exact deployed model identifier is unavailable.",
+  "model_and_budget_limits": {"exact_model_id": "not exposed by tools", "session_resource_limits": "No custom token/time/compute sandbox enforcement asserted; bounded role tasks, no paid API or bundled runner used"},
+  "shared_dependencies": "Original study specification and official sources are shared. Any common numeric runtime is recorded after execution. Blind precheck does not imply statistical independence or mathematical certification.",
+  "out_of_scope": ["API benchmark equivalence", "broad skill validation", "deployment", "cloud execution", "credential access", "benchmark oracle/results access"]
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_scope": "Current installed native skill identity; its file map excludes this manifest to avoid a self-hash cycle. The distributed outer manifest binds exact bytes and retains historical release metadata. Hash consistency does not authenticate a maliciously replaced package.",
+  "native_skill_version": "2.3.5",
+  "native_knowledge_revision": "1.0.4",
+  "harness_version": "2.4.3",
+  "native_checkers": {
+    "specification-preflight.py": "1.0.2",
+    "check-sample-size-units.py": "1.0.0",
+    "reference-checks.R": "1.0.1",
+    "render-record.py": "1.0.0",
+    "check-native-review.py": "1.0.0"
+  },
+  "native_method_catalog": {
+    "revision": "2026-10-14.1",
+    "card_count": 33,
+    "path": "references/method-catalog.json",
+    "source_path": "backend/legacy-method-catalog.js",
+    "source_sha256": "b7cc5e1a23ebbb67106a8cc5d994c11138402cfc9dca8f8bfbdb26b3209d290d",
+    "snapshot_date": "2026-10-14",
+    "scope": "Source-audited discovery cards copied without task answers. The original read_scope belongs to the audit, not a read by a future installed agent. Candidate APIs require current installed-version and task checks."
+  },
+  "current_optional_api_runtime": {
+    "version": "2.4.3",
+    "scientific_roles_model": "claude-sonnet-5-5",
+    "advisory_router_model": "claude-haiku-5-5",
+    "scope": "Frozen optional API2.4.3 kernel; unchanged by native2.3.5/knowledge1.0.4. Native hosts use their own configured model/tools; hosted original-workflow changes are separately validated."
+  },
+  "runtime_sources_sha256": {
+    "scientific-harness.js": "2037394d4369969214343959325c1b7959d19b6a5e1aef1471f37b8c4f107741",
+    "scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+    "scientific-reference-guard.js": "9db3174f066b17448d92bc511d0a5daba47a89cda0e0cb6b4a63596e9fe48ec5",
+    "scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
+    "scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+    "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+    "model-config.js": "36eeb9504f0759e638c48cd7e9885082e1e89e5763fa00056d192191b29f88af",
+    "scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a"
+  },
+  "scientific_principles_revision": "1.0.1",
+  "scientific_principles_sha256": "01e69adb449b135c9e72fff9f507e8cdfcc5459c7edef9ff357356b02d91734d",
+  "host_native_runs": "Record the host model and tools separately; equivalence to the pinned runner is not assumed.",
+  "model": "claude-sonnet-5-5",
+  "routing_model": "claude-haiku-5-5",
+  "verified_date": "2026-10-12",
+  "verified_date_scope": "Source/package construction only; actual tagged-preview/Linux/production/browser acceptance is recorded separately.",
+  "skill_files_sha256": {
+    "SKILL.md": "950d6a1ccd63bc87829f0ecc207109abb76c1b183efff6d9d5c23a70f7e096e9",
+    "agents/openai.yaml": "404f598af7538a30ebccbe6b6b564f474d81d9eb11f3ca834907f918337f816d",
+    "references/mean-reference-checks.md": "e4709c425f35c73d0808fc703bc8455bc4f37a6b0ecd657349e15f1c5e53dc83",
+    "references/method-catalog.json": "c284b65d80c2369062bf6e68c086a9bc7469a3e40351b890cfbc10f6667179b6",
+    "references/method-selection.md": "b1fe7f9d73860597ade2d4f55c9bc3c7bcd74cf18b27ec0f06323c8b90e9a169",
+    "references/native-multi-agent.md": "9b18bc0f6a672835433c5446e6557fc21ec781feae88159509a30c497d7f30a3",
+    "references/record-contract.md": "caf7a1cbf9b72b7d47a1f686a0da143bfd8e511248b190628a6ae722240946fb",
+    "references/scientific-principles.md": "01e69adb449b135c9e72fff9f507e8cdfcc5459c7edef9ff357356b02d91734d",
+    "scripts/check-native-review.py": "5b469d149a5ee790c3521f8cb1d30c671dae472bb0c07830f2867a39cbcc6ba7",
+    "scripts/check-sample-size-units.py": "a98125acad74b0121155291c1012c4e6eebb3e265c9a61229af08e9b064d1259",
+    "scripts/reference-checks.R": "b26cd4795065b8aa9110de4198f6cb5aae0f4691342c7e5b140eccca40a6dca4",
+    "scripts/render-record.py": "2a69dc627732f60db5179b9e76167ee926afe7d1f822a6229b5ccf56ab7c9121",
+    "scripts/run-power-agent.mjs": "da516b699b5e1e5e1149b9953442c1fc27d84bea90b8e3bec9e83343dd9e7331",
+    "scripts/runtime/model-config.js": "36eeb9504f0759e638c48cd7e9885082e1e89e5763fa00056d192191b29f88af",
+    "scripts/runtime/package.json": "37b73b213446b93a0dec440501464fff1941a0034bf23a99a11541e9b451361e",
+    "scripts/runtime/scientific-harness-cli.js": "be8d61547df05f0eb996e30b02df28c2870545bf859bd9650b5bd1bb6f78d38b",
+    "scripts/runtime/scientific-harness.js": "2037394d4369969214343959325c1b7959d19b6a5e1aef1471f37b8c4f107741",
+    "scripts/runtime/scientific-output-contract.js": "d4e6ce3a7e2360289f83bcc92dc414782abdf9ed4663790c7ed80004b82e9e83",
+    "scripts/runtime/scientific-r-executor.js": "e9fcd14586308291fec4946c1ae30a6004f6a93361b70e6e0d49eec080821107",
+    "scripts/runtime/scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+    "scripts/runtime/scientific-reference-guard.js": "9db3174f066b17448d92bc511d0a5daba47a89cda0e0cb6b4a63596e9fe48ec5",
+    "scripts/runtime/scientific-sources.js": "1e436ed8dd9e665850b6488b351b3b54292e906f5420dce4e05af3bafa7bd53a",
+    "scripts/specification-preflight.py": "fc81eb2ff082fdb4e87daa92dc04cc65abc2f67e304bac465dbc85579d204211",
+    "scripts/verify-record.mjs": "f2dfd99a1bb6fe4e869441bd52e2ebc66a09578f4f2af10770b97761e2c4dd0b"
+  },
+  "validation_scope": "Native instructions/helpers, frozen optional API kernel and observed host demonstrations have separate scopes. A source/card/hash or receipt-consistency pass is not scientific certification or general host-agent compliance."
+}

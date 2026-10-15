@@ -1,0 +1,12 @@
+{
+  "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/power.t.test.html",
+  "retrieved_at_utc": "2026-10-02T05:49:37.616002+00:00",
+  "response_status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "local_file": "source-power-t-test.html",
+  "raw_sha256": "b9c436abfd10e0fd7435422950a7c66cc638f0ccb2ade447f655eba7f52506ca",
+  "bytes": 4215,
+  "retrieval_scope": "complete HTTP response body of a single official R-devel stats HTML documentation page; no PDF or broader manual coverage claimed",
+  "local_truncation": false,
+  "web_receipt": "turn63view0; 54 extracted lines; official stats 4.6.0 documentation"
+}

@@ -1,0 +1,4 @@
+{
+  "query": "For a two-sided independent two-sample t test with equal allocation, normally distributed groups with a common SD, standardized treatment-minus-control difference 0.5, alpha 0.05 and target power 0.80, use stats::power.t.test with strict=TRUE to determine the smallest integer number of analyzable participants per arm. Verify achieved power at the selected and preceding admissible designs. No attrition inflation.",
+  "workflowMode": "single"
+}

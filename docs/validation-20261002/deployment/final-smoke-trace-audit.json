@@ -1,0 +1,396 @@
+{
+  "audit_version": "1.0.0",
+  "created_at": "2026-10-02T07:12:38.816648+00:00",
+  "auditor": "agent_harness",
+  "scope": "Independent read-only audit of retained fifth engineering pilot, frozen staged source, execution receipts and delivered bytes. No model/provider calls, new R executions, runtime edits or evaluator edits.",
+  "overall_assessment": "Engineering workflow completion and provenance confirmed; requested figure completeness failed. This is not an all-deliverables scientific validation pass or benchmark-performance estimate.",
+  "input_files": {
+    "raw_record": {
+      "path": "jsm-2026/multi-agent-20261002/deployment/candidate-artifact-multi-analysis.json",
+      "sha256": "0501ca9dfdcc3f70091b3284d520b2caa8a7d293f6b27c32a789f4c589c64799"
+    },
+    "public_request": {
+      "path": "jsm-2026/multi-agent-20261002/deployment/candidate-artifact-multi-request.json",
+      "sha256": "e6ec2a5fa279dcb1d940194a9ec6cc605acbf92e3529220733e00a2a53b6a26e"
+    },
+    "saved_validation": {
+      "path": "jsm-2026/multi-agent-20261002/deployment/candidate-artifact-multi-validation.json",
+      "sha256": "7fb079123c8686d81cf3447417c7b6ed5c6fe8a6bae58d1c0779cf224fa4304d"
+    }
+  },
+  "staged_source_hashes": {
+    "scientific-harness.js": "7fcde84beda8d5dcd5058a370ade3cb639f6b761ae3557b608dbfa8564876fd3",
+    "scientific-reference-guard.js": "ed219830b8c2a1e223a9ddd6ad34d2d3d33dd02f7895ea0edcaa046f77185c02",
+    "scientific-r-executor.js": "4c9cace7439dfa660e09a91a43a0acdb98181cae231ffbc95a11230049414080",
+    "scientific-sources.js": "acf5f6f3d7469dec75e035e0723284784c37764c1e170d03334959c9a41de78c",
+    "model-config.js": "af4ebb1329a24c9a7048255d3da9761bd722beff7dadc68c2f9a55dd15e67a57"
+  },
+  "runtime_identity": {
+    "harnessVersion": "2.2.0",
+    "model": "claude-haiku-4-5-20251001",
+    "workflowMode": "multi",
+    "verificationPolicy": "required",
+    "deploymentRevision": "power-agent-api-00170-zuz",
+    "platform": "linux",
+    "restrictedLinuxWorker": true
+  },
+  "structural_checks": {
+    "raw_matches_saved_validation_digest": true,
+    "runtime_multi_2_2_0_completed": true,
+    "current_numeric_answer_grounded": true,
+    "cited_answer_evidence_successful_current_coder": true,
+    "review_covers_all_answer_evidence": true,
+    "review_checked_ids_current_coder": true,
+    "review_numeric_ids_successful_current_reviewer": true,
+    "blind_precheck_executed_before_candidate_reveal": true,
+    "post_reveal_comparisons_follow_precheck": true,
+    "source_receipt_hashes_match": true,
+    "citations_link_to_actual_source_receipts": true,
+    "source_read_receipts_link_to_trace": true,
+    "all_delivered_artifact_bytes_provenance_match": true,
+    "csv_contains_exact_requested_sample_sizes": true,
+    "phase_call_counts_match_trace_and_total": true,
+    "phase_execution_counts_match_record_and_total": true,
+    "actual_usage_within_effective_phase_caps": true,
+    "actual_usage_within_global_caps": true,
+    "model_token_ledger_matches_trace": true,
+    "no_repair_round_claimed": true
+  },
+  "structural_checks_passed": 20,
+  "timing": {
+    "reported_harness_elapsed_seconds": 196.949,
+    "saved_client_elapsed_seconds": 198.589343292,
+    "deadline_seconds": 540.0
+  },
+  "budget": {
+    "global": {
+      "maxModelCalls": 26,
+      "maxExecutions": 12,
+      "maxSearches": 6,
+      "maxSourceReads": 4,
+      "maxSourceChars": 80000,
+      "deadlineMs": 540000
+    },
+    "profile": {
+      "id": "hosted-balanced",
+      "plannerMaxCalls": 3,
+      "solverMaxCalls": 9,
+      "solverMaxExecutions": 5,
+      "verificationMaxCalls": 5,
+      "verificationMaxExecutions": 3,
+      "repairMaxCalls": 4,
+      "repairMaxExecutions": 1,
+      "reserveRepair": true
+    },
+    "used": {
+      "model_calls": 14,
+      "executions": 9,
+      "searches": 0,
+      "source_reads": 2,
+      "source_chars": 2071
+    },
+    "phases": [
+      {
+        "name": "planner",
+        "round": 0,
+        "context_topology": null,
+        "max_model_calls": 3,
+        "max_executions": 0,
+        "model_calls": 2,
+        "executions": 0,
+        "searches": 0,
+        "source_reads": 1,
+        "blind_pending": false,
+        "reservation": {
+          "calls": 0,
+          "executions": 0
+        },
+        "started_ms": 1,
+        "stop_reason": "submitted",
+        "elapsed_ms": 8933
+      },
+      {
+        "name": "solver",
+        "round": 0,
+        "context_topology": null,
+        "max_model_calls": 9,
+        "max_executions": 5,
+        "model_calls": 8,
+        "executions": 5,
+        "searches": 0,
+        "source_reads": 1,
+        "blind_pending": false,
+        "reservation": {
+          "calls": 6,
+          "executions": 5
+        },
+        "started_ms": 8938,
+        "stop_reason": "submitted",
+        "elapsed_ms": 108256
+      },
+      {
+        "name": "reference",
+        "round": 0,
+        "context_topology": null,
+        "max_model_calls": 0,
+        "max_executions": 1,
+        "model_calls": 0,
+        "executions": 1,
+        "searches": 0,
+        "source_reads": 0,
+        "blind_pending": false,
+        "reservation": {
+          "calls": 0,
+          "executions": 0
+        },
+        "started_ms": 117194,
+        "stop_reason": "submitted",
+        "elapsed_ms": 470
+      },
+      {
+        "name": "verification",
+        "round": 0,
+        "context_topology": "fresh_review_conversation",
+        "max_model_calls": 5,
+        "max_executions": 3,
+        "model_calls": 4,
+        "executions": 3,
+        "searches": 0,
+        "source_reads": 0,
+        "blind_pending": false,
+        "reservation": {
+          "calls": 4,
+          "executions": 3
+        },
+        "started_ms": 117664,
+        "stop_reason": "submitted",
+        "elapsed_ms": 79285
+      }
+    ],
+    "max_repairs_planned": 1,
+    "actual_repairs": 0
+  },
+  "model_token_usage": {
+    "input_tokens": 207053,
+    "output_tokens": 20110,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0
+  },
+  "source_usage": {
+    "actual_source_reads": 2,
+    "actual_search_calls": 0,
+    "additional_provider_reported_credits": 1,
+    "cache_hits": 1,
+    "invoice_verified": false
+  },
+  "source_receipts": [
+    {
+      "id": "s1",
+      "url": "https://stat.ethz.ch/R-manual/R-patched/library/stats/html/power.t.test.html",
+      "stored_content_sha256": "90b2dd1e861d1b025c7b44630a6e0d7d1ba21dbce317da617040303004b04411",
+      "hash_matches": true,
+      "characters": 2071,
+      "scope": "provider_extracted_document_text",
+      "provider_truncation_qualified": "Local character cap; provider extraction can omit pages, equations, figures or tables.",
+      "content_truncated": false,
+      "retrieved_at": "2026-10-02T06:51:30.581Z"
+    }
+  ],
+  "source_version_qualification": {
+    "retrieved_document_stats_version": "4.5.0",
+    "executed_R_stats_version": "4.4.1",
+    "interpretation": "Receipt is valid official provider-extracted document text, not proof of an exact installed-version documentation snapshot or complete extraction."
+  },
+  "blind_handoff": {
+    "precheck_evidence_id": "e7",
+    "precheck_worker_phase": "blind_verification",
+    "precheck_trace_index": 65,
+    "candidate_reveal_trace_index": 67,
+    "first_post_reveal_execution_index": 72,
+    "precheck_method": "Recomputes inversion and achieved/preceding powers with stats::power.t.test(strict=TRUE), including rounding, from supplied design inputs. It does not hardcode the selected n.",
+    "shared_dependency": "Same R stats power.t.test implementation as author; same Haiku model. Fresh/blind context does not establish independent model or package errors.",
+    "proof_limit": "Trace verifies ordering and executed blind phase; message withholding is also supported by frozen harness construction. Raw model request messages are represented by digests, not exported plaintext, so this audit is not separate cryptographic absence proof."
+  },
+  "numerical_evidence": {
+    "answer_execution_ids": [
+      "e1",
+      "e2",
+      "e5"
+    ],
+    "review_checked_evidence_ids": [
+      "e1",
+      "e2",
+      "e5"
+    ],
+    "review_independent_evidence_ids": [
+      "e7",
+      "e9"
+    ],
+    "reference_evidence_id": "e6",
+    "reference_status": "passed",
+    "results": [
+      {
+        "metric": "Minimum sample size per arm",
+        "value": 64,
+        "unit": "participants"
+      },
+      {
+        "metric": "Total minimum sample size",
+        "value": 128,
+        "unit": "participants"
+      },
+      {
+        "metric": "Achieved power at minimum n",
+        "value": 0.8014595579223276,
+        "unit": "probability"
+      },
+      {
+        "metric": "Power at n-1",
+        "value": 0.7951683381233855,
+        "unit": "probability"
+      }
+    ],
+    "reference_scope": "Two-sided, equal-allocation, fixed two-independent-normal-group pooled-t sample-size inversion with a common SD and no attrition inflation. Checks the declared plan, not source-input validity or other methods.",
+    "author_direct_check_evidence_id": "e5",
+    "review_post_reveal_qualification": "e9 assigns earlier reported candidate/precheck values and computes differences. It does not reread the CSV or plot; its literal artifact-success row is not independent file or scientific validation."
+  },
+  "execution_failures_retained": [
+    {
+      "id": "e3",
+      "role": "coder",
+      "exit_code": 1,
+      "reason": "Error in \"=\" * 70 : non-numeric argument to binary operator\nCalls: cat\nExecution halted"
+    },
+    {
+      "id": "e4",
+      "role": "coder",
+      "exit_code": 1,
+      "reason": "Warning in file(file, \"rt\") :\n  cannot open file 'sensitivity.csv': No such file or directory\nError in file(file, \"rt\") : cannot open the connection\nCalls: read.csv -> read.table -> file\nExecution halted"
+    },
+    {
+      "id": "e8",
+      "role": "reviewer",
+      "exit_code": 1,
+      "reason": "Error in \"=\" %+% strrep(\"=\", 69) : could not find function \"%+%\"\nCalls: cat\nExecution halted"
+    }
+  ],
+  "submission_rejections_retained": [
+    {
+      "role": "coder",
+      "tool": "submit_answer",
+      "issues": [
+        "value.assumptions must be array",
+        "value.limitations must be array"
+      ]
+    },
+    {
+      "role": "coder",
+      "tool": "submit_answer",
+      "issues": [
+        "Unverified result: Continuous sample size solution (participants per arm)"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "a-514b3426-187f-43f2-8363-06dbef3d575c-0",
+      "name": "sensitivity.csv",
+      "size": 117,
+      "sha256": "f29323e2bf208986aa7ad92c34247e40aeff59bb3dcacc39f457ddf36bbb7939",
+      "digest_matches_record": true,
+      "bytes_match_embedded_record": true,
+      "size_matches_record": true,
+      "producing_evidence_id": "e2",
+      "producer_success": true,
+      "producer_current_round": true,
+      "producer_cited_by_answer": true,
+      "claimed_by_answer": true
+    },
+    {
+      "artifact_id": "a-514b3426-187f-43f2-8363-06dbef3d575c-1",
+      "name": "sensitivity.pdf",
+      "size": 5104,
+      "sha256": "79a86d3380999399b0163c58a76c68464ce200e76b25c0275aa8de593bfe3912",
+      "digest_matches_record": true,
+      "bytes_match_embedded_record": true,
+      "size_matches_record": true,
+      "producing_evidence_id": "e2",
+      "producer_success": true,
+      "producer_current_round": true,
+      "producer_cited_by_answer": true,
+      "claimed_by_answer": true
+    },
+    {
+      "artifact_id": "a-514b3426-187f-43f2-8363-06dbef3d575c-2",
+      "name": "sensitivity.png",
+      "size": 34821,
+      "sha256": "14599443fda5c053a31932b2b7e6cb8deb87a18903e89df64e759b34b3450b28",
+      "digest_matches_record": true,
+      "bytes_match_embedded_record": true,
+      "size_matches_record": true,
+      "producing_evidence_id": "e2",
+      "producer_success": true,
+      "producer_current_round": true,
+      "producer_cited_by_answer": true,
+      "claimed_by_answer": true
+    }
+  ],
+  "csv_rows": [
+    {
+      "n": 40,
+      "power": 0.598146901141676
+    },
+    {
+      "n": 50,
+      "power": 0.696893405533548
+    },
+    {
+      "n": 60,
+      "power": 0.775265888512634
+    },
+    {
+      "n": 64,
+      "power": 0.801459557922328
+    },
+    {
+      "n": 70,
+      "power": 0.835822265839555
+    }
+  ],
+  "material_scientific_deliverable_issue": {
+    "status": "failed_requested_figure_completeness",
+    "evidence_id": "e2",
+    "plot_y_limits": [
+      0.65,
+      0.85
+    ],
+    "omitted_requested_row": {
+      "n": 40,
+      "power": 0.598146901141676
+    },
+    "code_and_warning_evidence": "scale_y_continuous limits exclude the n40 power; stderr reports a row removed from points and lines for both plot renders.",
+    "png_visual_inspection": "Confirmed four plotted markers at n50,60,64,70; no marker at requested n40. Axes, title and target line are present.",
+    "pdf_visual_inspection": "Not independently rendered by this audit. The same ggplot object/limits and row-removal warnings apply; PDF also emits an alpha-font conversion warning.",
+    "recorded_reviewer_verdict": "pass",
+    "audit_conclusion": "Artifact production/hash checks pass, but the assertion that PNG/PDF visualize all exact requested CSV rows is unsupported and contradicted by code, warning and PNG pixels."
+  },
+  "fair_limitations": [
+    "Five preparation pilots and generic interface changes preceded this success. It is an exposed familiar task, not a held-out or randomized estimate of accuracy, robustness or multi-agent superiority.",
+    "Pilot product capacity is26calls/12R with required review; default single product capacity is18/8. Comparative conclusions require explicit matched global and phase profiles in both modes, as prospectively planned.",
+    "Configured phase quotas are ceilings under global limits and future minimum reservations. Actual solver used all5R slots and reviewer all3R slots; unused planned repair capacity was not exercised.",
+    "Three real R failures and two author submission rejections remain in the completed trace. Success does not mean every attempted script or interface submission conformed.",
+    "Only direct official-source reading was exercised (two callbacks, one cache hit); no search_sources call occurred in this pilot.",
+    "Source URL/hash linkage and provider text do not automatically verify every citation interpretation or full document coverage.",
+    "The current narrow deterministic pooled-t guard checks declared numerical design; it does not certify source inputs, arbitrary complex methods or figures.",
+    "Blind precheck is a separate model conversation with actual R execution; same-model and same-package dependencies remain. After reveal, model-authored pass assertions can still miss actual errors.",
+    "Restricted Linux worker is reported and constructed in staged source; this audit did not repeat an adversarial OS-isolation test.",
+    "A valid file, digest, signature or model review alone is not scientific visualization validation."
+  ],
+  "sanitization": {
+    "environment_values_exported": false,
+    "credentials_exported": false,
+    "signed_download_urls_exported": false,
+    "artifact_base64_exported": false,
+    "raw_cloud_describe_exported": false
+  }
+}

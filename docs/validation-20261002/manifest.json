@@ -1,0 +1,99 @@
+{
+  "scope": "Selected component/native/deployment audits; not main64 raw responses. Native example is developer-selected, model identifier unavailable, API optional runner not invoked. Earlier package SHA in independent native inspection predates later README-only metadata rebundling. All human-figure ratings remain pending.",
+  "final_native_record_sha256": "3820474ba451266f2dc5464ef1149d102384e60242aa43d3992aaa68bf9b1699",
+  "final_portable_package_sha256": "44b95c2983c44c35b7e7807d6222ec7a1df877ffdb23ad9f10623221083c7699",
+  "native_files": [
+    {
+      "file": "native2.3.1/final-report.md",
+      "sha256": "02eee4095a2d3221e5367b52a625a0bb8842164161632af051c80700d78e144c"
+    },
+    {
+      "file": "native2.3.1/verified-summary.md",
+      "sha256": "dda42dcbebab5d6b50ffe26677c7d0312ae074f32fad173148098360c9e6930f"
+    },
+    {
+      "file": "native2.3.1/independent-check.json",
+      "sha256": "807b4287b688c8c619c6e119499ed5158daa57e6c078b8f475c4a083a173086d"
+    },
+    {
+      "file": "native2.3.1/scenario-summary.csv",
+      "sha256": "a3a1d80ef17ceea74e206be146e31343ddde2b26f40b19d4435016a54e20bd93"
+    },
+    {
+      "file": "native2.3.1/native-calculation.R",
+      "sha256": "8991e2ff4bb93fd93b55177e37359260539aea2dadf53ce75528d43b3595e036"
+    },
+    {
+      "file": "native2.3.1/checker-precheck/independent-check.R",
+      "sha256": "3cef1d3b537624c97546c48ca669e5c5ab821c306592141cb640c3952f5b7b6a"
+    },
+    {
+      "file": "native2.3.1/checker-precheck/precheck-self-audit.json",
+      "sha256": "4309a7786add0847f08c4e347f8e0902e9e74edc37f32939823f9664f31fe673"
+    },
+    {
+      "file": "native2.3.1/orchestration-provenance.json",
+      "sha256": "f38ed9abe25bda99a4a1cd2f43df1647b262807a7b70c9c1fd97a78e98bfef1a"
+    },
+    {
+      "file": "native2.3.1/orchestration-completion.json",
+      "sha256": "05477ddd0d585270b7efb23dedbaa944452a0a28615ca077489adb869fedd481"
+    },
+    {
+      "file": "native2.3.1/preflight.json",
+      "sha256": "bef275f1e260dd92e2ea18734062fee2e9ac022ece1aa7b9971c7e37e106c444"
+    },
+    {
+      "file": "native2.3.1/source-receipt.json",
+      "sha256": "8c208470a6935b7473c236ddfbcc84d29bf82dfcc1486b43214552144674a106"
+    },
+    {
+      "file": "native2.3.1/source-t-distribution-receipt.json",
+      "sha256": "c5fb0f918e2e5594adc14744e2b4409a2daefdac9ddb902fde630852f5d7d734"
+    },
+    {
+      "file": "native2.3.1/candidate-freeze-receipt.json",
+      "sha256": "eb46b7e783497afd850875fdb2327b3446d20837f65f9ad712aa1b5a9fe6f755"
+    },
+    {
+      "file": "native2.3.1/precheck-freeze-receipt.json",
+      "sha256": "209ee2a360a8e70ec7c8bfadb3b72b2e2137364a2f9165773a654ab6a6c32c2d"
+    },
+    {
+      "file": "native-figure-ai-inspection.md",
+      "sha256": "03cc81e671fb707021e06386ae67e93b930a5fe1da99b3ac6c1ff8618b0fcfe7"
+    },
+    {
+      "file": "deployment/final-smoke-trace-audit.md",
+      "sha256": "c22f22ba7ba00dd57c77d94489de2584c4c286b1afc7a4acf7880eeaff906998"
+    },
+    {
+      "file": "deployment/final-smoke-trace-audit.json",
+      "sha256": "e5e9e1e291efaf7f3cc826334bcc7c22b9978dfe4312e321b804be1decff4a81"
+    },
+    {
+      "file": "deployment/browser-paired-multi-trace-audit.md",
+      "sha256": "9dfde62a43fc5404f280a35839db9da4ee52ba719a72eb726319a1a5ef44df04"
+    },
+    {
+      "file": "deployment/browser-paired-multi-trace-audit.json",
+      "sha256": "19b47476dc242b574db933295f1fc1ceafb62b501753f2ddcab83930de98ff20"
+    },
+    {
+      "file": "main-study-prefinal-audit.md",
+      "sha256": "888968fa165b7d9ddee16e30aa138625e9705a67efb219d982d9f8a324ed5b34"
+    },
+    {
+      "file": "main-study-prefinal-audit.json",
+      "sha256": "cc9bd76bb80f500daac2a606ba98ecc079e2583a43c1fc1f90b2976b2960bb72"
+    },
+    {
+      "file": "deployment/study-image-runtime-proof.json",
+      "sha256": "89865d76e2bda3da3155aaab76a7381beb21f53a166a28cde0e4cf16edac3c93"
+    },
+    {
+      "file": "deployment/public-linux-validation.json",
+      "sha256": "c1a9c60ba700b976a8a845cb1dc193b2d130ab44c6707f1524e97c9b15b640fb"
+    }
+  ]
+}

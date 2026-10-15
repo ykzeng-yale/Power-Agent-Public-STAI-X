@@ -1,3 +1,4 @@
+// Historical prototype example; current scientific CLI: npm start -- --input examples/scientific-request.json
 /**
  * Complete Demo - Production-Ready Data Analysis Agent
  * 

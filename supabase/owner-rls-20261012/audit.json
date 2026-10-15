@@ -1,0 +1,131 @@
+{
+  "audit_schema": "power-agent-owner-rls-audit/1.0",
+  "state": "applied_and_scoped_select_gates_observed",
+  "as_of_utc": "2026-10-12T09:23:14.159652+00:00",
+  "scope_tables": [
+    "chat_sessions",
+    "chat_messages",
+    "messages",
+    "session_files",
+    "workflow_steps",
+    "shared_files"
+  ],
+  "migration_sha256": "0c4500a8e5c0fe2beb7ffa3365ee9c063806fa0ad82538641effd7647db7aee3",
+  "application": {
+    "performed_by": "root deployment agent",
+    "management_http_status": 201,
+    "receipt_checked_utc": "2026-10-12T09:04:11.917696+00:00",
+    "no_row_DML_in_migration": true
+  },
+  "rollback_rehearsal": {
+    "performed_by": "root deployment agent",
+    "management_http_status": 201,
+    "ending_transaction": "ROLLBACK",
+    "saved_policy_boundary_unchanged": true
+  },
+  "independent_catalog_check": {
+    "performed_by": "backend_access read-only verifier",
+    "policy_count_before": 20,
+    "policy_count_after": 32,
+    "all_prior_twenty_policies_preserved": true,
+    "all_six_table_RLS_FORCE_owner_ACL_flags_unchanged": true,
+    "all_twelve_new_policy_contracts_match": true
+  },
+  "select_gates": {
+    "unauthenticated_rest": {
+      "performed_by": "backend_access read-only verifier",
+      "all_six_http_200": true,
+      "all_six_zero_rows": true,
+      "requested_only_ID_columns": true,
+      "returned_identifiers_serialized": false
+    },
+    "anon_role": {
+      "performed_by": "root deployment agent",
+      "query_sha256": "3c150a22ba352725d8f8e74185fa4a951a9ba7df4fafcb25deb8889a7ba53a65",
+      "management_http_status": 201,
+      "current_user": "anon",
+      "all_six_private_counts_zero": true
+    },
+    "authenticated_owner_role_simulation": {
+      "performed_by": "root deployment agent",
+      "query_sha256": "8649d270a52fe1b1b111630b5f658a4420db6e3913323afeddaca0b3ca3edfd6",
+      "management_http_status": 201,
+      "current_user": "authenticated",
+      "owned_baseline_nonzero": true,
+      "outside_owner_baseline_nonzero": true,
+      "all_owned_counts_retained": true,
+      "all_outside_owner_counts_zero": true,
+      "real_JWT_authentication_claim": false
+    },
+    "service_counts": {
+      "performed_by": "root deployment agent",
+      "query_sha256": "83c022bb3a90ceb5110313ed1a0082f574ae58cce5e584b06fe447b023edeffe",
+      "management_http_status": 201,
+      "current_user": "service_role",
+      "service_role_bypass_rls": true,
+      "all_six_preapply_postapply_counts_equal": "confirmed by root against retained preapply aggregates",
+      "raw_counts_in_public_audit": false
+    },
+    "native_authenticated_owner_history": {
+      "performed_by": "root browser verifier",
+      "observed": "existing owner history restored with workflow, review and download control",
+      "full_file_download_bytes_verified_by_this_gate": false
+    },
+    "new_library_save_reload_reuse": {
+      "state": "not established by this audit",
+      "requires_separate_native_gate": true
+    }
+  },
+  "limitations": [
+    "Shared-files was empty: no nonvacuous shared-file cross-owner row test.",
+    "Owner-role simulation uses local claims; it does not independently verify real JWT authentication.",
+    "No INSERT/UPDATE/DELETE isolation experiment is claimed.",
+    "TRUNCATE/REFERENCES grants, RPC/functions, buckets, service/superuser authority and complete database security remain outside this audit.",
+    "The metadata snapshot and anonymous probes were performed by backend_access; application, role probes, service-count comparison and native history observation were performed by root."
+  ],
+  "claims": {
+    "complete_database_security_certification": false,
+    "row_write_isolation_tested": false,
+    "library_save_reload_reuse_verified": false
+  },
+  "private_data_in_public_audit": false,
+  "private_source_digests": [
+    {
+      "purpose": "root-policy-apply-receipt",
+      "sha256": "ff48bfe39f90b3ca1e926f64b12deff00514c4f4dabfcdd663b97bd9481067ee"
+    },
+    {
+      "purpose": "root-policy-rehearse-receipt",
+      "sha256": "48399e8c84bdc621ff0638c802db56f5bb69da6c8502373cce8d724e5880a9a6"
+    },
+    {
+      "purpose": "root-policy-rehearsal-rollback-snapshot",
+      "sha256": "e7030757f14dc70f57767c2a7bc4cd325f4dfe888c57efa579a3199d7bc705f1"
+    },
+    {
+      "purpose": "independent-post-apply-owner-rls-check",
+      "sha256": "549df05d73830b343c31a785badbf0de8998eec4a68726c300683797b3d67b8d"
+    },
+    {
+      "purpose": "root-policy-verify-anon-receipt",
+      "sha256": "b5a5b488333acef83f9d1ddcd4db48f15c066d4ed00b0dca573a31a161c4df53"
+    },
+    {
+      "purpose": "root-policy-verify-owner-receipt",
+      "sha256": "5190fa16503c6ef6995d45afc007eee07c5499bc3412297f8b16d72d1f631845"
+    },
+    {
+      "purpose": "root-policy-verify-service-receipt",
+      "sha256": "c5a68f088f6cc693e22d4143ab2ab34265b37e13e501fa8315fab276e1a43763"
+    },
+    {
+      "purpose": "post-rls-native-owner-history",
+      "sha256": "25b842b144863ad4a26786b0e41d8d9eb42792346f7352fdfbbd304745d49bf9"
+    }
+  ],
+  "source_peer_reviews": {
+    "migration_and_rollback": "no scoped source blocker reported by scientific_validation",
+    "consolidated_role_probes": "no final-result output-contract blocker reported by scientific_validation",
+    "live_database_mutations_by_source_peer": false
+  }
+}

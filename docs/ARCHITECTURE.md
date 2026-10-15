@@ -1,105 +1,39 @@
-# Multi-Agent Architecture Design
+# Current scientific architecture
 
-## Overview
-This application follows the **Orchestrator-Worker Pattern** for multi-agent coordination, allowing independent, reusable agents that can be composed for complex tasks.
+Source runtime 2.4.2 uses the files in `scientific/`; their digests are in `scientific/manifest.json`. Candidate/native and production acceptance are separate pending receipts. The optional skill API runner copies the same eight core files. Scientific planning, implementation and review default to Claude Sonnet5.5; a counted Claude Haiku5.5 call provides advisory routing. Each scientific role receives the complete original request. Routing cannot select a method, replace inputs or waive review. Actual requested/executed model IDs and usage are retained. The evaluated2.2.0/Haiku4.5 source and study remain archived separately.
 
-## Agents
+The planner submits a structured design with estimand/hypothesis, test, alpha/sidedness, allocation, effect/nuisance inputs and provenance, units, assumptions and missing-input questions. Missing material inputs stop the numerical path. Explicit supported standardized-effect, alpha and target-power bindings must retain the user's value and source before calculation; rejected plans return to the planner without inventing an input. Single mode retains the planner's conversation for implementation. Multi mode starts a fresh coder conversation, then a fresh reviewer conversation with original request, design and source evidence. Candidate code, results and artifacts are withheld until the checker has successfully executed a numerical precheck; they are then revealed for comparison. All roles can share model errors.
 
-### 1. Data Manager Agent (`/api/analyze-file`)
-**Role**: Orchestrator
-**Responsibility**: Content classification and routing
+The coder calls `execute_r` and emits one computed JSON object with metric/value/unit rows. The `POWER_AGENT_RESULT=` prefix is preferred; a single unambiguous unmarked JSON object is accepted. Duplicate keys and competing objects fail closed. Final numerical claims must match successful cited execution evidence. The reviewer independently calls the same tool for a quantitative check and returns pass/revise/clarification with explicit issues/checks/evidence ids. A pass requires an actual successful reviewer execution, no major/critical issue and passed substantive checks. One repair is allowed by default within shared call/execution/time limits. No fictional fallback numeric answer is accepted.
 
-**Workflow**:
-1. Receives uploaded file
-2. Uses AI (Claude Haiku 4.5) to classify content as "data" or "document"
-3. Routes based on classification:
-   - **Data files** → Delegates to Biostatistics Coding Agent
-   - **Documents** → Uses Claude API for text analysis
+A post-study deterministic pooled-t reference gate executes stats::power.t.test(strict=TRUE) and an independently specified noncentral-t calculation for declared two-sided, equal-allocation independent normal/common-SD means with no attrition. It checks participant/probability units, the minimum integer and every selected/preceding power estimate under the unchanged inclusive absolute1e-4 tolerance, and retains inconsistent candidates with review_failed. Exact R-method names in explicit count labels are treated as annotations; genuine power words and ambiguous design labels retain their checks. Other profiles explicitly skip the mathematical gate. The binding lexer and declared-plan reference have limited scopes; neither certifies arbitrary source interpretation or methodology. Historical benchmark cohorts evaluated earlier runtimes.
 
-**Key Feature**: Does NOT execute code directly - delegates to specialized agents
+Each R call is a fresh self-contained process with real exit code/stdout/stderr, code digest, elapsed time and session information. Linux production additionally drops worker identity and enforces syscall/network restrictions/resource limits; Mac workers retain shared host filesystem/package-library limitations. Structured output grounding and model review are computational evidence, not a reference oracle or mathematical proof.
 
-### 2. Biostatistics Coding Agent (`/api/analyze-biostat`)
-**Role**: Worker
-**Responsibility**: R code execution with iteration and error fixing
+`scientific-api.js` is the adapter for the hosted application: optional authenticated session ownership, server-controlled scientific access, source scoping, streamed/JSON events, uploaded exports and private workspace cleanup. Public scientific mode does not call credit/anonymous-allowance reservation RPCs or require signup. It uses bounded per-instance/observed-connection admission and short-lived signed guest transport tickets. Existing private history remains owner-scoped; the historical credits mode still requires a correct atomic RPC. The public standalone CLI does not require database or cloud integration. API tests use injected mocks. The active hosted frontend/backend deployment is maintained separately; legacy frontend and routing files in this repository remain source history.
 
-**Modes**:
-- `full_analysis` (default): Complete workflow with PI routing, iteration, streaming
-- `preliminary_analysis`: Fast, simplified analysis for file uploads
+Native skill 2.3.1 can use the host's own tools/model and separately records requested/executed workflow and whether a true independent reviewer exists. Its input/units/reference/report tools cover explicit limited profiles. Role-labelled self-critique and deterministic mathematical checks must not be described as independent model-agent evidence.
 
-**Key Feature**: Fully independent and reusable - can be called by any agent or directly by users
+The prior architecture document is preserved in `archive/source-history/docs/ARCHITECTURE.md`; its classification/data-manager roles and template-verification statements are historical, not current release claims.
 
-### 3. PI (Planning/Inference) Agent (`pi-agent.js`)
-**Role**: Worker
-**Responsibility**: Query routing (direct answer vs code execution)
+All roles receive the same tool definitions, actual source receipt ledger and operation metadata. Search excludes provider-generated answers and records primary-domain snippets. Bounded provider fallback and direct public HTML/plain-text reads retain dispatched attempts, scope, digests, truncation and unknown usage. Receipt linkage alone does not validate a claim's support or establish complete PDF reading. Source budgets are shared across roles.
 
-**Workflow**:
-1. Analyzes user query
-2. Decides: "Can I answer directly?" or "Need code execution?"
-3. Returns decision to calling agent
+Required verification is available in either topology. Single verification retains the author conversation; multi verification uses a fresh conversation and a blind precheck. Phase and global caps are explicit, with reservation decisions, failed candidates, actual check code/output, repairs and current-round rereview retained. This is a sequential multi-agent workflow, not parallel speedup or statistical independence.
 
-## Design Patterns
+Preliminary input preparation is shared context, not an independent scientific check. In the selected 2.4.1 PDF/DOCX engineering trial, preliminary model interpretations included approximate 63/64-participant suggestions and remained in the reviewer’s original source material. No offline oracle or current candidate answer/code/artifacts were exposed before the recorded numerical precheck. The workflow is therefore candidate-blind after shared preprocessing, not fully answer-blind. This qualification does not change the retained raw records, numerical tolerance, scored studies or native 2.3.1 evidence.
 
-### Orchestrator-Worker Pattern
-```
-┌─────────────────────────────┐
-│   Data Manager Agent        │  Orchestrator
-│   (Content Classification)  │
-└──────────┬──────────────────┘
-           │
-           ├─ Data → ┌────────────────────────────┐
-           │         │ Biostatistics Coding Agent │  Worker
-           │         │  (R Code Execution)        │
-           │         └────────────────────────────┘
-           │
-           └─ Document → Claude API
-```
+Successful R output files are captured from fresh execution directories, bounded in size/count, hashed, copied into immutable archives and retained as bytes in the record. Reviewer handoffs contain file metadata rather than binary data. On restricted Linux a blind worker has a distinct UID and cannot traverse candidate artifact inputs or earlier coder execution directories; original user inputs remain readable. Non-Linux operation does not enforce this filesystem separation. After precheck, reviewer evidence receives readonly artifact paths. Only accepted candidate execution artifacts are selected for delivery.
 
-### Sequential Orchestration
-```
-User Request
-    ↓
-Data Manager Agent (classifies content)
-    ↓
-Coding Agent (executes R code)
-    ↓
-Results returned to user
-```
+The original-interface-compatible frontend opens directly into scientific analysis. Actual model calls, source URL text, code/stdout and file/image previews come from the server legacy event adapter; requested/executed role models and citations remain in the complete scientific record and derived reports. Long analysis uses Cloud Run directly; short requests use the Vercel proxy. Browser25minute/Cloud30minute timeouts exceed the20minute scientific deadline. The expanded hosted profiles reserve complete review/repair cycles while allowing non-planner phases to borrow unreserved capacity. Their unequal single32/16 and multi64/32 call/R ceilings must not be presented as a matched topology experiment. The prospectively frozen2.2.0 developer-prepared suite and all failed release trials remain unchanged; selected service-restoration demonstrations are separate evidence.
 
-## Key Benefits
+In2.4.0, explicitly selected prior files carry exact bytes/SHA, adopted-input role and producer lineage; they are inherited inputs requiring a new executed read/calculation. Blind precheck conversation history includes user messages, not earlier assistant answers. Original uploads remain available. Bounded actual RDS/RData snapshots can be read by fresh workers; the runtime does not preserve implicit global notebook variables.
 
-1. **Separation of Concerns**
-   - Each agent has a single, well-defined responsibility
-   - No code duplication
+The optional API normalizes every actual XLSX sheet into bounded source/worksheet previews, parses PDF/DOCX text with scope metadata, and records actual preliminary R inspection separately from scientific numerical evidence. HTML/Markdown/PDF reports are derived exports from an accepted record with actual renderer/figure receipts. Source-anchored document revisions have a separate bounded processing budget and actual application/model receipts; they are editorial proposals with original-source hashes, not independent statistical verification. No document-processing failure rewrites an accepted numerical result.
 
-2. **Reusability**
-   - Coding agent can be called by:
-     - Data Manager Agent (preliminary analysis)
-     - Frontend directly (full analysis)
-     - Future agents (specialized analyses)
+The rewritten2.4.0 frontend was rejected by the user and is retained as an unsuccessful product attempt. The2.4.1 hosted adapter translates actual scientific events to the original Aug5 planning/code/executing/reviewing/insights/output schema, pairing actual evidence groups and emitting completed celebration only for accepted results. Raw scientific_result receipts preserve truthful terminal state and records but are not visible generic workflow steps.
 
-3. **Independence**
-   - Each agent operates autonomously
-   - Agents communicate via standard API calls
-   - Easy to test, modify, or replace individual agents
+The thin original frontend preserves its main CSS/static DOM/card/report-modal layout, adds explicit multi/one-POST public transport, complete raw upload context, bounded history and sequential file preparation. Raw prose is escaped exactly once, and full HTML report bytes stay in a sandboxed child. Original optional anonymous Supabase/owner private history remains; unavailable anonymous authentication falls back to memory without a persistence claim. The rejected IndexedDB/card layer is not loaded. Original Files supports downloads/reupload, while direct adopted-artifact selection is not exposed. Root-owned real preview/production/browser and pixel checks remain separate from source identity and the immutable scientific studies.
 
-4. **Extensibility**
-   - New agents can be added easily
-   - Existing agents can call new agents
-   - Framework supports growth
+In 2.4.2, hosted source-anchored document capability is declared to all scientific roles before analysis. Accepted numerical science precedes the separate editorial postprocessor, which precedes deterministic reports. scientificSuccess/scientificStatus and productSuccess/productStatus remain distinct; required missing/failed source-matched DOCX proposals prevent full-product completion. The bounded target heuristic excludes optional contextual PDF no-proposal from an otherwise delivered required Word proposal, and conditional no-proposal stays unresolved. Earlier analyst prose remains phase-labelled; authoritative later delivery receipts do not fabricate earlier artifacts.
 
-## Backward Compatibility
-
-All existing functionality is preserved:
-- `/api/analyze-biostat` works unchanged for direct calls
-- `/api/analyze-file` behavior is unchanged for users
-- Internal architecture improved without breaking APIs
-
-## Future Extensions
-
-Potential new agents:
-- **Visualization Agent**: Specialized plot generation
-- **Report Generation Agent**: Create formatted reports
-- **Data Cleaning Agent**: Automated data preprocessing
-- **Model Selection Agent**: Choose optimal statistical models
-
-All can reuse the Biostatistics Coding Agent for R execution!
+The reference guard retains explicitly labelled source/comparison/observed diagnostic quantities without certifying them as the primary selected design. Applicable primary count/power/preceding-design checks, reference formulas and numeric tolerance remain. Prior 2.4.1 selected engineering and native UI observations remain separately scoped; 2.4.2 native/candidate and production acceptance are pending. Native instructions/checkers, workers and immutable benchmark evidence are unchanged.

@@ -1,0 +1,98 @@
+{
+  "scientificStatus": "completed",
+  "workflow_status": "completed",
+  "scope": "One exploratory host-native paired-study forward workflow, not broad skill validation",
+  "native_skill_version": "2.3.1",
+  "requested_workflow_mode": "multi",
+  "executed_workflow_mode": "multi",
+  "orchestrator_session": "/root/native_skill_forward",
+  "completed_child_sessions": [
+    "/root/native_skill_forward/native_planner_231",
+    "/root/native_skill_forward/native_coder_231",
+    "/root/native_skill_forward/native_checker_231"
+  ],
+  "one_concurrent_child": true,
+  "candidate_blind_precheck_completed_before_reveal": true,
+  "independent_review_status": "passed",
+  "exact_final_record_sha256": "3820474ba451266f2dc5464ef1149d102384e60242aa43d3992aaa68bf9b1699",
+  "final_checks": [
+    {
+      "id": "native-integrity-audit-001",
+      "role": "final_record_verification",
+      "command": [
+        "python3",
+        "audit-native-integrity.py"
+      ],
+      "started_at_utc": "2026-10-02T06:35:46.141236+00:00",
+      "elapsed_seconds": 0.025902834,
+      "exit_code": 0,
+      "script": "audit-native-integrity.py",
+      "script_sha256": "cdc31ff0026353e89fb5b7813673277987e64cbd7f43cce69157514b8355e136",
+      "stdout_file": "native-integrity-audit-001.stdout.log",
+      "stderr_file": "native-integrity-audit-001.stderr.log",
+      "stdout_sha256": "2d318eb7197c9fbbbce70690842631d56247d6b771379fe660fc2136c41d5e39",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "record_sha256": "3820474ba451266f2dc5464ef1149d102384e60242aa43d3992aaa68bf9b1699"
+    },
+    {
+      "id": "native-paired-unit-audit-001",
+      "role": "final_record_verification",
+      "command": [
+        "python3",
+        "audit-paired-units.py",
+        "--record",
+        "record.json",
+        "--output",
+        "unit-audit.json"
+      ],
+      "started_at_utc": "2026-10-02T06:35:46.167735+00:00",
+      "elapsed_seconds": 0.026751499999999998,
+      "exit_code": 0,
+      "script": "audit-paired-units.py",
+      "script_sha256": "58bc4826b62d272034461f20ef565c3177d9759767c17c7205033ff4e58065c0",
+      "stdout_file": "native-paired-unit-audit-001.stdout.log",
+      "stderr_file": "native-paired-unit-audit-001.stderr.log",
+      "stdout_sha256": "ad4ea10cd4aafa9f5bee76f7e544ddcc8239e25d1c20e220902ddcd4077f6ed9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "record_sha256": "3820474ba451266f2dc5464ef1149d102384e60242aa43d3992aaa68bf9b1699"
+    },
+    {
+      "id": "native-record-render-001",
+      "role": "final_record_verification",
+      "command": [
+        "python3",
+        ".codex/skills/power-agent-scientific/scripts/render-record.py",
+        "--record",
+        "record.json",
+        "--unit-audit",
+        "unit-audit.json",
+        "--output",
+        "verified-summary.md"
+      ],
+      "started_at_utc": "2026-10-02T06:35:46.194957+00:00",
+      "elapsed_seconds": 0.026703124999999994,
+      "exit_code": 0,
+      "script": ".codex/skills/power-agent-scientific/scripts/render-record.py",
+      "script_sha256": "2a69dc627732f60db5179b9e76167ee926afe7d1f822a6229b5ccf56ab7c9121",
+      "stdout_file": "native-record-render-001.stdout.log",
+      "stderr_file": "native-record-render-001.stderr.log",
+      "stdout_sha256": "b5f5bb64831d70412101360d04d3080128acf85f42a278bba2f6ac668918b767",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "record_sha256": "3820474ba451266f2dc5464ef1149d102384e60242aa43d3992aaa68bf9b1699"
+    }
+  ],
+  "record_unchanged_after_independent_binding": true,
+  "preserved_failures": [
+    "Adjacent native-forward-2.3.0 input classifier failure and source snapshots",
+    "setup-failures.json: implementation lookup of nonexistent global skill path, corrected to project-local install",
+    "orchestrator-tool-failures.json: corrected JavaScript file-writing syntax error",
+    "checker-comparison/failure-repair-provenance.json: preserved attempt-1 comparator predicate error and successful versioned retry"
+  ],
+  "limitations": [
+    "Power is conditional on iid normal participant differences and the supplied correlation sensitivity scenarios",
+    "Separate sessions share configured host model/source specification and some R dependencies; no statistical independence or mathematical certification claim",
+    "Paired design is outside the skill equal-arm reference profiles; analogous paired units and separate source-based numerical checks were used",
+    "Exact model identifier and custom model-budget/resource enforcement were not exposed",
+    "Context/role isolation was used, with no adversarial filesystem sandbox assertion"
+  ]
+}

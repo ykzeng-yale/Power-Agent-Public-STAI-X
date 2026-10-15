@@ -1,0 +1,4 @@
+"assumed_rho","difference_sd","standardized_mean_change","participants","complete_pairs","independent_differences","measurements","achieved_power","previous_participants","previous_complete_pairs","previous_measurements","previous_power","target_power"
+0.25,1.46969384566991,0.244948974278318,178,178,178,356,0.901523413609049,177,177,354,0.899909725769307,0.9
+0.5,1.2,0.3,119,119,119,238,0.900761190271471,118,118,236,0.898314605506495,0.9
+0.75,0.848528137423857,0.424264068711928,61,61,61,122,0.903226463058061,60,60,120,0.898389119857514,0.9

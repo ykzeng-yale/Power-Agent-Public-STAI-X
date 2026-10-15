@@ -21,3 +21,12 @@ uploads/
 
 # OS
 .DS_Store
+
+# Current standalone scientific outputs and Python cache
+record.json
+preflight.json
+unit-audit.json
+reference-audit.json
+verified-summary.md
+__pycache__/
+*.pyc

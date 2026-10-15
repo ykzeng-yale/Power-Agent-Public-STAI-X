@@ -1,0 +1,755 @@
+{
+  "version": "figure-ai-qa-postseal-condition-summary1",
+  "created_utc": "2026-10-02T08:10:31.483139+00:00",
+  "sealed_ai_inspection_sha256": "e386e498f09abcf86299449acf72752f4c0c571368f3048fa75ed8f41770852b",
+  "private_map_sha256": "c4cfebe0c43622953a7bafcc52bbe486e73f5e25715c8f7906f4d5ec98fdcc18",
+  "scope": "Root custodian joined frozen AI-only case assessments to conditions after assessor sealed all23PNG pixel judgments. No changed rating or human judgment, no new score or mathematical claim. Figure pixels could reveal clues; complete blinding not guaranteed. Private map is not published.",
+  "conditions": {
+    "single_shared": {
+      "calculation_denominator": 12,
+      "delivered_case_count": 6,
+      "delivered_figure_files": 6,
+      "ai_only_case_assessments": {
+        "pass": 4,
+        "not_delivered": 6,
+        "fail": 1,
+        "unverifiable": 1
+      }
+    },
+    "single_expanded": {
+      "calculation_denominator": 12,
+      "delivered_case_count": 5,
+      "delivered_figure_files": 5,
+      "ai_only_case_assessments": {
+        "pass": 3,
+        "not_delivered": 7,
+        "fail": 2
+      }
+    },
+    "multi_shared": {
+      "calculation_denominator": 12,
+      "delivered_case_count": 4,
+      "delivered_figure_files": 4,
+      "ai_only_case_assessments": {
+        "not_delivered": 8,
+        "pass": 4
+      }
+    },
+    "multi_expanded": {
+      "calculation_denominator": 12,
+      "delivered_case_count": 7,
+      "delivered_figure_files": 8,
+      "ai_only_case_assessments": {
+        "fail": 3,
+        "pass": 4,
+        "not_delivered": 5
+      }
+    }
+  },
+  "rows": [
+    {
+      "job_id": "wc26-missing-survival__single__shared__r1",
+      "task_id": "wc26-missing-survival",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_0066a73f8fbf4dba8ad48422906fbad6",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-anova__multi__shared__r1",
+      "task_id": "wc26-anova",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_039e81d1dbe043ffbcd71411964b1f3b",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-pooled-t__single__expanded__r1",
+      "task_id": "wc26-pooled-t",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_114794d8a5fc44c4b67b465c83f49239",
+      "ai_only_assessment": "pass",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-cox-continuous__single__expanded__r2",
+      "task_id": "wc26-cox-continuous",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_18cb2165ab99465cb2622553d7816c46",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-open-cohort-sw__multi__expanded__r1",
+      "task_id": "wc26-open-cohort-sw",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_296d490d3dc743719d8c4756ab078a00",
+      "ai_only_assessment": "fail",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-pooled-t__multi__expanded__r1",
+      "task_id": "wc26-pooled-t",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_2a913ef4e2a749a19444b43ed688b150",
+      "ai_only_assessment": "pass",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-missing-cluster__multi__shared__r1",
+      "task_id": "wc26-missing-cluster",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_2fc03f36b0574e11bf85f82b6417ca67",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-pooled-t__single__shared__r2",
+      "task_id": "wc26-pooled-t",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_304a64e9279046ecb77116e49131dcd0",
+      "ai_only_assessment": "pass",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-open-cohort-sw__single__shared__r2",
+      "task_id": "wc26-open-cohort-sw",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_30ae593790f94447a61368510b9604c1",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-anova__multi__expanded__r1",
+      "task_id": "wc26-anova",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_30de09d74baf4044bccbf7dccc12a1f4",
+      "ai_only_assessment": "pass",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-missing-cluster__multi__expanded__r1",
+      "task_id": "wc26-missing-cluster",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_323f5b78d65b413b845f39644a93d225",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-cox-continuous__multi__expanded__r2",
+      "task_id": "wc26-cox-continuous",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_33e065ff6ac94c9fa4bee34be0271d87",
+      "ai_only_assessment": "fail",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-cox-binary__single__expanded__r2",
+      "task_id": "wc26-cox-binary",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_35c2f20f229c4b52aca4c5caf4bd254d",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-pooled-t__multi__expanded__r2",
+      "task_id": "wc26-pooled-t",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_38c847acf5e6431cbc9ee20b4311c763",
+      "ai_only_assessment": "pass",
+      "figure_files": 2,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-paired-t__multi__expanded__r2",
+      "task_id": "wc26-paired-t",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_3a78771df4724782aa33cd914ab23f35",
+      "ai_only_assessment": "fail",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-open-cohort-sw__multi__shared__r1",
+      "task_id": "wc26-open-cohort-sw",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_3adff14bc70e42b5a0d1753b00e2c713",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-open-cohort-sw__multi__shared__r2",
+      "task_id": "wc26-open-cohort-sw",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_3cee011f5b0649de88a28336918bdd18",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-cox-binary__single__shared__r2",
+      "task_id": "wc26-cox-binary",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_3d79d352af424d0285bc4e8873f3e709",
+      "ai_only_assessment": "pass",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-pooled-t__single__shared__r1",
+      "task_id": "wc26-pooled-t",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_4205a8c83bb64e84941a4e5d8a967607",
+      "ai_only_assessment": "pass",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-cox-continuous__single__expanded__r1",
+      "task_id": "wc26-cox-continuous",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_42601646fb87429a9912c5fbe30a8224",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-pooled-t__single__expanded__r2",
+      "task_id": "wc26-pooled-t",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_46064c9783774f35b787d2b19e390e69",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-missing-cluster__multi__shared__r2",
+      "task_id": "wc26-missing-cluster",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_4624b38e97814189bec613e84f8aaf4a",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-anova__single__shared__r2",
+      "task_id": "wc26-anova",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_48a25b9ea0d24204ac5f7b8df01ca1f6",
+      "ai_only_assessment": "pass",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-missing-survival__single__expanded__r2",
+      "task_id": "wc26-missing-survival",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_502fc52b0a504dc799863df772f6d021",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-missing-survival__single__shared__r2",
+      "task_id": "wc26-missing-survival",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_51e23d06ff314317ad8569aecd6f07f7",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-missing-cluster__multi__expanded__r2",
+      "task_id": "wc26-missing-cluster",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_5eb98fbadaf446e68fbbc0284f5ef06b",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-paired-t__multi__shared__r1",
+      "task_id": "wc26-paired-t",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_6669aa707c204c83b2070427a063bde6",
+      "ai_only_assessment": "pass",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-open-cohort-sw__single__expanded__r2",
+      "task_id": "wc26-open-cohort-sw",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_6831254714c34a5690ff2c06a95bbd49",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-missing-survival__multi__shared__r1",
+      "task_id": "wc26-missing-survival",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_6a08af81951d49c0a50354e06d09f1fb",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-missing-survival__multi__shared__r2",
+      "task_id": "wc26-missing-survival",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_767f46a78c1846e9ad8e3c68f6364bcc",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-cox-continuous__multi__expanded__r1",
+      "task_id": "wc26-cox-continuous",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_7846a9ac491c48ab8c88a53703085ff2",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-missing-cluster__single__expanded__r2",
+      "task_id": "wc26-missing-cluster",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_796993ae2c574776aa3662768c268151",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-anova__single__expanded__r2",
+      "task_id": "wc26-anova",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_7c241c1f0b574a51b8b4650e340ccd7e",
+      "ai_only_assessment": "pass",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-cox-binary__single__expanded__r1",
+      "task_id": "wc26-cox-binary",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_854b23c1fb58476597ab36fefcb379a2",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-cox-binary__single__shared__r1",
+      "task_id": "wc26-cox-binary",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_876478850b0a4cc3aff12e2b18f4d9bc",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-cox-binary__multi__shared__r1",
+      "task_id": "wc26-cox-binary",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_87ecdda452024184a0ff9eecfa7756ea",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-paired-t__single__shared__r2",
+      "task_id": "wc26-paired-t",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_8c93fab83d4d49749c07cf12cf4f5d51",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-paired-t__single__shared__r1",
+      "task_id": "wc26-paired-t",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_909cba32f2ab4f5aae2e64619ef7186c",
+      "ai_only_assessment": "fail",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-open-cohort-sw__single__shared__r1",
+      "task_id": "wc26-open-cohort-sw",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_932d773bd5064f60b3a0f3b50a8ec8b8",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-paired-t__multi__shared__r2",
+      "task_id": "wc26-paired-t",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_95ceadd1f0364b25b15fc2d3ef1b813c",
+      "ai_only_assessment": "pass",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-missing-survival__multi__expanded__r2",
+      "task_id": "wc26-missing-survival",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_990bea4674744f8391033eb8b46da820",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-paired-t__single__expanded__r2",
+      "task_id": "wc26-paired-t",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_a054793c3f5d4974b681136ed9ae22dd",
+      "ai_only_assessment": "fail",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-anova__multi__shared__r2",
+      "task_id": "wc26-anova",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_a1f375ab1f0045009808a0f7d34c01ab",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-cox-binary__multi__expanded__r1",
+      "task_id": "wc26-cox-binary",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_a3ad558b7ced4709808a01e861823084",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-missing-survival__single__expanded__r1",
+      "task_id": "wc26-missing-survival",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_a87866ddb1c345d580069e1427bc1790",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-missing-cluster__single__shared__r2",
+      "task_id": "wc26-missing-cluster",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_aad0c4b07e454e5b89c88284ab959fe6",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-anova__single__expanded__r1",
+      "task_id": "wc26-anova",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_b9ecf6eb47b04612a31f62ac3e87f981",
+      "ai_only_assessment": "pass",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-pooled-t__multi__shared__r2",
+      "task_id": "wc26-pooled-t",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_ba990d119b2041b7abb6e4ff1c00b870",
+      "ai_only_assessment": "pass",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-missing-cluster__single__expanded__r1",
+      "task_id": "wc26-missing-cluster",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_bd27cbd84a7c4496825fb122e968a397",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-open-cohort-sw__multi__expanded__r2",
+      "task_id": "wc26-open-cohort-sw",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_becbff14ea424758925487be775f50ad",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-cox-continuous__single__shared__r2",
+      "task_id": "wc26-cox-continuous",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_c40240d2b9814297859c486759e8e430",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-cox-continuous__single__shared__r1",
+      "task_id": "wc26-cox-continuous",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_c9914e67fb2948fb94e382614876bac6",
+      "ai_only_assessment": "unverifiable",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-paired-t__single__expanded__r1",
+      "task_id": "wc26-paired-t",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_cfad3bb439ee449ea37ed22466bb19b3",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-paired-t__multi__expanded__r1",
+      "task_id": "wc26-paired-t",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_d267c6c847704b8ba2c34a86a3642854",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-cox-continuous__multi__shared__r1",
+      "task_id": "wc26-cox-continuous",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_d5c2091c37424af3a38417f7153f1c14",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-cox-binary__multi__expanded__r2",
+      "task_id": "wc26-cox-binary",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_d9e3a3d3f9c4488b82f4521e86651148",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-missing-survival__multi__expanded__r1",
+      "task_id": "wc26-missing-survival",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_dbe24b9ac8a048e5bfaf95376168fa6a",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-missing-cluster__single__shared__r1",
+      "task_id": "wc26-missing-cluster",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_e8cb1fa71cca4a8cb2d380929d382ae3",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": false
+    },
+    {
+      "job_id": "wc26-pooled-t__multi__shared__r1",
+      "task_id": "wc26-pooled-t",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_eade452dda9d4d5cb0455dab56aa9b07",
+      "ai_only_assessment": "pass",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-open-cohort-sw__single__expanded__r1",
+      "task_id": "wc26-open-cohort-sw",
+      "mode": "single",
+      "profile": "expanded",
+      "repeat": 1,
+      "case_id": "case_ed3d1bf2806a451bb862079016f7ca76",
+      "ai_only_assessment": "fail",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-cox-continuous__multi__shared__r2",
+      "task_id": "wc26-cox-continuous",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_ef4b69ceed7848ac8d22de78f7e6b933",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-anova__multi__expanded__r2",
+      "task_id": "wc26-anova",
+      "mode": "multi",
+      "profile": "expanded",
+      "repeat": 2,
+      "case_id": "case_f113060343ad426692ebf0259ab3b84b",
+      "ai_only_assessment": "pass",
+      "figure_files": 1,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-cox-binary__multi__shared__r2",
+      "task_id": "wc26-cox-binary",
+      "mode": "multi",
+      "profile": "shared",
+      "repeat": 2,
+      "case_id": "case_f21cf02a857148dbaab09fb03a8c1fcc",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    },
+    {
+      "job_id": "wc26-anova__single__shared__r1",
+      "task_id": "wc26-anova",
+      "mode": "single",
+      "profile": "shared",
+      "repeat": 1,
+      "case_id": "case_ff9066c01d4b43338f1f07fcc8b2640f",
+      "ai_only_assessment": "not_delivered",
+      "figure_files": 0,
+      "calculation": true
+    }
+  ]
+}

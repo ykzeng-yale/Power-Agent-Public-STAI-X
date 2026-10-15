@@ -1,0 +1,70 @@
+{
+  "release_date": "2026-10-12",
+  "runtime": "2.4.2",
+  "native_skill": "2.3.1",
+  "ui_baseline": "Aug5 deployment used around the Aug6 JSM presentation; main stylesheet and static DOM retained",
+  "production": {
+    "url": "https://power-agent.io/",
+    "vercel_deployment": "dpl_2vWwNKcR3yCKnYHR3r7odQoHHE5K",
+    "cloud_revision": "power-agent-api-00184-yav",
+    "image_digest": "sha256:de0b7b3aa5afc180b031409f7757c0fab2ed0e49bed0a705923f1567e64d5ee5",
+    "index_sha256": "3ad0d57e0e83880dc4dce36cc546337dd15c15ab8e2593e9e062b1234b4c9d8a",
+    "scientific_model": "claude-sonnet-5-5",
+    "router_model": "claude-haiku-5-5"
+  },
+  "verification": {
+    "linux_build": {
+      "passed": 223,
+      "failed": 0,
+      "skipped": 0
+    },
+    "ui_source": {
+      "passed": 52,
+      "failed": 0
+    },
+    "independent_production_readback": {
+      "passed": 17,
+      "failed": 0
+    },
+    "selected_original_product_candidate": {
+      "passed": 69,
+      "failed": 0
+    },
+    "selected_native_library_candidate": {
+      "passed": 41,
+      "failed": 0
+    },
+    "final_production_native": {
+      "status": "PASS_SELECTED_FINAL_PRODUCTION_SCIENCE_DELIVERY_NATIVE_BYTES_WITH_QUALIFICATIONS",
+      "record_sha256": "64dd4be98a51b8cd7b41bacd54752fb739a936ca231125a586c27017a1b7cfa0",
+      "actual_individual_files": 11,
+      "all_individual_bytes_match_live_zip": true,
+      "live_zip_sha256": "85b365a23ad083a7646a107183dc12bb29dced4ce44882508bcc76000a6633fa",
+      "history_zip_sha256": "abb4d31768e4a88629f9200ce1d7948ac0539271910c0469adb4c05f97d6d4c7",
+      "passed": 72,
+      "failed": 0,
+      "independent_receipt_sha256": "379ed96a2d4284d789d2a61845dc0d9cfc97899c434047e4b5279b171d60f973",
+      "predeclared_literal_example_met": false,
+      "whole_product_certification": false
+    }
+  },
+  "scope": [
+    "Selected engineering cases, source regressions and exact deployment readback; not a representative benchmark or universal product certification.",
+    "Reviewer has separate context and fresh quantitative execution; shared preliminary interpretation can disclose earlier answer suggestions.",
+    "Hosted document proposals are separate author-review artifacts, not whole-document scientific certification.",
+    "Native skill and standalone runtime do not automatically provide the hosted document processor.",
+    "Failed earlier trials, frozen benchmark evidence and packages are retained separately.",
+    "In-app browser control became unreliable; actual final production validation used Chrome with normal macOS file pickers and original output downloads.",
+    "Actual final production reviewer method labels do not establish a separate implementation; source execution and shared dependencies remain recorded."
+  ],
+  "privacy": {
+    "tables": 6,
+    "old_policies_retained": 20,
+    "new_owner_policies": 12,
+    "row_dml_in_policy_migration": false,
+    "anonymous_rest_after_policy": "Zero rows in six minimal metadata probes",
+    "owner_checks": "Nonvacuous owner/outside-owner SELECT simulations and actual native owner history/new-session operations",
+    "limits": "Does not certify RPCs, storage links, TRUNCATE/REFERENCES grants, empty shared-files write behavior, or all database security."
+  },
+  "portable_package_sha256": "4996b86ea17f3f32f49d7fbd4fc3b625c2e4ed8cca3224362c5803f604427399"
+}

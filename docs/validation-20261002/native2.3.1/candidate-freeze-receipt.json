@@ -1,0 +1,31 @@
+{
+  "phase": "before candidate-blind checker receives candidate",
+  "candidate_session_completed": true,
+  "files": [
+    {
+      "file": "candidate-record.json",
+      "sha256": "e0b19f2111c65e8745c1d02d06c34606be5f96ae50e40e3fddf12ad028afdd04",
+      "bytes": 65766
+    },
+    {
+      "file": "native-calculation.R",
+      "sha256": "8991e2ff4bb93fd93b55177e37359260539aea2dadf53ce75528d43b3595e036",
+      "bytes": 17903
+    },
+    {
+      "file": "calculation-execution.json",
+      "sha256": "a39336901bf418dbd5d1ce60e2b4fdba01cedf6e57e85869c95d915877795398",
+      "bytes": 1282
+    },
+    {
+      "file": "candidate-artifact-manifest.json",
+      "sha256": "5dc5ecfab7402d585a16f61e5b89b062f779fc04b225896727a53bc35d306720",
+      "bytes": 7272
+    },
+    {
+      "file": "visual-audit.json",
+      "sha256": "85c1264339df5d4cc4626c3c1778b1189ad4529a5ff78cbaad8bf4d8d98916f9",
+      "bytes": 4311
+    }
+  ]
+}

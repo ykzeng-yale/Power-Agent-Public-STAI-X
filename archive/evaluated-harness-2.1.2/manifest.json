@@ -1,0 +1,15 @@
+{
+  "harness_version": "2.1.2",
+  "scope": "Exact frozen complete Linux whole40 release regression; later reference mapping fixes are reported separately",
+  "source_sha256": {
+    "model-config.js": "766cd990a939bca3aedd9d857b8901cc9df361ee7c097c5fb484a00918c1f7c7",
+    "scientific-harness.js": "8b985c50daab16a3603e6c743647f9d8861339213c356c8ce8e4f6f5e594b17b",
+    "scientific-harness-cli.js": "a7ce5af97e8c6d1ec8bc9d6deaff22f2287d78118d596d66d5348a8363de5aa4",
+    "scientific-r-executor.js": "08a45cbb0b12e0f2661940f3ef39e3e0f9176d37c46d3c028cb239c03a13174d",
+    "scientific-r-worker.py": "70b6c89a3561f0a28e0018e66cb0298475f270b19ee56752039a2b5889fb41ea",
+    "scientific-reference-guard.js": "ece5b93e6e36d07f7cc6bb4c0457e53ae14090e6abe98d3878b5b836f88d18fe"
+  },
+  "protocol_sha256": "143905befd7859d0dcf33b17a065c1a854f01e91f343763935c04ff14f1850bf",
+  "study_image_digest": "sha256:e446512ea2599c84ba49bd57788b2fe372973bfc7645329d11036edef266480f",
+  "backend_base_image_digest": "sha256:c7744480a44406e7d92189d13300458481cc91a07adb227986090bc5f0170581"
+}

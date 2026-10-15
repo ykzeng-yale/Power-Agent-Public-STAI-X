@@ -1,0 +1,4257 @@
+{
+  "schema": "power-agent-ai-only-opaque-figure-inspection",
+  "schema_version": "1.0",
+  "reviewer_type": "AI",
+  "assessor_label": "Codex AI session /root/paper",
+  "exact_host_model_id": "not exposed by tools",
+  "assessed_at_utc": "2026-10-02T08:07:43.690305+00:00",
+  "packet_path": "/Users/yukangzengcmac/Power-Agent/jsm-2026/multi-agent-20261002/figure-ai-qa/main64-visible",
+  "packet_manifest_sha256": "fb60620e2f0346a05d175eb8409af6547c1a86aa2b16a6ed1022e5c30974cf3a",
+  "rubric_sha256": "208ef29df60f7d19b3d4466f4bcb6ad66d1e64e9d4f52bec433c15c8e25e0882",
+  "input_integrity": {
+    "all_manifest_files_verified": true,
+    "verified_files": 162,
+    "mismatches": [],
+    "blank_human_form_sha256_before": "000fc0651ffc2854d0c3e7b8d819fd292eef6653b85592d55606dc4368416c7b",
+    "blank_human_form_sha256_after": "000fc0651ffc2854d0c3e7b8d819fd292eef6653b85592d55606dc4368416c7b",
+    "rubric_sha256_after": "208ef29df60f7d19b3d4466f4bcb6ad66d1e64e9d4f52bec433c15c8e25e0882",
+    "original_packet_modified": false
+  },
+  "blinding_scope": "Only opaque visible question/figure/candidateCSV/comparisonCSV metadata were read; no main64-private, raw records, scored outcomes, summary or condition map was opened. Original artifacts may themselves reveal clues; full blinding is not guaranteed.",
+  "assessment_scope": "All original PNG pixels in the allowed packet inspected. All64 cases retained including not_delivered. Comparison CSVs are custodian-supplied independently executed references; no new scientific reference calculation was made. No PDF was present, so no PDF content or rendered page is claimed.",
+  "limitations": [
+    "AI only; not the required human assessment or a validated visual judge.",
+    "Visible agreement is within rendering/display resolution, not an exact proof that every pixel came from a given data row. Dense line-only curves do not individually distinguish every grid vertex; companion CSV agreement is supplementary and cannot replace actual figure inspection.",
+    "The packet provides no page-level source content for scientific source-entailment verification.",
+    "The sixteen incomplete-input requests do not ask for sensitivity figures; their no-delivery entries are bookkeeping, not clarification-task failures.",
+    "No automatic primary score is altered; no mode/profile comparison or scientific accuracy rate is inferred.",
+    "No delivered PDF exists in the packet; renderer/page hashes remain null or empty rather than invented."
+  ],
+  "summary": {
+    "planned_cases": 64,
+    "calculation_cases_with_comparison_data": 48,
+    "incomplete_input_cases_without_requested_figures": 16,
+    "cases_with_delivered_figures": 22,
+    "cases_without_delivered_figures": 42,
+    "pngs_actually_inspected": 23,
+    "pdfs_in_visible_packet": 0,
+    "pdf_pages_rendered_or_assessed": 0,
+    "case_assessment_counts": {
+      "not_delivered": 42,
+      "pass": 15,
+      "fail": 6,
+      "unverifiable": 1
+    },
+    "figure_ai_only_counts": {
+      "pass": 16,
+      "fail": 6,
+      "unverifiable": 1
+    },
+    "human_assessments_completed_by_this_review": 0
+  },
+  "cases": [
+    {
+      "case_id": "case_0066a73f8fbf4dba8ad48422906fbad6",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_0066a73f8fbf4dba8ad48422906fbad6/question.txt",
+        "sha256": "b40c79fee83148042b0b6e42fc2a7bf4e50c268d8609cd293c0c10ec34a0fe50",
+        "size": 602
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_039e81d1dbe043ffbcd71411964b1f3b",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_039e81d1dbe043ffbcd71411964b1f3b/question.txt",
+        "sha256": "7822cc73bf7ae5fbdd36fdff4c27e031cc31b6e8cc984709c67ccf7d6a1edb13",
+        "size": 2108
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_039e81d1dbe043ffbcd71411964b1f3b/comparison-data_a154b269674044fa850ff9479895461d.csv",
+          "sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+          "size": 569,
+          "data_id": "data_a154b269674044fa850ff9479895461d"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_114794d8a5fc44c4b67b465c83f49239",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_114794d8a5fc44c4b67b465c83f49239/question.txt",
+        "sha256": "3d79d739ec4f43d2a0821231d3af5c6a5041e7c3e282b7fd43fb4dfa7334247c",
+        "size": 2050
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_114794d8a5fc44c4b67b465c83f49239/comparison-data_ca15363959e34ff385fdfca80cce8503.csv",
+          "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "size": 885,
+          "data_id": "data_ca15363959e34ff385fdfca80cce8503"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_114794d8a5fc44c4b67b465c83f49239/candidate-data_831f828b6b3d42e49068834e0493e025.csv",
+          "sha256": "63e4715c7bc17021b779db0f1b34b29b7de191109a489db852f6b0a04de2198f",
+          "size": 926,
+          "data_id": "data_831f828b6b3d42e49068834e0493e025"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_114794d8a5fc44c4b67b465c83f49239/figure_650207ee10e6456fb001b392be3c737e.png",
+            "sha256": "7729c5fa75505669940bcfbe3638d691eb7531c3a47e48f0a1e8a6c8108107ab",
+            "size": 197741,
+            "figure_id": "figure_650207ee10e6456fb001b392be3c737e"
+          },
+          "actual_sha256": "7729c5fa75505669940bcfbe3638d691eb7531c3a47e48f0a1e8a6c8108107ab",
+          "actual_size": 197741,
+          "dimensions_px": [
+            3000,
+            2100
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots power against participants per arm for the requested two-sample t design, with no fractional integer recommendation."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The visible curve spans the requested n=5 to160 range. The companion CSV has all32 requested five-participant grid rows; no separate nuisance scenario is omitted. Dense connecting lines are interpreted only within image resolution."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names participants per arm; power is displayed on a0\u20131 probability scale."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Curve positions agree within rendering resolution with power approximately0.07465 at n5,0.50945 at n50,0.81601 at n100 and0.95452 at n160. The n110 marker, where present, is approximately0.85221."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title identifies a two-sample t test and the supplied d/alpha. There is one scientific power curve; any legend clearly distinguishes target/design annotations."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The target line is at0.85 and any selected count is integer110, consistent with the stated task."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Text, axes, curve and target/design annotations are legible; no required part is visibly clipped."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_114794d8a5fc44c4b67b465c83f49239/candidate-data_831f828b6b3d42e49068834e0493e025.csv",
+            "sha256": "63e4715c7bc17021b779db0f1b34b29b7de191109a489db852f6b0a04de2198f",
+            "size": 926,
+            "data_id": "data_831f828b6b3d42e49068834e0493e025"
+          },
+          "comparison_csv": {
+            "path": "case_114794d8a5fc44c4b67b465c83f49239/comparison-data_ca15363959e34ff385fdfca80cce8503.csv",
+            "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+            "size": 885,
+            "data_id": "data_ca15363959e34ff385fdfca80cce8503"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 32,
+          "reference_rows": 32,
+          "matched_grid_keys": [
+            "n_per_arm"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "n_per_arm": 0.0,
+            "total_n": 0.0,
+            "power": 4.832578781588381e-12
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_18cb2165ab99465cb2622553d7816c46",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_18cb2165ab99465cb2622553d7816c46/question.txt",
+        "sha256": "566b18a48644e020d47545cc61e499410b79da466b9710ca3516e85697d26f6a",
+        "size": 2470
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_18cb2165ab99465cb2622553d7816c46/comparison-data_48e4741e4ef24fc5897cdf05d4482961.csv",
+          "sha256": "5613c357e13a0d7d8a6791e13e57b4c24323f43078263647a6fe61be074792c3",
+          "size": 960,
+          "data_id": "data_48e4741e4ef24fc5897cdf05d4482961"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_296d490d3dc743719d8c4756ab078a00",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_296d490d3dc743719d8c4756ab078a00/question.txt",
+        "sha256": "c0879e9eeb3525766a3e74543006ca60831ad0e124ceaddeb8f51b6dc47e69bb",
+        "size": 2744
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_296d490d3dc743719d8c4756ab078a00/comparison-data_abc591e274954cd08cc1992424e6df8f.csv",
+          "sha256": "2262da11d2be33732d797d6bd8453082d7ca4c5398ee568394e45e0346047adf",
+          "size": 325,
+          "data_id": "data_abc591e274954cd08cc1992424e6df8f"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_296d490d3dc743719d8c4756ab078a00/candidate-data_945959c350154098b5488bda7cd4b25d.csv",
+          "sha256": "a3f6ad5681a658824ae75dc16c0e9956b8a8d43d0aa2acf7756c9b18610905eb",
+          "size": 320,
+          "data_id": "data_945959c350154098b5488bda7cd4b25d"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_296d490d3dc743719d8c4756ab078a00/figure_a4c3c1f99b8b48588f8e84656021c575.png",
+            "sha256": "8970f42d8de4d5e94be2333dcff3aa9168f922f412fda2036f1c3ef4da953823",
+            "size": 63966,
+            "figure_id": "figure_a4c3c1f99b8b48588f8e84656021c575"
+          },
+          "actual_sha256": "8970f42d8de4d5e94be2333dcff3aa9168f922f412fda2036f1c3ef4da953823",
+          "actual_size": 63966,
+          "dimensions_px": [
+            800,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "2262da11d2be33732d797d6bd8453082d7ca4c5398ee568394e45e0346047adf",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots minimum detectable standardized mean difference against total clusters, not achieved power."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Five requested grid points are shown at18,24,30,36,42 total clusters, with no silently added nuisance scenario."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The axes name total clusters and MDE in standardized/outcome-SD units."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Visible MDE positions agree within rendering resolution with approximately0.3630,0.3053,0.2691,0.2436,0.2243 at the five total-cluster counts."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title identifies the open-cohort stepped-wedge design; one MDE curve needs no multi-curve legend."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "No target-power line is requested in this MDE-versus-clusters plot; displayed total-cluster designs are integers."
+            },
+            {
+              "item": 7,
+              "applicable": true,
+              "rating": "fail",
+              "observation": "The title/legend identifies open-cohort MDE and target power 0.80 but nowhere labels the required t-quantile approximation. It does not explicitly claim exact achieved power; approximation disclosure is still absent."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Axis labels, title, five marks and annotations are readable and not clipped."
+            }
+          ],
+          "ai_only_overall": "fail",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "fail",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_296d490d3dc743719d8c4756ab078a00/candidate-data_945959c350154098b5488bda7cd4b25d.csv",
+            "sha256": "a3f6ad5681a658824ae75dc16c0e9956b8a8d43d0aa2acf7756c9b18610905eb",
+            "size": 320,
+            "data_id": "data_945959c350154098b5488bda7cd4b25d"
+          },
+          "comparison_csv": {
+            "path": "case_296d490d3dc743719d8c4756ab078a00/comparison-data_abc591e274954cd08cc1992424e6df8f.csv",
+            "sha256": "2262da11d2be33732d797d6bd8453082d7ca4c5398ee568394e45e0346047adf",
+            "size": 325,
+            "data_id": "data_abc591e274954cd08cc1992424e6df8f"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 5,
+          "reference_rows": 5,
+          "matched_grid_keys": [
+            "clusters_per_sequence"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "clusters_per_sequence": 0.0,
+            "total_clusters": 0.0,
+            "degrees_of_freedom": 0.0,
+            "treatment_variance": 1.0408340855860843e-17,
+            "mde": 4.996003610813204e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_2a913ef4e2a749a19444b43ed688b150",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_2a913ef4e2a749a19444b43ed688b150/question.txt",
+        "sha256": "3d79d739ec4f43d2a0821231d3af5c6a5041e7c3e282b7fd43fb4dfa7334247c",
+        "size": 2050
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_2a913ef4e2a749a19444b43ed688b150/comparison-data_df67e1aea7084437a1884925e80261dc.csv",
+          "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "size": 885,
+          "data_id": "data_df67e1aea7084437a1884925e80261dc"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_2a913ef4e2a749a19444b43ed688b150/candidate-data_57f42bab54904077954f2fb7f4091f59.csv",
+          "sha256": "07b80dfc0f328e90eca9790baa8c88e6b5a76b3853ad8ce7ffb91338ae9600da",
+          "size": 831,
+          "data_id": "data_57f42bab54904077954f2fb7f4091f59"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_2a913ef4e2a749a19444b43ed688b150/figure_9818fbedb86545c39ac7bc032297eebe.png",
+            "sha256": "84fd71fb9cada2d3944f0fc4124e1aa1ecdd63202d600d9f6c014c578d3de0b1",
+            "size": 43209,
+            "figure_id": "figure_9818fbedb86545c39ac7bc032297eebe"
+          },
+          "actual_sha256": "84fd71fb9cada2d3944f0fc4124e1aa1ecdd63202d600d9f6c014c578d3de0b1",
+          "actual_size": 43209,
+          "dimensions_px": [
+            800,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots power against participants per arm for the requested two-sample t design, with no fractional integer recommendation."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The visible curve spans the requested n=5 to160 range. The companion CSV has all32 requested five-participant grid rows; no separate nuisance scenario is omitted. Dense connecting lines are interpreted only within image resolution."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names participants per arm; power is displayed on a0\u20131 probability scale."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Curve positions agree within rendering resolution with power approximately0.07465 at n5,0.50945 at n50,0.81601 at n100 and0.95452 at n160. The n110 marker, where present, is approximately0.85221."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title identifies a two-sample t test and the supplied d/alpha. There is one scientific power curve; any legend clearly distinguishes target/design annotations."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The target line is at0.85 and any selected count is integer110, consistent with the stated task."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Text, axes, curve and target/design annotations are legible; no required part is visibly clipped."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_2a913ef4e2a749a19444b43ed688b150/candidate-data_57f42bab54904077954f2fb7f4091f59.csv",
+            "sha256": "07b80dfc0f328e90eca9790baa8c88e6b5a76b3853ad8ce7ffb91338ae9600da",
+            "size": 831,
+            "data_id": "data_57f42bab54904077954f2fb7f4091f59"
+          },
+          "comparison_csv": {
+            "path": "case_2a913ef4e2a749a19444b43ed688b150/comparison-data_df67e1aea7084437a1884925e80261dc.csv",
+            "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+            "size": 885,
+            "data_id": "data_df67e1aea7084437a1884925e80261dc"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 32,
+          "reference_rows": 32,
+          "matched_grid_keys": [
+            "n_per_arm"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "n_per_arm": 0.0,
+            "total_n": 0.0,
+            "power": 6.661338147750939e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_2fc03f36b0574e11bf85f82b6417ca67",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_2fc03f36b0574e11bf85f82b6417ca67/question.txt",
+        "sha256": "6f0c35097a1cbf46e546caa1f2ca3e230ea63300e94c19e1549670118240a47c",
+        "size": 636
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_304a64e9279046ecb77116e49131dcd0",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_304a64e9279046ecb77116e49131dcd0/question.txt",
+        "sha256": "3d79d739ec4f43d2a0821231d3af5c6a5041e7c3e282b7fd43fb4dfa7334247c",
+        "size": 2050
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_304a64e9279046ecb77116e49131dcd0/comparison-data_08cc707e54b7474986a1951ba720ce85.csv",
+          "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "size": 885,
+          "data_id": "data_08cc707e54b7474986a1951ba720ce85"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_304a64e9279046ecb77116e49131dcd0/candidate-data_d25af5048f01408d818d878e57cf0d2c.csv",
+          "sha256": "07b80dfc0f328e90eca9790baa8c88e6b5a76b3853ad8ce7ffb91338ae9600da",
+          "size": 831,
+          "data_id": "data_d25af5048f01408d818d878e57cf0d2c"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_304a64e9279046ecb77116e49131dcd0/figure_57f5a56b57fb4923971a74f637c58859.png",
+            "sha256": "bfbcbc55acb0cbf8b8ae82dcdd379f78aea4575606682bd0cd48addc480975cc",
+            "size": 189700,
+            "figure_id": "figure_57f5a56b57fb4923971a74f637c58859"
+          },
+          "actual_sha256": "bfbcbc55acb0cbf8b8ae82dcdd379f78aea4575606682bd0cd48addc480975cc",
+          "actual_size": 189700,
+          "dimensions_px": [
+            3000,
+            2100
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots power against participants per arm for the requested two-sample t design, with no fractional integer recommendation."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The visible curve spans the requested n=5 to160 range. The companion CSV has all32 requested five-participant grid rows; no separate nuisance scenario is omitted. Dense connecting lines are interpreted only within image resolution."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names participants per arm; power is displayed on a0\u20131 probability scale."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Curve positions agree within rendering resolution with power approximately0.07465 at n5,0.50945 at n50,0.81601 at n100 and0.95452 at n160. The n110 marker, where present, is approximately0.85221."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title identifies a two-sample t test and the supplied d/alpha. There is one scientific power curve; any legend clearly distinguishes target/design annotations."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The target line is at0.85 and any selected count is integer110, consistent with the stated task."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Text, axes, curve and target/design annotations are legible; no required part is visibly clipped."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_304a64e9279046ecb77116e49131dcd0/candidate-data_d25af5048f01408d818d878e57cf0d2c.csv",
+            "sha256": "07b80dfc0f328e90eca9790baa8c88e6b5a76b3853ad8ce7ffb91338ae9600da",
+            "size": 831,
+            "data_id": "data_d25af5048f01408d818d878e57cf0d2c"
+          },
+          "comparison_csv": {
+            "path": "case_304a64e9279046ecb77116e49131dcd0/comparison-data_08cc707e54b7474986a1951ba720ce85.csv",
+            "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+            "size": 885,
+            "data_id": "data_08cc707e54b7474986a1951ba720ce85"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 32,
+          "reference_rows": 32,
+          "matched_grid_keys": [
+            "n_per_arm"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "n_per_arm": 0.0,
+            "total_n": 0.0,
+            "power": 6.661338147750939e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_30ae593790f94447a61368510b9604c1",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_30ae593790f94447a61368510b9604c1/question.txt",
+        "sha256": "c0879e9eeb3525766a3e74543006ca60831ad0e124ceaddeb8f51b6dc47e69bb",
+        "size": 2744
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_30ae593790f94447a61368510b9604c1/comparison-data_181e93c685e3465eb88a2e11aa7fff46.csv",
+          "sha256": "2262da11d2be33732d797d6bd8453082d7ca4c5398ee568394e45e0346047adf",
+          "size": 325,
+          "data_id": "data_181e93c685e3465eb88a2e11aa7fff46"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_30de09d74baf4044bccbf7dccc12a1f4",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_30de09d74baf4044bccbf7dccc12a1f4/question.txt",
+        "sha256": "7822cc73bf7ae5fbdd36fdff4c27e031cc31b6e8cc984709c67ccf7d6a1edb13",
+        "size": 2108
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_30de09d74baf4044bccbf7dccc12a1f4/comparison-data_139a66a0d70d43edbbf06937ef283dd7.csv",
+          "sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+          "size": 569,
+          "data_id": "data_139a66a0d70d43edbbf06937ef283dd7"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_30de09d74baf4044bccbf7dccc12a1f4/candidate-data_9063380c7fd3445fabd7c256c5bf0c98.csv",
+          "sha256": "37b194ada785fd6d54986da988923275d17ab5b5b3e95362f0ea053e3b324d18",
+          "size": 531,
+          "data_id": "data_9063380c7fd3445fabd7c256c5bf0c98"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_30de09d74baf4044bccbf7dccc12a1f4/figure_0718ebda056c4904a44c5d42a5612b54.png",
+            "sha256": "62e5805f0ba5bcc43e0e0e540b5ea029708a372b6d5bd7f4c801cf2ad55c9ef2",
+            "size": 47788,
+            "figure_id": "figure_0718ebda056c4904a44c5d42a5612b54"
+          },
+          "actual_sha256": "62e5805f0ba5bcc43e0e0e540b5ea029708a372b6d5bd7f4c801cf2ad55c9ef2",
+          "actual_size": 47788,
+          "dimensions_px": [
+            900,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots omnibus ANOVA power against participants per group rather than total participants or a directional t-test statistic."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All21 requested n=5 through25 grid values are covered by the curve; visible markers, where present, include endpoints and the n16 design."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names participants per group; the y axis gives power on the0\u20131 scale."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The curve agrees within rendering resolution with approximately0.35356 at n5,0.70969 at n10,0.89572 at n15,0.91672 at n16 and0.99119 at n25."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title names balanced four-group one-way ANOVA. A single scientific curve needs no multi-scenario legend; target/design marks are distinguishable."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The target line is at0.90 and the selected n16 is an integer, not the continuous inversion."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Axes, title, marks and legend/caption are legible. Some base-R legends have grid lines behind them, but the required text remains readable."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_30de09d74baf4044bccbf7dccc12a1f4/candidate-data_9063380c7fd3445fabd7c256c5bf0c98.csv",
+            "sha256": "37b194ada785fd6d54986da988923275d17ab5b5b3e95362f0ea053e3b324d18",
+            "size": 531,
+            "data_id": "data_9063380c7fd3445fabd7c256c5bf0c98"
+          },
+          "comparison_csv": {
+            "path": "case_30de09d74baf4044bccbf7dccc12a1f4/comparison-data_139a66a0d70d43edbbf06937ef283dd7.csv",
+            "sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+            "size": 569,
+            "data_id": "data_139a66a0d70d43edbbf06937ef283dd7"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 21,
+          "reference_rows": 21,
+          "matched_grid_keys": [
+            "n_per_group"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "n_per_group": 0.0,
+            "total_n": 0.0,
+            "power": 5.551115123125783e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_323f5b78d65b413b845f39644a93d225",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_323f5b78d65b413b845f39644a93d225/question.txt",
+        "sha256": "6f0c35097a1cbf46e546caa1f2ca3e230ea63300e94c19e1549670118240a47c",
+        "size": 636
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_33e065ff6ac94c9fa4bee34be0271d87",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_33e065ff6ac94c9fa4bee34be0271d87/question.txt",
+        "sha256": "566b18a48644e020d47545cc61e499410b79da466b9710ca3516e85697d26f6a",
+        "size": 2470
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_33e065ff6ac94c9fa4bee34be0271d87/comparison-data_8c7ba8e588234702ae9f93f4e7a35a70.csv",
+          "sha256": "5613c357e13a0d7d8a6791e13e57b4c24323f43078263647a6fe61be074792c3",
+          "size": 960,
+          "data_id": "data_8c7ba8e588234702ae9f93f4e7a35a70"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_33e065ff6ac94c9fa4bee34be0271d87/candidate-data_3849e9c5f65d4499bd76e17a765829b3.csv",
+          "sha256": "345ec76346e3d2a0cde070d62e1c53b5dc57d472c127cde67a2657c9b40aebef",
+          "size": 917,
+          "data_id": "data_3849e9c5f65d4499bd76e17a765829b3"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_33e065ff6ac94c9fa4bee34be0271d87/figure_5102f733a8da4968a9d2fd325af7e099.png",
+            "sha256": "9c10eae1d1bd759e0da6bf453ec0ee0f3c658dbcf7c72554c9e6030bb22c262e",
+            "size": 65204,
+            "figure_id": "figure_5102f733a8da4968a9d2fd325af7e099"
+          },
+          "actual_sha256": "9c10eae1d1bd759e0da6bf453ec0ee0f3c658dbcf7c72554c9e6030bb22c262e",
+          "actual_size": 65204,
+          "dimensions_px": [
+            1000,
+            700
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "5613c357e13a0d7d8a6791e13e57b4c24323f43078263647a6fe61be074792c3",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots total sample size against R-squared, with a curve for each event probability, as requested."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "fail",
+              "observation": "The upper plotting limit is approximately 115 participants. Four requested points are outside it: event probability 0.60 at R-squared 0.10, 0.1837, 0.30 (N=118,130,151), and probability 0.738 at R-squared 0.30 (N=123). Only eight of the twelve grid points are visible."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "fail",
+              "observation": "The y axis explicitly names total participants. The x axis names R-squared but its parenthetical says Correlation with other covariates rather than squared multiple correlation/variance explained; those quantities differ."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "unverifiable",
+              "observation": "Visible red points at approximately 71,79,87,101 and visible blue/green points agree with the reference counts, but the clipped four positions cannot be assessed from pixels."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title identifies Cox regression/continuous-covariate adjustment; legend labels all three event probabilities."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "No target-power line is requested for this recruitment-count plot; the marked recommendations are integers."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "fail",
+              "observation": "The blue and green curves leave the top plotting region before their final requested scenarios. This obscures scientifically required curve content despite readable text."
+            }
+          ],
+          "ai_only_overall": "fail",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "fail",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_33e065ff6ac94c9fa4bee34be0271d87/candidate-data_3849e9c5f65d4499bd76e17a765829b3.csv",
+            "sha256": "345ec76346e3d2a0cde070d62e1c53b5dc57d472c127cde67a2657c9b40aebef",
+            "size": 917,
+            "data_id": "data_3849e9c5f65d4499bd76e17a765829b3"
+          },
+          "comparison_csv": {
+            "path": "case_33e065ff6ac94c9fa4bee34be0271d87/comparison-data_8c7ba8e588234702ae9f93f4e7a35a70.csv",
+            "sha256": "5613c357e13a0d7d8a6791e13e57b4c24323f43078263647a6fe61be074792c3",
+            "size": 960,
+            "data_id": "data_8c7ba8e588234702ae9f93f4e7a35a70"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 12,
+          "reference_rows": 12,
+          "matched_grid_keys": [
+            "event_probability",
+            "r_squared"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "event_probability": 0.0,
+            "continuous_events": 4.973799150320701e-14,
+            "required_events": 0.0,
+            "total_n": 0.0,
+            "achieved_power": 4.440892098500626e-16,
+            "preceding_power": 3.3306690738754696e-16,
+            "r_squared": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_35c2f20f229c4b52aca4c5caf4bd254d",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_35c2f20f229c4b52aca4c5caf4bd254d/question.txt",
+        "sha256": "06d4d362e5bda9457f213c5a4355ea7b7abbf257c73f9d880d5b4987e51a42f6",
+        "size": 2521
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_35c2f20f229c4b52aca4c5caf4bd254d/comparison-data_5f9cf49a0d414a5c8dc13161e7ff9811.csv",
+          "sha256": "9983e6a5fd05bb76be17dcfedbcf6b0edadb3367226c34ba7a93e3c6ae8ea29b",
+          "size": 963,
+          "data_id": "data_5f9cf49a0d414a5c8dc13161e7ff9811"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_38c847acf5e6431cbc9ee20b4311c763",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_38c847acf5e6431cbc9ee20b4311c763/question.txt",
+        "sha256": "3d79d739ec4f43d2a0821231d3af5c6a5041e7c3e282b7fd43fb4dfa7334247c",
+        "size": 2050
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_38c847acf5e6431cbc9ee20b4311c763/comparison-data_e2c90bcfef3b4637a77d72eb011ed959.csv",
+          "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "size": 885,
+          "data_id": "data_e2c90bcfef3b4637a77d72eb011ed959"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_38c847acf5e6431cbc9ee20b4311c763/candidate-data_5062f79a62664a67857020f0da270593.csv",
+          "sha256": "07b80dfc0f328e90eca9790baa8c88e6b5a76b3853ad8ce7ffb91338ae9600da",
+          "size": 831,
+          "data_id": "data_5062f79a62664a67857020f0da270593"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_38c847acf5e6431cbc9ee20b4311c763/figure_d68a057402ba4fa99a3d90df7bc87476.png",
+            "sha256": "941e99afddcca82990efa1724b0896d696c64c36b37e2a0286bae285350f1b0d",
+            "size": 36210,
+            "figure_id": "figure_d68a057402ba4fa99a3d90df7bc87476"
+          },
+          "actual_sha256": "941e99afddcca82990efa1724b0896d696c64c36b37e2a0286bae285350f1b0d",
+          "actual_size": 36210,
+          "dimensions_px": [
+            800,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots power against participants per arm for the requested two-sample t design, with no fractional integer recommendation."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The visible curve spans the requested n=5 to160 range. The companion CSV has all32 requested five-participant grid rows; no separate nuisance scenario is omitted. Dense connecting lines are interpreted only within image resolution."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names participants per arm; power is displayed on a0\u20131 probability scale."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Curve positions agree within rendering resolution with power approximately0.07465 at n5,0.50945 at n50,0.81601 at n100 and0.95452 at n160. The n110 marker, where present, is approximately0.85221."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title identifies a two-sample t test and the supplied d/alpha. There is one scientific power curve; any legend clearly distinguishes target/design annotations."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The target line is at0.85 and any selected count is integer110, consistent with the stated task."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Text, axes, curve and target/design annotations are legible; no required part is visibly clipped."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        },
+        {
+          "artifact": {
+            "path": "case_38c847acf5e6431cbc9ee20b4311c763/figure_fed2a8a43cc5433286e8600ac3ddd302.png",
+            "sha256": "d036197ed4b96da12bc6b456d9e9003a42ddf53bd993265f80d75a4aa0df5759",
+            "size": 37313,
+            "figure_id": "figure_fed2a8a43cc5433286e8600ac3ddd302"
+          },
+          "actual_sha256": "d036197ed4b96da12bc6b456d9e9003a42ddf53bd993265f80d75a4aa0df5759",
+          "actual_size": 37313,
+          "dimensions_px": [
+            800,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots power against participants per arm for the requested two-sample t design, with no fractional integer recommendation."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The visible curve spans the requested n=5 to160 range. The companion CSV has all32 requested five-participant grid rows; no separate nuisance scenario is omitted. Dense connecting lines are interpreted only within image resolution."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names participants per arm; power is displayed on a0\u20131 probability scale."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Curve positions agree within rendering resolution with power approximately0.07465 at n5,0.50945 at n50,0.81601 at n100 and0.95452 at n160. The n110 marker, where present, is approximately0.85221."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title identifies a two-sample t test and the supplied d/alpha. There is one scientific power curve; any legend clearly distinguishes target/design annotations."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The target line is at0.85 and any selected count is integer110, consistent with the stated task."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Text, axes, curve and target/design annotations are legible; no required part is visibly clipped."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_38c847acf5e6431cbc9ee20b4311c763/candidate-data_5062f79a62664a67857020f0da270593.csv",
+            "sha256": "07b80dfc0f328e90eca9790baa8c88e6b5a76b3853ad8ce7ffb91338ae9600da",
+            "size": 831,
+            "data_id": "data_5062f79a62664a67857020f0da270593"
+          },
+          "comparison_csv": {
+            "path": "case_38c847acf5e6431cbc9ee20b4311c763/comparison-data_e2c90bcfef3b4637a77d72eb011ed959.csv",
+            "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+            "size": 885,
+            "data_id": "data_e2c90bcfef3b4637a77d72eb011ed959"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 32,
+          "reference_rows": 32,
+          "matched_grid_keys": [
+            "n_per_arm"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "n_per_arm": 0.0,
+            "total_n": 0.0,
+            "power": 6.661338147750939e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_3a78771df4724782aa33cd914ab23f35",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_3a78771df4724782aa33cd914ab23f35/question.txt",
+        "sha256": "783b1194d67ede5b3a3f5f5059bf98e2c6760fba91e30fd249f9e2c45429b10f",
+        "size": 2254
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_3a78771df4724782aa33cd914ab23f35/comparison-data_22199734dfdc48d89112acd887556548.csv",
+          "sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+          "size": 315,
+          "data_id": "data_22199734dfdc48d89112acd887556548"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_3a78771df4724782aa33cd914ab23f35/candidate-data_f316c0baceb642799b701ad3e0927c3d.csv",
+          "sha256": "6dee85eddec0d7078300589156d6aad3ca462583e3519844d5ca5b7e8efbd476",
+          "size": 307,
+          "data_id": "data_f316c0baceb642799b701ad3e0927c3d"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_3a78771df4724782aa33cd914ab23f35/figure_d50d5fd934374cb9999f7bc3d6c3502e.png",
+            "sha256": "7d1dee4fca1dfb50ce675ac965c0948418942fd903a7735c24f3c7667c05258f",
+            "size": 62799,
+            "figure_id": "figure_d50d5fd934374cb9999f7bc3d6c3502e"
+          },
+          "actual_sha256": "7d1dee4fca1dfb50ce675ac965c0948418942fd903a7735c24f3c7667c05258f",
+          "actual_size": 62799,
+          "dimensions_px": [
+            800,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots required participant/pair count against within-person correlation, as requested, rather than power or individual measurement count."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All four rho scenarios0.20,0.40,0.60,0.80 are marked, with counts165,125,84,44. Lines connect the visibly marked scenarios rather than presenting intermediate rho values as measured points."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names within-person correlation/rho; the y axis explicitly names participants or pairs. One participant supplies one complete pair in the stated question."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The four plotted positions agree within rendering resolution with the reference integer counts165,125,84,44."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title or in-figure method annotation identifies the paired design; there is a single count curve, so no multi-curve legend is necessary."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "This task asks for count versus rho, not a power curve requiring a horizontal target line. Target0.90 appears in the title/annotation and all four displayed recommendations are integer counts."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "fail",
+              "observation": "The second title line is clipped at the right image boundary. The n=165 annotation is cut at the plot top, and the upper-right annotation box obscures the end of the n=125 annotation. The four data markers themselves remain visible."
+            }
+          ],
+          "ai_only_overall": "fail",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "fail",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_3a78771df4724782aa33cd914ab23f35/candidate-data_f316c0baceb642799b701ad3e0927c3d.csv",
+            "sha256": "6dee85eddec0d7078300589156d6aad3ca462583e3519844d5ca5b7e8efbd476",
+            "size": 307,
+            "data_id": "data_f316c0baceb642799b701ad3e0927c3d"
+          },
+          "comparison_csv": {
+            "path": "case_3a78771df4724782aa33cd914ab23f35/comparison-data_22199734dfdc48d89112acd887556548.csv",
+            "sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+            "size": 315,
+            "data_id": "data_22199734dfdc48d89112acd887556548"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 4,
+          "reference_rows": 4,
+          "matched_grid_keys": [
+            "rho"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "rho": 0.0,
+            "difference_sd": 1.9539925233402755e-14,
+            "n_pairs": 0.0,
+            "achieved_power": 5.551115123125783e-16,
+            "preceding_power": 6.661338147750939e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_3adff14bc70e42b5a0d1753b00e2c713",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_3adff14bc70e42b5a0d1753b00e2c713/question.txt",
+        "sha256": "c0879e9eeb3525766a3e74543006ca60831ad0e124ceaddeb8f51b6dc47e69bb",
+        "size": 2744
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_3adff14bc70e42b5a0d1753b00e2c713/comparison-data_1f2970047c6042f58a55870a89f8cad2.csv",
+          "sha256": "2262da11d2be33732d797d6bd8453082d7ca4c5398ee568394e45e0346047adf",
+          "size": 325,
+          "data_id": "data_1f2970047c6042f58a55870a89f8cad2"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_3cee011f5b0649de88a28336918bdd18",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_3cee011f5b0649de88a28336918bdd18/question.txt",
+        "sha256": "c0879e9eeb3525766a3e74543006ca60831ad0e124ceaddeb8f51b6dc47e69bb",
+        "size": 2744
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_3cee011f5b0649de88a28336918bdd18/comparison-data_9b82b31d740b4ac1b2a5b7837fbe1d08.csv",
+          "sha256": "2262da11d2be33732d797d6bd8453082d7ca4c5398ee568394e45e0346047adf",
+          "size": 325,
+          "data_id": "data_9b82b31d740b4ac1b2a5b7837fbe1d08"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_3d79d352af424d0285bc4e8873f3e709",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_3d79d352af424d0285bc4e8873f3e709/question.txt",
+        "sha256": "06d4d362e5bda9457f213c5a4355ea7b7abbf257c73f9d880d5b4987e51a42f6",
+        "size": 2521
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_3d79d352af424d0285bc4e8873f3e709/comparison-data_2ed2bf4767ad4908881b9571efc16b74.csv",
+          "sha256": "9983e6a5fd05bb76be17dcfedbcf6b0edadb3367226c34ba7a93e3c6ae8ea29b",
+          "size": 963,
+          "data_id": "data_2ed2bf4767ad4908881b9571efc16b74"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_3d79d352af424d0285bc4e8873f3e709/candidate-data_18a5647e7d8a42dd84e88f728f78ae69.csv",
+          "sha256": "8d806d440c33736fab653492c1800f8f57e866a088ab21654b3463f4dab43796",
+          "size": 920,
+          "data_id": "data_18a5647e7d8a42dd84e88f728f78ae69"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_3d79d352af424d0285bc4e8873f3e709/figure_4460a64cdfac4479aa1a59be4aa0d5f1.png",
+            "sha256": "fb230a773e9cf919cda97740f480a2a45a24ede3db0d1591724f7bd65f1b2104",
+            "size": 102104,
+            "figure_id": "figure_4460a64cdfac4479aa1a59be4aa0d5f1"
+          },
+          "actual_sha256": "fb230a773e9cf919cda97740f480a2a45a24ede3db0d1591724f7bd65f1b2104",
+          "actual_size": 102104,
+          "dimensions_px": [
+            1500,
+            1050
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "9983e6a5fd05bb76be17dcfedbcf6b0edadb3367226c34ba7a93e3c6ae8ea29b",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots required total participants against hazard ratio for the supplied event approximation."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All twelve markers are present: four hazard ratios0.50,0.60,0.70,0.80 for each of three event probabilities1,0.70,0.50."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names hazard ratio; the y axis explicitly names total sample size in participants."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Visible counts agree within rendering resolution: at HR0.50 the curves are approximately66,94,132; at HR0.80 approximately632,902,1262, with intermediate scenario ordering/positions matching the reference."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title names the Schoenfeld/Hsieh-Lavori method; the three curves have event-probability labels and distinct styles."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "No target-power line is requested for this recruitment-count plot; counts are integer recommendations and the target0.80 is stated in the title."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Axes, title, legend and all twelve marks remain within the plotting region and are legible."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_3d79d352af424d0285bc4e8873f3e709/candidate-data_18a5647e7d8a42dd84e88f728f78ae69.csv",
+            "sha256": "8d806d440c33736fab653492c1800f8f57e866a088ab21654b3463f4dab43796",
+            "size": 920,
+            "data_id": "data_18a5647e7d8a42dd84e88f728f78ae69"
+          },
+          "comparison_csv": {
+            "path": "case_3d79d352af424d0285bc4e8873f3e709/comparison-data_2ed2bf4767ad4908881b9571efc16b74.csv",
+            "sha256": "9983e6a5fd05bb76be17dcfedbcf6b0edadb3367226c34ba7a93e3c6ae8ea29b",
+            "size": 963,
+            "data_id": "data_2ed2bf4767ad4908881b9571efc16b74"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 12,
+          "reference_rows": 12,
+          "matched_grid_keys": [
+            "event_probability",
+            "hazard_ratio"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "event_probability": 0.0,
+            "continuous_events": 3.979039320256561e-13,
+            "required_events": 0.0,
+            "total_n": 0.0,
+            "achieved_power": 4.440892098500626e-16,
+            "preceding_power": 4.440892098500626e-16,
+            "hazard_ratio": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_4205a8c83bb64e84941a4e5d8a967607",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_4205a8c83bb64e84941a4e5d8a967607/question.txt",
+        "sha256": "3d79d739ec4f43d2a0821231d3af5c6a5041e7c3e282b7fd43fb4dfa7334247c",
+        "size": 2050
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_4205a8c83bb64e84941a4e5d8a967607/comparison-data_a86096443e7248a2896865455bfd520f.csv",
+          "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "size": 885,
+          "data_id": "data_a86096443e7248a2896865455bfd520f"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_4205a8c83bb64e84941a4e5d8a967607/candidate-data_7fb258fb63d24ad7b7cbcb7da2dd4f87.csv",
+          "sha256": "07b80dfc0f328e90eca9790baa8c88e6b5a76b3853ad8ce7ffb91338ae9600da",
+          "size": 831,
+          "data_id": "data_7fb258fb63d24ad7b7cbcb7da2dd4f87"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_4205a8c83bb64e84941a4e5d8a967607/figure_76c57b9a60e34e17a13fc6716799fc8d.png",
+            "sha256": "6910c7c5510338e52eb4c1228196b51b271c249e0b93032d4c3174e36c98def3",
+            "size": 54518,
+            "figure_id": "figure_76c57b9a60e34e17a13fc6716799fc8d"
+          },
+          "actual_sha256": "6910c7c5510338e52eb4c1228196b51b271c249e0b93032d4c3174e36c98def3",
+          "actual_size": 54518,
+          "dimensions_px": [
+            800,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots power against participants per arm for the requested two-sample t design, with no fractional integer recommendation."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The visible curve spans the requested n=5 to160 range. The companion CSV has all32 requested five-participant grid rows; no separate nuisance scenario is omitted. Dense connecting lines are interpreted only within image resolution."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names participants per arm; power is displayed on a0\u20131 probability scale."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Curve positions agree within rendering resolution with power approximately0.07465 at n5,0.50945 at n50,0.81601 at n100 and0.95452 at n160. The n110 marker, where present, is approximately0.85221."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title identifies a two-sample t test and the supplied d/alpha. There is one scientific power curve; any legend clearly distinguishes target/design annotations."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The target line is at0.85 and any selected count is integer110, consistent with the stated task."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Text, axes, curve and target/design annotations are legible; no required part is visibly clipped."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_4205a8c83bb64e84941a4e5d8a967607/candidate-data_7fb258fb63d24ad7b7cbcb7da2dd4f87.csv",
+            "sha256": "07b80dfc0f328e90eca9790baa8c88e6b5a76b3853ad8ce7ffb91338ae9600da",
+            "size": 831,
+            "data_id": "data_7fb258fb63d24ad7b7cbcb7da2dd4f87"
+          },
+          "comparison_csv": {
+            "path": "case_4205a8c83bb64e84941a4e5d8a967607/comparison-data_a86096443e7248a2896865455bfd520f.csv",
+            "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+            "size": 885,
+            "data_id": "data_a86096443e7248a2896865455bfd520f"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 32,
+          "reference_rows": 32,
+          "matched_grid_keys": [
+            "n_per_arm"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "n_per_arm": 0.0,
+            "total_n": 0.0,
+            "power": 6.661338147750939e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_42601646fb87429a9912c5fbe30a8224",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_42601646fb87429a9912c5fbe30a8224/question.txt",
+        "sha256": "566b18a48644e020d47545cc61e499410b79da466b9710ca3516e85697d26f6a",
+        "size": 2470
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_42601646fb87429a9912c5fbe30a8224/comparison-data_969d630bedf14e76b320a929eab05b4a.csv",
+          "sha256": "5613c357e13a0d7d8a6791e13e57b4c24323f43078263647a6fe61be074792c3",
+          "size": 960,
+          "data_id": "data_969d630bedf14e76b320a929eab05b4a"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_42601646fb87429a9912c5fbe30a8224/candidate-data_938ed8f2df144e2baa8a62fe2c25c54a.csv",
+          "sha256": "2221b177123c7eecbae8189512f1f4a2403c85a8c17d21bf10b58ef93e157c49",
+          "size": 939,
+          "data_id": "data_938ed8f2df144e2baa8a62fe2c25c54a"
+        }
+      ],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_46064c9783774f35b787d2b19e390e69",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_46064c9783774f35b787d2b19e390e69/question.txt",
+        "sha256": "3d79d739ec4f43d2a0821231d3af5c6a5041e7c3e282b7fd43fb4dfa7334247c",
+        "size": 2050
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_46064c9783774f35b787d2b19e390e69/comparison-data_a773898429c54a248f5f0215ae66166c.csv",
+          "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "size": 885,
+          "data_id": "data_a773898429c54a248f5f0215ae66166c"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_4624b38e97814189bec613e84f8aaf4a",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_4624b38e97814189bec613e84f8aaf4a/question.txt",
+        "sha256": "6f0c35097a1cbf46e546caa1f2ca3e230ea63300e94c19e1549670118240a47c",
+        "size": 636
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_48a25b9ea0d24204ac5f7b8df01ca1f6",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_48a25b9ea0d24204ac5f7b8df01ca1f6/question.txt",
+        "sha256": "7822cc73bf7ae5fbdd36fdff4c27e031cc31b6e8cc984709c67ccf7d6a1edb13",
+        "size": 2108
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_48a25b9ea0d24204ac5f7b8df01ca1f6/comparison-data_85dde44094da4d63adf3db1d5bd7d324.csv",
+          "sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+          "size": 569,
+          "data_id": "data_85dde44094da4d63adf3db1d5bd7d324"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_48a25b9ea0d24204ac5f7b8df01ca1f6/candidate-data_036537aa85244571b8ca36cca1f09ec6.csv",
+          "sha256": "37b194ada785fd6d54986da988923275d17ab5b5b3e95362f0ea053e3b324d18",
+          "size": 531,
+          "data_id": "data_036537aa85244571b8ca36cca1f09ec6"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_48a25b9ea0d24204ac5f7b8df01ca1f6/figure_9fc339cb0c514e9a83afe65ceb701c15.png",
+            "sha256": "f024d1221f44ce04fbd8b50c63bc13da197c903550909c17f4224ed825541c63",
+            "size": 30733,
+            "figure_id": "figure_9fc339cb0c514e9a83afe65ceb701c15"
+          },
+          "actual_sha256": "f024d1221f44ce04fbd8b50c63bc13da197c903550909c17f4224ed825541c63",
+          "actual_size": 30733,
+          "dimensions_px": [
+            800,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots omnibus ANOVA power against participants per group rather than total participants or a directional t-test statistic."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All21 requested n=5 through25 grid values are covered by the curve; visible markers, where present, include endpoints and the n16 design."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names participants per group; the y axis gives power on the0\u20131 scale."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The curve agrees within rendering resolution with approximately0.35356 at n5,0.70969 at n10,0.89572 at n15,0.91672 at n16 and0.99119 at n25."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title names balanced four-group one-way ANOVA. A single scientific curve needs no multi-scenario legend; target/design marks are distinguishable."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The target line is at0.90 and the selected n16 is an integer, not the continuous inversion."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Axes, title, marks and legend/caption are legible. Some base-R legends have grid lines behind them, but the required text remains readable."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_48a25b9ea0d24204ac5f7b8df01ca1f6/candidate-data_036537aa85244571b8ca36cca1f09ec6.csv",
+            "sha256": "37b194ada785fd6d54986da988923275d17ab5b5b3e95362f0ea053e3b324d18",
+            "size": 531,
+            "data_id": "data_036537aa85244571b8ca36cca1f09ec6"
+          },
+          "comparison_csv": {
+            "path": "case_48a25b9ea0d24204ac5f7b8df01ca1f6/comparison-data_85dde44094da4d63adf3db1d5bd7d324.csv",
+            "sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+            "size": 569,
+            "data_id": "data_85dde44094da4d63adf3db1d5bd7d324"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 21,
+          "reference_rows": 21,
+          "matched_grid_keys": [
+            "n_per_group"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "n_per_group": 0.0,
+            "total_n": 0.0,
+            "power": 5.551115123125783e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_502fc52b0a504dc799863df772f6d021",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_502fc52b0a504dc799863df772f6d021/question.txt",
+        "sha256": "b40c79fee83148042b0b6e42fc2a7bf4e50c268d8609cd293c0c10ec34a0fe50",
+        "size": 602
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_51e23d06ff314317ad8569aecd6f07f7",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_51e23d06ff314317ad8569aecd6f07f7/question.txt",
+        "sha256": "b40c79fee83148042b0b6e42fc2a7bf4e50c268d8609cd293c0c10ec34a0fe50",
+        "size": 602
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_5eb98fbadaf446e68fbbc0284f5ef06b",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_5eb98fbadaf446e68fbbc0284f5ef06b/question.txt",
+        "sha256": "6f0c35097a1cbf46e546caa1f2ca3e230ea63300e94c19e1549670118240a47c",
+        "size": 636
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_6669aa707c204c83b2070427a063bde6",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_6669aa707c204c83b2070427a063bde6/question.txt",
+        "sha256": "783b1194d67ede5b3a3f5f5059bf98e2c6760fba91e30fd249f9e2c45429b10f",
+        "size": 2254
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_6669aa707c204c83b2070427a063bde6/comparison-data_fd35f321ca244af48cbe05e4ec69c187.csv",
+          "sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+          "size": 315,
+          "data_id": "data_fd35f321ca244af48cbe05e4ec69c187"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_6669aa707c204c83b2070427a063bde6/candidate-data_f4c67dd66ecd42d59f7aff84274ab83c.csv",
+          "sha256": "6dee85eddec0d7078300589156d6aad3ca462583e3519844d5ca5b7e8efbd476",
+          "size": 307,
+          "data_id": "data_f4c67dd66ecd42d59f7aff84274ab83c"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_6669aa707c204c83b2070427a063bde6/figure_b5204219c9734f2d9e380c8a1adcabf5.png",
+            "sha256": "1091ef75941d050372cc97cf978a43d35c4171ac7a24e40c6ff5f950b529440d",
+            "size": 38814,
+            "figure_id": "figure_b5204219c9734f2d9e380c8a1adcabf5"
+          },
+          "actual_sha256": "1091ef75941d050372cc97cf978a43d35c4171ac7a24e40c6ff5f950b529440d",
+          "actual_size": 38814,
+          "dimensions_px": [
+            800,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots required participant/pair count against within-person correlation, as requested, rather than power or individual measurement count."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All four rho scenarios0.20,0.40,0.60,0.80 are marked, with counts165,125,84,44. Lines connect the visibly marked scenarios rather than presenting intermediate rho values as measured points."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names within-person correlation/rho; the y axis explicitly names participants or pairs. One participant supplies one complete pair in the stated question."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The four plotted positions agree within rendering resolution with the reference integer counts165,125,84,44."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title or in-figure method annotation identifies the paired design; there is a single count curve, so no multi-curve legend is necessary."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "This task asks for count versus rho, not a power curve requiring a horizontal target line. Target0.90 appears in the title/annotation and all four displayed recommendations are integer counts."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All required text, symbols, count labels and markers are legible at the viewed scale."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_6669aa707c204c83b2070427a063bde6/candidate-data_f4c67dd66ecd42d59f7aff84274ab83c.csv",
+            "sha256": "6dee85eddec0d7078300589156d6aad3ca462583e3519844d5ca5b7e8efbd476",
+            "size": 307,
+            "data_id": "data_f4c67dd66ecd42d59f7aff84274ab83c"
+          },
+          "comparison_csv": {
+            "path": "case_6669aa707c204c83b2070427a063bde6/comparison-data_fd35f321ca244af48cbe05e4ec69c187.csv",
+            "sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+            "size": 315,
+            "data_id": "data_fd35f321ca244af48cbe05e4ec69c187"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 4,
+          "reference_rows": 4,
+          "matched_grid_keys": [
+            "rho"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "rho": 0.0,
+            "difference_sd": 1.9539925233402755e-14,
+            "n_pairs": 0.0,
+            "achieved_power": 5.551115123125783e-16,
+            "preceding_power": 6.661338147750939e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_6831254714c34a5690ff2c06a95bbd49",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_6831254714c34a5690ff2c06a95bbd49/question.txt",
+        "sha256": "c0879e9eeb3525766a3e74543006ca60831ad0e124ceaddeb8f51b6dc47e69bb",
+        "size": 2744
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_6831254714c34a5690ff2c06a95bbd49/comparison-data_1ad9cd783d53449ba357a3e3d34ff20a.csv",
+          "sha256": "2262da11d2be33732d797d6bd8453082d7ca4c5398ee568394e45e0346047adf",
+          "size": 325,
+          "data_id": "data_1ad9cd783d53449ba357a3e3d34ff20a"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_6a08af81951d49c0a50354e06d09f1fb",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_6a08af81951d49c0a50354e06d09f1fb/question.txt",
+        "sha256": "b40c79fee83148042b0b6e42fc2a7bf4e50c268d8609cd293c0c10ec34a0fe50",
+        "size": 602
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_767f46a78c1846e9ad8e3c68f6364bcc",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_767f46a78c1846e9ad8e3c68f6364bcc/question.txt",
+        "sha256": "b40c79fee83148042b0b6e42fc2a7bf4e50c268d8609cd293c0c10ec34a0fe50",
+        "size": 602
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_7846a9ac491c48ab8c88a53703085ff2",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_7846a9ac491c48ab8c88a53703085ff2/question.txt",
+        "sha256": "566b18a48644e020d47545cc61e499410b79da466b9710ca3516e85697d26f6a",
+        "size": 2470
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_7846a9ac491c48ab8c88a53703085ff2/comparison-data_9ef27d0d2f8c46fdb8b5f3a1cd220f9d.csv",
+          "sha256": "5613c357e13a0d7d8a6791e13e57b4c24323f43078263647a6fe61be074792c3",
+          "size": 960,
+          "data_id": "data_9ef27d0d2f8c46fdb8b5f3a1cd220f9d"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_796993ae2c574776aa3662768c268151",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_796993ae2c574776aa3662768c268151/question.txt",
+        "sha256": "6f0c35097a1cbf46e546caa1f2ca3e230ea63300e94c19e1549670118240a47c",
+        "size": 636
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_7c241c1f0b574a51b8b4650e340ccd7e",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_7c241c1f0b574a51b8b4650e340ccd7e/question.txt",
+        "sha256": "7822cc73bf7ae5fbdd36fdff4c27e031cc31b6e8cc984709c67ccf7d6a1edb13",
+        "size": 2108
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_7c241c1f0b574a51b8b4650e340ccd7e/comparison-data_59252df34f31472a8b2ef29b9558372c.csv",
+          "sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+          "size": 569,
+          "data_id": "data_59252df34f31472a8b2ef29b9558372c"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_7c241c1f0b574a51b8b4650e340ccd7e/candidate-data_29156158dba5453b92daff0b9be33530.csv",
+          "sha256": "37b194ada785fd6d54986da988923275d17ab5b5b3e95362f0ea053e3b324d18",
+          "size": 531,
+          "data_id": "data_29156158dba5453b92daff0b9be33530"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_7c241c1f0b574a51b8b4650e340ccd7e/figure_3aca6f94ac0a41abbc98ac7bb6660205.png",
+            "sha256": "716ae888288d85e8bd22f73c0b31cf8e766b9a6032d33ee5af21a15d2b821044",
+            "size": 54500,
+            "figure_id": "figure_3aca6f94ac0a41abbc98ac7bb6660205"
+          },
+          "actual_sha256": "716ae888288d85e8bd22f73c0b31cf8e766b9a6032d33ee5af21a15d2b821044",
+          "actual_size": 54500,
+          "dimensions_px": [
+            800,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots omnibus ANOVA power against participants per group rather than total participants or a directional t-test statistic."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All21 requested n=5 through25 grid values are covered by the curve; visible markers, where present, include endpoints and the n16 design."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names participants per group; the y axis gives power on the0\u20131 scale."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The curve agrees within rendering resolution with approximately0.35356 at n5,0.70969 at n10,0.89572 at n15,0.91672 at n16 and0.99119 at n25."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title names balanced four-group one-way ANOVA. A single scientific curve needs no multi-scenario legend; target/design marks are distinguishable."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The target line is at0.90 and the selected n16 is an integer, not the continuous inversion."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Axes, title, marks and legend/caption are legible. Some base-R legends have grid lines behind them, but the required text remains readable."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_7c241c1f0b574a51b8b4650e340ccd7e/candidate-data_29156158dba5453b92daff0b9be33530.csv",
+            "sha256": "37b194ada785fd6d54986da988923275d17ab5b5b3e95362f0ea053e3b324d18",
+            "size": 531,
+            "data_id": "data_29156158dba5453b92daff0b9be33530"
+          },
+          "comparison_csv": {
+            "path": "case_7c241c1f0b574a51b8b4650e340ccd7e/comparison-data_59252df34f31472a8b2ef29b9558372c.csv",
+            "sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+            "size": 569,
+            "data_id": "data_59252df34f31472a8b2ef29b9558372c"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 21,
+          "reference_rows": 21,
+          "matched_grid_keys": [
+            "n_per_group"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "n_per_group": 0.0,
+            "total_n": 0.0,
+            "power": 5.551115123125783e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_854b23c1fb58476597ab36fefcb379a2",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_854b23c1fb58476597ab36fefcb379a2/question.txt",
+        "sha256": "06d4d362e5bda9457f213c5a4355ea7b7abbf257c73f9d880d5b4987e51a42f6",
+        "size": 2521
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_854b23c1fb58476597ab36fefcb379a2/comparison-data_bdba15438fd84818b98d938e25fe4162.csv",
+          "sha256": "9983e6a5fd05bb76be17dcfedbcf6b0edadb3367226c34ba7a93e3c6ae8ea29b",
+          "size": 963,
+          "data_id": "data_bdba15438fd84818b98d938e25fe4162"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_876478850b0a4cc3aff12e2b18f4d9bc",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_876478850b0a4cc3aff12e2b18f4d9bc/question.txt",
+        "sha256": "06d4d362e5bda9457f213c5a4355ea7b7abbf257c73f9d880d5b4987e51a42f6",
+        "size": 2521
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_876478850b0a4cc3aff12e2b18f4d9bc/comparison-data_d4bc25e01eb14786a892c43ff549928b.csv",
+          "sha256": "9983e6a5fd05bb76be17dcfedbcf6b0edadb3367226c34ba7a93e3c6ae8ea29b",
+          "size": 963,
+          "data_id": "data_d4bc25e01eb14786a892c43ff549928b"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_87ecdda452024184a0ff9eecfa7756ea",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_87ecdda452024184a0ff9eecfa7756ea/question.txt",
+        "sha256": "06d4d362e5bda9457f213c5a4355ea7b7abbf257c73f9d880d5b4987e51a42f6",
+        "size": 2521
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_87ecdda452024184a0ff9eecfa7756ea/comparison-data_f876f541abc146edbef6903bf97ce867.csv",
+          "sha256": "9983e6a5fd05bb76be17dcfedbcf6b0edadb3367226c34ba7a93e3c6ae8ea29b",
+          "size": 963,
+          "data_id": "data_f876f541abc146edbef6903bf97ce867"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_8c93fab83d4d49749c07cf12cf4f5d51",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_8c93fab83d4d49749c07cf12cf4f5d51/question.txt",
+        "sha256": "783b1194d67ede5b3a3f5f5059bf98e2c6760fba91e30fd249f9e2c45429b10f",
+        "size": 2254
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_8c93fab83d4d49749c07cf12cf4f5d51/comparison-data_e8c008dfd40846648fb1b5ff55180dd7.csv",
+          "sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+          "size": 315,
+          "data_id": "data_e8c008dfd40846648fb1b5ff55180dd7"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_909cba32f2ab4f5aae2e64619ef7186c",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_909cba32f2ab4f5aae2e64619ef7186c/question.txt",
+        "sha256": "783b1194d67ede5b3a3f5f5059bf98e2c6760fba91e30fd249f9e2c45429b10f",
+        "size": 2254
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_909cba32f2ab4f5aae2e64619ef7186c/comparison-data_9edae054dab443efa1f39f2c4a5b8608.csv",
+          "sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+          "size": 315,
+          "data_id": "data_9edae054dab443efa1f39f2c4a5b8608"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_909cba32f2ab4f5aae2e64619ef7186c/candidate-data_0f63aa6720f84fd28c2e9c1a9bd9b0a6.csv",
+          "sha256": "c2bfbd1626d60dcfc882974458016dd5cb31280203c9c32b624a2be21b94ec0e",
+          "size": 339,
+          "data_id": "data_0f63aa6720f84fd28c2e9c1a9bd9b0a6"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_909cba32f2ab4f5aae2e64619ef7186c/figure_73c706375c8f4219a021feeb657c483e.png",
+            "sha256": "67a05c1ae114abeb9175f1c771af0146e78d9689923ac69a2f76c94380a29d35",
+            "size": 71326,
+            "figure_id": "figure_73c706375c8f4219a021feeb657c483e"
+          },
+          "actual_sha256": "67a05c1ae114abeb9175f1c771af0146e78d9689923ac69a2f76c94380a29d35",
+          "actual_size": 71326,
+          "dimensions_px": [
+            900,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots required participant/pair count against within-person correlation, as requested, rather than power or individual measurement count."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All four rho scenarios0.20,0.40,0.60,0.80 are marked, with counts165,125,84,44. Lines connect the visibly marked scenarios rather than presenting intermediate rho values as measured points."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names within-person correlation/rho; the y axis explicitly names participants or pairs. One participant supplies one complete pair in the stated question."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The four plotted positions agree within rendering resolution with the reference integer counts165,125,84,44."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title or in-figure method annotation identifies the paired design; there is a single count curve, so no multi-curve legend is necessary."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "This task asks for count versus rho, not a power curve requiring a horizontal target line. Target0.90 appears in the title/annotation and all four displayed recommendations are integer counts."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "fail",
+              "observation": "SD subscripts in the subtitle and annotation box render as missing-glyph/hex boxes; the long first title reaches the right boundary. Count markers and axes remain interpretable, but symbols/text are not fully legible."
+            }
+          ],
+          "ai_only_overall": "fail",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "fail",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_909cba32f2ab4f5aae2e64619ef7186c/candidate-data_0f63aa6720f84fd28c2e9c1a9bd9b0a6.csv",
+            "sha256": "c2bfbd1626d60dcfc882974458016dd5cb31280203c9c32b624a2be21b94ec0e",
+            "size": 339,
+            "data_id": "data_0f63aa6720f84fd28c2e9c1a9bd9b0a6"
+          },
+          "comparison_csv": {
+            "path": "case_909cba32f2ab4f5aae2e64619ef7186c/comparison-data_9edae054dab443efa1f39f2c4a5b8608.csv",
+            "sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+            "size": 315,
+            "data_id": "data_9edae054dab443efa1f39f2c4a5b8608"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 4,
+          "reference_rows": 4,
+          "matched_grid_keys": [
+            "rho"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "rho": 0.0,
+            "difference_sd": 1.9539925233402755e-14,
+            "n_pairs": 0.0,
+            "achieved_power": 5.551115123125783e-16,
+            "preceding_power": 6.661338147750939e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_932d773bd5064f60b3a0f3b50a8ec8b8",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_932d773bd5064f60b3a0f3b50a8ec8b8/question.txt",
+        "sha256": "c0879e9eeb3525766a3e74543006ca60831ad0e124ceaddeb8f51b6dc47e69bb",
+        "size": 2744
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_932d773bd5064f60b3a0f3b50a8ec8b8/comparison-data_d2edb9df20124d8bb76b7ae9a81fd2e1.csv",
+          "sha256": "2262da11d2be33732d797d6bd8453082d7ca4c5398ee568394e45e0346047adf",
+          "size": 325,
+          "data_id": "data_d2edb9df20124d8bb76b7ae9a81fd2e1"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_95ceadd1f0364b25b15fc2d3ef1b813c",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_95ceadd1f0364b25b15fc2d3ef1b813c/question.txt",
+        "sha256": "783b1194d67ede5b3a3f5f5059bf98e2c6760fba91e30fd249f9e2c45429b10f",
+        "size": 2254
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_95ceadd1f0364b25b15fc2d3ef1b813c/comparison-data_490b2557f6a2426f8e42dc996ef0fc8c.csv",
+          "sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+          "size": 315,
+          "data_id": "data_490b2557f6a2426f8e42dc996ef0fc8c"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_95ceadd1f0364b25b15fc2d3ef1b813c/candidate-data_b1559831649e4c21a156f255a2ba71b0.csv",
+          "sha256": "6dee85eddec0d7078300589156d6aad3ca462583e3519844d5ca5b7e8efbd476",
+          "size": 307,
+          "data_id": "data_b1559831649e4c21a156f255a2ba71b0"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_95ceadd1f0364b25b15fc2d3ef1b813c/figure_9bc989712f294360aff59735b6fd4f67.png",
+            "sha256": "f167f3d44ce20f90175fc77258aa9f4acadc11f5ed5ee60532d9beb6ed50484b",
+            "size": 43548,
+            "figure_id": "figure_9bc989712f294360aff59735b6fd4f67"
+          },
+          "actual_sha256": "f167f3d44ce20f90175fc77258aa9f4acadc11f5ed5ee60532d9beb6ed50484b",
+          "actual_size": 43548,
+          "dimensions_px": [
+            800,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots required participant/pair count against within-person correlation, as requested, rather than power or individual measurement count."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All four rho scenarios0.20,0.40,0.60,0.80 are marked, with counts165,125,84,44. Lines connect the visibly marked scenarios rather than presenting intermediate rho values as measured points."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names within-person correlation/rho; the y axis explicitly names participants or pairs. One participant supplies one complete pair in the stated question."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The four plotted positions agree within rendering resolution with the reference integer counts165,125,84,44."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title or in-figure method annotation identifies the paired design; there is a single count curve, so no multi-curve legend is necessary."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "This task asks for count versus rho, not a power curve requiring a horizontal target line. Target0.90 appears in the title/annotation and all four displayed recommendations are integer counts."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All required text, symbols, count labels and markers are legible at the viewed scale."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_95ceadd1f0364b25b15fc2d3ef1b813c/candidate-data_b1559831649e4c21a156f255a2ba71b0.csv",
+            "sha256": "6dee85eddec0d7078300589156d6aad3ca462583e3519844d5ca5b7e8efbd476",
+            "size": 307,
+            "data_id": "data_b1559831649e4c21a156f255a2ba71b0"
+          },
+          "comparison_csv": {
+            "path": "case_95ceadd1f0364b25b15fc2d3ef1b813c/comparison-data_490b2557f6a2426f8e42dc996ef0fc8c.csv",
+            "sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+            "size": 315,
+            "data_id": "data_490b2557f6a2426f8e42dc996ef0fc8c"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 4,
+          "reference_rows": 4,
+          "matched_grid_keys": [
+            "rho"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "rho": 0.0,
+            "difference_sd": 1.9539925233402755e-14,
+            "n_pairs": 0.0,
+            "achieved_power": 5.551115123125783e-16,
+            "preceding_power": 6.661338147750939e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_990bea4674744f8391033eb8b46da820",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_990bea4674744f8391033eb8b46da820/question.txt",
+        "sha256": "b40c79fee83148042b0b6e42fc2a7bf4e50c268d8609cd293c0c10ec34a0fe50",
+        "size": 602
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_a054793c3f5d4974b681136ed9ae22dd",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_a054793c3f5d4974b681136ed9ae22dd/question.txt",
+        "sha256": "783b1194d67ede5b3a3f5f5059bf98e2c6760fba91e30fd249f9e2c45429b10f",
+        "size": 2254
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_a054793c3f5d4974b681136ed9ae22dd/comparison-data_4d0b2377740f43a48590d6ae857ffac7.csv",
+          "sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+          "size": 315,
+          "data_id": "data_4d0b2377740f43a48590d6ae857ffac7"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_a054793c3f5d4974b681136ed9ae22dd/candidate-data_d9bf8ddce5dc412f820a386eb93b87bf.csv",
+          "sha256": "462570142da6b8c5a739dfedc04ab1593bef15958608cd2a3429369a42bdefad",
+          "size": 297,
+          "data_id": "data_d9bf8ddce5dc412f820a386eb93b87bf"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_a054793c3f5d4974b681136ed9ae22dd/figure_2a3bf26c42784e669147555f5b63599a.png",
+            "sha256": "a37c28d2ae11392f116e891345ba5bbdc6dc442e487ac36a38db34bcacd4cc37",
+            "size": 36699,
+            "figure_id": "figure_2a3bf26c42784e669147555f5b63599a"
+          },
+          "actual_sha256": "a37c28d2ae11392f116e891345ba5bbdc6dc442e487ac36a38db34bcacd4cc37",
+          "actual_size": 36699,
+          "dimensions_px": [
+            800,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots required participant/pair count against within-person correlation, as requested, rather than power or individual measurement count."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All four rho scenarios0.20,0.40,0.60,0.80 are marked, with counts165,125,84,44. Lines connect the visibly marked scenarios rather than presenting intermediate rho values as measured points."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names within-person correlation/rho; the y axis explicitly names participants or pairs. One participant supplies one complete pair in the stated question."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The four plotted positions agree within rendering resolution with the reference integer counts165,125,84,44."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title or in-figure method annotation identifies the paired design; there is a single count curve, so no multi-curve legend is necessary."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "This task asks for count versus rho, not a power curve requiring a horizontal target line. Target0.90 appears in the title/annotation and all four displayed recommendations are integer counts."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "fail",
+              "observation": "The sigma subscripts in the subtitle render as missing-glyph/hex boxes. Dense rotated y-axis tick labels also reduce normal-scale readability; all four annotated count markers remain visible."
+            }
+          ],
+          "ai_only_overall": "fail",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "fail",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_a054793c3f5d4974b681136ed9ae22dd/candidate-data_d9bf8ddce5dc412f820a386eb93b87bf.csv",
+            "sha256": "462570142da6b8c5a739dfedc04ab1593bef15958608cd2a3429369a42bdefad",
+            "size": 297,
+            "data_id": "data_d9bf8ddce5dc412f820a386eb93b87bf"
+          },
+          "comparison_csv": {
+            "path": "case_a054793c3f5d4974b681136ed9ae22dd/comparison-data_4d0b2377740f43a48590d6ae857ffac7.csv",
+            "sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+            "size": 315,
+            "data_id": "data_4d0b2377740f43a48590d6ae857ffac7"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 4,
+          "reference_rows": 4,
+          "matched_grid_keys": [
+            "rho"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "rho": 0.0,
+            "difference_sd": 1.9539925233402755e-14,
+            "n_pairs": 0.0,
+            "achieved_power": 3.992065900071395e-09,
+            "preceding_power": 4.377969653468483e-09
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_a1f375ab1f0045009808a0f7d34c01ab",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_a1f375ab1f0045009808a0f7d34c01ab/question.txt",
+        "sha256": "7822cc73bf7ae5fbdd36fdff4c27e031cc31b6e8cc984709c67ccf7d6a1edb13",
+        "size": 2108
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_a1f375ab1f0045009808a0f7d34c01ab/comparison-data_927bc2ffd7a04fa599cb81a58f4d356b.csv",
+          "sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+          "size": 569,
+          "data_id": "data_927bc2ffd7a04fa599cb81a58f4d356b"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_a3ad558b7ced4709808a01e861823084",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_a3ad558b7ced4709808a01e861823084/question.txt",
+        "sha256": "06d4d362e5bda9457f213c5a4355ea7b7abbf257c73f9d880d5b4987e51a42f6",
+        "size": 2521
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_a3ad558b7ced4709808a01e861823084/comparison-data_56453156168240699c08dd3c1503c803.csv",
+          "sha256": "9983e6a5fd05bb76be17dcfedbcf6b0edadb3367226c34ba7a93e3c6ae8ea29b",
+          "size": 963,
+          "data_id": "data_56453156168240699c08dd3c1503c803"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_a87866ddb1c345d580069e1427bc1790",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_a87866ddb1c345d580069e1427bc1790/question.txt",
+        "sha256": "b40c79fee83148042b0b6e42fc2a7bf4e50c268d8609cd293c0c10ec34a0fe50",
+        "size": 602
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_aad0c4b07e454e5b89c88284ab959fe6",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_aad0c4b07e454e5b89c88284ab959fe6/question.txt",
+        "sha256": "6f0c35097a1cbf46e546caa1f2ca3e230ea63300e94c19e1549670118240a47c",
+        "size": 636
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_b9ecf6eb47b04612a31f62ac3e87f981",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_b9ecf6eb47b04612a31f62ac3e87f981/question.txt",
+        "sha256": "7822cc73bf7ae5fbdd36fdff4c27e031cc31b6e8cc984709c67ccf7d6a1edb13",
+        "size": 2108
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_b9ecf6eb47b04612a31f62ac3e87f981/comparison-data_eab7ccb9272e4480be9b230d6aa26cce.csv",
+          "sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+          "size": 569,
+          "data_id": "data_eab7ccb9272e4480be9b230d6aa26cce"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_b9ecf6eb47b04612a31f62ac3e87f981/candidate-data_c3dfb201ff924786aa38a2f88ef3ce1d.csv",
+          "sha256": "37b194ada785fd6d54986da988923275d17ab5b5b3e95362f0ea053e3b324d18",
+          "size": 531,
+          "data_id": "data_c3dfb201ff924786aa38a2f88ef3ce1d"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_b9ecf6eb47b04612a31f62ac3e87f981/figure_27c1c356480346aeae2a7af1bd1972da.png",
+            "sha256": "dd8c4d4c0fbabeab9d52957b42d16b57573829d85037a587c5aa1580a60de1d5",
+            "size": 38876,
+            "figure_id": "figure_27c1c356480346aeae2a7af1bd1972da"
+          },
+          "actual_sha256": "dd8c4d4c0fbabeab9d52957b42d16b57573829d85037a587c5aa1580a60de1d5",
+          "actual_size": 38876,
+          "dimensions_px": [
+            800,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots omnibus ANOVA power against participants per group rather than total participants or a directional t-test statistic."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All21 requested n=5 through25 grid values are covered by the curve; visible markers, where present, include endpoints and the n16 design."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names participants per group; the y axis gives power on the0\u20131 scale."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The curve agrees within rendering resolution with approximately0.35356 at n5,0.70969 at n10,0.89572 at n15,0.91672 at n16 and0.99119 at n25."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title names balanced four-group one-way ANOVA. A single scientific curve needs no multi-scenario legend; target/design marks are distinguishable."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The target line is at0.90 and the selected n16 is an integer, not the continuous inversion."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Axes, title, marks and legend/caption are legible. Some base-R legends have grid lines behind them, but the required text remains readable."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_b9ecf6eb47b04612a31f62ac3e87f981/candidate-data_c3dfb201ff924786aa38a2f88ef3ce1d.csv",
+            "sha256": "37b194ada785fd6d54986da988923275d17ab5b5b3e95362f0ea053e3b324d18",
+            "size": 531,
+            "data_id": "data_c3dfb201ff924786aa38a2f88ef3ce1d"
+          },
+          "comparison_csv": {
+            "path": "case_b9ecf6eb47b04612a31f62ac3e87f981/comparison-data_eab7ccb9272e4480be9b230d6aa26cce.csv",
+            "sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+            "size": 569,
+            "data_id": "data_eab7ccb9272e4480be9b230d6aa26cce"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 21,
+          "reference_rows": 21,
+          "matched_grid_keys": [
+            "n_per_group"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "n_per_group": 0.0,
+            "total_n": 0.0,
+            "power": 5.551115123125783e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_ba990d119b2041b7abb6e4ff1c00b870",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_ba990d119b2041b7abb6e4ff1c00b870/question.txt",
+        "sha256": "3d79d739ec4f43d2a0821231d3af5c6a5041e7c3e282b7fd43fb4dfa7334247c",
+        "size": 2050
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_ba990d119b2041b7abb6e4ff1c00b870/comparison-data_27859bfb31944f2d88fa7e167def9072.csv",
+          "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "size": 885,
+          "data_id": "data_27859bfb31944f2d88fa7e167def9072"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_ba990d119b2041b7abb6e4ff1c00b870/candidate-data_5be54ef641f44386b690514f1050c7e6.csv",
+          "sha256": "07b80dfc0f328e90eca9790baa8c88e6b5a76b3853ad8ce7ffb91338ae9600da",
+          "size": 831,
+          "data_id": "data_5be54ef641f44386b690514f1050c7e6"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_ba990d119b2041b7abb6e4ff1c00b870/figure_4c03276c5249454c8f4fe03632466262.png",
+            "sha256": "58e367c691a9f514ddf2aef080320acb24abc76cf66099e19687f4dbedd41f10",
+            "size": 40611,
+            "figure_id": "figure_4c03276c5249454c8f4fe03632466262"
+          },
+          "actual_sha256": "58e367c691a9f514ddf2aef080320acb24abc76cf66099e19687f4dbedd41f10",
+          "actual_size": 40611,
+          "dimensions_px": [
+            1000,
+            700
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots power against participants per arm for the requested two-sample t design, with no fractional integer recommendation."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The visible curve spans the requested n=5 to160 range. The companion CSV has all32 requested five-participant grid rows; no separate nuisance scenario is omitted. Dense connecting lines are interpreted only within image resolution."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names participants per arm; power is displayed on a0\u20131 probability scale."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Curve positions agree within rendering resolution with power approximately0.07465 at n5,0.50945 at n50,0.81601 at n100 and0.95452 at n160. The n110 marker, where present, is approximately0.85221."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title identifies a two-sample t test and the supplied d/alpha. There is one scientific power curve; any legend clearly distinguishes target/design annotations."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The target line is at0.85 and any selected count is integer110, consistent with the stated task."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Text, axes, curve and target/design annotations are legible; no required part is visibly clipped."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_ba990d119b2041b7abb6e4ff1c00b870/candidate-data_5be54ef641f44386b690514f1050c7e6.csv",
+            "sha256": "07b80dfc0f328e90eca9790baa8c88e6b5a76b3853ad8ce7ffb91338ae9600da",
+            "size": 831,
+            "data_id": "data_5be54ef641f44386b690514f1050c7e6"
+          },
+          "comparison_csv": {
+            "path": "case_ba990d119b2041b7abb6e4ff1c00b870/comparison-data_27859bfb31944f2d88fa7e167def9072.csv",
+            "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+            "size": 885,
+            "data_id": "data_27859bfb31944f2d88fa7e167def9072"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 32,
+          "reference_rows": 32,
+          "matched_grid_keys": [
+            "n_per_arm"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "n_per_arm": 0.0,
+            "total_n": 0.0,
+            "power": 6.661338147750939e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_bd27cbd84a7c4496825fb122e968a397",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_bd27cbd84a7c4496825fb122e968a397/question.txt",
+        "sha256": "6f0c35097a1cbf46e546caa1f2ca3e230ea63300e94c19e1549670118240a47c",
+        "size": 636
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_becbff14ea424758925487be775f50ad",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_becbff14ea424758925487be775f50ad/question.txt",
+        "sha256": "c0879e9eeb3525766a3e74543006ca60831ad0e124ceaddeb8f51b6dc47e69bb",
+        "size": 2744
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_becbff14ea424758925487be775f50ad/comparison-data_f6e11acc399c4d6eb1e043ca5ab3d7ea.csv",
+          "sha256": "2262da11d2be33732d797d6bd8453082d7ca4c5398ee568394e45e0346047adf",
+          "size": 325,
+          "data_id": "data_f6e11acc399c4d6eb1e043ca5ab3d7ea"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_c40240d2b9814297859c486759e8e430",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_c40240d2b9814297859c486759e8e430/question.txt",
+        "sha256": "566b18a48644e020d47545cc61e499410b79da466b9710ca3516e85697d26f6a",
+        "size": 2470
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_c40240d2b9814297859c486759e8e430/comparison-data_ff298c2ef08e44f99601bf1fd96905f3.csv",
+          "sha256": "5613c357e13a0d7d8a6791e13e57b4c24323f43078263647a6fe61be074792c3",
+          "size": 960,
+          "data_id": "data_ff298c2ef08e44f99601bf1fd96905f3"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_c9914e67fb2948fb94e382614876bac6",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_c9914e67fb2948fb94e382614876bac6/question.txt",
+        "sha256": "566b18a48644e020d47545cc61e499410b79da466b9710ca3516e85697d26f6a",
+        "size": 2470
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_c9914e67fb2948fb94e382614876bac6/comparison-data_668bb8acaa834e5392092e8538b38e32.csv",
+          "sha256": "5613c357e13a0d7d8a6791e13e57b4c24323f43078263647a6fe61be074792c3",
+          "size": 960,
+          "data_id": "data_668bb8acaa834e5392092e8538b38e32"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_c9914e67fb2948fb94e382614876bac6/candidate-data_ac031af1f54341219d2a6f1749744eef.csv",
+          "sha256": "f774c19115ff897f29a30ab8cd0008eaa111a634fb45bcd419321c2e29ba3c2f",
+          "size": 931,
+          "data_id": "data_ac031af1f54341219d2a6f1749744eef"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_c9914e67fb2948fb94e382614876bac6/figure_2fbabdd1f13c4dbe9ac138b362d0ee6b.png",
+            "sha256": "08bf5d8d77b8b79d09f0b0ec21c811f08c386000c24c19ff119dc3f1a6347a2e",
+            "size": 100901,
+            "figure_id": "figure_2fbabdd1f13c4dbe9ac138b362d0ee6b"
+          },
+          "actual_sha256": "08bf5d8d77b8b79d09f0b0ec21c811f08c386000c24c19ff119dc3f1a6347a2e",
+          "actual_size": 100901,
+          "dimensions_px": [
+            1800,
+            1200
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "5613c357e13a0d7d8a6791e13e57b4c24323f43078263647a6fe61be074792c3",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots total sample size against R-squared, with a curve for each event probability, as requested."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All twelve requested R-squared/event-probability combinations are represented by visible markers."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "unverifiable",
+              "observation": "The x axis explicitly identifies R-squared as a squared multiple correlation coefficient. The y axis says Total Sample Size (N) but does not explicitly identify the participant unit, leaving recruitment-versus-event count terminology implicit. The plotted counts agree with the participant reference; unit clarity requires human assessment."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Visible curves agree within rendering resolution with total counts71,79,87,101 at probability0.90;86,96,106,123 at0.738;106,118,130,151 at0.60."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title identifies Cox regression/continuous-covariate adjustment; legend labels all three event probabilities."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "No target-power line is requested for this recruitment-count plot; the marked recommendations are integers."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All required curve points and labels are legible and within the plotting region."
+            }
+          ],
+          "ai_only_overall": "unverifiable",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "unverifiable",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_c9914e67fb2948fb94e382614876bac6/candidate-data_ac031af1f54341219d2a6f1749744eef.csv",
+            "sha256": "f774c19115ff897f29a30ab8cd0008eaa111a634fb45bcd419321c2e29ba3c2f",
+            "size": 931,
+            "data_id": "data_ac031af1f54341219d2a6f1749744eef"
+          },
+          "comparison_csv": {
+            "path": "case_c9914e67fb2948fb94e382614876bac6/comparison-data_668bb8acaa834e5392092e8538b38e32.csv",
+            "sha256": "5613c357e13a0d7d8a6791e13e57b4c24323f43078263647a6fe61be074792c3",
+            "size": 960,
+            "data_id": "data_668bb8acaa834e5392092e8538b38e32"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 12,
+          "reference_rows": 12,
+          "matched_grid_keys": [
+            "event_probability",
+            "r_squared"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "event_probability": 0.0,
+            "continuous_events": 4.973799150320701e-14,
+            "required_events": 0.0,
+            "total_n": 0.0,
+            "achieved_power": 4.440892098500626e-16,
+            "preceding_power": 3.3306690738754696e-16,
+            "r_squared": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_cfad3bb439ee449ea37ed22466bb19b3",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_cfad3bb439ee449ea37ed22466bb19b3/question.txt",
+        "sha256": "783b1194d67ede5b3a3f5f5059bf98e2c6760fba91e30fd249f9e2c45429b10f",
+        "size": 2254
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_cfad3bb439ee449ea37ed22466bb19b3/comparison-data_56499095812f46eaaf95b2604d1e9c5d.csv",
+          "sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+          "size": 315,
+          "data_id": "data_56499095812f46eaaf95b2604d1e9c5d"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_d267c6c847704b8ba2c34a86a3642854",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_d267c6c847704b8ba2c34a86a3642854/question.txt",
+        "sha256": "783b1194d67ede5b3a3f5f5059bf98e2c6760fba91e30fd249f9e2c45429b10f",
+        "size": 2254
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_d267c6c847704b8ba2c34a86a3642854/comparison-data_5af52488f1f64eb39b3e44babe399a70.csv",
+          "sha256": "7a2196c831d8c7f3457ea315405b220aece7b5439326412d09193a33f1a41109",
+          "size": 315,
+          "data_id": "data_5af52488f1f64eb39b3e44babe399a70"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_d5c2091c37424af3a38417f7153f1c14",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_d5c2091c37424af3a38417f7153f1c14/question.txt",
+        "sha256": "566b18a48644e020d47545cc61e499410b79da466b9710ca3516e85697d26f6a",
+        "size": 2470
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_d5c2091c37424af3a38417f7153f1c14/comparison-data_aeff3db5df204f249fb9a6211f584738.csv",
+          "sha256": "5613c357e13a0d7d8a6791e13e57b4c24323f43078263647a6fe61be074792c3",
+          "size": 960,
+          "data_id": "data_aeff3db5df204f249fb9a6211f584738"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_d9e3a3d3f9c4488b82f4521e86651148",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_d9e3a3d3f9c4488b82f4521e86651148/question.txt",
+        "sha256": "06d4d362e5bda9457f213c5a4355ea7b7abbf257c73f9d880d5b4987e51a42f6",
+        "size": 2521
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_d9e3a3d3f9c4488b82f4521e86651148/comparison-data_c213321e84454d15bbfa92501ce44989.csv",
+          "sha256": "9983e6a5fd05bb76be17dcfedbcf6b0edadb3367226c34ba7a93e3c6ae8ea29b",
+          "size": 963,
+          "data_id": "data_c213321e84454d15bbfa92501ce44989"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_d9e3a3d3f9c4488b82f4521e86651148/candidate-data_5f9e63d57965443daa5c44f01427d12a.csv",
+          "sha256": "b6a7cae2f8e3147a0572e438b1af1efe5b7ea97d1a60e49b37c054e017317f2c",
+          "size": 906,
+          "data_id": "data_5f9e63d57965443daa5c44f01427d12a"
+        }
+      ],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_dbe24b9ac8a048e5bfaf95376168fa6a",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_dbe24b9ac8a048e5bfaf95376168fa6a/question.txt",
+        "sha256": "b40c79fee83148042b0b6e42fc2a7bf4e50c268d8609cd293c0c10ec34a0fe50",
+        "size": 602
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_e8cb1fa71cca4a8cb2d380929d382ae3",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_e8cb1fa71cca4a8cb2d380929d382ae3/question.txt",
+        "sha256": "6f0c35097a1cbf46e546caa1f2ca3e230ea63300e94c19e1549670118240a47c",
+        "size": 636
+      },
+      "comparison_csvs": [],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": false,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed.",
+        "The request supplies incomplete inputs and asks for clarification; no sensitivity figure is requested. This no-delivery status is not itself a failed clarification task."
+      ]
+    },
+    {
+      "case_id": "case_eade452dda9d4d5cb0455dab56aa9b07",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_eade452dda9d4d5cb0455dab56aa9b07/question.txt",
+        "sha256": "3d79d739ec4f43d2a0821231d3af5c6a5041e7c3e282b7fd43fb4dfa7334247c",
+        "size": 2050
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_eade452dda9d4d5cb0455dab56aa9b07/comparison-data_31dc331784264c56916382923194ea41.csv",
+          "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "size": 885,
+          "data_id": "data_31dc331784264c56916382923194ea41"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_eade452dda9d4d5cb0455dab56aa9b07/candidate-data_47f281455e864e5db13b5390e82b44cc.csv",
+          "sha256": "07b80dfc0f328e90eca9790baa8c88e6b5a76b3853ad8ce7ffb91338ae9600da",
+          "size": 831,
+          "data_id": "data_47f281455e864e5db13b5390e82b44cc"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_eade452dda9d4d5cb0455dab56aa9b07/figure_bb54dea85dff4b62b1d9f5ce98b9d9b1.png",
+            "sha256": "c0f92461474ab9cc6eee4c45f29da7c709e5f0d5a85ff236b7429418ad8a5557",
+            "size": 66184,
+            "figure_id": "figure_bb54dea85dff4b62b1d9f5ce98b9d9b1"
+          },
+          "actual_sha256": "c0f92461474ab9cc6eee4c45f29da7c709e5f0d5a85ff236b7429418ad8a5557",
+          "actual_size": 66184,
+          "dimensions_px": [
+            1200,
+            700
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots power against participants per arm for the requested two-sample t design, with no fractional integer recommendation."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The visible curve spans the requested n=5 to160 range. The companion CSV has all32 requested five-participant grid rows; no separate nuisance scenario is omitted. Dense connecting lines are interpreted only within image resolution."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names participants per arm; power is displayed on a0\u20131 probability scale."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Curve positions agree within rendering resolution with power approximately0.07465 at n5,0.50945 at n50,0.81601 at n100 and0.95452 at n160. The n110 marker, where present, is approximately0.85221."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title identifies a two-sample t test and the supplied d/alpha. There is one scientific power curve; any legend clearly distinguishes target/design annotations."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The target line is at0.85 and any selected count is integer110, consistent with the stated task."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Text, axes, curve and target/design annotations are legible; no required part is visibly clipped."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_eade452dda9d4d5cb0455dab56aa9b07/candidate-data_47f281455e864e5db13b5390e82b44cc.csv",
+            "sha256": "07b80dfc0f328e90eca9790baa8c88e6b5a76b3853ad8ce7ffb91338ae9600da",
+            "size": 831,
+            "data_id": "data_47f281455e864e5db13b5390e82b44cc"
+          },
+          "comparison_csv": {
+            "path": "case_eade452dda9d4d5cb0455dab56aa9b07/comparison-data_31dc331784264c56916382923194ea41.csv",
+            "sha256": "1c544e9999e2e4d89f1560dc874b0a74403ac3060ee482fa0b41e88572024e82",
+            "size": 885,
+            "data_id": "data_31dc331784264c56916382923194ea41"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 32,
+          "reference_rows": 32,
+          "matched_grid_keys": [
+            "n_per_arm"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "n_per_arm": 0.0,
+            "total_n": 0.0,
+            "power": 6.661338147750939e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_ed3d1bf2806a451bb862079016f7ca76",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_ed3d1bf2806a451bb862079016f7ca76/question.txt",
+        "sha256": "c0879e9eeb3525766a3e74543006ca60831ad0e124ceaddeb8f51b6dc47e69bb",
+        "size": 2744
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_ed3d1bf2806a451bb862079016f7ca76/comparison-data_551c00a89e5a4efb891c4a7c8fb327ba.csv",
+          "sha256": "2262da11d2be33732d797d6bd8453082d7ca4c5398ee568394e45e0346047adf",
+          "size": 325,
+          "data_id": "data_551c00a89e5a4efb891c4a7c8fb327ba"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_ed3d1bf2806a451bb862079016f7ca76/candidate-data_e1dedb6c4a454871a392d3ea5ff8134c.csv",
+          "sha256": "30e77eba1c5bbd8b9bd97447714f0a8de510c4d8ccf4c74b804313861c4e9579",
+          "size": 317,
+          "data_id": "data_e1dedb6c4a454871a392d3ea5ff8134c"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_ed3d1bf2806a451bb862079016f7ca76/figure_753efe54e8f94b74b35790d313ab7919.png",
+            "sha256": "8b13bc02cbeb3472474122d4c780b785580b89b175faece46771c2e74fb155bf",
+            "size": 76694,
+            "figure_id": "figure_753efe54e8f94b74b35790d313ab7919"
+          },
+          "actual_sha256": "8b13bc02cbeb3472474122d4c780b785580b89b175faece46771c2e74fb155bf",
+          "actual_size": 76694,
+          "dimensions_px": [
+            900,
+            600
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "2262da11d2be33732d797d6bd8453082d7ca4c5398ee568394e45e0346047adf",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots minimum detectable standardized mean difference against total clusters, not achieved power."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Five requested grid points are shown at18,24,30,36,42 total clusters, with no silently added nuisance scenario."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The axes name total clusters and MDE in standardized/outcome-SD units."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "fail",
+              "observation": "The plotted MDEs are approximately 0.889,0.863,0.851,0.844,0.839 for 18,24,30,36,42 total clusters. The comparison values are 0.362995,0.305250,0.269134,0.243606,0.224272. This disagreement is much larger than pixel resolution, and the accompanying candidate CSV contains the same wrong values."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title identifies the open-cohort stepped-wedge design; one MDE curve needs no multi-curve legend."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "No target-power line is requested in this MDE-versus-clusters plot; displayed total-cluster designs are integers."
+            },
+            {
+              "item": 7,
+              "applicable": true,
+              "rating": "fail",
+              "observation": "The title/annotation does not identify the required t-quantile approximation. Power=0.80 is stated as a parameter rather than verified achieved power, but the approximation label is absent."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Axis labels, title, five marks and annotations are readable and not clipped."
+            }
+          ],
+          "ai_only_overall": "fail",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "fail",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_ed3d1bf2806a451bb862079016f7ca76/candidate-data_e1dedb6c4a454871a392d3ea5ff8134c.csv",
+            "sha256": "30e77eba1c5bbd8b9bd97447714f0a8de510c4d8ccf4c74b804313861c4e9579",
+            "size": 317,
+            "data_id": "data_e1dedb6c4a454871a392d3ea5ff8134c"
+          },
+          "comparison_csv": {
+            "path": "case_ed3d1bf2806a451bb862079016f7ca76/comparison-data_551c00a89e5a4efb891c4a7c8fb327ba.csv",
+            "sha256": "2262da11d2be33732d797d6bd8453082d7ca4c5398ee568394e45e0346047adf",
+            "size": 325,
+            "data_id": "data_551c00a89e5a4efb891c4a7c8fb327ba"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 5,
+          "reference_rows": 5,
+          "matched_grid_keys": [
+            "clusters_per_sequence"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "clusters_per_sequence": 0.0,
+            "total_clusters": 0.0,
+            "degrees_of_freedom": 0.0,
+            "treatment_variance": 0.0788429916717232,
+            "mde": 0.6148759261920931
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_ef4b69ceed7848ac8d22de78f7e6b933",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_ef4b69ceed7848ac8d22de78f7e6b933/question.txt",
+        "sha256": "566b18a48644e020d47545cc61e499410b79da466b9710ca3516e85697d26f6a",
+        "size": 2470
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_ef4b69ceed7848ac8d22de78f7e6b933/comparison-data_c32d40ee271f42d385d0b726662c02db.csv",
+          "sha256": "5613c357e13a0d7d8a6791e13e57b4c24323f43078263647a6fe61be074792c3",
+          "size": 960,
+          "data_id": "data_c32d40ee271f42d385d0b726662c02db"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_f113060343ad426692ebf0259ab3b84b",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_f113060343ad426692ebf0259ab3b84b/question.txt",
+        "sha256": "7822cc73bf7ae5fbdd36fdff4c27e031cc31b6e8cc984709c67ccf7d6a1edb13",
+        "size": 2108
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_f113060343ad426692ebf0259ab3b84b/comparison-data_ca2c145d462a4f74983710876c09c0e2.csv",
+          "sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+          "size": 569,
+          "data_id": "data_ca2c145d462a4f74983710876c09c0e2"
+        }
+      ],
+      "candidate_csvs": [
+        {
+          "path": "case_f113060343ad426692ebf0259ab3b84b/candidate-data_0cb79ee635c746e2b9f4dd557ffcd39b.csv",
+          "sha256": "37b194ada785fd6d54986da988923275d17ab5b5b3e95362f0ea053e3b324d18",
+          "size": 531,
+          "data_id": "data_0cb79ee635c746e2b9f4dd557ffcd39b"
+        }
+      ],
+      "figures": [
+        {
+          "artifact": {
+            "path": "case_f113060343ad426692ebf0259ab3b84b/figure_4d6071c6532d4088bd522dab1ecf6339.png",
+            "sha256": "33f242e4a3ba1e521e2ea5e090c64e70b21705f2052c7ba0e4de3c278855dac2",
+            "size": 145553,
+            "figure_id": "figure_4d6071c6532d4088bd522dab1ecf6339"
+          },
+          "actual_sha256": "33f242e4a3ba1e521e2ea5e090c64e70b21705f2052c7ba0e4de3c278855dac2",
+          "actual_size": 145553,
+          "dimensions_px": [
+            3000,
+            1800
+          ],
+          "format": "PNG",
+          "actual_pixels_inspected": true,
+          "inspection_method": "view_image on the original opaque PNG; first batch at original detail, remaining images at high detail. One large ANOVA image was tool-resized to2048x1229; judgments are bounded by display resolution.",
+          "comparison_csv_sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+          "items": [
+            {
+              "item": 1,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The figure plots omnibus ANOVA power against participants per group rather than total participants or a directional t-test statistic."
+            },
+            {
+              "item": 2,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "All21 requested n=5 through25 grid values are covered by the curve; visible markers, where present, include endpoints and the n16 design."
+            },
+            {
+              "item": 3,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The x axis names participants per group; the y axis gives power on the0\u20131 scale."
+            },
+            {
+              "item": 4,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The curve agrees within rendering resolution with approximately0.35356 at n5,0.70969 at n10,0.89572 at n15,0.91672 at n16 and0.99119 at n25."
+            },
+            {
+              "item": 5,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The title names balanced four-group one-way ANOVA. A single scientific curve needs no multi-scenario legend; target/design marks are distinguishable."
+            },
+            {
+              "item": 6,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "The target line is at0.90 and the selected n16 is an integer, not the continuous inversion."
+            },
+            {
+              "item": 7,
+              "applicable": false,
+              "rating": "not_applicable",
+              "observation": "This is not the NIH MDE task."
+            },
+            {
+              "item": 8,
+              "applicable": true,
+              "rating": "pass",
+              "observation": "Axes, title, marks and legend/caption are legible. Some base-R legends have grid lines behind them, but the required text remains readable."
+            }
+          ],
+          "ai_only_overall": "pass",
+          "rendered_pdf_page_sha256": null
+        }
+      ],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "pass",
+      "csv_arithmetic_comparisons": [
+        {
+          "candidate_csv": {
+            "path": "case_f113060343ad426692ebf0259ab3b84b/candidate-data_0cb79ee635c746e2b9f4dd557ffcd39b.csv",
+            "sha256": "37b194ada785fd6d54986da988923275d17ab5b5b3e95362f0ea053e3b324d18",
+            "size": 531,
+            "data_id": "data_0cb79ee635c746e2b9f4dd557ffcd39b"
+          },
+          "comparison_csv": {
+            "path": "case_f113060343ad426692ebf0259ab3b84b/comparison-data_ca2c145d462a4f74983710876c09c0e2.csv",
+            "sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+            "size": 569,
+            "data_id": "data_ca2c145d462a4f74983710876c09c0e2"
+          },
+          "comparison_scope": "Arithmetic comparison of supplied CSV files, not a recomputation of scientific references",
+          "candidate_rows": 21,
+          "reference_rows": 21,
+          "matched_grid_keys": [
+            "n_per_group"
+          ],
+          "missing_reference_grid_values": [],
+          "max_absolute_differences_by_column": {
+            "n_per_group": 0.0,
+            "total_n": 0.0,
+            "power": 5.551115123125783e-16
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "case_f21cf02a857148dbaab09fb03a8c1fcc",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_f21cf02a857148dbaab09fb03a8c1fcc/question.txt",
+        "sha256": "06d4d362e5bda9457f213c5a4355ea7b7abbf257c73f9d880d5b4987e51a42f6",
+        "size": 2521
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_f21cf02a857148dbaab09fb03a8c1fcc/comparison-data_f68c3f42f8c84c018858306c39da5f4e.csv",
+          "sha256": "9983e6a5fd05bb76be17dcfedbcf6b0edadb3367226c34ba7a93e3c6ae8ea29b",
+          "size": 963,
+          "data_id": "data_f68c3f42f8c84c018858306c39da5f4e"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    },
+    {
+      "case_id": "case_ff9066c01d4b43338f1f07fcc8b2640f",
+      "reviewer_type": "AI",
+      "assessor_label": "Codex AI session /root/paper",
+      "question": {
+        "path": "case_ff9066c01d4b43338f1f07fcc8b2640f/question.txt",
+        "sha256": "7822cc73bf7ae5fbdd36fdff4c27e031cc31b6e8cc984709c67ccf7d6a1edb13",
+        "size": 2108
+      },
+      "comparison_csvs": [
+        {
+          "path": "case_ff9066c01d4b43338f1f07fcc8b2640f/comparison-data_d5cb046accfa473da0ef5af2dd698ecf.csv",
+          "sha256": "b9d1255ecf19420a880ad6b94c1997d7d30bad484dc4a7d3ece6b573a079d748",
+          "size": 569,
+          "data_id": "data_d5cb046accfa473da0ef5af2dd698ecf"
+        }
+      ],
+      "candidate_csvs": [],
+      "figures": [],
+      "pdf_assessment": {
+        "status": "not_delivered_in_visible_packet",
+        "original_pdf_sha256": null,
+        "rendered_pdf_pages": []
+      },
+      "requested_figure_for_calculation": true,
+      "case_assessment": "not_delivered",
+      "notes": [
+        "No figure is present in this opaque case; no pixel content was assessed."
+      ]
+    }
+  ]
+}

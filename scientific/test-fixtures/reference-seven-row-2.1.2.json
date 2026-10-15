@@ -1,0 +1,135 @@
+{
+  "source_file": "final-2.1.2-analysis.json",
+  "source_sha256": "c18d1e58f4576fbc1aece337f835ab17b98d6ccff30bc6ccccba3721bd2b75e9",
+  "purpose": "Saved post-cohort seven-row UI result used only as a semantic regression fixture, not a benchmark answer or model prompt.",
+  "plan": {
+    "ready": true,
+    "request_kind": "calculation",
+    "calculation_type": "sample_size",
+    "estimand": "Difference in means between two independent normally distributed groups",
+    "hypothesis": "Two-sided test of equality of means: H₀: μ₁ = μ₂ vs H₁: μ₁ ≠ μ₂",
+    "method": "two_sample_t",
+    "alpha": 0.05,
+    "sidedness": "two-sided",
+    "target_power": 0.8,
+    "allocation_ratio": 1,
+    "sample_size_unit": "participants per arm",
+    "parameters": [
+      {
+        "name": "Cohen d (effect size)",
+        "value": 0.5,
+        "unit": "standardized difference",
+        "source": "user"
+      },
+      {
+        "name": "Common standard deviation",
+        "value": 1,
+        "unit": "implicit scaling",
+        "source": "explicit_assumption"
+      },
+      {
+        "name": "Significance level",
+        "value": 0.05,
+        "unit": "alpha",
+        "source": "user"
+      },
+      {
+        "name": "Target power",
+        "value": 0.8,
+        "unit": "probability",
+        "source": "user"
+      }
+    ],
+    "assumptions": [
+      "Two independent groups with normal distributions",
+      "Common known standard deviation (Cohen d convention)",
+      "Pooled variance t-test with equal allocation (1:1)",
+      "Two-sided hypothesis test",
+      "No attrition or dropout",
+      "Asymptotic normality of test statistic under alternative"
+    ],
+    "missing_information": [],
+    "clarification_questions": [],
+    "scientific_notes": [
+      "Cohen d = 0.5 represents a medium effect size",
+      "Using R stats::power.t.test() with strict=TRUE for exactness",
+      "Will report power at both the minimum integer n and n−1 per arm to demonstrate the threshold",
+      "Total sample size = 2n (both arms combined)"
+    ]
+  },
+  "answer": {
+    "summary": "For a two-sided pooled two-sample t-test comparing two independent normally distributed groups with Cohen d = 0.5, α = 0.05, and target power 0.80 under 1:1 equal allocation, the minimum integer sample size is **64 participants per arm (128 total participants)**. The exact continuous solution is 63.7656 per arm. At the minimum design (n = 64), achieved power is 0.8015, exceeding the 0.80 target. At n = 63, power is 0.7952, which falls below target, confirming that n = 64 is the smallest admissible integer design meeting the power requirement.",
+    "method": "Analytic inversion using R stats::power.t.test(strict=TRUE) for the pooled two-sample t-test. The method inverts from the target power condition to solve for n, using the noncentral t distribution with degrees of freedom ν = 2n − 2 and noncentrality parameter λ = δ√(n/2) = 0.5√(n/2). The continuous solution (63.7656) is then rounded up to the nearest integer (64) and verified by power re-computation at both n and n − 1.",
+    "results": [
+      {
+        "metric": "Exact n per arm (continuous solution)",
+        "value": 63.76561017078221,
+        "unit": "participants_per_arm"
+      },
+      {
+        "metric": "Participants per arm (minimum integer)",
+        "value": 64,
+        "unit": "participants_per_arm"
+      },
+      {
+        "metric": "Total participants (minimum integer)",
+        "value": 128,
+        "unit": "participants_total"
+      },
+      {
+        "metric": "Power at n = 64",
+        "value": 0.8014595579223276,
+        "unit": "probability"
+      },
+      {
+        "metric": "Participants per arm (n-1)",
+        "value": 63,
+        "unit": "participants_per_arm"
+      },
+      {
+        "metric": "Total participants (n-1)",
+        "value": 126,
+        "unit": "participants_total"
+      },
+      {
+        "metric": "Power at n = 63",
+        "value": 0.7951683381233855,
+        "unit": "probability"
+      }
+    ],
+    "assumptions": [
+      "Two independent groups, each normally distributed with a common population standard deviation",
+      "Pooled-variance Student's t-test with test statistic t = (x̄₁ − x̄₂)/(sp√(2/n)), where sp is the pooled standard deviation",
+      "Two-sided hypothesis test (H₀: μ₁ = μ₂ vs H₁: μ₁ ≠ μ₂)",
+      "Equal allocation ratio 1:1 (n₁ = n₂ = n)",
+      "Cohen d = 0.5 effect size, representing a standardized mean difference",
+      "Significance level α = 0.05",
+      "No attrition or dropout",
+      "Under the alternative hypothesis, the test statistic follows a noncentral t distribution with ν = 2n − 2 degrees of freedom and noncentrality parameter λ = δ√(n/2)"
+    ],
+    "limitations": [
+      "Assumes normality of the underlying populations; departures from normality (e.g., heavy tails, skew) may affect Type I and Type II error rates in finite samples",
+      "Assumes homogeneity of variance across the two groups; unequal variances would necessitate Welch's correction and alter the power calculation",
+      "Uses the asymptotic/exact noncentral t distribution; practical power may vary slightly with actual sample characteristics",
+      "Does not account for multiple testing, sequential analysis, or multiplicity adjustment",
+      "No inflation for attrition, loss to follow-up, or non-compliance; any such effects must be handled separately",
+      "Power is sensitive to the true effect size; if the population effect differs from Cohen d = 0.5, actual power will differ"
+    ],
+    "evidence_ids": [
+      "e2"
+    ],
+    "simulation": null,
+    "citations": [
+      {
+        "title": "R Statistical Software: power.t.test function",
+        "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/power.t.test.html",
+        "supports": "Documentation for power.t.test() with strict=TRUE parameter, which performs exact power computation for two-sample t-tests using the noncentral t distribution"
+      },
+      {
+        "title": "Cohen, J. (1988). Statistical Power Analysis for the Behavioral Sciences (2nd ed.)",
+        "url": "https://www.routledge.com/Statistical-Power-Analysis-for-the-Behavioral-Sciences/Cohen/p/book/9780805802832",
+        "supports": "Standard interpretation of Cohen d = 0.5 as a medium effect size"
+      }
+    ]
+  }
+}
